@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit",
+    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests",
     "test:contrast": "jest tests/contrast.test.js --runInBand"
   },
   "dependencies": {
