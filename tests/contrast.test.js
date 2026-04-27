@@ -18,6 +18,17 @@ const fetchApi = function () {
   });
 };
 
+const assertApiResponse2A = async function (fcolor, bcolor){
+  const url = `${baseUrl}?fcolor=${encodeURIComponent(fcolor)}&bcolor=${encodeURIComponent(bcolor)}&api`;
+
+  const response = await fetchApi(url);
+  expect(response.ok).toBe(true);
+
+  const json = await response.json();
+  expect(json).toHaveProperty('AA', 'pass');
+  expect(json).toHaveProperty('AALarge', 'pass');
+}
+
 function normalizeHex(color) {
   return color.replace('#', '').toUpperCase();
 }
@@ -25,53 +36,29 @@ function normalizeHex(color) {
 test('a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_yellow);
-  const url = `${baseUrl}?fcolor=${encodeURIComponent(fcolor)}&bcolor=${encodeURIComponent(bcolor)}&api`;
 
-  const response = await fetchApi(url);
-  expect(response.ok).toBe(true);
-
-  const json = await response.json();
-  expect(json).toHaveProperty('AA', 'pass');
-  expect(json).toHaveProperty('AALarge', 'pass');
+  assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:green text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_green);
-  const url = `${baseUrl}?fcolor=${encodeURIComponent(fcolor)}&bcolor=${encodeURIComponent(bcolor)}&api`;
 
-  const response = await fetchApi(url);
-  expect(response.ok).toBe(true);
-
-  const json = await response.json();
-  expect(json).toHaveProperty('AA', 'pass');
-  expect(json).toHaveProperty('AALarge', 'pass');
+  assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:blue text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_blue);
-  const url = `${baseUrl}?fcolor=${encodeURIComponent(fcolor)}&bcolor=${encodeURIComponent(bcolor)}&api`;
 
-  const response = await fetchApi(url);
-  expect(response.ok).toBe(true);
-
-  const json = await response.json();
-  expect(json).toHaveProperty('AA', 'pass');
-  expect(json).toHaveProperty('AALarge', 'pass');
+  assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:red text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_red);
-  const url = `${baseUrl}?fcolor=${encodeURIComponent(fcolor)}&bcolor=${encodeURIComponent(bcolor)}&api`;
 
-  const response = await fetchApi(url);
-  expect(response.ok).toBe(true);
-
-  const json = await response.json();
-  expect(json).toHaveProperty('AA', 'pass');
-  expect(json).toHaveProperty('AALarge', 'pass');
+  assertApiResponse2A(fcolor, bcolor);
 });
 
 test('low contrast ratio fails test', async ()=> {
