@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:contrast":"jest tests/contrast.test.js",
+    "test:a11y": "jest tests/a11y.test.js"
   },
   "dependencies": {
     "next": "16.2.4",
