@@ -3,6 +3,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Placeholder to satisfy IDE linters. Next overrides these at runtime */
+  --font-geist-sans: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
+
+@theme {
+  --a2_hs_red: #FD3D4E;
+  --a3_hs_red: #EC6F79;
+  --a2_hs_yellow: #FDCD01;
+  --a3_hs_yellow: #FFE05E;
+  --a2_hs_green: #0AD88E;
+  --a3_hs_green: #47EBB0;
+  --a2_hs_blue: #336AFF;
+  --a3_hs_blue: #89A9FF;
+  --a2_a3_text: #000;
 }
 
 @theme inline {
