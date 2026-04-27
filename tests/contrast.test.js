@@ -37,28 +37,28 @@ test('a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge', a
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_yellow);
 
-  assertApiResponse2A(fcolor, bcolor);
+  await assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:green text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_green);
 
-  assertApiResponse2A(fcolor, bcolor);
+  await assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:blue text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_blue);
 
-  assertApiResponse2A(fcolor, bcolor);
+  await assertApiResponse2A(fcolor, bcolor);
 });
 
 test('a2 bg:red text:black contrast ratio returns pass for AA and AALarge', async () => {
   const fcolor = normalizeHex(a2_a3_text);
   const bcolor = normalizeHex(a2_hs_red);
 
-  assertApiResponse2A(fcolor, bcolor);
+  await assertApiResponse2A(fcolor, bcolor);
 });
 
 test('low contrast ratio fails test', async ()=> {
