@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:contrast":"jest tests/contrast.test.js",
+    "test:a11y": "jest tests/a11y.test.js"
   },
   "dependencies": {
+    "geist": "^1.7.0",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -20,6 +23,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "jest-axe": "^10.0.0",
+    "node-fetch": "^3.3.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
