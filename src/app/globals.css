@@ -3,9 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Placeholder to satisfy IDE linters. Next overrides these at runtime */
+  --font-geist-sans: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
 }
 
-:colors {
+@theme {
   --a2_hs_red: #FD3D4E;
   --a3_hs_red: #EC6F79;
   --a2_hs_yellow: #FDCD01;
