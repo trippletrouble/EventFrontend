@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test:contrast":"jest tests/contrast.test.js",
     "test:a11y": "jest tests/a11y.test.js",
-    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests",
+    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests"
   },
   "dependencies": {
     "geist": "^1.7.0",
