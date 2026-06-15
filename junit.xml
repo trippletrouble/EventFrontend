@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Unternehmerbörse Frontend Tests" tests="47" failures="0" errors="0" time="1.147">
+  <testsuite name="WCAG 2.1 AA Color Contrast Verification" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:28" time="0.169" tests="23">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Accent Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Accent Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Warning Orange against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Warning Orange against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Secondary Blue against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Secondary Blue against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Secondary Blue against White has sufficient AA Large/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Secondary Blue against White has sufficient AA Large/UI contrast (&gt;= 3.0:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Destructive Red against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Destructive Red against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Destructive Red against White has sufficient AA Large/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Destructive Red against White has sufficient AA Large/UI contrast (&gt;= 3.0:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Foreground White on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Foreground White on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Muted Text on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Muted Text on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Link Text on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Link Text on Dark Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Blue against Black has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Blue against Black has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Yellow against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Yellow against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Blue against White has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Blue against White has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Red against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Red against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Blue against Surface has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Blue against Surface has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Global Accessibility &amp; Theme Requirements" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:28" time="0.118" tests="6">
+    <testcase classname="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" name="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" time="0.03">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" name="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" time="0">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements globals.css implements focus-visible outline visibility" name="Global Accessibility &amp; Theme Requirements globals.css implements focus-visible outline visibility" time="0">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" name="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" time="0">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" name="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" time="0.001">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" name="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="cn" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:28" time="0.057" tests="4">
+    <testcase classname="cn merged Tailwind-Klassen korrekt" name="cn merged Tailwind-Klassen korrekt" time="0.003">
+    </testcase>
+    <testcase classname="cn entfernt falsy Werte" name="cn entfernt falsy Werte" time="0">
+    </testcase>
+    <testcase classname="cn merged bedingte Klassen" name="cn merged bedingte Klassen" time="0.001">
+    </testcase>
+    <testcase classname="cn gibt leeren String bei keinen Argumenten" name="cn gibt leeren String bei keinen Argumenten" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="MobileMenu" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:28" time="0.186" tests="3">
+    <testcase classname="MobileMenu hat keine A11y-Violations" name="MobileMenu hat keine A11y-Violations" time="0.025">
+    </testcase>
+    <testcase classname="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" name="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" time="0.005">
+    </testcase>
+    <testcase classname="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" name="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" time="0.041">
+    </testcase>
+  </testsuite>
+  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:29" time="0.125" tests="4">
+    <testcase classname="Header hat keine A11y-Violations im unauthentifizierten Zustand" name="Header hat keine A11y-Violations im unauthentifizierten Zustand" time="0.042">
+    </testcase>
+    <testcase classname="Header zeigt Anmelde-Link wenn nicht eingeloggt" name="Header zeigt Anmelde-Link wenn nicht eingeloggt" time="0.005">
+    </testcase>
+    <testcase classname="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" name="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" time="0.006">
+    </testcase>
+    <testcase classname="Header zeigt den Admin-Link wenn der Nutzer Admin ist" name="Header zeigt den Admin-Link wenn der Nutzer Admin ist" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="SkipNavLink" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:29" time="0.079" tests="3">
+    <testcase classname="SkipNavLink hat keine A11y-Violations" name="SkipNavLink hat keine A11y-Violations" time="0.009">
+    </testcase>
+    <testcase classname="SkipNavLink verweist auf #main-content" name="SkipNavLink verweist auf #main-content" time="0.002">
+    </testcase>
+    <testcase classname="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" name="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="CarouselSection" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:29" time="0.109" tests="2">
+    <testcase classname="CarouselSection hat keine A11y-Violations" name="CarouselSection hat keine A11y-Violations" time="0.028">
+    </testcase>
+    <testcase classname="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" name="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="LogoCarousel" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:14:29" time="0.071" tests="2">
+    <testcase classname="LogoCarousel hat keine A11y-Violations" name="LogoCarousel hat keine A11y-Violations" time="0.013">
+    </testcase>
+    <testcase classname="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" name="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
