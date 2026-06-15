@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Unternehmerbörse Frontend Tests" tests="10" failures="0" errors="0" time="1.185">
+  <testsuite name="SkipNavLink" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:13:45" time="0.675" tests="3">
+    <testcase classname="SkipNavLink hat keine A11y-Violations" name="SkipNavLink hat keine A11y-Violations" time="0.045">
+    </testcase>
+    <testcase classname="SkipNavLink verweist auf #main-content" name="SkipNavLink verweist auf #main-content" time="0.005">
+    </testcase>
+    <testcase classname="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" name="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:13:45" time="0.752" tests="4">
+    <testcase classname="Header hat keine A11y-Violations im unauthentifizierten Zustand" name="Header hat keine A11y-Violations im unauthentifizierten Zustand" time="0.079">
+    </testcase>
+    <testcase classname="Header zeigt Anmelde-Link wenn nicht eingeloggt" name="Header zeigt Anmelde-Link wenn nicht eingeloggt" time="0.008">
+    </testcase>
+    <testcase classname="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" name="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" time="0.006">
+    </testcase>
+    <testcase classname="Header zeigt den Admin-Link wenn der Nutzer Admin ist" name="Header zeigt den Admin-Link wenn der Nutzer Admin ist" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="MobileMenu" errors="0" failures="0" skipped="0" timestamp="2026-06-15T20:13:45" time="0.773" tests="3">
+    <testcase classname="MobileMenu hat keine A11y-Violations" name="MobileMenu hat keine A11y-Violations" time="0.057">
+    </testcase>
+    <testcase classname="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" name="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" time="0.006">
+    </testcase>
+    <testcase classname="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" name="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" time="0.04">
+    </testcase>
+  </testsuite>
+</testsuites>
