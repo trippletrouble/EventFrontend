@@ -1,6 +1,5 @@
 ## Describe your changes
 >
-> 
 ## User Story ID and link
 - User Story ID:
 - Issue Link:
