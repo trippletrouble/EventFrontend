@@ -1,105 +1,73 @@
+# ============================================================
+# Unternehmerbörse Frontend — CI/CD Pipeline
+# ============================================================
+
 workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
       when: never
     - if: '$CI_COMMIT_BRANCH'
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-  GIT_SUBMODULE_FORCE_HTTPS: "true"
+
+image: node:20-alpine
 
 stages:
-  - build
+  - lint
   - test
+  - build
 
-# ──────────────────────────────────────────────
-# Backend
-# ──────────────────────────────────────────────
-
-backend-build:
-  stage: build
-  image: node:20-alpine
-  artifacts:
-    untracked: true
+# ============================================================
+# Stage 1: LINT (2 Jobs parallel)
+# ============================================================
+eslint:
+  stage: lint
   script:
-    - cd backend
-    - npm ci
-  #only:
-  #  - main
-  #  - dev
+    - npm ci --prefer-offline
+    - npx eslint . --max-warnings 0
+  allow_failure: false
 
-backend-unit-test:
+typecheck:
+  stage: lint
+  script:
+    - npm ci --prefer-offline
+    - npx tsc --noEmit
+  allow_failure: false
+
+# ============================================================
+# Stage 2: TEST
+# ============================================================
+test:
   stage: test
-  image: node:20-alpine
-  dependencies:
-    - backend-build
-  variables:
-    POSTGRES_URL: "postgresql://localhost:5432/placeholder"
-    NODE_ENV: "test"
-    PORT: "3000"
-    FRONTEND_URL: "http://localhost:3000"
-    OIDC_ISSUER: "placeholder"
-    OIDC_CLIENT_ID: "placeholder"
-    OIDC_CLIENT_SECRET: "placeholder"
-    OIDC_CALLBACK_URL: "placeholder"
-    JWT_SECRET: "placeholder"
-    JWT_EXPIRATION: "1h"
   script:
-    - cd backend
-    - npm ci
-    - npx prisma generate
-    - npm run test:ci
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+    - npm ci --prefer-offline
+    - npx jest --ci --coverage --reporters=default --reporters=jest-junit
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    reports:
+      junit: junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    expire_in: 7 days
+  coverage: '/All files[^|]*\|[^|]*\s+([\d.]+)/'
+
+# ============================================================
+# Stage 3: BUILD
+# ============================================================
+build:
+  stage: build
+  needs: ["eslint", "typecheck", "test"]
+  script:
+    - npm ci --prefer-offline
+    - npm run build
   artifacts:
     paths:
-      - backend/coverage/
-    when: always
-    reports:
-      junit:
-        - backend/junit.xml
-
-# ──────────────────────────────────────────────
-# Frontend
-# ──────────────────────────────────────────────
-
-frontend-build:
-  stage: build
-  image: node:20-alpine
-  script:
-    - cd frontend
-    - npm ci
-  artifacts:
-    untracked: true
-
-frontend-unit-test:
-  stage: test
-  image: node:20-alpine
-  allow_failure: true
-  dependencies:
-    - frontend-build
-  script:
-    - cd frontend
-    - npm ci
-    - npm run test:ci
-    - npm run test:contrast
-    - npm run test:a11y
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
-  artifacts:
-    paths:
-      - frontend/coverage/
-    when: always
-    reports:
-      junit:
-        - frontend/junit.xml
-
-frontend-lint:
-  stage: test
-  image: node:20-alpine
-  allow_failure: true
-  dependencies:
-    - frontend-build
-  script:
-    - cd frontend
-    - npm ci
-    - ./node_modules/.bin/eslint . --max-warnings 0
-    - ./node_modules/.bin/tsc --noEmit
+      - .next/
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_MERGE_REQUEST_ID'
