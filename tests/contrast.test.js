@@ -1,11 +1,7 @@
 const a2_hs_red = "#FD3D4E";
-const a3_hs_red = "#EC6F79";
 const a2_hs_yellow = "#FDCD01";
-const a3_hs_yellow = "#FFE05E";
 const a2_hs_green = "#0AD88E";
-const a3_hs_green = "#47EBB0";
 const a2_hs_blue = "#336AFF";
-const a3_hs_blue = "#89A9FF";
 const a2_a3_text = "#000000";
 const baseUrl = "https://webaim.org/resources/contrastchecker/"; // https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=EC6F79&api
 
