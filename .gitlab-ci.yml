@@ -1,0 +1,81 @@
+# ============================================================
+# Unternehmerbörse Frontend — CI/CD Pipeline
+# ============================================================
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+
+variables:
+  http_proxy: "http://proxy.hof-university.de:3128"
+  https_proxy: "http://proxy.hof-university.de:3128"
+  HTTP_PROXY: "http://proxy.hof-university.de:3128"
+  HTTPS_PROXY: "http://proxy.hof-university.de:3128"
+  no_proxy: "localhost,127.0.0.1"
+  NO_PROXY: "localhost,127.0.0.1"
+
+image: node:20-alpine
+
+stages:
+  - lint
+  - test
+  - build
+
+# ============================================================
+# Stage 1: LINT (2 Jobs parallel)
+# ============================================================
+eslint:
+  stage: lint
+  script:
+    - npm ci --prefer-offline
+    - npx eslint . --max-warnings 0
+  allow_failure: false
+
+typecheck:
+  stage: lint
+  script:
+    - npm ci --prefer-offline
+    - npx tsc --noEmit
+  allow_failure: false
+
+# ============================================================
+# Stage 2: TEST
+# ============================================================
+test:
+  stage: test
+  script:
+    - npm ci --prefer-offline
+    - npx jest --ci --coverage --reporters=default --reporters=jest-junit
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    reports:
+      junit: junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    expire_in: 7 days
+  coverage: '/All files[^|]*\|[^|]*\s+([\d.]+)/'
+
+# ============================================================
+# Stage 3: BUILD
+# ============================================================
+build:
+  stage: build
+  needs: ["eslint", "typecheck", "test"]
+  script:
+    - npm ci --prefer-offline
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_MERGE_REQUEST_ID'
