@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import { AuthProvider, useAuth } from '../src/app/components/AuthProvider';
+import { AuthProvider, useAuth } from '@/app/providers/AuthProvider';
 import { navigateTo } from '../src/app/lib/navigation';
 
 // Mock fetch

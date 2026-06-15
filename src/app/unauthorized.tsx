@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useAuth } from './components/AuthProvider';
+import { useAuth } from './providers/AuthProvider';
 
 export default function UnauthorizedPage() {
   const { login } = useAuth();
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center min-h-[70vh] px-4 bg-zinc-50 text-center dark:bg-black font-sans">
+    <main className="flex flex-col flex-1 items-center justify-center min-h-[70vh] px-4 bg-zinc-50 text-center dark:bg-black font-sans">
       <div className="max-w-md w-full p-8 rounded-2xl border border-zinc-200/50 bg-white/70 shadow-xl backdrop-blur-md dark:border-zinc-800/50 dark:bg-zinc-900/70 transition-all duration-300 hover:shadow-2xl">
         <div className="flex justify-center mb-6">
           <div className="p-3 rounded-full bg-red-50 dark:bg-red-950/30 text-red-500 dark:text-red-400">
@@ -17,6 +17,7 @@ export default function UnauthorizedPage() {
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -35,11 +36,11 @@ export default function UnauthorizedPage() {
         </p>
         <button
           onClick={login}
-          className="w-full flex items-center justify-center py-3 px-5 text-sm font-medium text-white bg-zinc-950 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200 rounded-lg shadow transition-colors duration-200 cursor-pointer"
+          className="w-full flex items-center justify-center py-3 px-5 text-sm font-medium text-white bg-zinc-950 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200 rounded-lg shadow transition-colors duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 dark:focus-visible:outline-zinc-50"
         >
           Jetzt anmelden
         </button>
       </div>
-    </div>
+    </main>
   );
 }
