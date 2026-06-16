@@ -36,12 +36,17 @@
     <testcase classname="Middleware / proxy.ts Routing Guard allows unauthenticated users to access /login" name="Middleware / proxy.ts Routing Guard allows unauthenticated users to access /login" time="0">
     </testcase>
     <testcase classname="Middleware / proxy.ts Routing Guard allows access to public pages (e.g. /)" name="Middleware / proxy.ts Routing Guard allows access to public pages (e.g. /)" time="0.001">
+<testsuites name="Unternehmerbörse Frontend Tests" tests="4" failures="0" errors="0" time="6.253">
+  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-16T10:44:44" time="5.156" tests="4">
+    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.624">
     </testcase>
   </testsuite>
   <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:20" time="1.746" tests="5">
     <testcase classname=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" time="0.501">
+    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.255">
     </testcase>
     <testcase classname=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" time="0.173">
+    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.239">
     </testcase>
     <testcase classname=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" time="0.168">
     </testcase>
@@ -60,6 +65,7 @@
     <testcase classname="AuthProvider Component login redirects to backend" name="AuthProvider Component login redirects to backend" time="0.008">
     </testcase>
     <testcase classname="AuthProvider Component logout redirects to API route" name="AuthProvider Component logout redirects to API route" time="0.006">
+    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.215">
     </testcase>
   </testsuite>
 </testsuites>
