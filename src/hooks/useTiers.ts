@@ -9,6 +9,7 @@ import type {
   UpgradeBookingResponseDto,
 } from '@/types/api.types';
 import * as bookingService from '@/services/booking.service';
+import { mockTiers } from '@/__tests__/mocks/data/bookings';
 
 export function useTiers(eventId?: number) {
   const [tiers, setTiers] = useState<TierDto[]>([]);
@@ -23,7 +24,13 @@ export function useTiers(eventId?: number) {
       setTiers(data);
       setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Fehler beim Laden der Pakete');
+      console.warn('API call failed, falling back to mock data in development:', err);
+      if (process.env.NODE_ENV === 'development') {
+        setTiers(mockTiers);
+        setError(null);
+      } else {
+        setError(err instanceof Error ? err.message : 'Fehler beim Laden der Pakete');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -36,6 +43,20 @@ export function useTiers(eventId?: number) {
       setError(null);
       return result;
     } catch (err) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('createBooking failed, returning mock booking in development:', err);
+        setError(null);
+        return {
+          bookingId: 1,
+          companyId: data.companyId,
+          eventId: 1,
+          tierId: data.tierId,
+          bookedBy: 1,
+          status: 'PENDING',
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        };
+      }
       setError(err instanceof Error ? err.message : 'Buchung fehlgeschlagen');
       throw err;
     } finally {
@@ -51,6 +72,14 @@ export function useTiers(eventId?: number) {
         setError(null);
         return result;
       } catch (err) {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('upgradeBooking failed, returning mock upgrade in development:', err);
+          setError(null);
+          return {
+            priceDifference: 35000,
+            paymentUrl: 'https://checkout.stripe.com/upgrade_session_123',
+          };
+        }
         setError(err instanceof Error ? err.message : 'Upgrade fehlgeschlagen');
         throw err;
       } finally {
