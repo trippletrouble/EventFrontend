@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { AuthProvider, useAuth } from '@/app/providers/AuthProvider';
-import { navigateTo } from '../src/app/lib/navigation';
+import { navigateTo } from '@/app/lib/navigation';
 
 // Mock fetch
 global.fetch = jest.fn();
@@ -47,7 +47,7 @@ describe('AuthProvider Component', () => {
         user: { userId: 1, email: 'test@example.com', role: 'USER' },
         isAuthenticated: true,
       }),
-    } as any);
+    } as never);
 
     await act(async () => {
       render(
@@ -69,7 +69,7 @@ describe('AuthProvider Component', () => {
         user: null,
         isAuthenticated: false,
       }),
-    } as any);
+    } as never);
 
     await act(async () => {
       render(
@@ -88,7 +88,7 @@ describe('AuthProvider Component', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({ user: null, isAuthenticated: false }),
-    } as any);
+    } as never);
 
     await act(async () => {
       render(
@@ -110,7 +110,7 @@ describe('AuthProvider Component', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({ user: null, isAuthenticated: false }),
-    } as any);
+    } as never);
 
     await act(async () => {
       render(

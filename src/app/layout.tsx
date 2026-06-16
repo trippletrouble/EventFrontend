@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./providers/AuthProvider";
 import { Lexend, Lexend_Deca, Lexend_Exa, Lexend_Giga, Inter } from 'next/font/google';
