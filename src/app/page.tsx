@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '@/components/Layout/Header';
 import { CarouselSection } from '@/components/Landing/CarouselSection';
+import {StudentInfoSection} from "@/components/Landing/StudentInfoSection";
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
           <p className="mt-4 text-foreground-muted">Willkommen auf der Karrieremesse der Hochschule Hof.</p>
         </div>
         <CarouselSection />
+          <StudentInfoSection />
       </main>
     </>
   );
