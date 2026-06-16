@@ -5,10 +5,17 @@ import { setSessionCookies } from '@/app/lib/auth/session';
 
 export const runtime = 'nodejs';
 
-const jwks = createRemoteJWKSet(new URL(endpoints.jwks));
+let jwks: ReturnType<typeof createRemoteJWKSet> | null = null;
+
+function getJwks() {
+  if (!jwks) {
+    jwks = createRemoteJWKSet(new URL(endpoints.jwks));
+  }
+  return jwks;
+}
 
 async function verifyIdToken(idToken: string, nonce: string | undefined) {
-  const { payload } = await jwtVerify(idToken, jwks, {
+  const { payload } = await jwtVerify(idToken, getJwks(), {
     issuer: oidc.issuer,
     audience: oidc.clientId,
   });
