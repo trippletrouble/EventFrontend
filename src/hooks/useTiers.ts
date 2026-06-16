@@ -1,7 +1,13 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import type { TierDto, BookingDto, CreateBookingRequestDto } from '@/types/api.types';
+import type {
+  TierDto,
+  BookingDto,
+  CreateBookingRequestDto,
+  UpgradeBookingRequestDto,
+  UpgradeBookingResponseDto,
+} from '@/types/api.types';
 import * as bookingService from '@/services/booking.service';
 
 export function useTiers(eventId?: number) {
@@ -37,6 +43,23 @@ export function useTiers(eventId?: number) {
     }
   }, []);
 
+  const upgradeBooking = useCallback(
+    async (bookingId: number, data: UpgradeBookingRequestDto): Promise<UpgradeBookingResponseDto> => {
+      setIsLoading(true);
+      try {
+        const result = await bookingService.upgradeBooking(bookingId, data);
+        setError(null);
+        return result;
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Upgrade fehlgeschlagen');
+        throw err;
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
+
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchTiers();
@@ -44,5 +67,5 @@ export function useTiers(eventId?: number) {
     return () => clearTimeout(timer);
   }, [fetchTiers]);
 
-  return { tiers, isLoading, error, createBooking, refetch: fetchTiers };
+  return { tiers, isLoading, error, createBooking, upgradeBooking, refetch: fetchTiers };
 }

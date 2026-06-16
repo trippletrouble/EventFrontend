@@ -94,4 +94,44 @@ describe('useTiers', () => {
 
     expect(result.current.error).toBe('Booking failed');
   });
+
+  it('führt Upgrade erfolgreich durch', async () => {
+    const mockUpgradeResponse = { priceDifference: 35000, paymentUrl: 'http://stripe.com' };
+    (bookingService.getTiers as jest.Mock).mockResolvedValue({ data: mockTiers });
+    (bookingService.upgradeBooking as jest.Mock).mockResolvedValue(mockUpgradeResponse);
+
+    const { result } = renderHook(() => useTiers(1));
+    
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    let upgradeResult;
+    await act(async () => {
+      upgradeResult = await result.current.upgradeBooking(5, { targetTierId: 2 });
+    });
+
+    expect(upgradeResult).toEqual(mockUpgradeResponse);
+    expect(bookingService.upgradeBooking).toHaveBeenCalledWith(5, { targetTierId: 2 });
+    expect(result.current.error).toBeNull();
+  });
+
+  it('setzt Fehlerzustand bei fehlgeschlagenem Upgrade', async () => {
+    (bookingService.getTiers as jest.Mock).mockResolvedValue({ data: mockTiers });
+    (bookingService.upgradeBooking as jest.Mock).mockRejectedValue(new Error('Upgrade failed'));
+
+    const { result } = renderHook(() => useTiers(1));
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    await act(async () => {
+      await expect(
+        result.current.upgradeBooking(5, { targetTierId: 2 })
+      ).rejects.toThrow('Upgrade failed');
+    });
+
+    expect(result.current.error).toBe('Upgrade failed');
+  });
 });

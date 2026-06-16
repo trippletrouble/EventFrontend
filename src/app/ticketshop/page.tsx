@@ -2,19 +2,22 @@
 
 import React, { useState } from 'react';
 import { useTiers } from '@/hooks/useTiers';
-import { TierList, BookingCTA } from '@/components/Ticketshop';
-import { Alert } from '@/components/UI';
+import { TierList, BookingCTA, UpgradeModal } from '@/components/Ticketshop';
+import { Alert, Button } from '@/components/UI';
 import { createCheckout } from '@/services/payment.service';
 
 export default function TicketshopPage() {
-  const { tiers, isLoading, error, createBooking } = useTiers(1);
+  const { tiers, isLoading, error, createBooking, upgradeBooking } = useTiers(1);
   const [selectedTierId, setSelectedTierId] = useState<number | null>(null);
   const [isSponsor, setIsSponsor] = useState(false);
   const [isBookingLoading, setIsBookingLoading] = useState(false);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  
   const [bookingSuccess, setBookingSuccess] = useState<string | null>(null);
   const [bookingError, setBookingError] = useState<string | null>(null);
 
   const selectedTier = tiers.find((t) => t.tierId === selectedTierId);
+  const currentTierForUpgrade = selectedTier || tiers[0];
 
   const handleSelectTier = (id: number) => {
     setSelectedTierId(id);
@@ -38,10 +41,28 @@ export default function TicketshopPage() {
       });
 
       setBookingSuccess(`Buchung erfolgreich angelegt! Stripe-Checkout wird gestartet: ${checkout.checkoutUrl}`);
-      // In production we would redirect:
-      // window.location.href = checkout.checkoutUrl;
     } catch (err) {
       setBookingError(err instanceof Error ? err.message : 'Buchung oder Checkout fehlgeschlagen.');
+    } finally {
+      setIsBookingLoading(false);
+    }
+  };
+
+  const handleUpgrade = async (targetTierId: number) => {
+    setIsBookingLoading(true);
+    setBookingSuccess(null);
+    setBookingError(null);
+    try {
+      // Mocking current bookingId: 1
+      const result = await upgradeBooking(1, { targetTierId });
+      setBookingSuccess(
+        `Upgrade erfolgreich eingeleitet! Differenzbetrag: ${
+          result.priceDifference / 100
+        } €. Stripe-Zahlung wird gestartet: ${result.paymentUrl}`
+      );
+      setIsUpgradeModalOpen(false);
+    } catch (err) {
+      setBookingError(err instanceof Error ? err.message : 'Upgrade fehlgeschlagen.');
     } finally {
       setIsBookingLoading(false);
     }
@@ -57,16 +78,30 @@ export default function TicketshopPage() {
           </p>
         </div>
         
-        {/* Toggle to test Sponsor discounts */}
-        <label className="flex items-center gap-2 text-sm text-foreground bg-surface-raised px-4 py-2 border border-surface-border rounded-lg cursor-pointer">
-          <input
-            type="checkbox"
-            checked={isSponsor}
-            onChange={(e) => setIsSponsor(e.target.checked)}
-            className="rounded border-surface-border text-primary focus:ring-primary h-4 w-4"
-          />
-          <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
-        </label>
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Button to trigger Upgrade Modal */}
+          {tiers.length > 0 && (
+            <Button
+              onClick={() => setIsUpgradeModalOpen(true)}
+              variant="outline"
+              size="sm"
+              className="rounded-lg font-semibold"
+            >
+              Stand upgraden
+            </Button>
+          )}
+
+          {/* Toggle to test Sponsor discounts */}
+          <label className="flex items-center gap-2 text-sm text-foreground bg-surface-raised px-4 py-2 border border-surface-border rounded-lg cursor-pointer">
+            <input
+              type="checkbox"
+              checked={isSponsor}
+              onChange={(e) => setIsSponsor(e.target.checked)}
+              className="rounded border-surface-border text-primary focus:ring-primary h-4 w-4"
+            />
+            <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
+          </label>
+        </div>
       </div>
 
       {(error || bookingError) && (
@@ -116,6 +151,18 @@ export default function TicketshopPage() {
           )}
         </div>
       </div>
+
+      {/* Upgrade Modal */}
+      {currentTierForUpgrade && (
+        <UpgradeModal
+          isOpen={isUpgradeModalOpen}
+          onClose={() => setIsUpgradeModalOpen(false)}
+          currentTier={currentTierForUpgrade}
+          availableTiers={tiers}
+          onUpgrade={handleUpgrade}
+          isLoading={isBookingLoading}
+        />
+      )}
     </main>
   );
 }
