@@ -44,5 +44,7 @@ coverage/
 # AI
 .claude/
 .agents/
+.gemini/
 AGENTS.md
 CLAUDE.md
+docs/
