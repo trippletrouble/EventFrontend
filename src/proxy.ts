@@ -1,34 +1,38 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { decodeJwt } from 'jose';
 
 const protectedRoutes = ['/dashboard'];
 const authRoutes = ['/login'];
 
+function isTokenValid(token: string | undefined): boolean {
+  if (!token) return false;
+  try {
+    const { exp } = decodeJwt(token);
+    return !!exp && exp > Math.floor(Date.now() / 1000);
+  } catch {
+    return false;
+  }
+}
+
 export function proxy(request: NextRequest) {
   const { nextUrl, cookies } = request;
-  const hasToken = cookies.has('session_token');
+  const hasValidToken = isTokenValid(cookies.get('access_token')?.value);
   const path = nextUrl.pathname;
 
-  // 1. Redirect unauthenticated users from protected routes to /login
   const isProtected = protectedRoutes.some((route) => path.startsWith(route));
-  if (isProtected && !hasToken) {
-    const loginUrl = new URL('/login', request.url);
-    return NextResponse.redirect(loginUrl);
+  if (isProtected && !hasValidToken) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // 2. Redirect authenticated users away from auth routes (/login) to /
   const isAuthRoute = authRoutes.some((route) => path.startsWith(route));
-  if (isAuthRoute && hasToken) {
-    const homeUrl = new URL('/', request.url);
-    return NextResponse.redirect(homeUrl);
+  if (isAuthRoute && hasValidToken) {
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
-

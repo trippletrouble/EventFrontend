@@ -1,49 +1,34 @@
 import 'server-only';
 import { cookies } from 'next/headers';
-import * as jose from 'jose';
+import { decodeJwt } from 'jose';
 
 export interface Session {
-  userId: number;
+  sub: string;
   email: string;
   role: string;
-  sub: string;
 }
 
 export async function getSession(): Promise<Session | null> {
   try {
     const cookieStore = await cookies();
-    const token = cookieStore.get('session_token')?.value;
-    if (!token) {
+    const token = cookieStore.get('access_token')?.value;
+    if (!token) return null;
+
+    const payload = decodeJwt(token);
+
+    if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) {
       return null;
     }
 
-    const payload = jose.decodeJwt(token);
+    const sub = typeof payload.sub === 'string' ? payload.sub : null;
+    const email = typeof payload.email === 'string' ? payload.email : null;
+    if (!sub || !email) return null;
 
-    // Validate expiration
-    if (!payload.exp) {
-      return null;
-    }
+    const realmRoles =
+      (payload.realm_access as { roles?: string[] } | undefined)?.roles ?? [];
+    const role = realmRoles[0] ?? '';
 
-    const currentTime = Math.floor(Date.now() / 1000);
-    if (payload.exp < currentTime) {
-      return null;
-    }
-
-    if (
-      typeof payload.userId !== 'number' ||
-      typeof payload.email !== 'string' ||
-      typeof payload.role !== 'string' ||
-      typeof payload.sub !== 'string'
-    ) {
-      return null;
-    }
-
-    return {
-      userId: payload.userId,
-      email: payload.email,
-      role: payload.role,
-      sub: payload.sub,
-    };
+    return { sub, email, role };
   } catch {
     return null;
   }
