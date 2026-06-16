@@ -1,13 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Unternehmerbörse Frontend Tests" tests="4" failures="0" errors="0" time="6.253">
-  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-16T10:44:44" time="5.156" tests="4">
-    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.624">
+<testsuites name="Unternehmerbörse Frontend Tests" tests="95" failures="0" errors="0" time="2.875">
+  <testsuite name="useTiers" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.12" tests="7">
+    <testcase classname="useTiers lädt die Pakete erfolgreich" name="useTiers lädt die Pakete erfolgreich" time="0.064">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.255">
+    <testcase classname="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" name="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" time="0.061">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.239">
+    <testcase classname="useTiers ruft getTiers nicht auf, wenn eventId fehlt" name="useTiers ruft getTiers nicht auf, wenn eventId fehlt" time="0.001">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.215">
+    <testcase classname="useTiers erstellt eine Buchung erfolgreich" name="useTiers erstellt eine Buchung erfolgreich" time="0.01">
+    </testcase>
+    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" name="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" time="0.012">
+    </testcase>
+    <testcase classname="useTiers führt Upgrade erfolgreich durch" name="useTiers führt Upgrade erfolgreich durch" time="0.005">
+    </testcase>
+    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" name="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="UpgradeTierSelect" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.219" tests="4">
+    <testcase classname="UpgradeTierSelect hat keine A11y-Violations" name="UpgradeTierSelect hat keine A11y-Violations" time="0.101">
+    </testcase>
+    <testcase classname="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" name="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" time="0.004">
+    </testcase>
+    <testcase classname="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" name="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" time="0.075">
+    </testcase>
+    <testcase classname="UpgradeTierSelect zeigt den Ladezustand des Buttons an" name="UpgradeTierSelect zeigt den Ladezustand des Buttons an" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="CarouselSection" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.239" tests="2">
+    <testcase classname="CarouselSection hat keine A11y-Violations" name="CarouselSection hat keine A11y-Violations" time="0.151">
+    </testcase>
+    <testcase classname="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" name="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" time="0.072">
+    </testcase>
+  </testsuite>
+  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.248" tests="4">
+    <testcase classname="Header hat keine A11y-Violations im unauthentifizierten Zustand" name="Header hat keine A11y-Violations im unauthentifizierten Zustand" time="0.163">
+    </testcase>
+    <testcase classname="Header zeigt Anmelde-Link wenn nicht eingeloggt" name="Header zeigt Anmelde-Link wenn nicht eingeloggt" time="0.012">
+    </testcase>
+    <testcase classname="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" name="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" time="0.025">
+    </testcase>
+    <testcase classname="Header zeigt den Admin-Link wenn der Nutzer Admin ist" name="Header zeigt den Admin-Link wenn der Nutzer Admin ist" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="MobileMenu" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.314" tests="3">
+    <testcase classname="MobileMenu hat keine A11y-Violations" name="MobileMenu hat keine A11y-Violations" time="0.119">
+    </testcase>
+    <testcase classname="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" name="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" time="0.012">
+    </testcase>
+    <testcase classname="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" name="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" time="0.122">
+    </testcase>
+  </testsuite>
+  <testsuite name="BookingCTA" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.308" tests="5">
+    <testcase classname="BookingCTA hat keine A11y-Violations" name="BookingCTA hat keine A11y-Violations" time="0.037">
+    </testcase>
+    <testcase classname="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" name="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" time="0.004">
+    </testcase>
+    <testcase classname="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" name="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" time="0.002">
+    </testcase>
+    <testcase classname="BookingCTA ruft onCheckout bei Klick auf den Button auf" name="BookingCTA ruft onCheckout bei Klick auf den Button auf" time="0.036">
+    </testcase>
+    <testcase classname="BookingCTA zeigt den Ladezustand des Buttons an" name="BookingCTA zeigt den Ladezustand des Buttons an" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="LogoCarousel" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.235" tests="2">
+    <testcase classname="LogoCarousel hat keine A11y-Violations" name="LogoCarousel hat keine A11y-Violations" time="0.024">
+    </testcase>
+    <testcase classname="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" name="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="TierList" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.382" tests="3">
+    <testcase classname="TierList hat keine A11y-Violations" name="TierList hat keine A11y-Violations" time="0.129">
+    </testcase>
+    <testcase classname="TierList rendert eine Liste von Paket-Karten" name="TierList rendert eine Liste von Paket-Karten" time="0.004">
+    </testcase>
+    <testcase classname="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" name="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="UpgradeModal" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.434" tests="3">
+    <testcase classname="UpgradeModal hat keine A11y-Violations" name="UpgradeModal hat keine A11y-Violations" time="0.124">
+    </testcase>
+    <testcase classname="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" name="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" time="0.049">
+    </testcase>
+    <testcase classname="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" name="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="TierCard" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:05" time="0.566" tests="6">
+    <testcase classname="TierCard hat keine A11y-Violations" name="TierCard hat keine A11y-Violations" time="0.103">
+    </testcase>
+    <testcase classname="TierCard rendert die Details des Pakets korrekt" name="TierCard rendert die Details des Pakets korrekt" time="0.023">
+    </testcase>
+    <testcase classname="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" name="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" time="0.015">
+    </testcase>
+    <testcase classname="TierCard ruft onSelect bei Klick auf Auswählen auf" name="TierCard ruft onSelect bei Klick auf Auswählen auf" time="0.047">
+    </testcase>
+    <testcase classname="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" name="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" time="0.01">
+    </testcase>
+    <testcase classname="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" name="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="Global Accessibility &amp; Theme Requirements" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.16" tests="6">
+    <testcase classname="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" name="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" time="0.004">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" name="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" time="0">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements globals.css implements focus-visible outline visibility" name="Global Accessibility &amp; Theme Requirements globals.css implements focus-visible outline visibility" time="0.001">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" name="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" time="0">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" name="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" time="0.006">
+    </testcase>
+    <testcase classname="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" name="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="SkipNavLink" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.197" tests="3">
+    <testcase classname="SkipNavLink hat keine A11y-Violations" name="SkipNavLink hat keine A11y-Violations" time="0.033">
+    </testcase>
+    <testcase classname="SkipNavLink verweist auf #main-content" name="SkipNavLink verweist auf #main-content" time="0.002">
+    </testcase>
+    <testcase classname="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" name="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="company.service" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.121" tests="4">
+    <testcase classname="company.service registerCompany makes a POST request and returns company details" name="company.service registerCompany makes a POST request and returns company details" time="0.002">
+    </testcase>
+    <testcase classname="company.service getCompany makes a GET request and returns company details by ID" name="company.service getCompany makes a GET request and returns company details by ID" time="0.001">
+    </testcase>
+    <testcase classname="company.service updateCompany makes a PATCH request and returns updated company details" name="company.service updateCompany makes a PATCH request and returns updated company details" time="0">
+    </testcase>
+    <testcase classname="company.service getMyCompany makes a GET request to /auth/me and returns current company" name="company.service getMyCompany makes a GET request to /auth/me and returns current company" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="cn" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.133" tests="4">
+    <testcase classname="cn merged Tailwind-Klassen korrekt" name="cn merged Tailwind-Klassen korrekt" time="0.003">
+    </testcase>
+    <testcase classname="cn entfernt falsy Werte" name="cn entfernt falsy Werte" time="0">
+    </testcase>
+    <testcase classname="cn merged bedingte Klassen" name="cn merged bedingte Klassen" time="0">
+    </testcase>
+    <testcase classname="cn gibt leeren String bei keinen Argumenten" name="cn gibt leeren String bei keinen Argumenten" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.84" tests="4">
+    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.281">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.195">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.198">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.123">
+    </testcase>
+  </testsuite>
+  <testsuite name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text)" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:06" time="0.112" tests="26">
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Foreground White on Dark Surface has sufficient contrast for both Large (&gt;=3:1) and Small (&gt;=4.5:1) text" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Foreground White on Dark Surface has sufficient contrast for both Large (&gt;=3:1) and Small (&gt;=4.5:1) text" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Muted Text on Dark Surface has sufficient contrast for both Large and Small text" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Muted Text on Dark Surface has sufficient contrast for both Large and Small text" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Link Text on Dark Surface has sufficient contrast for both Large and Small text" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Link Text on Dark Surface has sufficient contrast for both Large and Small text" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Theme Primary Yellow on Dark Surface (with Black text) has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Theme Primary Yellow on Dark Surface (with Black text) has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Theme Accent Green on Dark Surface (with Black text) has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) A. Dark Theme Base Surface (#0D1117) Theme Accent Green on Dark Surface (with Black text) has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Foreground White on Raised Surface has sufficient contrast for both Large and Small text" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Foreground White on Raised Surface has sufficient contrast for both Large and Small text" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Muted Text on Raised Surface has sufficient contrast for both Large and Small text (AA compliant, &gt;=4.5:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Muted Text on Raised Surface has sufficient contrast for both Large and Small text (AA compliant, &gt;=4.5:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Link Text on Raised Surface has sufficient contrast for both Large and Small text" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields Link Text on Raised Surface has sufficient contrast for both Large and Small text" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Success Green against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Success Green against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Warning Orange against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Warning Orange against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Secondary Blue against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Secondary Blue against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Secondary Blue against White has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Secondary Blue against White has sufficient contrast for Large text (&gt;=3:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Destructive Red against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Destructive Red against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Destructive Red against White has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) C. Semantic Colors vs Base Dark Surface and Black/White Theme Destructive Red against White has sufficient contrast for Large text (&gt;=3:1)" time="0.001">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Yellow against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Yellow against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Green against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Green against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Blue against Black has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Blue against Black has sufficient contrast for Large text (&gt;=3:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Red against Black has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Brand Red against Black has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Yellow on White has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Yellow on White has sufficient contrast for Large text (&gt;=3:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Blue on White has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Blue on White has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Red on White has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Red on White has sufficient contrast for Large text (&gt;=3:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Green on White has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Student Section Green on White has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Yellow on Surface has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Yellow on Surface has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Blue on Surface has sufficient contrast for Large text (&gt;=3:1)" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Blue on Surface has sufficient contrast for Large text (&gt;=3:1)" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Red on Surface has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Red on Surface has sufficient contrast for both text sizes" time="0">
+    </testcase>
+    <testcase classname="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Green on Surface has sufficient contrast for both text sizes" name="WCAG 2.1 Color Contrast Verification (Large &amp; Small Text) D. Brand &amp; Section Colors Exhibitor Section Green on Surface has sufficient contrast for both text sizes" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="CompanyForm" errors="0" failures="0" skipped="0" timestamp="2026-06-16T21:27:04" time="1.884" tests="9">
+    <testcase classname="CompanyForm has no accessibility violations" name="CompanyForm has no accessibility violations" time="0.13">
+    </testcase>
+    <testcase classname="CompanyForm renders correctly with prepopulated initial values" name="CompanyForm renders correctly with prepopulated initial values" time="0.026">
+    </testcase>
+    <testcase classname="CompanyForm shows validation error when required fields are cleared" name="CompanyForm shows validation error when required fields are cleared" time="0.067">
+    </testcase>
+    <testcase classname="CompanyForm shows error if zip is not exactly 5 digits" name="CompanyForm shows error if zip is not exactly 5 digits" time="0.159">
+    </testcase>
+    <testcase classname="CompanyForm shows error if email format is invalid" name="CompanyForm shows error if email format is invalid" time="0.171">
+    </testcase>
+    <testcase classname="CompanyForm submits successfully and calls onSubmit when all fields are valid" name="CompanyForm submits successfully and calls onSubmit when all fields are valid" time="0.193">
+    </testcase>
+    <testcase classname="CompanyForm displays API submit error if PATCH request fails" name="CompanyForm displays API submit error if PATCH request fails" time="0.019">
+    </testcase>
+    <testcase classname="CompanyForm renders loading indicators and disables controls in loading mode" name="CompanyForm renders loading indicators and disables controls in loading mode" time="0.007">
+    </testcase>
+    <testcase classname="CompanyForm clears error messages when the user corrects input text" name="CompanyForm clears error messages when the user corrects input text" time="0.071">
     </testcase>
   </testsuite>
 </testsuites>

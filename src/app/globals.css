@@ -2,10 +2,10 @@
 
 @theme {
   /* Basis-Farben (ersetzt DaisyUI base-100, base-200, etc.) */
-  --color-surface: #0D1117;
-  --color-surface-raised: #1E293B;
-  --color-surface-overlay: #334155;
-  --color-surface-border: #475569;
+  --color-surface: #050505;
+  --color-surface-raised: #0F0F11;
+  --color-surface-overlay: #1A1A1E;
+  --color-surface-border: #2D2D30;
 
   /* Semantische Farben */
   --color-primary: #EAB308;
@@ -41,7 +41,7 @@
   /* Ring/Focus Styling */
   --color-focus: #3B82F6;
   --color-ring-focus: #3B82F6;
-  --color-ring-offset: #0D1117;
+  --color-ring-offset: #050505;
 
   /* HS Hof Brand-Farben (bestehende beibehalten) */
   --a2_hs_red: #FD3D4E;
@@ -129,12 +129,12 @@
 @keyframes contentShow {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
+    transform: scale(0.96) translateY(8px);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 

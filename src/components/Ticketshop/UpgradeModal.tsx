@@ -21,6 +21,13 @@ const tierNames = {
   4: 'Premium Deluxe Ticket',
 };
 
+const tierColors = {
+  1: 'text-yellow-500',
+  2: 'text-blue-500',
+  3: 'text-red-500',
+  4: 'text-emerald-400',
+};
+
 /** Modal zur Buchung eines Standplatz-Upgrades */
 export function UpgradeModal({
   isOpen,
@@ -51,7 +58,7 @@ export function UpgradeModal({
       <div className="space-y-5">
         <div className="p-3 bg-surface-overlay/10 rounded-lg border border-surface-border">
           <p className="text-sm text-foreground">
-            Aktuelles Paket: <span className="font-bold text-primary">{currentTierName}</span>
+            Aktuelles Paket: <span className={`font-bold ${tierColors[currentTier.tierId as keyof typeof tierColors] || 'text-primary'}`}>{currentTierName}</span>
           </p>
           <p className="text-xs text-foreground-muted mt-1">
             Basispreis: {(currentTier.basePrice / 100).toLocaleString('de-DE')} €

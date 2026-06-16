@@ -5,6 +5,7 @@ import { useTiers } from '@/hooks/useTiers';
 import { TierList, BookingCTA, UpgradeModal } from '@/components/Ticketshop';
 import { Alert, Button } from '@/components/UI';
 import { createCheckout } from '@/services/payment.service';
+import { MousePointerClick, ArrowLeft, ArrowUp } from 'lucide-react';
 
 export default function TicketshopPage() {
   const { tiers, isLoading, error, createBooking, upgradeBooking } = useTiers(1);
@@ -160,8 +161,21 @@ export default function TicketshopPage() {
               isLoading={isBookingLoading}
             />
           ) : (
-            <div className="bg-surface-raised p-6 border border-surface-border rounded-xl text-center text-foreground-muted text-sm">
-              Bitte wählen Sie ein Paket aus der Liste.
+            <div className="bg-surface-raised p-8 border border-surface-border rounded-xl flex flex-col items-center justify-center text-center space-y-4 shadow-xl min-h-[300px] transition-all duration-300 hover:border-primary/30">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary animate-pulse">
+                <MousePointerClick className="w-7 h-7" aria-hidden="true" />
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="text-base font-bold text-foreground">Paket auswählen</h4>
+                <p className="text-sm text-foreground-muted max-w-[220px] leading-relaxed">
+                  Bitte wählen Sie eines der verfügbaren Pakete aus der Liste aus, um fortzufahren.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-bold text-primary pt-2">
+                <ArrowLeft className="w-4.5 h-4.5 lg:block hidden" aria-hidden="true" />
+                <ArrowUp className="w-4.5 h-4.5 lg:hidden block" aria-hidden="true" />
+                <span>Paket aus der Liste wählen</span>
+              </div>
             </div>
           )}
         </div>

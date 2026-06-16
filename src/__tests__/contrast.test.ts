@@ -1,4 +1,5 @@
 // Programmatic WCAG 2.1 Contrast Checker for Unternehmerbörse (Hochschule Hof)
+// Verifies both Large Text (>= 18pt / 24px) and Small Text (normal body text) requirements.
 
 // 1. Theme Colors (globals.css / tailwind config)
 const color_primary = "#EAB308";
@@ -10,7 +11,8 @@ const color_warning = "#F59E0B";
 const color_foreground = "#F8FAFC";
 const color_foreground_muted = "#94A3B8";
 const color_foreground_link = "#60A5FA";
-const color_surface = "#0D1117";
+const color_surface = "#050505";
+const color_surface_raised = "#0F0F11"; // Card/form backgrounds
 
 // 2. Official Brand Colors (Hochschule Hof logo & stripe)
 const brand_yellow = "#FCCD01";
@@ -25,8 +27,8 @@ const student_blue = "#2860F9";
 const student_red = "#FE3D4E";
 const student_green = "#068053"; // Dark green for light theme contrast
 
-// 4. ExhibitorInfoSection Colors (Dark Background: #0D1117)
-const exhibitor_bg = "#0D1117";
+// 4. ExhibitorInfoSection Colors (Dark Background: #050505)
+const exhibitor_bg = "#050505";
 const exhibitor_yellow = "#FCCD00";
 const exhibitor_blue = "#2860F9";
 const exhibitor_red = "#FE3D4E";
@@ -37,7 +39,7 @@ function getLuminance(hex: string): number {
   const cleanHex = hex.replace('#', '');
   const r = parseInt(cleanHex.slice(0, 2), 16) / 255;
   const g = parseInt(cleanHex.slice(2, 4), 16) / 255;
-  const b = parseInt(cleanHex.slice( cleanHex.length === 6 ? 4 : 2, cleanHex.length === 6 ? 6 : 3), 16) / 255;
+  const b = parseInt(cleanHex.slice(cleanHex.length === 6 ? 4 : 2, cleanHex.length === 6 ? 6 : 3), 16) / 255;
   
   const a = [r, g, b].map(v => {
     return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
@@ -54,106 +56,150 @@ function getContrastRatio(color1: string, color2: string): number {
   return (brightest + 0.05) / (darkest + 0.05);
 }
 
-// Helper to assert contrast ratios
-function assertContrast(color1: string, color2: string, minRatio: number) {
+// Helper to assert contrast ratios for Small Text (AA target: 4.5:1, AAA target: 7.0:1)
+function assertSmallTextAA(color1: string, color2: string) {
   const ratio = getContrastRatio(color1, color2);
-  expect(ratio).toBeGreaterThanOrEqual(minRatio);
+  expect(ratio).toBeGreaterThanOrEqual(4.5);
 }
 
-describe('WCAG 2.1 AA Color Contrast Verification', () => {
-  // --- A. Theme Colors vs Base Surface (#0D1117) & Text ---
-  test('Theme Primary Yellow against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_primary, '#000000', 4.5);
+// Helper to assert contrast ratios for Large Text (AA target: 3.0:1, AAA target: 4.5:1)
+function assertLargeTextAA(color1: string, color2: string) {
+  const ratio = getContrastRatio(color1, color2);
+  expect(ratio).toBeGreaterThanOrEqual(3.0);
+}
+
+describe('WCAG 2.1 Color Contrast Verification (Large & Small Text)', () => {
+  
+  describe('A. Dark Theme Base Surface (#0D1117)', () => {
+    test('Foreground White on Dark Surface has sufficient contrast for both Large (>=3:1) and Small (>=4.5:1) text', () => {
+      assertLargeTextAA(color_foreground, color_surface);
+      assertSmallTextAA(color_foreground, color_surface);
+    });
+
+    test('Muted Text on Dark Surface has sufficient contrast for both Large and Small text', () => {
+      assertLargeTextAA(color_foreground_muted, color_surface);
+      assertSmallTextAA(color_foreground_muted, color_surface);
+    });
+
+    test('Link Text on Dark Surface has sufficient contrast for both Large and Small text', () => {
+      assertLargeTextAA(color_foreground_link, color_surface);
+      assertSmallTextAA(color_foreground_link, color_surface);
+    });
+
+    test('Theme Primary Yellow on Dark Surface (with Black text) has sufficient contrast for both text sizes', () => {
+      // Primary yellow acts as a background for primary buttons containing black text
+      assertLargeTextAA(color_primary, '#000000');
+      assertSmallTextAA(color_primary, '#000000');
+    });
+
+    test('Theme Accent Green on Dark Surface (with Black text) has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(color_accent, '#000000');
+      assertSmallTextAA(color_accent, '#000000');
+    });
   });
 
-  test('Theme Accent Green against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_accent, '#000000', 4.5);
+  describe('B. Dark Theme Raised Surface (#1E293B) - e.g., Cards, Form Fields', () => {
+    test('Foreground White on Raised Surface has sufficient contrast for both Large and Small text', () => {
+      assertLargeTextAA(color_foreground, color_surface_raised);
+      assertSmallTextAA(color_foreground, color_surface_raised);
+    });
+
+    test('Muted Text on Raised Surface has sufficient contrast for both Large and Small text (AA compliant, >=4.5:1)', () => {
+      assertLargeTextAA(color_foreground_muted, color_surface_raised);
+      assertSmallTextAA(color_foreground_muted, color_surface_raised);
+    });
+
+    test('Link Text on Raised Surface has sufficient contrast for both Large and Small text', () => {
+      assertLargeTextAA(color_foreground_link, color_surface_raised);
+      assertSmallTextAA(color_foreground_link, color_surface_raised);
+    });
   });
 
-  test('Theme Success Green against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_success, '#000000', 4.5);
+  describe('C. Semantic Colors vs Base Dark Surface and Black/White', () => {
+    test('Theme Success Green against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(color_success, '#000000');
+      assertSmallTextAA(color_success, '#000000');
+    });
+
+    test('Theme Warning Orange against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(color_warning, '#000000');
+      assertSmallTextAA(color_warning, '#000000');
+    });
+
+    test('Theme Secondary Blue against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(color_secondary, '#000000');
+      assertSmallTextAA(color_secondary, '#000000');
+    });
+
+    test('Theme Secondary Blue against White has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(color_secondary, '#FFFFFF');
+    });
+
+    test('Theme Destructive Red against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(color_destructive, '#000000');
+      assertSmallTextAA(color_destructive, '#000000');
+    });
+
+    test('Theme Destructive Red against White has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(color_destructive, '#FFFFFF');
+    });
   });
 
-  test('Theme Warning Orange against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_warning, '#000000', 4.5);
-  });
+  describe('D. Brand & Section Colors', () => {
+    test('Brand Yellow against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(brand_yellow, '#000000');
+      assertSmallTextAA(brand_yellow, '#000000');
+    });
 
-  test('Theme Secondary Blue against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_secondary, '#000000', 4.5);
-  });
+    test('Brand Green against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(brand_green, '#000000');
+      assertSmallTextAA(brand_green, '#000000');
+    });
 
-  test('Theme Secondary Blue against White has sufficient AA Large/UI contrast (>= 3.0:1)', () => {
-    assertContrast(color_secondary, '#FFFFFF', 3.0);
-  });
+    test('Brand Blue against Black has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(brand_blue, '#000000');
+    });
 
-  test('Theme Destructive Red against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_destructive, '#000000', 4.5);
-  });
+    test('Brand Red against Black has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(brand_red, '#000000');
+      assertSmallTextAA(brand_red, '#000000');
+    });
 
-  test('Theme Destructive Red against White has sufficient AA Large/UI contrast (>= 3.0:1)', () => {
-    assertContrast(color_destructive, '#FFFFFF', 3.0);
-  });
+    test('Student Section Yellow on White has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(student_yellow, student_bg);
+    });
 
-  test('Foreground White on Dark Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_foreground, color_surface, 4.5);
-  });
+    test('Student Section Blue on White has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(student_blue, student_bg);
+      assertSmallTextAA(student_blue, student_bg);
+    });
 
-  test('Muted Text on Dark Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_foreground_muted, color_surface, 4.5);
-  });
+    test('Student Section Red on White has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(student_red, student_bg);
+    });
 
-  test('Link Text on Dark Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(color_foreground_link, color_surface, 4.5);
-  });
+    test('Student Section Green on White has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(student_green, student_bg);
+      assertSmallTextAA(student_green, student_bg);
+    });
 
-  // --- B. Brand Colors (Hochschule Hof logo & stripes) ---
-  test('Brand Yellow against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(brand_yellow, '#000000', 4.5);
-  });
+    test('Exhibitor Section Yellow on Surface has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(exhibitor_yellow, exhibitor_bg);
+      assertSmallTextAA(exhibitor_yellow, exhibitor_bg);
+    });
 
-  test('Brand Green against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(brand_green, '#000000', 4.5);
-  });
+    test('Exhibitor Section Blue on Surface has sufficient contrast for Large text (>=3:1)', () => {
+      assertLargeTextAA(exhibitor_blue, exhibitor_bg);
+    });
 
-  test('Brand Blue against Black has sufficient Large text/UI contrast (>= 3.0:1)', () => {
-    assertContrast(brand_blue, '#000000', 3.0);
-  });
+    test('Exhibitor Section Red on Surface has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(exhibitor_red, exhibitor_bg);
+      assertSmallTextAA(exhibitor_red, exhibitor_bg);
+    });
 
-  test('Brand Red against Black has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(brand_red, '#000000', 4.5);
-  });
-
-  // --- C. StudentInfoSection (Light Theme / White Background) ---
-  test('Student Section Yellow against White has sufficient Large text/UI contrast (>= 3.0:1)', () => {
-    assertContrast(student_yellow, student_bg, 3.0);
-  });
-
-  test('Student Section Blue against White has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(student_blue, student_bg, 4.5);
-  });
-
-  test('Student Section Red against White has sufficient Large text/UI contrast (>= 3.0:1)', () => {
-    assertContrast(student_red, student_bg, 3.0);
-  });
-
-  test('Student Section Green against White has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(student_green, student_bg, 4.5);
-  });
-
-  // --- D. ExhibitorInfoSection (Dark Theme / Surface Background) ---
-  test('Exhibitor Section Yellow against Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(exhibitor_yellow, exhibitor_bg, 4.5);
-  });
-
-  test('Exhibitor Section Blue against Surface has sufficient Large text/UI contrast (>= 3.0:1)', () => {
-    assertContrast(exhibitor_blue, exhibitor_bg, 3.0);
-  });
-
-  test('Exhibitor Section Red against Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(exhibitor_red, exhibitor_bg, 4.5);
-  });
-
-  test('Exhibitor Section Green against Surface has sufficient AA contrast (>= 4.5:1)', () => {
-    assertContrast(exhibitor_green, exhibitor_bg, 4.5);
+    test('Exhibitor Section Green on Surface has sufficient contrast for both text sizes', () => {
+      assertLargeTextAA(exhibitor_green, exhibitor_bg);
+      assertSmallTextAA(exhibitor_green, exhibitor_bg);
+    });
   });
 });

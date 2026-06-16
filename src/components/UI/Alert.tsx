@@ -14,10 +14,10 @@ export interface AlertProps {
 }
 
 const variantConfig: Record<AlertVariant, { icon: React.ElementType; styles: string }> = {
-  info: { icon: Info, styles: 'border-secondary/50 text-foreground' },
-  success: { icon: CheckCircle, styles: 'border-success/50 text-foreground' },
-  warning: { icon: AlertTriangle, styles: 'border-warning/50 text-foreground' },
-  error: { icon: AlertCircle, styles: 'border-destructive/50 text-foreground' },
+  info: { icon: Info, styles: 'bg-secondary/5 border-secondary/20 text-foreground' },
+  success: { icon: CheckCircle, styles: 'bg-success/5 border-success/20 text-foreground' },
+  warning: { icon: AlertTriangle, styles: 'bg-warning/5 border-warning/20 text-foreground' },
+  error: { icon: AlertCircle, styles: 'bg-destructive/5 border-destructive/20 text-foreground' },
 };
 
 export function Alert({
@@ -39,7 +39,7 @@ export function Alert({
       role={role}
       aria-live={ariaLive}
       className={cn(
-        'flex gap-3 rounded-lg border bg-surface-raised p-4 shadow-sm items-start justify-between',
+        'flex gap-3 rounded-lg border p-4 shadow-sm items-start justify-between',
         styles,
         className
       )}

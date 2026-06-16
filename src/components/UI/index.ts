@@ -6,3 +6,7 @@ export type { AlertProps } from './Alert';
 
 export { Modal } from './Modal';
 export type { ModalProps } from './Modal';
+
+export { Input } from './Input';
+export type { InputProps } from './Input';
+
