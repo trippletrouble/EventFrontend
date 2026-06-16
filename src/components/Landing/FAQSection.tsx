@@ -1,6 +1,3 @@
-'use client';
-
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React from 'react';
 import { Accordion } from '@/components/Landing/FAQAccordion';
 
