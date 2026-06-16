@@ -12,25 +12,40 @@
     "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.18",
+    "@radix-ui/react-toast": "^1.2.17",
+    "clsx": "^2.1.1",
     "geist": "^1.7.0",
-    "jest": "^30.3.0",
+    "lucide-react": "^1.18.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^20",
+    "@types/node-fetch": "^2.6.13",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "jest": "^30.4.2",
     "jest-axe": "^10.0.0",
+    "jest-environment-jsdom": "^30.4.1",
     "jest-junit": "^17.0.0",
-    "node-fetch": "^3.3.2",
+    "msw": "^2.14.6",
+    "node-fetch": "^2.7.0",
     "tailwindcss": "^4",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
