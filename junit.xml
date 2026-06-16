@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Unternehmerbörse Frontend Tests" tests="4" failures="0" errors="0" time="6.253">
+  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-16T10:44:44" time="5.156" tests="4">
+    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.624">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.255">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.239">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.215">
+    </testcase>
+  </testsuite>
+</testsuites>
