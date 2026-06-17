@@ -16,9 +16,7 @@ jest.mock('./KeywordAnimation', () => ({
 }));
 
 describe('HeroSection', () => {
-  // Mock für HTMLVideoElement und matchMedia
   beforeEach(() => {
-    // Video-Mock
     Object.defineProperty(HTMLMediaElement.prototype, 'play', {
       configurable: true,
       value: jest.fn().mockResolvedValue(undefined),

@@ -71,7 +71,6 @@ describe('CountdownSection - Komponententests', () => {
 
     const after = timer.getAttribute('aria-label') || '';
     expect(after).toMatch(/Noch \d+ Tage, \d+ Stunden und \d+ Minuten/);
-    // Die aria-label sollte sich aktualisiert haben (Minuten-Wert ändert sich)
     expect(after).not.toBe(before);
   });
 
@@ -84,9 +83,13 @@ describe('CountdownSection - Komponententests', () => {
       jest.runOnlyPendingTimers();
     });
 
-    // Für Performance laufen wir nur ein kleines, relevantes Unterelement durch axe (eine numerische Einheit)
     const smallNode = container.querySelector('.tabular-nums') || container;
-    expect(await axe(smallNode, { rules: { 'color-contrast': { enabled: false } } })).toHaveNoViolations();
+    jest.useRealTimers();
+    try {
+      expect(await axe(smallNode, { rules: { 'color-contrast': { enabled: false } } })).toHaveNoViolations();
+    } finally {
+      jest.useFakeTimers();
+    }
   }, 120000);
 
   test('zeigt Meldung an, wenn das Event bereits vorbei ist', async () => {
@@ -149,11 +152,9 @@ describe('CountdownSection - Komponententests', () => {
       jest.runOnlyPendingTimers();
     });
 
-    // dekorative Gradient-Elemente sollten aria-hidden=true haben
     const hiddenElems = container.querySelectorAll('[aria-hidden="true"]');
     expect(hiddenElems.length).toBeGreaterThanOrEqual(2);
 
-    // Jede Einheit hat ein aria-label wie "XX Tage", "XX Stunden", "XX Minuten"
     const unitDays = container.querySelector('[aria-label$=" Tage"]') as HTMLElement | null;
     const unitHours = container.querySelector('[aria-label$=" Stunden"]') as HTMLElement | null;
     const unitMinutes = container.querySelector('[aria-label$=" Minuten"]') as HTMLElement | null;
@@ -162,22 +163,18 @@ describe('CountdownSection - Komponententests', () => {
     expect(unitHours).not.toBeNull();
     expect(unitMinutes).not.toBeNull();
 
-    // Die numerischen Werte sind 2-stellig
     const nums = container.querySelectorAll('.tabular-nums');
     expect(nums.length).toBeGreaterThanOrEqual(3);
     nums.forEach((n) => expect(n.textContent).toHaveLength(2));
   });
 
   test('rendert das Standardziel korrekt und zeigt das formatierte Datum', async () => {
-    // ohne props: verwendet default targetDate aus der Komponente
     const { getByText } = render(<CountdownSection />);
 
-    // initialer mount timeout
     await act(async () => {
       jest.runOnlyPendingTimers();
     });
 
-    // Erwartet, dass das Jahr 2027 im großen Datum vorhanden ist (Default ist 2027-05-12)
     expect(getByText(/2027/)).toBeInTheDocument();
   });
 
@@ -189,12 +186,10 @@ describe('CountdownSection - Komponententests', () => {
 
     const { unmount } = render(<CountdownSection targetDate={target} />);
 
-    // Initialisieren
     await act(async () => {
       jest.runOnlyPendingTimers();
     });
 
-    // Unmount und dann Zeit vorrücken -> es darf keine React-Warnung/Fehler geben
     unmount();
 
     await act(async () => {

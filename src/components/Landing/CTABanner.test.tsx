@@ -5,7 +5,6 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { CTABanner } from './CTABanner';
 
-// Mock Next.js modules that might be present in the app to avoid runtime errors
 jest.mock('next/router', () => ({ useRouter: () => ({ push: jest.fn() }) }));
 jest.mock('next/navigation', () => ({ useRouter: () => ({ push: jest.fn() }) }));
 
@@ -14,14 +13,12 @@ expect.extend(toHaveNoViolations);
 describe('CTABanner', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-    // Ensure any previous spies on element click are cleared
     jest.restoreAllMocks();
   });
 
   it('rendert das Element initial korrekt', () => {
     render(<CTABanner />);
 
-    // Überschrift und Link sind vorhanden
     const heading = screen.getByRole('heading', { level: 2, name: /Werden Sie Aussteller\./i });
     expect(heading).toBeInTheDocument();
     expect(heading).toHaveAttribute('tabindex', '0');
@@ -30,13 +27,10 @@ describe('CTABanner', () => {
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/register');
 
-    // Section hat das data-navbar attribut
     const section = heading.closest('section');
     expect(section).toHaveAttribute('data-navbar', 'light');
 
-    // Die Streifen sind vorhanden und besitzen das erwartete Gradient-Style
     const strips = screen.queryAllByRole('presentation');
-    // Wenn role presentation nicht gesetzt ist, greifen wir auf das Element mit Klasse zurück
     if (strips.length > 0) {
       expect(strips[0]).toHaveStyle('background: linear-gradient(90deg, #000 0%, #000 27.88%, #0AD88E 100%)');
     } else {
@@ -57,11 +51,9 @@ describe('CTABanner', () => {
     const heading = screen.getByRole('heading', { level: 2, name: /Werden Sie Aussteller\./i });
     const link = screen.getByRole('link', { name: /Stand buchen/i }) as HTMLAnchorElement;
 
-    // Erstes Tab sollte die Überschrift fokussieren (tabIndex=0)
     await userEvent.tab();
     expect(document.activeElement).toBe(heading);
 
-    // Zweites Tab sollte den Link fokussieren
     await userEvent.tab();
     expect(document.activeElement).toBe(link);
   });
@@ -70,7 +62,6 @@ describe('CTABanner', () => {
     render(<CTABanner />);
     const link = screen.getByRole('link', { name: /Stand buchen/i }) as HTMLAnchorElement;
 
-    // Attach a click handler to the anchor and simulate Enter on the link
     const handler = jest.fn();
     link.addEventListener('click', handler);
     link.focus();
@@ -82,7 +73,6 @@ describe('CTABanner', () => {
     render(<CTABanner />);
     const link = screen.getByRole('link', { name: /Stand buchen/i }) as HTMLAnchorElement;
 
-    // Attach a click handler to the anchor and simulate Space on the link
     const handler = jest.fn();
     link.addEventListener('click', handler);
     link.focus();
@@ -97,7 +87,6 @@ describe('CTABanner', () => {
     heading.focus();
     await userEvent.keyboard('{Escape}');
 
-    // Escape sollte die Seite nicht navigieren oder Fehler verursachen; Fokus bleibt auf dem Element
     expect(document.activeElement).toBe(heading);
   });
 

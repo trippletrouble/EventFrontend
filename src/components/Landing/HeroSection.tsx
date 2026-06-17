@@ -8,7 +8,6 @@ export function HeroSection() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
 
-    // Reduced Motion: Video pausieren
     useEffect(() => {
         const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
         if (mq.matches && videoRef.current) {
