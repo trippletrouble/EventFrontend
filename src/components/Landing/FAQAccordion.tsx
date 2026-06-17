@@ -28,7 +28,7 @@ export function Accordion({ items, className }: AccordionProps) {
                         <h4 className="m-0">
                             <RadixAccordion.Trigger className="group flex w-full items-center justify-between py-4 text-left text-base font-semibold text-foreground/90 hover:text-primary transition-colors focus-ring rounded-lg px-2">
                                 {item.trigger}
-                                <Plus className="w-6 h-6 text-foreground-muted transition-transform group-data-[state=open]:rotate-45 group-data-[state=open]:text-primary shrink-0" aria-hidden="true" />
+                                <Plus key="plus-icon" className="w-6 h-6 text-foreground-muted transition-transform group-data-[state=open]:rotate-45 group-data-[state=open]:text-primary shrink-0" aria-hidden="true" />
                             </RadixAccordion.Trigger>
                         </h4>
                     </RadixAccordion.Header>

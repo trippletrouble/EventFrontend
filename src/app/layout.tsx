@@ -6,6 +6,7 @@ import './globals.css';
 import { SessionProvider } from '@/providers/SessionProvider';
 import { ToastProvider } from '@/providers/ToastProvider';
 import { SkipNavLink } from '@/components/Layout/SkipNavLink';
+import { A11yReporter } from '@/components/A11yReporter';
 
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 'swap' });
 const lexendDeca = Lexend_Deca({ subsets: ['latin'], variable: '--font-lexend-deca', display: 'swap' });
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           className={`${lexend.variable} ${lexendDeca.variable} ${lexendExa.variable} ${lexendGiga.variable} ${inter.variable} h-full scroll-smooth scroll-pt-20`}
       >
           <body className="min-h-full flex flex-col font-sans bg-surface text-foreground antialiased">
+              <A11yReporter />
               <AuthProvider>
                   <SkipNavLink />
                   <SessionProvider>
