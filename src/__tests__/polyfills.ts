@@ -55,11 +55,18 @@ if (typeof window !== 'undefined') {
   }
   if (!window.IntersectionObserver) {
     window.IntersectionObserver = class IntersectionObserver {
+      readonly root: Element | Document | null = null;
+      readonly rootMargin: string = '';
+      readonly thresholds: readonly number[] = [];
       constructor() {}
       observe() {}
       unobserve() {}
       disconnect() {}
-    };
+      takeRecords(): IntersectionObserverEntry[] {
+        return [];
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
   }
   if (!window.matchMedia) {
     Object.defineProperty(window, 'matchMedia', {

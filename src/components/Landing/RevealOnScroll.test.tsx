@@ -3,14 +3,13 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 describe('RevealOnScroll-Komponente', () => {
-  let observerCallback: any = null;
+  let observerCallback: IntersectionObserverCallback;
   const mockObserve = jest.fn();
   const mockUnobserve = jest.fn();
   const mockDisconnect = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
-    observerCallback = null;
     window.IntersectionObserver = jest.fn().mockImplementation((cb) => {
       observerCallback = cb;
       return {
@@ -43,7 +42,7 @@ describe('RevealOnScroll-Komponente', () => {
 
     // Trigger IntersectionObserver callback mit isIntersecting: true
     act(() => {
-      observerCallback([{ isIntersecting: true, target: wrapper }]);
+      observerCallback!([{ isIntersecting: true, target: wrapper } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
     });
 
     expect(wrapper).toHaveClass('is-visible');
@@ -89,12 +88,11 @@ describe('RevealOnScroll-Komponente', () => {
       dispatchEvent: jest.fn(),
     }));
 
-    const { container } = render(
+    render(
       <RevealOnScroll>
         <div>Inhalt</div>
       </RevealOnScroll>
     );
-    const wrapper = container.firstChild as HTMLElement;
 
     expect(window.IntersectionObserver).not.toHaveBeenCalled();
 
@@ -126,7 +124,7 @@ describe('RevealOnScroll-Komponente', () => {
     const wrapper = container.firstChild as HTMLElement;
 
     act(() => {
-      observerCallback([{ isIntersecting: false, target: wrapper }]);
+      observerCallback!([{ isIntersecting: false, target: wrapper } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
     });
 
     expect(wrapper).not.toHaveClass('is-visible');

@@ -36,6 +36,7 @@ function LogoItem({ logo, isDuplicate }: LogoItemProps) {
           {logo.name}
         </span>
       ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={logo.src}
           alt={`${logo.name} Logo`}

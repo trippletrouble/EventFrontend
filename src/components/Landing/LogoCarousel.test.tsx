@@ -11,13 +11,12 @@ const mockLogos = [
 ];
 
 describe('LogoCarousel', () => {
-  let observerCallback: any = null;
+  let observerCallback: IntersectionObserverCallback;
   const mockObserve = jest.fn();
   const mockDisconnect = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
-    observerCallback = null;
     window.IntersectionObserver = jest.fn().mockImplementation((cb) => {
       observerCallback = cb;
       return {
@@ -69,13 +68,13 @@ describe('LogoCarousel', () => {
     
     // Simuliere: Ausserhalb des Viewports (isIntersecting: false)
     act(() => {
-      observerCallback([{ isIntersecting: false }]);
+      observerCallback!([{ isIntersecting: false } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(marquee.style.animationPlayState).toBe('paused');
     
     // Simuliere: Zurück im Viewport (isIntersecting: true)
     act(() => {
-      observerCallback([{ isIntersecting: true }]);
+      observerCallback!([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(marquee.style.animationPlayState).toBe('running');
   });

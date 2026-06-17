@@ -6,7 +6,7 @@ import { HeroSection } from './HeroSection';
 expect.extend(toHaveNoViolations);
 
 describe('HeroSection-Komponente', () => {
-  let observerCallback: any = null;
+  let observerCallback: IntersectionObserverCallback;
   const mockObserve = jest.fn();
   const mockDisconnect = jest.fn();
 
@@ -17,7 +17,6 @@ describe('HeroSection-Komponente', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    observerCallback = null;
     window.IntersectionObserver = jest.fn().mockImplementation((cb) => {
       observerCallback = cb;
       return {
@@ -84,13 +83,13 @@ describe('HeroSection-Komponente', () => {
 
     // Simuliere: Sektion verlässt den Viewport (isIntersecting: false)
     act(() => {
-      observerCallback([{ isIntersecting: false }]);
+      observerCallback!([{ isIntersecting: false } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(video.pause).toHaveBeenCalled();
 
     // Simuliere: Sektion betritt den Viewport (isIntersecting: true)
     act(() => {
-      observerCallback([{ isIntersecting: true }]);
+      observerCallback!([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(video.play).toHaveBeenCalled();
   });
@@ -121,7 +120,7 @@ describe('HeroSection-Komponente', () => {
 
   it('reagiert auf Änderungen der prefers-reduced-motion Einstellung während der Laufzeit', () => {
     const originalMatchMedia = window.matchMedia;
-    let changeHandler: any = null;
+    let changeHandler: ((e: MediaQueryListEvent) => void) | null = null;
     window.matchMedia = jest.fn().mockImplementation((query) => ({
       matches: false, // Startet mit false
       media: query,
@@ -144,14 +143,14 @@ describe('HeroSection-Komponente', () => {
 
     // Simuliere Änderung auf prefers-reduced-motion: true
     act(() => {
-      changeHandler({ matches: true } as MediaQueryListEvent);
+      changeHandler!({ matches: true } as MediaQueryListEvent);
     });
 
     expect(video.pause).toHaveBeenCalled();
 
     // Simuliere Änderung auf prefers-reduced-motion: false (um den false-Zweig zu testen)
     act(() => {
-      changeHandler({ matches: false } as MediaQueryListEvent);
+      changeHandler!({ matches: false } as MediaQueryListEvent);
     });
 
     // MatchMedia Mock zurücksetzen
@@ -193,7 +192,7 @@ describe('HeroSection-Komponente', () => {
     render(<HeroSection />);
     
     act(() => {
-      observerCallback([{ isIntersecting: true }]);
+      observerCallback!([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
 
     await act(async () => {
@@ -220,7 +219,7 @@ describe('HeroSection-Komponente', () => {
     // IntersectionObserver mock callback triggern mit isIntersecting: true
     jest.clearAllMocks();
     act(() => {
-      observerCallback([{ isIntersecting: true }]);
+      observerCallback!([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
     });
 
     // video.play() sollte nicht aufgerufen worden sein, da isPlaying false ist
