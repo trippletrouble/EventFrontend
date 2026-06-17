@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="26" failures="0" errors="0" time="2.699">
+  <testsuite name="Authentication Helpers" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:20" time="0.673" tests="10">
+    <testcase classname="Authentication Helpers session.ts - getSession should return null if no cookie is present" name="Authentication Helpers session.ts - getSession should return null if no cookie is present" time="0.008">
+    </testcase>
+    <testcase classname="Authentication Helpers session.ts - getSession should return null if payload has no exp claim" name="Authentication Helpers session.ts - getSession should return null if payload has no exp claim" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers session.ts - getSession should return null if token is expired" name="Authentication Helpers session.ts - getSession should return null if token is expired" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers session.ts - getSession should return null if token payload is missing fields" name="Authentication Helpers session.ts - getSession should return null if token payload is missing fields" time="0.004">
+    </testcase>
+    <testcase classname="Authentication Helpers session.ts - getSession should return decoded session if token is valid" name="Authentication Helpers session.ts - getSession should return decoded session if token is valid" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers session.ts - getSession should return null on catch block error" name="Authentication Helpers session.ts - getSession should return null on catch block error" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers dal.ts - verifySession should delegate to getSession and return session info" name="Authentication Helpers dal.ts - verifySession should delegate to getSession and return session info" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers dal.ts - verifySession should return null if getSession returns null" name="Authentication Helpers dal.ts - verifySession should return null if getSession returns null" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers protect.ts - requireAuth should return session if verifySession resolves to valid session" name="Authentication Helpers protect.ts - requireAuth should return session if verifySession resolves to valid session" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Helpers protect.ts - requireAuth should trigger unauthorized() if session is invalid" name="Authentication Helpers protect.ts - requireAuth should trigger unauthorized() if session is invalid" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:20" time="0.677" tests="1">
+    <testcase classname=" Placeholder template for testing actual component implementation later on" name=" Placeholder template for testing actual component implementation later on" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Middleware / proxy.ts Routing Guard" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:20" time="0.764" tests="5">
+    <testcase classname="Middleware / proxy.ts Routing Guard redirects unauthenticated users from /dashboard to /login" name="Middleware / proxy.ts Routing Guard redirects unauthenticated users from /dashboard to /login" time="0.009">
+    </testcase>
+    <testcase classname="Middleware / proxy.ts Routing Guard allows authenticated users to access /dashboard" name="Middleware / proxy.ts Routing Guard allows authenticated users to access /dashboard" time="0.001">
+    </testcase>
+    <testcase classname="Middleware / proxy.ts Routing Guard redirects authenticated users away from /login to /" name="Middleware / proxy.ts Routing Guard redirects authenticated users away from /login to /" time="0.001">
+    </testcase>
+    <testcase classname="Middleware / proxy.ts Routing Guard allows unauthenticated users to access /login" name="Middleware / proxy.ts Routing Guard allows unauthenticated users to access /login" time="0">
+    </testcase>
+    <testcase classname="Middleware / proxy.ts Routing Guard allows access to public pages (e.g. /)" name="Middleware / proxy.ts Routing Guard allows access to public pages (e.g. /)" time="0.001">
 <testsuites name="Unternehmerbörse Frontend Tests" tests="4" failures="0" errors="0" time="6.253">
   <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-16T10:44:44" time="5.156" tests="4">
     <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.624">
     </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:20" time="1.746" tests="5">
+    <testcase classname=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" time="0.501">
     <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.255">
     </testcase>
+    <testcase classname=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" time="0.173">
     <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.239">
     </testcase>
+    <testcase classname=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" time="0.168">
+    </testcase>
+    <testcase classname=" a2 bg:red text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:red text:black contrast ratio returns pass for AA and AALarge" time="0.129">
+    </testcase>
+    <testcase classname=" low contrast ratio fails test" name=" low contrast ratio fails test" time="0.13">
+    </testcase>
+  </testsuite>
+  <testsuite name="AuthProvider Component" errors="0" failures="0" skipped="0" timestamp="2026-06-14T17:32:21" time="0.919" tests="5">
+    <testcase classname="AuthProvider Component throws an error when useAuth is used outside AuthProvider" name="AuthProvider Component throws an error when useAuth is used outside AuthProvider" time="0.049">
+    </testcase>
+    <testcase classname="AuthProvider Component renders children and loads session successfully" name="AuthProvider Component renders children and loads session successfully" time="0.024">
+    </testcase>
+    <testcase classname="AuthProvider Component handles session load failure/unauthenticated state" name="AuthProvider Component handles session load failure/unauthenticated state" time="0.004">
+    </testcase>
+    <testcase classname="AuthProvider Component login redirects to backend" name="AuthProvider Component login redirects to backend" time="0.008">
+    </testcase>
+    <testcase classname="AuthProvider Component logout redirects to API route" name="AuthProvider Component logout redirects to API route" time="0.006">
     <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.215">
     </testcase>
   </testsuite>
