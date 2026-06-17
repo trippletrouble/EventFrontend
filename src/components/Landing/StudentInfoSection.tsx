@@ -140,14 +140,6 @@ export function StudentInfoSection() {
       </div>
 
       <div
-        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
-        style={{
-          background:
-            'linear-gradient(90deg, #2860F9 0%, #0D1117 %, #0D1117 100%)',
-        }}
-        aria-hidden="true"
-      />
-      <div
           className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
           style={{
             background:

@@ -11,7 +11,6 @@ interface Testimonial {
     borderClass: string;
 }
 
-
 const TESTIMONIALS: Testimonial[] = [
     {
         quote: 'Über die Unternehmerbörse habe ich meinen Werkstudentenjob gefunden. Ein Jahr später schrieb ich dort meine Bachelorarbeit.',
@@ -70,7 +69,7 @@ export function TestimonialSection() {
 
         const timer = setTimeout(() => {
             setIsMounted(true);
-            handleResize(); // Initial check
+            handleResize();
         }, 0);
 
         mediaQuery.addEventListener('change', handleResize);
@@ -159,9 +158,9 @@ export function TestimonialSection() {
                 />
             </div>
 
-            <section className="bg-white text-black py-16" data-navbar="light">
+            <section className="bg-white text-black py-16" data-navbar="light" aria-labelledby="testimonial-heading">
                 <div ref={sectionRef} className="container mx-auto px-4 max-w-6xl text-center">
-                    <h2 id="testimonial-heading" className="text-[30px] font-extrabold leading-[45px] text-left rounded block pl-20 px-2">Was andere sagen</h2>
+                    <h2 id="testimonial-heading" tabIndex={0} className="text-[30px] font-extrabold leading-[45px] text-left rounded block pl-20 px-2 focus-ring">Was andere sagen</h2>
                     <hr
                         className="mb-8"
                         style={{
@@ -177,11 +176,11 @@ export function TestimonialSection() {
                     />
 
                     {/* Testimonial Carousel Container with Navigation Arrows */}
-                    <div className="relative px-10 md:px-12">
+                    <div className="relative px-10 md:px-12" role="group" aria-roledescription="Karussell" aria-label="Testimonials">
                         {/* Left Chevron Button */}
                         <button
                             onClick={prevPage}
-                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-8 w-8 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
                             aria-label="Vorherige Testimonials anzeigen"
                             type="button"
                         >
@@ -202,6 +201,9 @@ export function TestimonialSection() {
                                 {pages.map((pageItems, pageIdx) => (
                                     <div
                                         key={pageIdx}
+                                        role="group"
+                                        aria-roledescription="Folie"
+                                        aria-label={`Seite ${pageIdx + 1} von ${pages.length}`}
                                         className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-3 gap-6 px-1"
                                     >
                                         {pageItems.map(t => {
@@ -212,7 +214,7 @@ export function TestimonialSection() {
                                                                 t.borderClass,
                                                                 animatedPage === pageIdx && 'is-visible'
                                                             )}
-                                                            tabIndex={0}
+                                                            tabIndex={activePage === pageIdx ? 0 : -1}
                                                             onFocus={() => {
                                                                 if (activePage !== pageIdx) {
                                                                     setActivePage(pageIdx);
@@ -236,7 +238,7 @@ export function TestimonialSection() {
                         {/* Right Chevron Button */}
                         <button
                             onClick={nextPage}
-                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-8 w-8 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
                             aria-label="Nächste Testimonials anzeigen"
                             type="button"
                         >
@@ -245,23 +247,25 @@ export function TestimonialSection() {
                     </div>
 
                     {/* Clickable Pagination Dots */}
-                    <div className="flex justify-center gap-2 mt-8" role="group" aria-label="Testimonial-Seiten">
+                    <div className="flex justify-center gap-0 mt-1" role="group" aria-label="Testimonial-Seiten">
                         {pages.map((_, idx) => {
                             const isActive = activePage === idx;
                             return (
                                 <button
                                     key={idx}
                                     onClick={() => setActivePage(idx)}
-                                    className={cn(
-                                        "transition-all duration-300 border border-black rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
-                                        isActive
-                                            ? "w-[25px] h-[6px] bg-black"
-                                            : "w-[6px] h-[6px] bg-transparent hover:bg-black/30"
-                                    )}
+                                    className="min-h-11 min-w-11 inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                                     aria-label={`Gehe zu Testimonial-Seite ${idx + 1}`}
                                     aria-current={isActive || undefined}
                                     type="button"
-                                />
+                                >
+                                    <span className={cn(
+                                        "transition-all duration-300 border border-black rounded-full block",
+                                        isActive
+                                            ? "w-[30px] h-[10px] bg-black"
+                                            : "w-[10px] h-[10px] bg-transparent hover:bg-black/30"
+                                    )} />
+                                </button>
                             );
                         })}
                     </div>
