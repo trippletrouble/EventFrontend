@@ -100,6 +100,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href ? 'page' : undefined}
               className={cn('px-4 py-2 rounded-lg text-sm font-semibold transition-colors', linkCls)}
             >
               {link.label}

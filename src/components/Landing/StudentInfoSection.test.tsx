@@ -112,10 +112,16 @@ describe('StudentInfoSection-Komponente', () => {
     });
 
     describe('Layout und Styling', () => {
-        it('rendert den dekorativen Streifen als aria-hidden', () => {
+        it('rendert die dekorativen Streifen als aria-hidden', () => {
             const { container } = render(<StudentInfoSection />);
-            const hiddenElements = container.querySelectorAll('[aria-hidden="true"]');
-            expect(hiddenElements.length).toBeGreaterThanOrEqual(1);
+            const hiddenStripes = container.querySelectorAll('[aria-hidden="true"]');
+            expect(hiddenStripes.length).toBeGreaterThanOrEqual(2);
+        });
+
+        it('rendert die dekorativen Trennlinien als aria-hidden', () => {
+            const { container } = render(<StudentInfoSection />);
+            const hiddenHrs = container.querySelectorAll('hr[aria-hidden="true"]');
+            expect(hiddenHrs.length).toBe(2);
         });
 
         it('setzt data-navbar="light" auf der Sektion', () => {
