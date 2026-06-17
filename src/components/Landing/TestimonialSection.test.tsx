@@ -456,9 +456,9 @@ describe('TestimonialSection', () => {
                 blockquotes[0].dispatchEvent(new FocusEvent('focus', { bubbles: true }));
             });
 
-            const tabs = screen.getAllByRole('tab');
-            expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
-            expect(tabs[1]).toHaveAttribute('aria-selected', 'false');
+            const dotButtons = screen.getAllByRole('button', { name: /Gehe zu Testimonial-Seite/i });
+            expect(dotButtons[0]).toHaveAttribute('aria-current', 'true');
+            expect(dotButtons[1]).not.toHaveAttribute('aria-current', 'true');
         });
     });
 });
