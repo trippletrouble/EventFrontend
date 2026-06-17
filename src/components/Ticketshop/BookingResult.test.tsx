@@ -361,7 +361,7 @@ describe('BookingResult-Komponente', () => {
 
         it('rendert den Pfeil-Pfeil im Button korrekt', () => {
             render(<BookingResult />);
-            expect(screen.getByText('→')).toBeInTheDocument();
+            expect(screen.getAllByText('→')).toBeInTheDocument();
         });
     });
 
