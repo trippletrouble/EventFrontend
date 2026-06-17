@@ -159,62 +159,59 @@ export default function CheckoutPage({
                         </div>
                     </div>
 
+                    {/* RECHTE BOX */}
                     <div className="flex-1 flex flex-col gap-6 justify-between">
                         <div style={blueBoxStyle} className="p-6 md:p-8 flex flex-col justify-between h-full rounded-none">
                             <div>
                                 <h2 className="text-lg font-bold text-white mb-4">Ihre Bestellung</h2>
                                 <div className="border-t border-surface-border pt-4">
                                     <h3 className="font-bold text-base text-white mb-3">{tierName}</h3>
-                                {features.length === 0 ? (
-                                    <p className="text-sm text-white/70 italic">Keine Leistungen enthalten.</p>
-                                ) : (
-                                    <ul className="space-y-2">
-                                        {features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start text-sm text-white/90 leading-relaxed">
-                                                <span className="text-white mr-2.5 select-none font-bold">•</span>
-                                                <span>{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                                    {features.length === 0 ? (
+                                        <p className="text-sm text-white/70 italic">Keine Leistungen enthalten.</p>
+                                    ) : (
+                                        <ul className="space-y-2">
+                                            {features.map((feature, idx) => (
+                                                <li key={idx} className="flex items-start text-sm text-white/90 leading-relaxed">
+                                                    <span className="text-white mr-2.5 select-none font-bold">•</span>
+                                                    <span>{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
 
-                                {isSponsor && tier.sponsorDiscountPercent > 0 && (
-                                    <div className="mt-4 p-2 border border-green-500/30 rounded text-xs text-green-400 flex justify-between">
-                                        <span>Sponsor-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
-                                        <span>-{(discountAmount / 100).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</span>
-                                    </div>
-                                )}
+                                    {isSponsor && tier.sponsorDiscountPercent > 0 && (
+                                        <div className="mt-4 p-2 border border-green-500/30 rounded text-xs text-green-400 flex justify-between">
+                                            <span>Sponsor-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
+                                            <span>-{(discountAmount / 100).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</span>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="border-t border-surface-border mt-12 pt-4 flex justify-between items-baseline">
-                            <span className="text-lg font-bold text-white">Gesamt</span>
-                            <span className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
+                            <div className="border-t border-surface-border mt-12 pt-4 flex justify-between items-baseline">
+                                <span className="text-lg font-bold text-white">Gesamt</span>
+                                <span className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
                                     {finalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
                                 </span>
+                            </div>
                         </div>
-                    </div>
 
                         <div className="flex justify-end w-full">
                             <Button
                                 onClick={onCheckout}
                                 disabled={isLoading}
-                                isLoading={isLoading}
+                                aria-busy={isLoading ? "true" : undefined}
                                 style={{
                                     backgroundColor: '#facc15',
                                     color: '#000000'
                                 }}
                                 className="h-12 px-8 rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
                             >
-                                <>
                                 <span>Bezahlen</span>
-                                <span className="text-lg font-bold">&rarr;</span>
-                                </>
+                                <span className="text-lg font-bold">→</span>
                             </Button>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
