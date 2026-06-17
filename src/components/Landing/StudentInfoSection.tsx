@@ -19,7 +19,6 @@ export function StudentInfoSection() {
         aria-hidden="true"
       />
 
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           id="student-info-heading"
@@ -66,7 +65,7 @@ export function StudentInfoSection() {
               borderColorClass="border-[transparent]"
               iconColor="text-[#2860F9]"
               title="Networking"
-              description="Nutze die Chance, mit über 80 Unternehmen aus allen Fachrichtungen in Kontakt zu treten und dein professionelles Netzwerk persönlich zu erweitern."
+              description="Nutze die Chance, mit über 80 Unternehmen aus allen Fachrichtungen in Kontakt to treten und dein professionelles Netzwerk persönlich zu erweitern."
               theme="light"
             />
             <FeatureItem
@@ -140,14 +139,13 @@ export function StudentInfoSection() {
       </div>
 
       <div
-          className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
-          style={{
-            background:
-                'linear-gradient(90deg, #2860F9 0%, #0D1117 72%, #0D1117 100%)',
-          }}
-          aria-hidden="true"
+        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
+        style={{
+          background:
+            'linear-gradient(90deg, #2860F9 0%, #0D1117 72%, #0D1117 100%)',
+        }}
+        aria-hidden="true"
       />
     </section>
-
   );
 }

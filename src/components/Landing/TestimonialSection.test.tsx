@@ -447,5 +447,18 @@ describe('TestimonialSection', () => {
             const dotButtons = screen.getAllByRole('button', { name: /Gehe zu Testimonial-Seite/i });
             expect(dotButtons[1]).toHaveAttribute('aria-current', 'true');
         });
+
+        it('wechselt die aktive Seite NICHT, wenn eine Karte auf der bereits aktiven Seite fokussiert wird', () => {
+            const { container } = renderAndMount();
+            const blockquotes = container.querySelectorAll('blockquote');
+            act(() => {
+                blockquotes[0].focus();
+                blockquotes[0].dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+            });
+
+            const tabs = screen.getAllByRole('tab');
+            expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+            expect(tabs[1]).toHaveAttribute('aria-selected', 'false');
+        });
     });
 });
