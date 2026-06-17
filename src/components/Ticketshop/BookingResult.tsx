@@ -79,7 +79,9 @@ export default function CheckoutPage({
                         <hr className="border-surface-border my-3" />
                         <div className="flex justify-between text-base font-bold">
                             <span>Gesamtsumme:</span>
-                            <span>{finalPrice.toLocaleString('de-DE')} €</span>
+                            <span className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
+                                 {finalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+                            </span>
                         </div>
                     </div>
                     <Button variant="outline" size="md" className="mt-8 w-full cursor-pointer text-white border-white hover:bg-white/15" onClick={() => window.location.href = '/dashboard'}>
@@ -157,35 +159,41 @@ export default function CheckoutPage({
                         </div>
                     </div>
 
-                    {/* RECHTE BOX */}
                     <div className="flex-1 flex flex-col gap-6 justify-between">
                         <div style={blueBoxStyle} className="p-6 md:p-8 flex flex-col justify-between h-full rounded-none">
                             <div>
                                 <h2 className="text-lg font-bold text-white mb-4">Ihre Bestellung</h2>
                                 <div className="border-t border-surface-border pt-4">
                                     <h3 className="font-bold text-base text-white mb-3">{tierName}</h3>
-                                    {features.length === 0 ? (
-                                        <p className="text-sm text-white/70 italic">Keine Leistungen enthalten.</p>
-                                    ) : (
-                                        <ul className="space-y-2">
-                                            {features.map((feature, idx) => (
-                                                <li key={idx} className="flex items-start text-sm text-white/90 leading-relaxed">
-                                                    <span className="text-white mr-2.5 select-none font-bold">•</span>
-                                                    <span>{feature}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            </div>
+                                {features.length === 0 ? (
+                                    <p className="text-sm text-white/70 italic">Keine Leistungen enthalten.</p>
+                                ) : (
+                                    <ul className="space-y-2">
+                                        {features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-start text-sm text-white/90 leading-relaxed">
+                                                <span className="text-white mr-2.5 select-none font-bold">•</span>
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
 
-                            <div className="border-t border-surface-border mt-12 pt-4 flex justify-between items-baseline">
-                                <span className="text-lg font-bold text-foreground">Gesamt</span>
-                                <span className="text-xl md:text-2xl font-extrabold text-foreground tracking-tight">
-                                {finalPrice.toLocaleString('de-DE')} €
-                               </span>
+                                {isSponsor && tier.sponsorDiscountPercent > 0 && (
+                                    <div className="mt-4 p-2 border border-green-500/30 rounded text-xs text-green-400 flex justify-between">
+                                        <span>Sponsor-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
+                                        <span>-{(discountAmount / 100).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
+
+                        <div className="border-t border-surface-border mt-12 pt-4 flex justify-between items-baseline">
+                            <span className="text-lg font-bold text-white">Gesamt</span>
+                            <span className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
+                                    {finalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+                                </span>
+                        </div>
+                    </div>
 
                         <div className="flex justify-end w-full">
                             <Button
