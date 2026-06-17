@@ -53,5 +53,13 @@ if (typeof window !== 'undefined') {
       disconnect() {}
     };
   }
+  if (!window.IntersectionObserver) {
+    window.IntersectionObserver = class IntersectionObserver {
+      constructor() {}
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    };
+  }
 }
 

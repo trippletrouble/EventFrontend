@@ -5,18 +5,22 @@ import { Play, Pause } from 'lucide-react';
 import LogoCarousel from './LogoCarousel';
 
 const LOGOS = [
-  { name: 'NETZSCH' },
-  { name: 'LAMILUX' },
-  { name: 'Sandler Group' },
-  { name: 'Viessmann' },
-  { name: 'Rehau' },
-  { name: 'Siemens' },
-  { name: 'SAP' },
-  { name: 'DHL' },
-  { name: 'Kühne+Nagel' },
-  { name: 'Datev' },
-  { name: 'IHK' },
-  { name: 'GEALAN' },
+  { name: 'NETZSCH', src: '/logos/netzsch.svg', url: 'https://www.netzsch.com' },
+  { name: 'Lamilux', src: '/logos/lamilux.svg', url: 'https://www.lamilux.de' },
+  { name: 'Sandler', src: '/logos/sandler.svg', url: 'https://www.sandler.de' },
+  { name: 'dennree', src: '/logos/dennree.png', url: 'https://www.dennree.de' },
+  { name: 'Bundeswehr', src: '/logos/bundeswehr.svg', url: 'https://www.bundeswehrkarriere.de' },
+  { name: 'Agentur für Arbeit', src: '/logos/agentur-fuer-arbeit.svg', url: 'https://www.arbeitsagentur.de' },
+  { name: 'AOK', src: '/logos/aok.svg', url: 'https://www.aok.de' },
+  { name: 'Techniker Krankenkasse', src: '/logos/techniker-krankenkasse.svg', url: 'https://www.tk.de' },
+  { name: 'HUK-Coburg', src: '/logos/huk-coburg.svg', url: 'https://www.huk.de' },
+  { name: 'Viessmann', src: '/logos/viessmann.svg', url: 'https://www.viessmann.de' },
+  { name: 'Gebrüder Weiss', src: '/logos/gebrueder-weiss.svg', url: 'https://www.gw-world.com' },
+  { name: 'NKD', src: '/logos/nkd.svg', url: 'https://www.nkd.com' },
+  { name: 'Hetzner', src: '/logos/hetzner.svg', url: 'https://www.hetzner.com' },
+  { name: 'Wilo', src: '/logos/wilo.svg', url: 'https://www.wilo.com' },
+  { name: 'Enterprise', src: '/logos/enterprise.svg', url: 'https://www.enterprise.de' },
+  { name: 'CeramTec', src: '/logos/ceramtec.svg', url: 'https://www.ceramtec.de' }
 ];
 
 export function CarouselSection() {
