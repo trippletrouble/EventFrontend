@@ -20,13 +20,9 @@ global.BroadcastChannel = BroadcastChannel;
 // Polyfill fetch, Headers, Request, Response for MSW in JSDOM
 import vm from 'vm';
 
-// @ts-ignore
 global.fetch = vm.runInThisContext('globalThis.fetch');
-// @ts-ignore
 global.Headers = vm.runInThisContext('globalThis.Headers');
-// @ts-ignore
 global.Request = vm.runInThisContext('globalThis.Request');
-// @ts-ignore
 global.Response = vm.runInThisContext('globalThis.Response');
 
 // Polyfill PointerEvent and Pointer Capture APIs for Radix UI under JSDOM
@@ -55,4 +51,3 @@ if (typeof window !== 'undefined') {
     };
   }
 }
-
