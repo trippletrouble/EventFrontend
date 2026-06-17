@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Pause, Play } from 'lucide-react';
+import { KeywordAnimation } from "@/components/Landing/KeywordAnimation";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -81,7 +82,7 @@ export function HeroSection() {
         loop
         playsInline
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover z-0 transform-gpu"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-80 transform-gpu"
         poster="/images/hero-bg.jpg"
       >
         <source src="/videos/hero.webm" type="video/webm" />
@@ -93,64 +94,120 @@ export function HeroSection() {
         {/* Basis-Abdunklung */}
         <div className="absolute inset-0 bg-[#0D1117]/50" />
         {/* Fade von oben (Navbar-Bereich) */}
-        <div className="absolute inset-x-0 top-0 h-[400px] bg-gradient-to-b from-[#0D1117] from-[80px] via-[#0D1117]/60 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-[300px] bg-gradient-to-b from-[#0D1117] from-[30px] via-[#0D1117]/60 to-transparent" />
         {/* Fade von unten (Übergang zur nächsten Sektion) */}
-        <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#0D1117] via-[#0D1117]/90 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0D1117] via-[#0D1117]/75 to-transparent" />
       </div>
 
-      {/* Inhalt */}
+      {/* Logo */}
       <div className="relative z-10 flex-1 flex flex-col justify-between max-w-[1320px] mx-auto w-full px-6 lg:px-12 pt-28 pb-16">
 
-        {/* Oben links: Event-Titel */}
-        <div>
-          <p
-            className="font-extrabold text-[28px] leading-[53px] text-white tracking-wide"
-            style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
+        <div className="relative w-full max-w-xl md:max-w-2xl py-8 pr-8 my-4 select-none -ml-6 lg:-ml-12 pl-6 lg:pl-12">
+          <div
+            className="absolute inset-y-0 backdrop-blur-sm z-0"
+            style={{
+              left: '-100vw',
+              right: '0px',
+              background: 'linear-gradient(90deg, #0D1117 0%, #07090C 70%, transparent 100%)'
+            }}
+            aria-hidden="true"
+          />
+
+          <div
+            className="absolute top-0 right-0 flex flex-col z-20"
+            style={{ left: '-100vw' }}
+            aria-hidden="true"
           >
-            Unternehmerbörse
-          </p>
-          <p
-            className="font-extrabold text-[120px] md:text-[160px] leading-none text-white -mt-2"
-            style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
+            <div
+              className="h-[6px]"
+              style={{ background: 'linear-gradient(90deg, #F5B800 0%, #F5B800 20%, rgba(245, 184, 0, 0) 100%)' }}
+            />
+            <div
+              className="h-[6px]"
+              style={{ background: 'linear-gradient(90deg, #2860F9 0%, #2860F9 35%, rgba(40, 96, 249, 0) 100%)' }}
+            />
+          </div>
+
+          <div className="relative z-10 flex flex-col items-start font-extrabold text-white text-left mt-2 pl-0">
+            <h2
+              className="text-[32px] md:text-[42px] tracking-wide font-extrabold leading-tight"
+              style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
+            >
+              Unternehmerbörse
+            </h2>
+            <span
+              className="text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
+              style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
+            >
+              2026
+            </span>
+          </div>
+
+          <div
+            className="absolute bottom-0 right-0 flex flex-col z-20"
+            style={{ left: '-100vw' }}
+            aria-hidden="true"
           >
-            2026
-          </p>
+            <div
+              className="h-[6px]"
+              style={{ background: 'linear-gradient(90deg, #FE3C4E 0%, #FE3C4E 6%, transparent 100%)' }}
+            />
+            <div
+              className="h-[6px]"
+              style={{ background: 'linear-gradient(90deg, #0AD88E 0%, #0AD88E 6%, transparent 100%)' }}
+            />
+          </div>
         </div>
 
-        {/* Unten rechts: Tagline */}
-        <div className="flex justify-end mt-auto">
-          <div className="text-right max-w-lg">
-            {/* "Deine" mit weißer Linie */}
-            <div className="flex items-center justify-end gap-6 mb-4">
-              <div className="h-[2px] bg-white/80 flex-1 max-w-[300px]" aria-hidden="true" />
-              <span
-                className="text-[32px] md:text-[40px] font-light text-white/90 tracking-wider"
-                style={{ fontFamily: 'var(--font-lexend-deca, inherit)' }}
-              >
-                Deine
-              </span>
+        {/* Unten rechts: Tagline Container (Kompakte Version) */}
+        <div className="flex justify-end mt-auto p-6">
+          <div className="text-left min-w-[240px] md:min-w-[320px]">
+
+            {/* "Deine" Bereich */}
+            <div className="w-full mb-2 relative">
+              <div className="flex items-baseline gap-15 w-full">
+                <span
+                  className="text-[24px] md:text-[40px] font-light text-white tracking-wide pl-1 whitespace-nowrap"
+                  style={{ fontFamily: 'var(--font-lexend-deca, inherit)' }}
+                >
+                  Deine
+                </span>
+                <div
+                  className="h-[3px] w-[50vw] mr-[-100vw]"
+                  style={{ background: 'linear-gradient(90deg, transparent 0%, #FFFFFF 45%, #FFFFFF 100%)', }}
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="h-[3px] bg-white/90 mt-0.5 w-[100vw] mr-[-100vw]" aria-hidden="true" />
             </div>
 
-            <h1 className="leading-none">
+            {/* Die Tagline-Wörter */}
+            <h1 className="leading-[0.95] tracking-wide uppercase">
+              {/* ZUKUNFT. */}
               <span
-                className="block text-[36px] md:text-[40px] font-black text-white uppercase tracking-wider"
+                className="block text-[32px] md:text-[40px] font-black text-white"
                 style={{ fontFamily: 'var(--font-lexend-exa, inherit)' }}
               >
-                Zukunft.
+                <KeywordAnimation text="ZUKUNFT." delay={200} />
               </span>
+
+              {/* CHANCE. */}
               <span
-                className="block text-[64px] md:text-[80px] font-medium text-[#0AD88E] italic"
+                className="block text-[44px] md:text-[80px] font-medium text-[#0AD88E] my-0.5"
                 style={{ fontFamily: 'var(--font-lexend, inherit)' }}
               >
-                Chance.
+                <KeywordAnimation text="CHANCE." delay={500} />
               </span>
+
+              {/* KARRIERE. */}
               <span
-                className="block text-[36px] md:text-[40px] font-black text-white uppercase tracking-wider"
+                className="block text-[32px] md:text-[40px] font-black text-white"
                 style={{ fontFamily: 'var(--font-lexend-exa, inherit)' }}
               >
-                Karriere.
+                <KeywordAnimation text="KARRIERE." delay={800} />
               </span>
             </h1>
+
           </div>
         </div>
       </div>
@@ -171,3 +228,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+export default HeroSection;
