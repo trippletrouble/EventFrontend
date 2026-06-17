@@ -1,6 +1,5 @@
 'use client';
 
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/utils/cn';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -154,7 +153,6 @@ export function TestimonialSection() {
                     className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-3 gap-6 px-1"
                   >
                     {pageItems.map(t => {
-                      /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
                       return (
                         <blockquote key={t.name}
                           className={cn(
@@ -176,7 +174,6 @@ export function TestimonialSection() {
                           </footer>
                         </blockquote>
                       );
-                      /* eslint-enable jsx-a11y/no-noninteractive-tabindex */
                     })}
                   </div>
                 ))}

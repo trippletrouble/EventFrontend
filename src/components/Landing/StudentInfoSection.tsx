@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React from 'react';
 import { Briefcase, Users, FileCheck, Smartphone } from 'lucide-react';
 import { FeatureItem } from './FeatureItem';
