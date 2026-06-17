@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Layout/Header';
 import { CarouselSection } from '@/components/Landing/CarouselSection';
 import {StudentInfoSection} from "@/components/Landing/StudentInfoSection";
+import TestimonialSection from "@/components/Landing/TestimonialSection";
 
 export default function LandingPage() {
   return (
@@ -14,6 +15,7 @@ export default function LandingPage() {
         </div>
         <CarouselSection />
           <StudentInfoSection />
+          <TestimonialSection />
       </main>
     </>
   );
