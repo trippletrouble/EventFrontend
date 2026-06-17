@@ -1,4 +1,4 @@
-import { apiFetch } from './api';
+import { apiClient } from './api';
 import type { UserDto } from '@/types/api.types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3100';
@@ -17,7 +17,7 @@ export function redirectToLogin(): void {
  * Wirft ApiError bei 401 (nicht eingeloggt).
  */
 export async function getSession(): Promise<UserDto> {
-  return apiFetch<UserDto>('/auth/session');
+  return apiClient.get<UserDto>('/auth/session');
 }
 
 /**
@@ -25,5 +25,5 @@ export async function getSession(): Promise<UserDto> {
  * POST /auth/logout → 204
  */
 export async function logout(): Promise<void> {
-  await apiFetch<void>('/auth/logout', { method: 'POST' });
+  await apiClient.post<void>('/auth/logout');
 }

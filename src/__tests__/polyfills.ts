@@ -18,15 +18,16 @@ import { BroadcastChannel } from 'worker_threads';
 global.BroadcastChannel = BroadcastChannel;
 
 // Polyfill fetch, Headers, Request, Response for MSW in JSDOM
-import fetch, { Headers, Request, Response } from 'node-fetch';
-// @ts-expect-error - fetch type mismatch
-global.fetch = fetch;
-// @ts-expect-error - Headers type mismatch
-global.Headers = Headers;
-// @ts-expect-error - Request type mismatch
-global.Request = Request;
-// @ts-expect-error - Response type mismatch
-global.Response = Response;
+import vm from 'vm';
+
+// @ts-ignore
+global.fetch = vm.runInThisContext('globalThis.fetch');
+// @ts-ignore
+global.Headers = vm.runInThisContext('globalThis.Headers');
+// @ts-ignore
+global.Request = vm.runInThisContext('globalThis.Request');
+// @ts-ignore
+global.Response = vm.runInThisContext('globalThis.Response');
 
 // Polyfill PointerEvent and Pointer Capture APIs for Radix UI under JSDOM
 if (typeof window !== 'undefined') {
