@@ -5,6 +5,8 @@ import { CarouselSection } from '@/components/Landing/CarouselSection';
 import { CountdownSection } from '@/components/Landing/CountdownSection';
 import EventInfoSection from '@/components/Landing/EventInfoSection';
 import { CTABanner } from '@/components/Landing/CTABanner';
+import { StudentInfoSection } from '@/components/Landing/StudentInfoSection';
+import TestimonialSection from '@/components/Landing/TestimonialSection';
 
 export default function LandingPage() {
   return (
@@ -15,6 +17,8 @@ export default function LandingPage() {
         <EventInfoSection />
         <CountdownSection />
         <CarouselSection />
+        <StudentInfoSection />
+        <TestimonialSection />
         <CTABanner />
       </main>
     </>
