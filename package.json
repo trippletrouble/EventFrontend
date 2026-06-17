@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:contrast":"jest tests/contrast.test.js",
+    "test:contrast": "jest tests/contrast.test.js",
     "test:a11y": "jest tests/a11y.test.js",
     "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests"
   },
@@ -16,20 +16,23 @@
     "jest": "^30.3.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "jest-junit": "^17.0.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "jest-axe": "^10.0.0",
+    "jest-junit": "^17.0.0",
     "node-fetch": "^3.3.2",
     "tailwindcss": "^4",
+    "ts-jest": "^29.4.11",
     "typescript": "^5"
   }
 }
