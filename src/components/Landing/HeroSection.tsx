@@ -108,7 +108,7 @@ export function HeroSection() {
                             className="text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
                             style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
                         >
-                            2026
+                            2027
                         </span>
                     </div>
 
