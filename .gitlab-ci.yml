@@ -1,0 +1,108 @@
+# ============================================================
+# Unternehmerbörse Frontend — CI/CD Pipeline
+# ============================================================
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+
+image: node:20-alpine
+
+# Globale Variablen für npm Caching und Netzwerk-Proxy
+variables:
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
+  http_proxy: "http://proxy.hof-university.de:3128"
+  https_proxy: "http://proxy.hof-university.de:3128"
+  HTTP_PROXY: "http://proxy.hof-university.de:3128"
+  HTTPS_PROXY: "http://proxy.hof-university.de:3128"
+  no_proxy: "localhost,127.0.0.1"
+  NO_PROXY: "localhost,127.0.0.1"
+
+# Globaler Cache für npm-Pakete
+cache: &global_cache
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+  policy: pull-push
+
+stages:
+  - lint
+  - test
+  - build
+
+# ============================================================
+# Stage 1: LINT (2 Jobs parallel)
+# ============================================================
+eslint:
+  stage: lint
+  cache:
+    <<: *global_cache
+  script:
+    - npm ci --prefer-offline --no-audit
+    - npx eslint . --max-warnings 0
+  allow_failure: false
+
+typecheck:
+  stage: lint
+  cache:
+    <<: *global_cache
+    policy: pull
+  script:
+    - npm ci --prefer-offline --no-audit
+    - npx tsc --noEmit
+  allow_failure: false
+
+# ============================================================
+# Stage 2: TEST
+# ============================================================
+test:
+  stage: test
+  cache:
+    <<: *global_cache
+    policy: pull
+  script:
+    - npm ci --prefer-offline --no-audit
+    - npx jest --ci --coverage --reporters=default --reporters=jest-junit
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    reports:
+      junit: junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    expire_in: 7 days
+  coverage: '/All files[^|]*\|[^|]*\s+([\d.]+)/'
+
+# ============================================================
+# Stage 3: BUILD
+# ============================================================
+build:
+  stage: build
+  needs: ["eslint", "typecheck", "test"]
+  cache:
+    - <<: *global_cache
+      policy: pull
+    - key: "$CI_COMMIT_REF_SLUG"
+      paths:
+        - .next/cache/
+      policy: pull-push
+  script:
+    - npm ci --prefer-offline --no-audit
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_MERGE_REQUEST_ID'
+
