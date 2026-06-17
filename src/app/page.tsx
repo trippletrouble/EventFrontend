@@ -7,6 +7,8 @@ import EventInfoSection from '@/components/Landing/EventInfoSection';
 import { CTABanner } from '@/components/Landing/CTABanner';
 import { StudentInfoSection } from '@/components/Landing/StudentInfoSection';
 import TestimonialSection from '@/components/Landing/TestimonialSection';
+import { FAQSection } from '@/components/Landing/FAQSection';
+import { RevealOnScroll } from '@/components/Landing/RevealOnScroll';
 
 export default function LandingPage() {
   return (
@@ -17,8 +19,19 @@ export default function LandingPage() {
         <EventInfoSection />
         <CountdownSection />
         <CarouselSection />
-        <StudentInfoSection />
-        <TestimonialSection />
+
+        <RevealOnScroll rootMargin="0px 0px -200px 0px" threshold={0.15}>
+          <StudentInfoSection />
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <FAQSection />
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <TestimonialSection />
+        </RevealOnScroll>
+
         <CTABanner />
       </main>
     </>
