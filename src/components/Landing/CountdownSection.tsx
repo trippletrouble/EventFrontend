@@ -79,7 +79,7 @@ export function CountdownSection({ targetDate = '2027-05-12T09:30:00' }: Countdo
                     <div
                         className="flex justify-center items-center gap-8 md:gap-14 mt-16 pb-12"
                         role="timer"
-                        aria-live="off"
+                        aria-live="polite"
                         aria-label={isMounted && timeLeft ? `Noch ${timeLeft.days} Tage, ${timeLeft.hours} Stunden und ${timeLeft.minutes} Minuten` : 'Berechne verbleibende Zeit...'}
                     >
                         <CountdownUnit value={currentUnits.days} label="Tage" />

@@ -97,18 +97,18 @@ export function HeroSection() {
                     </div>
 
                     <div className="relative z-10 flex flex-col items-start font-extrabold text-white text-left mt-2 pl-0">
-                        <h2
+                        <h1
                             className="text-[32px] md:text-[42px] tracking-wide font-extrabold leading-tight"
                             style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
                         >
                             Unternehmerbörse
-                        </h2>
-                        <span
-                            className="text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
-                            style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
-                        >
-                            2027
-                        </span>
+                            <span
+                                className="block text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
+                                style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
+                            >
+                                2027
+                            </span>
+                        </h1>
                     </div>
 
                     <div
@@ -150,7 +150,7 @@ export function HeroSection() {
                         </div>
 
                         {/* Die Tagline-Wörter */}
-                        <h1 className="leading-[0.95] tracking-wide uppercase">
+                        <h2 className="leading-[0.95] tracking-wide uppercase">
                             {/* ZUKUNFT. */}
                             <span
                                 className="block text-[32px] md:text-[40px] font-black text-white"
@@ -174,7 +174,7 @@ export function HeroSection() {
                             >
                                 <KeywordAnimation text="KARRIERE." delay={800} />
                             </span>
-                        </h1>
+                        </h2>
 
                     </div>
                 </div>
