@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="11" failures="0" errors="0" time="2.218">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-06-17T09:00:58" time="0.437" tests="1">
+    <testcase classname=" Placeholder template for testing actual component implementation later on" name=" Placeholder template for testing actual component implementation later on" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="envSchema" errors="0" failures="0" skipped="0" timestamp="2026-06-17T09:00:58" time="0.809" tests="5">
+    <testcase classname="envSchema accepts a valid HTTP URL" name="envSchema accepts a valid HTTP URL" time="0.004">
+    </testcase>
+    <testcase classname="envSchema accepts a valid HTTPS URL" name="envSchema accepts a valid HTTPS URL" time="0">
+    </testcase>
+    <testcase classname="envSchema throws when NEXT_PUBLIC_API_URL is missing" name="envSchema throws when NEXT_PUBLIC_API_URL is missing" time="0.004">
+    </testcase>
+    <testcase classname="envSchema throws when NEXT_PUBLIC_API_URL is an empty string" name="envSchema throws when NEXT_PUBLIC_API_URL is an empty string" time="0.001">
+    </testcase>
+    <testcase classname="envSchema throws when NEXT_PUBLIC_API_URL is not a URL" name="envSchema throws when NEXT_PUBLIC_API_URL is not a URL" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-06-17T09:00:58" time="1.423" tests="5">
+    <testcase classname=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:yellow text:black contrast ratio returns pass for AA and AALarge" time="0.445">
+    </testcase>
+    <testcase classname=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:green text:black contrast ratio returns pass for AA and AALarge" time="0.151">
+    </testcase>
+    <testcase classname=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:blue text:black contrast ratio returns pass for AA and AALarge" time="0.132">
+    </testcase>
+    <testcase classname=" a2 bg:red text:black contrast ratio returns pass for AA and AALarge" name=" a2 bg:red text:black contrast ratio returns pass for AA and AALarge" time="0.13">
+    </testcase>
+    <testcase classname=" low contrast ratio fails test" name=" low contrast ratio fails test" time="0.127">
+    </testcase>
+  </testsuite>
+</testsuites>
