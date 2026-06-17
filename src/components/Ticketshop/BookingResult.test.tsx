@@ -249,8 +249,7 @@ describe('BookingResult-Komponente', () => {
             expect(mockOnCheckout).toHaveBeenCalledTimes(1);
         });
 
-        it('erlaubt das Fokussieren des Bearbeiten-Buttons über Tab-Taste', async () => {
-            const user = userEvent.setup();
+        it('erlaubt das Fokussieren des Bearbeiten-Buttons über Tab-Taste',() => {
             render(<BookingResult />);
 
             const editButton = screen.getByRole('button', { name: /Bearbeiten/i });
