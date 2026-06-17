@@ -5,7 +5,7 @@ import * as navigate from '@/lib/navigate';
 
 jest.mock('@/lib/navigate');
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3100';
 
 describe('apiFetch', () => {
   // --- Basic functionality ---
