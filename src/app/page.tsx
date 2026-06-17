@@ -19,7 +19,6 @@ export default function LandingPage() {
           <h1 className="text-3xl font-bold text-foreground">Unternehmerbörse 2026</h1>
           <p className="mt-4 text-foreground-muted">Willkommen auf der Karrieremesse der Hochschule Hof.</p>
         </div>
-
           <EventInfoSection />
           <CountdownSection />
         <CarouselSection />
