@@ -56,10 +56,6 @@ export default function CheckoutPage({
         backgroundColor: '#0b111e',
         color: '#ffffff'
     };
-    const hrStyle = {
-        border: 'none',
-        borderTop: '2px solid #173892'
-    };
 
     const pureWhiteText = { color: '#ffffff' };
 
