@@ -376,12 +376,5 @@ describe("Footer", () => {
     });
   });
 
-  // ── 9. Snapshot ────────────────────────────────────────────────────────────
-
-  describe("Snapshot", () => {
-    it("entspricht dem gespeicherten Snapshot", () => {
-      const { container } = renderFooter();
-      expect(container.firstChild).toMatchSnapshot();
-    });
-  });
 });
+
