@@ -59,7 +59,6 @@ export function TierCard({
     icon: Ticket,
   };
 
-  const isFirstTier = tier.tierId === 1;
   const isBtnDisabled = disabled || !tier.available;
   const buttonText = !tier.available
     ? 'Ausverkauft'
