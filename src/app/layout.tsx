@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "./providers/AuthProvider";
 import { Lexend, Lexend_Deca, Lexend_Exa, Lexend_Giga, Inter } from 'next/font/google';
-import './globals.css';
 import { SessionProvider } from '@/providers/SessionProvider';
 import { ToastProvider } from '@/providers/ToastProvider';
 import { SkipNavLink } from '@/components/Layout/SkipNavLink';

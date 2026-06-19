@@ -1,362 +1,496 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="292" failures="0" errors="0" time="11.647">
-  <testsuite name="CountdownSection - Komponententests" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="0.85" tests="8">
-    <testcase classname="CountdownSection - Komponententests rendert das Element initial korrekt" name="CountdownSection - Komponententests rendert das Element initial korrekt" time="0.119">
+<testsuites name="jest tests" tests="301" failures="0" errors="0" time="11.773">
+  <testsuite name="Footer" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="0.947" tests="9">
+    <testcase classname="Footer rendert den Hauptcontainer der Seitenfußzeile mit dem korrekten ARIA-Label" name="Footer rendert den Hauptcontainer der Seitenfußzeile mit dem korrekten ARIA-Label" time="0.067">
     </testcase>
-    <testcase classname="CountdownSection - Komponententests aktualisiert die Anzeige jede Minute" name="CountdownSection - Komponententests aktualisiert die Anzeige jede Minute" time="0.013">
+    <testcase classname="Footer Navigations-Links rendert den Impressum-Link mit dem korrekten Pfad" name="Footer Navigations-Links rendert den Impressum-Link mit dem korrekten Pfad" time="0.014">
+    </testcase>
+    <testcase classname="Footer Navigations-Links rendert den Datenschutz-Link mit dem korrekten Pfad" name="Footer Navigations-Links rendert den Datenschutz-Link mit dem korrekten Pfad" time="0.006">
+    </testcase>
+    <testcase classname="Footer Adresse und Hochschule-Informationen rendert die Überschrift für den Kontaktbereich" name="Footer Adresse und Hochschule-Informationen rendert die Überschrift für den Kontaktbereich" time="0.006">
+    </testcase>
+    <testcase classname="Footer Adresse und Hochschule-Informationen zeigt die vollständigen Adressdaten der Hochschule Hof korrekt an" name="Footer Adresse und Hochschule-Informationen zeigt die vollständigen Adressdaten der Hochschule Hof korrekt an" time="0.007">
+    </testcase>
+    <testcase classname="Footer Kontaktdetails rendert den E-Mail-Link mit dem korrekten mailto-Protokoll" name="Footer Kontaktdetails rendert den E-Mail-Link mit dem korrekten mailto-Protokoll" time="0.003">
+    </testcase>
+    <testcase classname="Footer Kontaktdetails zeigt die korrekten Telefonnummern der Hochschule Hof an" name="Footer Kontaktdetails zeigt die korrekten Telefonnummern der Hochschule Hof an" time="0.002">
+    </testcase>
+    <testcase classname="Footer Barrierefreiheit hat keine Barrierefreiheits-Verletzungen (A11y)" name="Footer Barrierefreiheit hat keine Barrierefreiheits-Verletzungen (A11y)" time="0.058">
+    </testcase>
+    <testcase classname="Footer Tastatur-Bedienung unterstützt die Tastaturbedienung und Fokussierung aller interaktiven Links in der richtigen Reihenfolge" name="Footer Tastatur-Bedienung unterstützt die Tastaturbedienung und Fokussierung aller interaktiven Links in der richtigen Reihenfolge" time="0.057">
+    </testcase>
+  </testsuite>
+  <testsuite name="UpgradeModal" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="0.973" tests="3">
+    <testcase classname="UpgradeModal hat keine A11y-Violations" name="UpgradeModal hat keine A11y-Violations" time="0.15">
+    </testcase>
+    <testcase classname="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" name="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" time="0.017">
+    </testcase>
+    <testcase classname="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" name="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="UpgradeTierSelect" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:08" time="0.931" tests="4">
+    <testcase classname="UpgradeTierSelect hat keine A11y-Violations" name="UpgradeTierSelect hat keine A11y-Violations" time="0.124">
+    </testcase>
+    <testcase classname="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" name="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" time="0.004">
+    </testcase>
+    <testcase classname="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" name="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" time="0.027">
+    </testcase>
+    <testcase classname="UpgradeTierSelect zeigt den Ladezustand des Buttons an" name="UpgradeTierSelect zeigt den Ladezustand des Buttons an" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="TierCard" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="0.98" tests="6">
+    <testcase classname="TierCard hat keine A11y-Violations" name="TierCard hat keine A11y-Violations" time="0.131">
+    </testcase>
+    <testcase classname="TierCard rendert die Details des Pakets korrekt" name="TierCard rendert die Details des Pakets korrekt" time="0.01">
+    </testcase>
+    <testcase classname="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" name="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" time="0.003">
+    </testcase>
+    <testcase classname="TierCard ruft onSelect bei Klick auf Auswählen auf" name="TierCard ruft onSelect bei Klick auf Auswählen auf" time="0.021">
+    </testcase>
+    <testcase classname="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" name="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" time="0.012">
+    </testcase>
+    <testcase classname="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" name="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="MobileMenu" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:08" time="0.458" tests="3">
+    <testcase classname="MobileMenu hat keine A11y-Violations" name="MobileMenu hat keine A11y-Violations" time="0.042">
+    </testcase>
+    <testcase classname="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" name="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" time="0.01">
+    </testcase>
+    <testcase classname="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" name="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" time="0.102">
+    </testcase>
+  </testsuite>
+  <testsuite name="CarouselSection" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:08" time="0.568" tests="2">
+    <testcase classname="CarouselSection hat keine A11y-Violations" name="CarouselSection hat keine A11y-Violations" time="0.271">
+    </testcase>
+    <testcase classname="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" name="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" time="0.049">
+    </testcase>
+  </testsuite>
+  <testsuite name="StudentInfoSection-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:08" time="0.633" tests="23">
+    <testcase classname="StudentInfoSection-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen" name="StudentInfoSection-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen" time="0.142">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Hauptüberschrift &quot;Infos für Studierende&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Hauptüberschrift &quot;Infos für Studierende&quot;" time="0.056">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Dein Karrierestart.&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Dein Karrierestart.&quot;" time="0.027">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Tipps für deinen Messebesuch&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Tipps für deinen Messebesuch&quot;" time="0.007">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit korrektem aria-labelledby" name="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit korrektem aria-labelledby" time="0.011">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit der ID student-info" name="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit der ID student-info" time="0.004">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Jobs &amp; Praktika&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Jobs &amp; Praktika&quot; mit Beschreibung" time="0.007">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Networking&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Networking&quot; mit Beschreibung" time="0.005">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;CV-Check&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;CV-Check&quot; mit Beschreibung" time="0.005">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Messe-App&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Messe-App&quot; mit Beschreibung" time="0.01">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert genau 4 Feature-Items" name="StudentInfoSection-Komponente Feature-Items Rendering rendert genau 4 Feature-Items" time="0.007">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert alle 8 Tipps als Listenelemente" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert alle 8 Tipps als Listenelemente" time="0.014">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert die Tipps als ungeordnete Liste" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert die Tipps als ungeordnete Liste" time="0.007">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert genau 8 Listenelemente" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert genau 8 Listenelemente" time="0.013">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Streifen als aria-hidden" name="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Streifen als aria-hidden" time="0.006">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Trennlinien als aria-hidden" name="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Trennlinien als aria-hidden" time="0.006">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Layout und Styling setzt data-navbar=&quot;light&quot; auf der Sektion" name="StudentInfoSection-Komponente Layout und Styling setzt data-navbar=&quot;light&quot; auf der Sektion" time="0.012">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Hauptüberschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Hauptüberschrift" time="0.019">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Karrierestart-Überschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Karrierestart-Überschrift" time="0.007">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Tipps-Überschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Tipps-Überschrift" time="0.009">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der einzelnen Tipps-Listenelemente" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der einzelnen Tipps-Listenelemente" time="0.006">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus setzt tabIndex=0 auf alle Tipps-Listenelemente" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus setzt tabIndex=0 auf alle Tipps-Listenelemente" time="0.015">
+    </testcase>
+    <testcase classname="StudentInfoSection-Komponente Heading-Hierarchie rendert die korrekte Heading-Hierarchie (h2 → h3)" name="StudentInfoSection-Komponente Heading-Hierarchie rendert die korrekte Heading-Hierarchie (h2 → h3)" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.313" tests="4">
+    <testcase classname="Header hat keine A11y-Violations im unauthentifizierten Zustand" name="Header hat keine A11y-Violations im unauthentifizierten Zustand" time="0.063">
+    </testcase>
+    <testcase classname="Header zeigt Anmelde-Link wenn nicht eingeloggt" name="Header zeigt Anmelde-Link wenn nicht eingeloggt" time="0.01">
+    </testcase>
+    <testcase classname="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" name="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" time="0.011">
+    </testcase>
+    <testcase classname="Header zeigt den Admin-Link wenn der Nutzer Admin ist" name="Header zeigt den Admin-Link wenn der Nutzer Admin ist" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:08" time="0.914" tests="4">
+    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.264">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.153">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.126">
+    </testcase>
+    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.094">
+    </testcase>
+  </testsuite>
+  <testsuite name="CTABanner" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.351" tests="7">
+    <testcase classname="CTABanner rendert das Element initial korrekt" name="CTABanner rendert das Element initial korrekt" time="0.041">
+    </testcase>
+    <testcase classname="CTABanner hat keine Barrierefreiheitsverstöße nach axe" name="CTABanner hat keine Barrierefreiheitsverstöße nach axe" time="0.028">
+    </testcase>
+    <testcase classname="CTABanner ermöglicht Tastaturfokussierung und Tab-Reihenfolge" name="CTABanner ermöglicht Tastaturfokussierung und Tab-Reihenfolge" time="0.021">
+    </testcase>
+    <testcase classname="CTABanner führt beim Drücken der Enter-Taste auf dem Link eine Navigation aus" name="CTABanner führt beim Drücken der Enter-Taste auf dem Link eine Navigation aus" time="0.037">
+    </testcase>
+    <testcase classname="CTABanner führt beim Drücken der Leertaste auf dem Link eine Navigation aus" name="CTABanner führt beim Drücken der Leertaste auf dem Link eine Navigation aus" time="0.016">
+    </testcase>
+    <testcase classname="CTABanner behandelt Escape-Tastendruck ohne Fehlverhalten" name="CTABanner behandelt Escape-Tastendruck ohne Fehlverhalten" time="0.007">
+    </testcase>
+    <testcase classname="CTABanner reagiert auf Mausklick auf den Link mit Navigation" name="CTABanner reagiert auf Mausklick auf den Link mit Navigation" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="KeywordAnimation-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.297" tests="6">
+    <testcase classname="KeywordAnimation-Komponente rendert das Element initial korrekt" name="KeywordAnimation-Komponente rendert das Element initial korrekt" time="0.003">
+    </testcase>
+    <testcase classname="KeywordAnimation-Komponente zeigt das Element nach Verzögerung sichtbar an" name="KeywordAnimation-Komponente zeigt das Element nach Verzögerung sichtbar an" time="0.026">
+    </testcase>
+    <testcase classname="KeywordAnimation-Komponente verhält sich korrekt bei delay = 0 und sofortiger Anzeige" name="KeywordAnimation-Komponente verhält sich korrekt bei delay = 0 und sofortiger Anzeige" time="0.01">
+    </testcase>
+    <testcase classname="KeywordAnimation-Komponente bereinigt den Timer beim Unmount, sodass kein Fehler entsteht" name="KeywordAnimation-Komponente bereinigt den Timer beim Unmount, sodass kein Fehler entsteht" time="0">
+    </testcase>
+    <testcase classname="KeywordAnimation-Komponente ist nicht fokusierbar und beeinflusst die Tastaturnavigation nicht" name="KeywordAnimation-Komponente ist nicht fokusierbar und beeinflusst die Tastaturnavigation nicht" time="0.022">
+    </testcase>
+    <testcase classname="KeywordAnimation-Komponente reagiert nicht auf Enter, Space oder Escape, wenn keine Interaktivität vorhanden ist" name="KeywordAnimation-Komponente reagiert nicht auf Enter, Space oder Escape, wenn keine Interaktivität vorhanden ist" time="0.035">
+    </testcase>
+  </testsuite>
+  <testsuite name="CountdownSection - Komponententests" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.296" tests="8">
+    <testcase classname="CountdownSection - Komponententests rendert das Element initial korrekt" name="CountdownSection - Komponententests rendert das Element initial korrekt" time="0.057">
+    </testcase>
+    <testcase classname="CountdownSection - Komponententests aktualisiert die Anzeige jede Minute" name="CountdownSection - Komponententests aktualisiert die Anzeige jede Minute" time="0.007">
     </testcase>
     <testcase classname="CountdownSection - Komponententests ist barrierefrei nach dem Rendern" name="CountdownSection - Komponententests ist barrierefrei nach dem Rendern" time="0.027">
     </testcase>
-    <testcase classname="CountdownSection - Komponententests zeigt Meldung an, wenn das Event bereits vorbei ist" name="CountdownSection - Komponententests zeigt Meldung an, wenn das Event bereits vorbei ist" time="0.013">
+    <testcase classname="CountdownSection - Komponententests zeigt Meldung an, wenn das Event bereits vorbei ist" name="CountdownSection - Komponententests zeigt Meldung an, wenn das Event bereits vorbei ist" time="0.006">
     </testcase>
-    <testcase classname="CountdownSection - Komponententests ist mit der Tastatur fokussierbar und reagiert auf Enter/Space/Escape ohne Fehler" name="CountdownSection - Komponententests ist mit der Tastatur fokussierbar und reagiert auf Enter/Space/Escape ohne Fehler" time="0.019">
+    <testcase classname="CountdownSection - Komponententests ist mit der Tastatur fokussierbar und reagiert auf Enter/Space/Escape ohne Fehler" name="CountdownSection - Komponententests ist mit der Tastatur fokussierbar und reagiert auf Enter/Space/Escape ohne Fehler" time="0.02">
     </testcase>
-    <testcase classname="CountdownSection - Komponententests zeigt dekorative Elemente als aria-hidden an und hat für jede Einheit ein korrektes aria-label" name="CountdownSection - Komponententests zeigt dekorative Elemente als aria-hidden an und hat für jede Einheit ein korrektes aria-label" time="0.004">
+    <testcase classname="CountdownSection - Komponententests zeigt dekorative Elemente als aria-hidden an und hat für jede Einheit ein korrektes aria-label" name="CountdownSection - Komponententests zeigt dekorative Elemente als aria-hidden an und hat für jede Einheit ein korrektes aria-label" time="0.006">
     </testcase>
-    <testcase classname="CountdownSection - Komponententests rendert das Standardziel korrekt und zeigt das formatierte Datum" name="CountdownSection - Komponententests rendert das Standardziel korrekt und zeigt das formatierte Datum" time="0.004">
+    <testcase classname="CountdownSection - Komponententests rendert das Standardziel korrekt und zeigt das formatierte Datum" name="CountdownSection - Komponententests rendert das Standardziel korrekt und zeigt das formatierte Datum" time="0.007">
     </testcase>
     <testcase classname="CountdownSection - Komponententests verursacht kein setState-after-unmount wenn der Timer weiterläuft" name="CountdownSection - Komponententests verursacht kein setState-after-unmount wenn der Timer weiterläuft" time="0.006">
     </testcase>
   </testsuite>
-  <testsuite name="UpgradeTierSelect" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="0.861" tests="4">
-    <testcase classname="UpgradeTierSelect hat keine A11y-Violations" name="UpgradeTierSelect hat keine A11y-Violations" time="0.095">
+  <testsuite name="TestimonialSection" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="2.125" tests="40">
+    <testcase classname="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Standardzustand" name="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Standardzustand" time="0.371">
     </testcase>
-    <testcase classname="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" name="UpgradeTierSelect rendert den Namen des Zielpakets und die Differenzkosten" time="0.007">
+    <testcase classname="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen in der mobilen Ansicht" name="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen in der mobilen Ansicht" time="0.113">
     </testcase>
-    <testcase classname="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" name="UpgradeTierSelect ruft onUpgrade bei Klick auf Upgrade auf" time="0.026">
+    <testcase classname="TestimonialSection Initiales Rendering rendert die Überschrift &quot;Was andere sagen&quot; korrekt" name="TestimonialSection Initiales Rendering rendert die Überschrift &quot;Was andere sagen&quot; korrekt" time="0.024">
     </testcase>
-    <testcase classname="UpgradeTierSelect zeigt den Ladezustand des Buttons an" name="UpgradeTierSelect zeigt den Ladezustand des Buttons an" time="0.003">
+    <testcase classname="TestimonialSection Initiales Rendering rendert die Karussell-Region mit korrekter ARIA-Beschreibung" name="TestimonialSection Initiales Rendering rendert die Karussell-Region mit korrekter ARIA-Beschreibung" time="0.031">
     </testcase>
-  </testsuite>
-  <testsuite name="TierCard" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="0.93" tests="6">
-    <testcase classname="TierCard hat keine A11y-Violations" name="TierCard hat keine A11y-Violations" time="0.108">
+    <testcase classname="TestimonialSection Initiales Rendering rendert den Navigationsbutton für vorherige Testimonials" name="TestimonialSection Initiales Rendering rendert den Navigationsbutton für vorherige Testimonials" time="0.051">
     </testcase>
-    <testcase classname="TierCard rendert die Details des Pakets korrekt" name="TierCard rendert die Details des Pakets korrekt" time="0.005">
+    <testcase classname="TestimonialSection Initiales Rendering rendert den Navigationsbutton für nächste Testimonials" name="TestimonialSection Initiales Rendering rendert den Navigationsbutton für nächste Testimonials" time="0.045">
     </testcase>
-    <testcase classname="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" name="TierCard zeigt den Sponsor-Rabatt an, wenn der User Sponsor ist" time="0.004">
+    <testcase classname="TestimonialSection Initiales Rendering rendert alle Testimonial-Zitate der ersten Seite im Desktop-Modus" name="TestimonialSection Initiales Rendering rendert alle Testimonial-Zitate der ersten Seite im Desktop-Modus" time="0.032">
     </testcase>
-    <testcase classname="TierCard ruft onSelect bei Klick auf Auswählen auf" name="TierCard ruft onSelect bei Klick auf Auswählen auf" time="0.03">
+    <testcase classname="TestimonialSection Initiales Rendering rendert die Namen und Rollen der Testimonial-Autoren" name="TestimonialSection Initiales Rendering rendert die Namen und Rollen der Testimonial-Autoren" time="0.018">
     </testcase>
-    <testcase classname="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" name="TierCard ist ausgegraut und zeigt Ausverkauft an, wenn nicht verfügbar" time="0.003">
+    <testcase classname="TestimonialSection Initiales Rendering rendert die Paginierungs-Punkte als Buttons" name="TestimonialSection Initiales Rendering rendert die Paginierungs-Punkte als Buttons" time="0.017">
     </testcase>
-    <testcase classname="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" name="TierCard zeigt Ausgewählt an, wenn das Paket selektiert ist" time="0.005">
+    <testcase classname="TestimonialSection Initiales Rendering markiert den ersten Paginierungs-Punkt als aktiv" name="TestimonialSection Initiales Rendering markiert den ersten Paginierungs-Punkt als aktiv" time="0.017">
     </testcase>
-  </testsuite>
-  <testsuite name="FAQSection und FAQAccordion" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="1.215" tests="4">
-    <testcase classname="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" name="FAQSection und FAQAccordion hat keine Barrierefreiheitsverletzungen (A11y-Violations)" time="0.224">
+    <testcase classname="TestimonialSection Initiales Rendering rendert Testimonial-Karten als blockquote-Elemente" name="TestimonialSection Initiales Rendering rendert Testimonial-Karten als blockquote-Elemente" time="0.011">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" name="FAQSection und FAQAccordion rendert alle FAQ-Kategorien und Standardfragen korrekt" time="0.115">
+    <testcase classname="TestimonialSection Initiales Rendering rendert die Folien-Gruppen mit korrekter ARIA-Beschreibung" name="TestimonialSection Initiales Rendering rendert die Folien-Gruppen mit korrekter ARIA-Beschreibung" time="0.034">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" name="FAQSection und FAQAccordion öffnet und schließt Akkordeon-Inhalt bei Klick auf den Trigger" time="0.094">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) zeigt 2 Seiten für 6 Testimonials im Desktop-Modus an" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) zeigt 2 Seiten für 6 Testimonials im Desktop-Modus an" time="0.025">
     </testcase>
-    <testcase classname="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" name="FAQSection und FAQAccordion unterstützt Tastaturbedienung über die Enter-Taste auf dem fokussierten Element" time="0.052">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur nächsten Seite beim Klick auf den Weiter-Button" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur nächsten Seite beim Klick auf den Weiter-Button" time="0.061">
     </testcase>
-  </testsuite>
-  <testsuite name="CarouselSection" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.363" tests="2">
-    <testcase classname="CarouselSection hat keine A11y-Violations" name="CarouselSection hat keine A11y-Violations" time="0.172">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur vorherigen Seite beim Klick auf den Zurück-Button" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur vorherigen Seite beim Klick auf den Zurück-Button" time="0.039">
     </testcase>
-    <testcase classname="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" name="CarouselSection rendert den Pause-Button initial und wechselt zu Play bei Klick" time="0.032">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der letzten Seite zur ersten beim Klick auf Weiter" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der letzten Seite zur ersten beim Klick auf Weiter" time="0.038">
     </testcase>
-  </testsuite>
-  <testsuite name="MobileMenu" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.299" tests="3">
-    <testcase classname="MobileMenu hat keine A11y-Violations" name="MobileMenu hat keine A11y-Violations" time="0.038">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der ersten Seite zur letzten beim Klick auf Zurück" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der ersten Seite zur letzten beim Klick auf Zurück" time="0.025">
     </testcase>
-    <testcase classname="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" name="MobileMenu rendert den Hamburger-Button mit korrekten ARIA-Attributen" time="0.005">
+    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt die Seite beim Klick auf einen Paginierungs-Punkt" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt die Seite beim Klick auf einen Paginierungs-Punkt" time="0.018">
     </testcase>
-    <testcase classname="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" name="MobileMenu öffnet das Menü bei Klick und zeigt die Links an" time="0.047">
+    <testcase classname="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) zeigt 6 Paginierungs-Punkte im mobilen Modus an" name="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) zeigt 6 Paginierungs-Punkte im mobilen Modus an" time="0.026">
     </testcase>
-  </testsuite>
-  <testsuite name="StudentInfoSection-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.414" tests="23">
-    <testcase classname="StudentInfoSection-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen" name="StudentInfoSection-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen" time="0.068">
+    <testcase classname="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) rendert 6 Folien-Gruppen im mobilen Modus" name="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) rendert 6 Folien-Gruppen im mobilen Modus" time="0.019">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Hauptüberschrift &quot;Infos für Studierende&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Hauptüberschrift &quot;Infos für Studierende&quot;" time="0.019">
+    <testcase classname="TestimonialSection Touch-Navigation wechselt zur nächsten Seite bei einem Swipe nach links" name="TestimonialSection Touch-Navigation wechselt zur nächsten Seite bei einem Swipe nach links" time="0.018">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Dein Karrierestart.&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Dein Karrierestart.&quot;" time="0.005">
+    <testcase classname="TestimonialSection Touch-Navigation wechselt zur vorherigen Seite bei einem Swipe nach rechts" name="TestimonialSection Touch-Navigation wechselt zur vorherigen Seite bei einem Swipe nach rechts" time="0.016">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Tipps für deinen Messebesuch&quot;" name="StudentInfoSection-Komponente Initiales Rendering rendert die Unter-Überschrift &quot;Tipps für deinen Messebesuch&quot;" time="0.016">
+    <testcase classname="TestimonialSection Touch-Navigation ignoriert einen Swipe mit weniger als 50px Distanz" name="TestimonialSection Touch-Navigation ignoriert einen Swipe mit weniger als 50px Distanz" time="0.015">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit korrektem aria-labelledby" name="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit korrektem aria-labelledby" time="0.003">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Überschrift" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Überschrift" time="0.011">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit der ID student-info" name="StudentInfoSection-Komponente Initiales Rendering rendert die Sektion mit der ID student-info" time="0.004">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Navigationsbuttons über Tab-Taste" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Navigationsbuttons über Tab-Taste" time="0.013">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Jobs &amp; Praktika&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Jobs &amp; Praktika&quot; mit Beschreibung" time="0.004">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Paginierungs-Punkte" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Paginierungs-Punkte" time="0.013">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Networking&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Networking&quot; mit Beschreibung" time="0.005">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus aktiviert den Weiter-Button mit Enter-Taste" name="TestimonialSection Tastaturbedienung und Fokus aktiviert den Weiter-Button mit Enter-Taste" time="0.022">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;CV-Check&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;CV-Check&quot; mit Beschreibung" time="0.018">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus aktiviert den Paginierungs-Punkt mit Space-Taste" name="TestimonialSection Tastaturbedienung und Fokus aktiviert den Paginierungs-Punkt mit Space-Taste" time="0.018">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Messe-App&quot; mit Beschreibung" name="StudentInfoSection-Komponente Feature-Items Rendering rendert das Feature &quot;Messe-App&quot; mit Beschreibung" time="0.003">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus setzt den Fokus auf eine Testimonial-Karte der aktiven Seite" name="TestimonialSection Tastaturbedienung und Fokus setzt den Fokus auf eine Testimonial-Karte der aktiven Seite" time="0.018">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Feature-Items Rendering rendert genau 4 Feature-Items" name="StudentInfoSection-Komponente Feature-Items Rendering rendert genau 4 Feature-Items" time="0.004">
+    <testcase classname="TestimonialSection Tastaturbedienung und Fokus setzt tabindex=-1 auf Testimonial-Karten inaktiver Seiten" name="TestimonialSection Tastaturbedienung und Fokus setzt tabindex=-1 auf Testimonial-Karten inaktiver Seiten" time="0.029">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert alle 8 Tipps als Listenelemente" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert alle 8 Tipps als Listenelemente" time="0.006">
+    <testcase classname="TestimonialSection IntersectionObserver und Animation beobachtet die Sektion mit dem IntersectionObserver" name="TestimonialSection IntersectionObserver und Animation beobachtet die Sektion mit dem IntersectionObserver" time="0.015">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert die Tipps als ungeordnete Liste" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert die Tipps als ungeordnete Liste" time="0.004">
+    <testcase classname="TestimonialSection IntersectionObserver und Animation stoppt die Beobachtung nach dem ersten Erscheinen" name="TestimonialSection IntersectionObserver und Animation stoppt die Beobachtung nach dem ersten Erscheinen" time="0.011">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tipps-Liste Rendering rendert genau 8 Listenelemente" name="StudentInfoSection-Komponente Tipps-Liste Rendering rendert genau 8 Listenelemente" time="0.005">
+    <testcase classname="TestimonialSection IntersectionObserver und Animation löst keine Sichtbarkeit aus, wenn die Sektion nicht sichtbar ist" name="TestimonialSection IntersectionObserver und Animation löst keine Sichtbarkeit aus, wenn die Sektion nicht sichtbar ist" time="0.005">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Streifen als aria-hidden" name="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Streifen als aria-hidden" time="0.003">
+    <testcase classname="TestimonialSection IntersectionObserver und Animation setzt Sichtbarkeit sofort bei prefers-reduced-motion" name="TestimonialSection IntersectionObserver und Animation setzt Sichtbarkeit sofort bei prefers-reduced-motion" time="0.014">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Trennlinien als aria-hidden" name="StudentInfoSection-Komponente Layout und Styling rendert die dekorativen Trennlinien als aria-hidden" time="0.004">
+    <testcase classname="TestimonialSection Layout und Styling rendert die dekorativen Streifenelemente als aria-hidden" name="TestimonialSection Layout und Styling rendert die dekorativen Streifenelemente als aria-hidden" time="0.014">
     </testcase>
-    <testcase classname="StudentInfoSection-Komponente Layout und Styling setzt data-navbar=&quot;light&quot; auf der Sektion" name="StudentInfoSection-Komponente Layout und Styling setzt data-navbar=&quot;light&quot; auf der Sektion" time="0.005">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Hauptüberschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Hauptüberschrift" time="0.006">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Karrierestart-Überschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Karrierestart-Überschrift" time="0.005">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Tipps-Überschrift" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der Tipps-Überschrift" time="0.005">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der einzelnen Tipps-Listenelemente" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren der einzelnen Tipps-Listenelemente" time="0.003">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Tastaturbedienung und Fokus setzt tabIndex=0 auf alle Tipps-Listenelemente" name="StudentInfoSection-Komponente Tastaturbedienung und Fokus setzt tabIndex=0 auf alle Tipps-Listenelemente" time="0.005">
-    </testcase>
-    <testcase classname="StudentInfoSection-Komponente Heading-Hierarchie rendert die korrekte Heading-Hierarchie (h2 → h3)" name="StudentInfoSection-Komponente Heading-Hierarchie rendert die korrekte Heading-Hierarchie (h2 → h3)" time="0.007">
-    </testcase>
-  </testsuite>
-  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.223" tests="4">
-    <testcase classname="Header hat keine A11y-Violations im unauthentifizierten Zustand" name="Header hat keine A11y-Violations im unauthentifizierten Zustand" time="0.036">
-    </testcase>
-    <testcase classname="Header zeigt Anmelde-Link wenn nicht eingeloggt" name="Header zeigt Anmelde-Link wenn nicht eingeloggt" time="0.025">
-    </testcase>
-    <testcase classname="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" name="Header zeigt den Vornamen des Nutzers und das Dashboard-Link wenn eingeloggt" time="0.009">
-    </testcase>
-    <testcase classname="Header zeigt den Admin-Link wenn der Nutzer Admin ist" name="Header zeigt den Admin-Link wenn der Nutzer Admin ist" time="0.007">
-    </testcase>
-  </testsuite>
-  <testsuite name="useTiers" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.231" tests="7">
-    <testcase classname="useTiers lädt die Pakete erfolgreich" name="useTiers lädt die Pakete erfolgreich" time="0.058">
-    </testcase>
-    <testcase classname="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" name="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" time="0.056">
-    </testcase>
-    <testcase classname="useTiers ruft getTiers nicht auf, wenn eventId fehlt" name="useTiers ruft getTiers nicht auf, wenn eventId fehlt" time="0.001">
-    </testcase>
-    <testcase classname="useTiers erstellt eine Buchung erfolgreich" name="useTiers erstellt eine Buchung erfolgreich" time="0.003">
-    </testcase>
-    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" name="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" time="0.002">
-    </testcase>
-    <testcase classname="useTiers führt Upgrade erfolgreich durch" name="useTiers führt Upgrade erfolgreich durch" time="0.002">
-    </testcase>
-    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" name="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" time="0.003">
-    </testcase>
-  </testsuite>
-  <testsuite name="BookingCTA" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.185" tests="5">
-    <testcase classname="BookingCTA hat keine A11y-Violations" name="BookingCTA hat keine A11y-Violations" time="0.025">
-    </testcase>
-    <testcase classname="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" name="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" time="0.003">
-    </testcase>
-    <testcase classname="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" name="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" time="0.002">
-    </testcase>
-    <testcase classname="BookingCTA ruft onCheckout bei Klick auf den Button auf" name="BookingCTA ruft onCheckout bei Klick auf den Button auf" time="0.02">
-    </testcase>
-    <testcase classname="BookingCTA zeigt den Ladezustand des Buttons an" name="BookingCTA zeigt den Ladezustand des Buttons an" time="0.003">
-    </testcase>
-  </testsuite>
-  <testsuite name="CTABanner" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.269" tests="7">
-    <testcase classname="CTABanner rendert das Element initial korrekt" name="CTABanner rendert das Element initial korrekt" time="0.067">
-    </testcase>
-    <testcase classname="CTABanner hat keine Barrierefreiheitsverstöße nach axe" name="CTABanner hat keine Barrierefreiheitsverstöße nach axe" time="0.011">
-    </testcase>
-    <testcase classname="CTABanner ermöglicht Tastaturfokussierung und Tab-Reihenfolge" name="CTABanner ermöglicht Tastaturfokussierung und Tab-Reihenfolge" time="0.024">
-    </testcase>
-    <testcase classname="CTABanner führt beim Drücken der Enter-Taste auf dem Link eine Navigation aus" name="CTABanner führt beim Drücken der Enter-Taste auf dem Link eine Navigation aus" time="0.024">
-    </testcase>
-    <testcase classname="CTABanner führt beim Drücken der Leertaste auf dem Link eine Navigation aus" name="CTABanner führt beim Drücken der Leertaste auf dem Link eine Navigation aus" time="0.013">
-    </testcase>
-    <testcase classname="CTABanner behandelt Escape-Tastendruck ohne Fehlverhalten" name="CTABanner behandelt Escape-Tastendruck ohne Fehlverhalten" time="0.007">
-    </testcase>
-    <testcase classname="CTABanner reagiert auf Mausklick auf den Link mit Navigation" name="CTABanner reagiert auf Mausklick auf den Link mit Navigation" time="0.017">
-    </testcase>
-  </testsuite>
-  <testsuite name="RevealOnScroll-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.117" tests="7">
-    <testcase classname="RevealOnScroll-Komponente rendert die Kind-Elemente korrekt" name="RevealOnScroll-Komponente rendert die Kind-Elemente korrekt" time="0.004">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu und führt unobserve aus, wenn der IntersectionObserver triggert" name="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu und führt unobserve aus, wenn der IntersectionObserver triggert" time="0.002">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu, wenn ein Kind-Element den Fokus erhält" name="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu, wenn ein Kind-Element den Fokus erhält" time="0.004">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente nutzt den übergebenen transition delay style" name="RevealOnScroll-Komponente nutzt den übergebenen transition delay style" time="0.003">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente überspringt den IntersectionObserver, wenn der Nutzer prefers-reduced-motion aktiviert hat" name="RevealOnScroll-Komponente überspringt den IntersectionObserver, wenn der Nutzer prefers-reduced-motion aktiviert hat" time="0.001">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente räumt den Observer und Event Listener beim Unmounten auf" name="RevealOnScroll-Komponente räumt den Observer und Event Listener beim Unmounten auf" time="0.001">
-    </testcase>
-    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible NICHT hinzu, wenn der IntersectionObserver mit isIntersecting: false triggert" name="RevealOnScroll-Komponente fügt die Klasse is-visible NICHT hinzu, wenn der IntersectionObserver mit isIntersecting: false triggert" time="0">
-    </testcase>
-  </testsuite>
-  <testsuite name="TestimonialSection" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="1.613" tests="40">
-    <testcase classname="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Standardzustand" name="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Standardzustand" time="0.174">
-    </testcase>
-    <testcase classname="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen in der mobilen Ansicht" name="TestimonialSection Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen in der mobilen Ansicht" time="0.081">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert die Überschrift &quot;Was andere sagen&quot; korrekt" name="TestimonialSection Initiales Rendering rendert die Überschrift &quot;Was andere sagen&quot; korrekt" time="0.026">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert die Karussell-Region mit korrekter ARIA-Beschreibung" name="TestimonialSection Initiales Rendering rendert die Karussell-Region mit korrekter ARIA-Beschreibung" time="0.025">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert den Navigationsbutton für vorherige Testimonials" name="TestimonialSection Initiales Rendering rendert den Navigationsbutton für vorherige Testimonials" time="0.014">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert den Navigationsbutton für nächste Testimonials" name="TestimonialSection Initiales Rendering rendert den Navigationsbutton für nächste Testimonials" time="0.015">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert alle Testimonial-Zitate der ersten Seite im Desktop-Modus" name="TestimonialSection Initiales Rendering rendert alle Testimonial-Zitate der ersten Seite im Desktop-Modus" time="0.014">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert die Namen und Rollen der Testimonial-Autoren" name="TestimonialSection Initiales Rendering rendert die Namen und Rollen der Testimonial-Autoren" time="0.016">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert die Paginierungs-Punkte als Buttons" name="TestimonialSection Initiales Rendering rendert die Paginierungs-Punkte als Buttons" time="0.014">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering markiert den ersten Paginierungs-Punkt als aktiv" name="TestimonialSection Initiales Rendering markiert den ersten Paginierungs-Punkt als aktiv" time="0.016">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert Testimonial-Karten als blockquote-Elemente" name="TestimonialSection Initiales Rendering rendert Testimonial-Karten als blockquote-Elemente" time="0.018">
-    </testcase>
-    <testcase classname="TestimonialSection Initiales Rendering rendert die Folien-Gruppen mit korrekter ARIA-Beschreibung" name="TestimonialSection Initiales Rendering rendert die Folien-Gruppen mit korrekter ARIA-Beschreibung" time="0.012">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) zeigt 2 Seiten für 6 Testimonials im Desktop-Modus an" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) zeigt 2 Seiten für 6 Testimonials im Desktop-Modus an" time="0.029">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur nächsten Seite beim Klick auf den Weiter-Button" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur nächsten Seite beim Klick auf den Weiter-Button" time="0.031">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur vorherigen Seite beim Klick auf den Zurück-Button" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt zur vorherigen Seite beim Klick auf den Zurück-Button" time="0.025">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der letzten Seite zur ersten beim Klick auf Weiter" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der letzten Seite zur ersten beim Klick auf Weiter" time="0.021">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der ersten Seite zur letzten beim Klick auf Zurück" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) springt von der ersten Seite zur letzten beim Klick auf Zurück" time="0.019">
-    </testcase>
-    <testcase classname="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt die Seite beim Klick auf einen Paginierungs-Punkt" name="TestimonialSection Desktop-Paginierung (3 Karten pro Seite) wechselt die Seite beim Klick auf einen Paginierungs-Punkt" time="0.013">
-    </testcase>
-    <testcase classname="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) zeigt 6 Paginierungs-Punkte im mobilen Modus an" name="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) zeigt 6 Paginierungs-Punkte im mobilen Modus an" time="0.025">
-    </testcase>
-    <testcase classname="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) rendert 6 Folien-Gruppen im mobilen Modus" name="TestimonialSection Mobile-Ansicht (1 Karte pro Seite) rendert 6 Folien-Gruppen im mobilen Modus" time="0.026">
-    </testcase>
-    <testcase classname="TestimonialSection Touch-Navigation wechselt zur nächsten Seite bei einem Swipe nach links" name="TestimonialSection Touch-Navigation wechselt zur nächsten Seite bei einem Swipe nach links" time="0.038">
-    </testcase>
-    <testcase classname="TestimonialSection Touch-Navigation wechselt zur vorherigen Seite bei einem Swipe nach rechts" name="TestimonialSection Touch-Navigation wechselt zur vorherigen Seite bei einem Swipe nach rechts" time="0.014">
-    </testcase>
-    <testcase classname="TestimonialSection Touch-Navigation ignoriert einen Swipe mit weniger als 50px Distanz" name="TestimonialSection Touch-Navigation ignoriert einen Swipe mit weniger als 50px Distanz" time="0.021">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Überschrift" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Überschrift" time="0.012">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Navigationsbuttons über Tab-Taste" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Navigationsbuttons über Tab-Taste" time="0.011">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Paginierungs-Punkte" name="TestimonialSection Tastaturbedienung und Fokus erlaubt das Fokussieren der Paginierungs-Punkte" time="0.01">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus aktiviert den Weiter-Button mit Enter-Taste" name="TestimonialSection Tastaturbedienung und Fokus aktiviert den Weiter-Button mit Enter-Taste" time="0.018">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus aktiviert den Paginierungs-Punkt mit Space-Taste" name="TestimonialSection Tastaturbedienung und Fokus aktiviert den Paginierungs-Punkt mit Space-Taste" time="0.016">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus setzt den Fokus auf eine Testimonial-Karte der aktiven Seite" name="TestimonialSection Tastaturbedienung und Fokus setzt den Fokus auf eine Testimonial-Karte der aktiven Seite" time="0.016">
-    </testcase>
-    <testcase classname="TestimonialSection Tastaturbedienung und Fokus setzt tabindex=-1 auf Testimonial-Karten inaktiver Seiten" name="TestimonialSection Tastaturbedienung und Fokus setzt tabindex=-1 auf Testimonial-Karten inaktiver Seiten" time="0.016">
-    </testcase>
-    <testcase classname="TestimonialSection IntersectionObserver und Animation beobachtet die Sektion mit dem IntersectionObserver" name="TestimonialSection IntersectionObserver und Animation beobachtet die Sektion mit dem IntersectionObserver" time="0.005">
-    </testcase>
-    <testcase classname="TestimonialSection IntersectionObserver und Animation stoppt die Beobachtung nach dem ersten Erscheinen" name="TestimonialSection IntersectionObserver und Animation stoppt die Beobachtung nach dem ersten Erscheinen" time="0.007">
-    </testcase>
-    <testcase classname="TestimonialSection IntersectionObserver und Animation löst keine Sichtbarkeit aus, wenn die Sektion nicht sichtbar ist" name="TestimonialSection IntersectionObserver und Animation löst keine Sichtbarkeit aus, wenn die Sektion nicht sichtbar ist" time="0.006">
-    </testcase>
-    <testcase classname="TestimonialSection IntersectionObserver und Animation setzt Sichtbarkeit sofort bei prefers-reduced-motion" name="TestimonialSection IntersectionObserver und Animation setzt Sichtbarkeit sofort bei prefers-reduced-motion" time="0.011">
-    </testcase>
-    <testcase classname="TestimonialSection Layout und Styling rendert die dekorativen Streifenelemente als aria-hidden" name="TestimonialSection Layout und Styling rendert die dekorativen Streifenelemente als aria-hidden" time="0.012">
-    </testcase>
-    <testcase classname="TestimonialSection Layout und Styling rendert die Sektion mit dem aria-labelledby-Attribut" name="TestimonialSection Layout und Styling rendert die Sektion mit dem aria-labelledby-Attribut" time="0.008">
+    <testcase classname="TestimonialSection Layout und Styling rendert die Sektion mit dem aria-labelledby-Attribut" name="TestimonialSection Layout und Styling rendert die Sektion mit dem aria-labelledby-Attribut" time="0.017">
     </testcase>
     <testcase classname="TestimonialSection Layout und Styling rendert den Live-Bereich mit aria-live=&quot;polite&quot;" name="TestimonialSection Layout und Styling rendert den Live-Bereich mit aria-live=&quot;polite&quot;" time="0.009">
     </testcase>
-    <testcase classname="TestimonialSection Layout und Styling wendet den korrekten Transform-Stil auf den Slider an" name="TestimonialSection Layout und Styling wendet den korrekten Transform-Stil auf den Slider an" time="0.01">
+    <testcase classname="TestimonialSection Layout und Styling wendet den korrekten Transform-Stil auf den Slider an" name="TestimonialSection Layout und Styling wendet den korrekten Transform-Stil auf den Slider an" time="0.012">
     </testcase>
-    <testcase classname="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite, wenn eine Karte auf einer anderen Seite fokussiert wird" name="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite, wenn eine Karte auf einer anderen Seite fokussiert wird" time="0.018">
+    <testcase classname="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite, wenn eine Karte auf einer anderen Seite fokussiert wird" name="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite, wenn eine Karte auf einer anderen Seite fokussiert wird" time="0.028">
     </testcase>
     <testcase classname="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite NICHT, wenn eine Karte auf der bereits aktiven Seite fokussiert wird" name="TestimonialSection Fokus-Wechsel bei Karussell-Navigation wechselt die aktive Seite NICHT, wenn eine Karte auf der bereits aktiven Seite fokussiert wird" time="0.019">
     </testcase>
   </testsuite>
-  <testsuite name="KeywordAnimation-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.209" tests="6">
-    <testcase classname="KeywordAnimation-Komponente rendert das Element initial korrekt" name="KeywordAnimation-Komponente rendert das Element initial korrekt" time="0.002">
+  <testsuite name="BookingCTA" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.3" tests="5">
+    <testcase classname="BookingCTA hat keine A11y-Violations" name="BookingCTA hat keine A11y-Violations" time="0.021">
     </testcase>
-    <testcase classname="KeywordAnimation-Komponente zeigt das Element nach Verzögerung sichtbar an" name="KeywordAnimation-Komponente zeigt das Element nach Verzögerung sichtbar an" time="0.011">
+    <testcase classname="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" name="BookingCTA rendert die Buchungszusammenfassung für Nicht-Sponsoren korrekt" time="0.007">
     </testcase>
-    <testcase classname="KeywordAnimation-Komponente verhält sich korrekt bei delay = 0 und sofortiger Anzeige" name="KeywordAnimation-Komponente verhält sich korrekt bei delay = 0 und sofortiger Anzeige" time="0.024">
+    <testcase classname="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" name="BookingCTA rendert Rabatte und Gesamtpreis für Sponsoren korrekt" time="0.006">
     </testcase>
-    <testcase classname="KeywordAnimation-Komponente bereinigt den Timer beim Unmount, sodass kein Fehler entsteht" name="KeywordAnimation-Komponente bereinigt den Timer beim Unmount, sodass kein Fehler entsteht" time="0.001">
+    <testcase classname="BookingCTA ruft onCheckout bei Klick auf den Button auf" name="BookingCTA ruft onCheckout bei Klick auf den Button auf" time="0.092">
     </testcase>
-    <testcase classname="KeywordAnimation-Komponente ist nicht fokusierbar und beeinflusst die Tastaturnavigation nicht" name="KeywordAnimation-Komponente ist nicht fokusierbar und beeinflusst die Tastaturnavigation nicht" time="0.029">
-    </testcase>
-    <testcase classname="KeywordAnimation-Komponente reagiert nicht auf Enter, Space oder Escape, wenn keine Interaktivität vorhanden ist" name="KeywordAnimation-Komponente reagiert nicht auf Enter, Space oder Escape, wenn keine Interaktivität vorhanden ist" time="0.02">
+    <testcase classname="BookingCTA zeigt den Ladezustand des Buttons an" name="BookingCTA zeigt den Ladezustand des Buttons an" time="0.004">
     </testcase>
   </testsuite>
-  <testsuite name="TierList" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.177" tests="3">
-    <testcase classname="TierList hat keine A11y-Violations" name="TierList hat keine A11y-Violations" time="0.039">
+  <testsuite name="useTiers" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.362" tests="7">
+    <testcase classname="useTiers lädt die Pakete erfolgreich" name="useTiers lädt die Pakete erfolgreich" time="0.057">
     </testcase>
-    <testcase classname="TierList rendert eine Liste von Paket-Karten" name="TierList rendert eine Liste von Paket-Karten" time="0.002">
+    <testcase classname="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" name="useTiers setzt den Fehlerzustand bei fehlgeschlagenem API-Call" time="0.055">
     </testcase>
-    <testcase classname="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" name="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" time="0.001">
+    <testcase classname="useTiers ruft getTiers nicht auf, wenn eventId fehlt" name="useTiers ruft getTiers nicht auf, wenn eventId fehlt" time="0.001">
+    </testcase>
+    <testcase classname="useTiers erstellt eine Buchung erfolgreich" name="useTiers erstellt eine Buchung erfolgreich" time="0.007">
+    </testcase>
+    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" name="useTiers setzt Fehlerzustand bei fehlgeschlagener Buchung" time="0.021">
+    </testcase>
+    <testcase classname="useTiers führt Upgrade erfolgreich durch" name="useTiers führt Upgrade erfolgreich durch" time="0.041">
+    </testcase>
+    <testcase classname="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" name="useTiers setzt Fehlerzustand bei fehlgeschlagenem Upgrade" time="0.021">
     </testcase>
   </testsuite>
-  <testsuite name="UpgradeModal" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.226" tests="3">
-    <testcase classname="UpgradeModal hat keine A11y-Violations" name="UpgradeModal hat keine A11y-Violations" time="0.024">
+  <testsuite name="EventInfoSection" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="2.355" tests="65">
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" name="EventInfoSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" time="0.622">
     </testcase>
-    <testcase classname="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" name="UpgradeModal rendert das Modal mit aktuellem Paket und Upgrade-Kandidaten" time="0.011">
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert den Section-Container mit korrektem ID und Data-Attribut" name="EventInfoSection Barrierefreiheit und Rendering rendert den Section-Container mit korrektem ID und Data-Attribut" time="0.013">
     </testcase>
-    <testcase classname="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" name="UpgradeModal zeigt einen Hinweis, wenn keine höheren Pakete verfügbar sind" time="0.013">
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Hauptüberschrift mit korrektem Inhalt" name="EventInfoSection Barrierefreiheit und Rendering rendert die Hauptüberschrift mit korrektem Inhalt" time="0.017">
+    </testcase>
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit tabIndex 0 für Tastaturbedienung" name="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit tabIndex 0 für Tastaturbedienung" time="0.017">
+    </testcase>
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit Focus-Ring-Klasse" name="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit Focus-Ring-Klasse" time="0.016">
+    </testcase>
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Veranstaltungsdetail-Liste mit korrektem ARIA-Label" name="EventInfoSection Barrierefreiheit und Rendering rendert die Veranstaltungsdetail-Liste mit korrektem ARIA-Label" time="0.011">
+    </testcase>
+    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert genau drei Listenpunkte mit Veranstaltungsinformationen" name="EventInfoSection Barrierefreiheit und Rendering rendert genau drei Listenpunkte mit Veranstaltungsinformationen" time="0.016">
+    </testcase>
+    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt den korrekten Veranstaltungsort an" name="EventInfoSection Veranstaltungsinformationen zeigt den korrekten Veranstaltungsort an" time="0.014">
+    </testcase>
+    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt die korrekte Veranstaltungszeit an" name="EventInfoSection Veranstaltungsinformationen zeigt die korrekte Veranstaltungszeit an" time="0.012">
+    </testcase>
+    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt die korrekten Parkplatz-Informationen an" name="EventInfoSection Veranstaltungsinformationen zeigt die korrekten Parkplatz-Informationen an" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Veranstaltungsinformationen ordnet alle drei Listenpunkte den Informationen zu" name="EventInfoSection Veranstaltungsinformationen ordnet alle drei Listenpunkte den Informationen zu" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Standort-Icon für die Adresse" name="EventInfoSection Icons und visuelle Elemente rendert das Standort-Icon für die Adresse" time="0.021">
+    </testcase>
+    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Uhr-Icon für die Zeit" name="EventInfoSection Icons und visuelle Elemente rendert das Uhr-Icon für die Zeit" time="0.014">
+    </testcase>
+    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Auto-Icon für den Parkplatz" name="EventInfoSection Icons und visuelle Elemente rendert das Auto-Icon für den Parkplatz" time="0.012">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame rendert das Google Maps iFrame-Element" name="EventInfoSection Google Maps iFrame rendert das Google Maps iFrame-Element" time="0.006">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame hat das korrekte iFrame-Titel-Attribut für Barrierefreiheit" name="EventInfoSection Google Maps iFrame hat das korrekte iFrame-Titel-Attribut für Barrierefreiheit" time="0.014">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame hat die korrekte Google Maps Embed-URL" name="EventInfoSection Google Maps iFrame hat die korrekte Google Maps Embed-URL" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame mit voller Breite" name="EventInfoSection Google Maps iFrame rendert das iFrame mit voller Breite" time="0.007">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame mit der Höhe von 350px" name="EventInfoSection Google Maps iFrame rendert das iFrame mit der Höhe von 350px" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame ohne Border" name="EventInfoSection Google Maps iFrame rendert das iFrame ohne Border" time="0.02">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame erlaubt Vollbildmodus für das iFrame" name="EventInfoSection Google Maps iFrame erlaubt Vollbildmodus für das iFrame" time="0.012">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame setzt das Lazy-Loading-Attribut für Leistungsoptimierung" name="EventInfoSection Google Maps iFrame setzt das Lazy-Loading-Attribut für Leistungsoptimierung" time="0.014">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame setzt das Referrer-Policy-Attribut korrekt" name="EventInfoSection Google Maps iFrame setzt das Referrer-Policy-Attribut korrekt" time="0.023">
+    </testcase>
+    <testcase classname="EventInfoSection Google Maps iFrame hat einen Container mit korrekten Styling-Klassen um das iFrame" name="EventInfoSection Google Maps iFrame hat einen Container mit korrekten Styling-Klassen um das iFrame" time="0.022">
+    </testcase>
+    <testcase classname="EventInfoSection Tastaturbedienung erlaubt die Fokussierung der Hauptüberschrift über Tab-Taste" name="EventInfoSection Tastaturbedienung erlaubt die Fokussierung der Hauptüberschrift über Tab-Taste" time="0.03">
+    </testcase>
+    <testcase classname="EventInfoSection Tastaturbedienung erlaubt die Fokussierung des ersten Listenpunktes nach der Überschrift" name="EventInfoSection Tastaturbedienung erlaubt die Fokussierung des ersten Listenpunktes nach der Überschrift" time="0.025">
+    </testcase>
+    <testcase classname="EventInfoSection Tastaturbedienung durchläuft alle drei Listenpunkte mit Tab-Taste" name="EventInfoSection Tastaturbedienung durchläuft alle drei Listenpunkte mit Tab-Taste" time="0.047">
+    </testcase>
+    <testcase classname="EventInfoSection Tastaturbedienung erlaubt Shift+Tab zum Rückwärtsfokussieren" name="EventInfoSection Tastaturbedienung erlaubt Shift+Tab zum Rückwärtsfokussieren" time="0.027">
+    </testcase>
+    <testcase classname="EventInfoSection Tastaturbedienung alle fokussierbaren Elemente haben Focus-Ring-Klasse" name="EventInfoSection Tastaturbedienung alle fokussierbaren Elemente haben Focus-Ring-Klasse" time="0.015">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert einen Grid-Layout mit zwei Spalten auf großen Displays" name="EventInfoSection DOM-Struktur und Layout rendert einen Grid-Layout mit zwei Spalten auf großen Displays" time="0.011">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert den Section mit korrektem Hintergrund und Padding" name="EventInfoSection DOM-Struktur und Layout rendert den Section mit korrektem Hintergrund und Padding" time="0.007">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout hat einen korrekten Max-Width-Container" name="EventInfoSection DOM-Struktur und Layout hat einen korrekten Max-Width-Container" time="0.012">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout hat responsive Padding-Klassen für verschiedene Bildschirmgrößen" name="EventInfoSection DOM-Struktur und Layout hat responsive Padding-Klassen für verschiedene Bildschirmgrößen" time="0.005">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert die Veranstaltungsinfo-Container mit korrektem Spacing" name="EventInfoSection DOM-Struktur und Layout rendert die Veranstaltungsinfo-Container mit korrektem Spacing" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Icon-Spacing" name="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Icon-Spacing" time="0.015">
+    </testcase>
+    <testcase classname="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Padding und Focus-Ring" name="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Padding und Focus-Ring" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Design rendert responsive Überschrift-Größen" name="EventInfoSection Responsive Design rendert responsive Überschrift-Größen" time="0.011">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Design alle Text-Inhalte haben responsive Größen auf mobilen Geräten" name="EventInfoSection Responsive Design alle Text-Inhalte haben responsive Größen auf mobilen Geräten" time="0.027">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Design das Grid-Layout ändert sich von 1 zu 2 Spalten" name="EventInfoSection Responsive Design das Grid-Layout ändert sich von 1 zu 2 Spalten" time="0.016">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details der erste Listenpunkt hat die richtige Icon-Klasse für das Standort-Icon" name="EventInfoSection Listenpunkt-Details der erste Listenpunkt hat die richtige Icon-Klasse für das Standort-Icon" time="0.015">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details der zweite Listenpunkt hat die richtige Icon-Klasse für das Uhr-Icon" name="EventInfoSection Listenpunkt-Details der zweite Listenpunkt hat die richtige Icon-Klasse für das Uhr-Icon" time="0.008">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details der dritte Listenpunkt hat die richtige Icon-Klasse für das Auto-Icon" name="EventInfoSection Listenpunkt-Details der dritte Listenpunkt hat die richtige Icon-Klasse für das Auto-Icon" time="0.007">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details alle Icons haben aria-hidden Attribut" name="EventInfoSection Listenpunkt-Details alle Icons haben aria-hidden Attribut" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details alle Listenpunkte verwenden `items-start` oder `items-center` Layout" name="EventInfoSection Listenpunkt-Details alle Listenpunkte verwenden `items-start` oder `items-center` Layout" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Listenpunkt-Details der Parkplatz-Listenpunkt hat Alignment für Multi-Line-Text" name="EventInfoSection Listenpunkt-Details der Parkplatz-Listenpunkt hat Alignment für Multi-Line-Text" time="0.016">
+    </testcase>
+    <testcase classname="EventInfoSection Text-Styling all Text-Inhalte haben korrektes Foreground-Color" name="EventInfoSection Text-Styling all Text-Inhalte haben korrektes Foreground-Color" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Text-Styling alle Text-Spans haben korrekte Opazität" name="EventInfoSection Text-Styling alle Text-Spans haben korrekte Opazität" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Text-Styling die Parkplatz-Information hat korrektes Line-Height für Lesbarkeit" name="EventInfoSection Text-Styling die Parkplatz-Information hat korrektes Line-Height für Lesbarkeit" time="0.008">
+    </testcase>
+    <testcase classname="EventInfoSection Rendering und Exports wird ohne Props korrekt gerendert" name="EventInfoSection Rendering und Exports wird ohne Props korrekt gerendert" time="0.005">
+    </testcase>
+    <testcase classname="EventInfoSection Rendering und Exports exportiert die Komponente als named Export" name="EventInfoSection Rendering und Exports exportiert die Komponente als named Export" time="0">
+    </testcase>
+    <testcase classname="EventInfoSection Rendering und Exports kann als default Export importiert werden" name="EventInfoSection Rendering und Exports kann als default Export importiert werden" time="0">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Breakpoints rendert correctly auf Mobile (grid-cols-1)" name="EventInfoSection Responsive Breakpoints rendert correctly auf Mobile (grid-cols-1)" time="0.007">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Breakpoints rendert correctly auf Desktop (md:grid-cols-2)" name="EventInfoSection Responsive Breakpoints rendert correctly auf Desktop (md:grid-cols-2)" time="0.01">
+    </testcase>
+    <testcase classname="EventInfoSection Responsive Breakpoints rendert Icon-Größen konsistent auf allen Breakpoints" name="EventInfoSection Responsive Breakpoints rendert Icon-Größen konsistent auf allen Breakpoints" time="0.032">
+    </testcase>
+    <testcase classname="EventInfoSection Aria Attribute und Semantik rendert semantic HTML mit Section und List-Elementen" name="EventInfoSection Aria Attribute und Semantik rendert semantic HTML mit Section und List-Elementen" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Aria Attribute und Semantik verwendet aria-labelledby für semantische Struktur" name="EventInfoSection Aria Attribute und Semantik verwendet aria-labelledby für semantische Struktur" time="0.013">
+    </testcase>
+    <testcase classname="EventInfoSection Aria Attribute und Semantik alle Icons haben aria-hidden Attribut um sie vom Screen-Reader zu verstecken" name="EventInfoSection Aria Attribute und Semantik alle Icons haben aria-hidden Attribut um sie vom Screen-Reader zu verstecken" time="0.066">
+    </testcase>
+    <testcase classname="EventInfoSection Aria Attribute und Semantik alle Icons haben mt-0.5 Margin für visuelles Alignment" name="EventInfoSection Aria Attribute und Semantik alle Icons haben mt-0.5 Margin für visuelles Alignment" time="0.032">
+    </testcase>
+    <testcase classname="EventInfoSection Interaktivität und User-Events alle fokussier-bars Elemente sind per Klick nicht aktivierbar (da keine onClick-Handler)" name="EventInfoSection Interaktivität und User-Events alle fokussier-bars Elemente sind per Klick nicht aktivierbar (da keine onClick-Handler)" time="0.009">
+    </testcase>
+    <testcase classname="EventInfoSection Interaktivität und User-Events Überschrift kann fokussiert werden aber ist nicht interaktiv" name="EventInfoSection Interaktivität und User-Events Überschrift kann fokussiert werden aber ist nicht interaktiv" time="0.015">
+    </testcase>
+    <testcase classname="EventInfoSection Interaktivität und User-Events Listenpunkte, die fokussiert sind, zeigen Visual Feedback" name="EventInfoSection Interaktivität und User-Events Listenpunkte, die fokussiert sind, zeigen Visual Feedback" time="0.012">
+    </testcase>
+    <testcase classname="EventInfoSection Content-Validierung rendert exakt den Text &quot;Direkt an dem Campus&quot; in der Überschrift" name="EventInfoSection Content-Validierung rendert exakt den Text &quot;Direkt an dem Campus&quot; in der Überschrift" time="0.008">
+    </testcase>
+    <testcase classname="EventInfoSection Content-Validierung rendert exakt den Text &quot;der Hochschule.&quot; in der Überschrift" name="EventInfoSection Content-Validierung rendert exakt den Text &quot;der Hochschule.&quot; in der Überschrift" time="0.011">
+    </testcase>
+    <testcase classname="EventInfoSection Content-Validierung enthält keine leeren Listenpunkte" name="EventInfoSection Content-Validierung enthält keine leeren Listenpunkte" time="0.006">
+    </testcase>
+    <testcase classname="EventInfoSection Content-Validierung alle Veranstaltungsinformationen sind im Dokument vorhanden" name="EventInfoSection Content-Validierung alle Veranstaltungsinformationen sind im Dokument vorhanden" time="0.02">
     </testcase>
   </testsuite>
-  <testsuite name="FeatureItem-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.16" tests="19">
-    <testcase classname="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Dark-Theme" name="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Dark-Theme" time="0.013">
+  <testsuite name="FeatureItem-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:09" time="0.354" tests="19">
+    <testcase classname="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Dark-Theme" name="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Dark-Theme" time="0.044">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Light-Theme" name="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Light-Theme" time="0.013">
+    <testcase classname="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Light-Theme" name="FeatureItem-Komponente Barrierefreiheit (A11y) hat keine Barrierefreiheitsverletzungen im Light-Theme" time="0.127">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert den Titel korrekt" name="FeatureItem-Komponente Initiales Rendering rendert den Titel korrekt" time="0.002">
+    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert den Titel korrekt" name="FeatureItem-Komponente Initiales Rendering rendert den Titel korrekt" time="0.007">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert die Beschreibung korrekt" name="FeatureItem-Komponente Initiales Rendering rendert die Beschreibung korrekt" time="0.001">
+    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert die Beschreibung korrekt" name="FeatureItem-Komponente Initiales Rendering rendert die Beschreibung korrekt" time="0.003">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert das Icon innerhalb eines aria-hidden Containers" name="FeatureItem-Komponente Initiales Rendering rendert das Icon innerhalb eines aria-hidden Containers" time="0.001">
+    <testcase classname="FeatureItem-Komponente Initiales Rendering rendert das Icon innerhalb eines aria-hidden Containers" name="FeatureItem-Komponente Initiales Rendering rendert das Icon innerhalb eines aria-hidden Containers" time="0.006">
     </testcase>
     <testcase classname="FeatureItem-Komponente Initiales Rendering rendert den Titel als h4-Element" name="FeatureItem-Komponente Initiales Rendering rendert den Titel als h4-Element" time="0.001">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf den Titel an" name="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf den Titel an" time="0.001">
+    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf den Titel an" name="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf den Titel an" time="0.005">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf den Titel an" name="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf den Titel an" time="0">
+    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf den Titel an" name="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf den Titel an" time="0.004">
     </testcase>
     <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf die Beschreibung an" name="FeatureItem-Komponente Theme-Varianten wendet die Light-Theme-Klassen auf die Beschreibung an" time="0.001">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf die Beschreibung an" name="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf die Beschreibung an" time="0">
+    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf die Beschreibung an" name="FeatureItem-Komponente Theme-Varianten wendet die Dark-Theme-Klassen auf die Beschreibung an" time="0.001">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Theme-Varianten verwendet Dark als Standard-Theme" name="FeatureItem-Komponente Theme-Varianten verwendet Dark als Standard-Theme" time="0.001">
+    <testcase classname="FeatureItem-Komponente Theme-Varianten verwendet Dark als Standard-Theme" name="FeatureItem-Komponente Theme-Varianten verwendet Dark als Standard-Theme" time="0.002">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet den Light-Theme Hover-Stil an" name="FeatureItem-Komponente Theme-Varianten wendet den Light-Theme Hover-Stil an" time="0.001">
+    <testcase classname="FeatureItem-Komponente Theme-Varianten wendet den Light-Theme Hover-Stil an" name="FeatureItem-Komponente Theme-Varianten wendet den Light-Theme Hover-Stil an" time="0.002">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Props und Styling wendet die übergebene iconColor-Klasse an" name="FeatureItem-Komponente Props und Styling wendet die übergebene iconColor-Klasse an" time="0">
+    <testcase classname="FeatureItem-Komponente Props und Styling wendet die übergebene iconColor-Klasse an" name="FeatureItem-Komponente Props und Styling wendet die übergebene iconColor-Klasse an" time="0.022">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Props und Styling wendet die übergebene borderColorClass an" name="FeatureItem-Komponente Props und Styling wendet die übergebene borderColorClass an" time="0.001">
+    <testcase classname="FeatureItem-Komponente Props und Styling wendet die übergebene borderColorClass an" name="FeatureItem-Komponente Props und Styling wendet die übergebene borderColorClass an" time="0.003">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Props und Styling verwendet border-transparent als Standard wenn keine borderColorClass übergeben wird" name="FeatureItem-Komponente Props und Styling verwendet border-transparent als Standard wenn keine borderColorClass übergeben wird" time="0">
+    <testcase classname="FeatureItem-Komponente Props und Styling verwendet border-transparent als Standard wenn keine borderColorClass übergeben wird" name="FeatureItem-Komponente Props und Styling verwendet border-transparent als Standard wenn keine borderColorClass übergeben wird" time="0.004">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Props und Styling verwendet text-primary als Standard-Icon-Farbe" name="FeatureItem-Komponente Props und Styling verwendet text-primary als Standard-Icon-Farbe" time="0.001">
+    <testcase classname="FeatureItem-Komponente Props und Styling verwendet text-primary als Standard-Icon-Farbe" name="FeatureItem-Komponente Props und Styling verwendet text-primary als Standard-Icon-Farbe" time="0">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Props und Styling wendet eine zusätzliche className auf den Wrapper an" name="FeatureItem-Komponente Props und Styling wendet eine zusätzliche className auf den Wrapper an" time="0">
+    <testcase classname="FeatureItem-Komponente Props und Styling wendet eine zusätzliche className auf den Wrapper an" name="FeatureItem-Komponente Props und Styling wendet eine zusätzliche className auf den Wrapper an" time="0.001">
     </testcase>
     <testcase classname="FeatureItem-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren des FeatureItems über tabIndex" name="FeatureItem-Komponente Tastaturbedienung und Fokus erlaubt das Fokussieren des FeatureItems über tabIndex" time="0">
     </testcase>
-    <testcase classname="FeatureItem-Komponente Tastaturbedienung und Fokus erhält den Fokus beim direkten Fokussieren" name="FeatureItem-Komponente Tastaturbedienung und Fokus erhält den Fokus beim direkten Fokussieren" time="0.003">
+    <testcase classname="FeatureItem-Komponente Tastaturbedienung und Fokus erhält den Fokus beim direkten Fokussieren" name="FeatureItem-Komponente Tastaturbedienung und Fokus erhält den Fokus beim direkten Fokussieren" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="LogoCarousel" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.162" tests="4">
-    <testcase classname="LogoCarousel hat keine A11y-Violations" name="LogoCarousel hat keine A11y-Violations" time="0.026">
+  <testsuite name="LogoCarousel" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.276" tests="4">
+    <testcase classname="LogoCarousel hat keine A11y-Violations" name="LogoCarousel hat keine A11y-Violations" time="0.038">
     </testcase>
-    <testcase classname="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" name="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" time="0.004">
+    <testcase classname="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" name="LogoCarousel rendert alle übergebenen Logos in vervielfachter Form für den nahtlosen Loop" time="0.003">
     </testcase>
     <testcase classname="LogoCarousel rendert Fallback-Text, wenn das Bild nicht geladen werden kann" name="LogoCarousel rendert Fallback-Text, wenn das Bild nicht geladen werden kann" time="0.003">
     </testcase>
-    <testcase classname="LogoCarousel pausiert die Animation, wenn das Karussell den Viewport verlässt (IntersectionObserver)" name="LogoCarousel pausiert die Animation, wenn das Karussell den Viewport verlässt (IntersectionObserver)" time="0.004">
+    <testcase classname="LogoCarousel pausiert die Animation, wenn das Karussell den Viewport verlässt (IntersectionObserver)" name="LogoCarousel pausiert die Animation, wenn das Karussell den Viewport verlässt (IntersectionObserver)" time="0.008">
     </testcase>
   </testsuite>
-  <testsuite name="cn" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.084" tests="4">
-    <testcase classname="cn merged Tailwind-Klassen korrekt" name="cn merged Tailwind-Klassen korrekt" time="0.002">
+  <testsuite name="TierList" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.321" tests="3">
+    <testcase classname="TierList hat keine A11y-Violations" name="TierList hat keine A11y-Violations" time="0.07">
     </testcase>
-    <testcase classname="cn entfernt falsy Werte" name="cn entfernt falsy Werte" time="0">
+    <testcase classname="TierList rendert eine Liste von Paket-Karten" name="TierList rendert eine Liste von Paket-Karten" time="0.006">
     </testcase>
-    <testcase classname="cn merged bedingte Klassen" name="cn merged bedingte Klassen" time="0">
-    </testcase>
-    <testcase classname="cn gibt leeren String bei keinen Argumenten" name="cn gibt leeren String bei keinen Argumenten" time="0">
+    <testcase classname="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" name="TierList zeigt einen Hinweis an, wenn keine Pakete vorhanden sind" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="Global Accessibility &amp; Theme Requirements" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.147" tests="6">
+  <testsuite name="SkipNavLink" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.184" tests="3">
+    <testcase classname="SkipNavLink hat keine A11y-Violations" name="SkipNavLink hat keine A11y-Violations" time="0.022">
+    </testcase>
+    <testcase classname="SkipNavLink verweist auf #main-content" name="SkipNavLink verweist auf #main-content" time="0.003">
+    </testcase>
+    <testcase classname="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" name="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="Global Accessibility &amp; Theme Requirements" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.189" tests="6">
     <testcase classname="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" name="Global Accessibility &amp; Theme Requirements SkipNavLink is present and configured correctly" time="0.004">
     </testcase>
     <testcase classname="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" name="Global Accessibility &amp; Theme Requirements globals.css implements prefers-reduced-motion rules" time="0.001">
@@ -365,17 +499,17 @@
     </testcase>
     <testcase classname="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" name="Global Accessibility &amp; Theme Requirements layout.tsx specifies German language attribute" time="0">
     </testcase>
-    <testcase classname="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" name="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" time="0.016">
+    <testcase classname="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" name="Global Accessibility &amp; Theme Requirements No component uses tabIndex &gt; 0 (prevents keyboard traps / tab order issues)" time="0.012">
     </testcase>
-    <testcase classname="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" name="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" time="0.016">
+    <testcase classname="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" name="Global Accessibility &amp; Theme Requirements No interactive tag has aria-hidden=&quot;true&quot; or aria-hidden={true}" time="0.026">
     </testcase>
   </testsuite>
-  <testsuite name="WCAG 2.1 AA Color Contrast Verification" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:58" time="0.137" tests="23">
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+  <testsuite name="WCAG 2.1 AA Color Contrast Verification" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.108" tests="23">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Primary Yellow against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Accent Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Accent Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Success Green against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Theme Warning Orange against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Theme Warning Orange against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
@@ -399,7 +533,7 @@
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Blue against Black has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Blue against Black has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Brand Red against Black has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Yellow against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Yellow against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
     </testcase>
@@ -407,175 +541,61 @@
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Red against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Red against White has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" time="0.01">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Student Section Green against White has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Yellow against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
     </testcase>
     <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Blue against Surface has sufficient Large text/UI contrast (&gt;= 3.0:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Blue against Surface has sufficient Large text/UI contrast (&gt;= 3.0:1)" time="0">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Red against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
     </testcase>
-    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="SkipNavLink" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:57" time="0.223" tests="3">
-    <testcase classname="SkipNavLink hat keine A11y-Violations" name="SkipNavLink hat keine A11y-Violations" time="0.026">
-    </testcase>
-    <testcase classname="SkipNavLink verweist auf #main-content" name="SkipNavLink verweist auf #main-content" time="0.002">
-    </testcase>
-    <testcase classname="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" name="SkipNavLink ist fokussierbar und wird bei Tastaturbedienung erfasst" time="0.005">
+    <testcase classname="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" name="WCAG 2.1 AA Color Contrast Verification Exhibitor Section Green against Surface has sufficient AA contrast (&gt;= 4.5:1)" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="EventInfoSection" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="1.98" tests="65">
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" name="EventInfoSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" time="0.607">
+  <testsuite name="cn" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.11" tests="4">
+    <testcase classname="cn merged Tailwind-Klassen korrekt" name="cn merged Tailwind-Klassen korrekt" time="0.001">
     </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert den Section-Container mit korrektem ID und Data-Attribut" name="EventInfoSection Barrierefreiheit und Rendering rendert den Section-Container mit korrektem ID und Data-Attribut" time="0.012">
+    <testcase classname="cn entfernt falsy Werte" name="cn entfernt falsy Werte" time="0">
     </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Hauptüberschrift mit korrektem Inhalt" name="EventInfoSection Barrierefreiheit und Rendering rendert die Hauptüberschrift mit korrektem Inhalt" time="0.014">
+    <testcase classname="cn merged bedingte Klassen" name="cn merged bedingte Klassen" time="0">
     </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit tabIndex 0 für Tastaturbedienung" name="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit tabIndex 0 für Tastaturbedienung" time="0.007">
-    </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit Focus-Ring-Klasse" name="EventInfoSection Barrierefreiheit und Rendering rendert die Überschrift mit Focus-Ring-Klasse" time="0.014">
-    </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert die Veranstaltungsdetail-Liste mit korrektem ARIA-Label" name="EventInfoSection Barrierefreiheit und Rendering rendert die Veranstaltungsdetail-Liste mit korrektem ARIA-Label" time="0.013">
-    </testcase>
-    <testcase classname="EventInfoSection Barrierefreiheit und Rendering rendert genau drei Listenpunkte mit Veranstaltungsinformationen" name="EventInfoSection Barrierefreiheit und Rendering rendert genau drei Listenpunkte mit Veranstaltungsinformationen" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt den korrekten Veranstaltungsort an" name="EventInfoSection Veranstaltungsinformationen zeigt den korrekten Veranstaltungsort an" time="0.01">
-    </testcase>
-    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt die korrekte Veranstaltungszeit an" name="EventInfoSection Veranstaltungsinformationen zeigt die korrekte Veranstaltungszeit an" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Veranstaltungsinformationen zeigt die korrekten Parkplatz-Informationen an" name="EventInfoSection Veranstaltungsinformationen zeigt die korrekten Parkplatz-Informationen an" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Veranstaltungsinformationen ordnet alle drei Listenpunkte den Informationen zu" name="EventInfoSection Veranstaltungsinformationen ordnet alle drei Listenpunkte den Informationen zu" time="0.01">
-    </testcase>
-    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Standort-Icon für die Adresse" name="EventInfoSection Icons und visuelle Elemente rendert das Standort-Icon für die Adresse" time="0.019">
-    </testcase>
-    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Uhr-Icon für die Zeit" name="EventInfoSection Icons und visuelle Elemente rendert das Uhr-Icon für die Zeit" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Icons und visuelle Elemente rendert das Auto-Icon für den Parkplatz" name="EventInfoSection Icons und visuelle Elemente rendert das Auto-Icon für den Parkplatz" time="0.007">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame rendert das Google Maps iFrame-Element" name="EventInfoSection Google Maps iFrame rendert das Google Maps iFrame-Element" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame hat das korrekte iFrame-Titel-Attribut für Barrierefreiheit" name="EventInfoSection Google Maps iFrame hat das korrekte iFrame-Titel-Attribut für Barrierefreiheit" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame hat die korrekte Google Maps Embed-URL" name="EventInfoSection Google Maps iFrame hat die korrekte Google Maps Embed-URL" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame mit voller Breite" name="EventInfoSection Google Maps iFrame rendert das iFrame mit voller Breite" time="0.008">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame mit der Höhe von 350px" name="EventInfoSection Google Maps iFrame rendert das iFrame mit der Höhe von 350px" time="0.004">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame rendert das iFrame ohne Border" name="EventInfoSection Google Maps iFrame rendert das iFrame ohne Border" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame erlaubt Vollbildmodus für das iFrame" name="EventInfoSection Google Maps iFrame erlaubt Vollbildmodus für das iFrame" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame setzt das Lazy-Loading-Attribut für Leistungsoptimierung" name="EventInfoSection Google Maps iFrame setzt das Lazy-Loading-Attribut für Leistungsoptimierung" time="0.007">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame setzt das Referrer-Policy-Attribut korrekt" name="EventInfoSection Google Maps iFrame setzt das Referrer-Policy-Attribut korrekt" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection Google Maps iFrame hat einen Container mit korrekten Styling-Klassen um das iFrame" name="EventInfoSection Google Maps iFrame hat einen Container mit korrekten Styling-Klassen um das iFrame" time="0.011">
-    </testcase>
-    <testcase classname="EventInfoSection Tastaturbedienung erlaubt die Fokussierung der Hauptüberschrift über Tab-Taste" name="EventInfoSection Tastaturbedienung erlaubt die Fokussierung der Hauptüberschrift über Tab-Taste" time="0.026">
-    </testcase>
-    <testcase classname="EventInfoSection Tastaturbedienung erlaubt die Fokussierung des ersten Listenpunktes nach der Überschrift" name="EventInfoSection Tastaturbedienung erlaubt die Fokussierung des ersten Listenpunktes nach der Überschrift" time="0.027">
-    </testcase>
-    <testcase classname="EventInfoSection Tastaturbedienung durchläuft alle drei Listenpunkte mit Tab-Taste" name="EventInfoSection Tastaturbedienung durchläuft alle drei Listenpunkte mit Tab-Taste" time="0.036">
-    </testcase>
-    <testcase classname="EventInfoSection Tastaturbedienung erlaubt Shift+Tab zum Rückwärtsfokussieren" name="EventInfoSection Tastaturbedienung erlaubt Shift+Tab zum Rückwärtsfokussieren" time="0.038">
-    </testcase>
-    <testcase classname="EventInfoSection Tastaturbedienung alle fokussierbaren Elemente haben Focus-Ring-Klasse" name="EventInfoSection Tastaturbedienung alle fokussierbaren Elemente haben Focus-Ring-Klasse" time="0.011">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert einen Grid-Layout mit zwei Spalten auf großen Displays" name="EventInfoSection DOM-Struktur und Layout rendert einen Grid-Layout mit zwei Spalten auf großen Displays" time="0.008">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert den Section mit korrektem Hintergrund und Padding" name="EventInfoSection DOM-Struktur und Layout rendert den Section mit korrektem Hintergrund und Padding" time="0.004">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout hat einen korrekten Max-Width-Container" name="EventInfoSection DOM-Struktur und Layout hat einen korrekten Max-Width-Container" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout hat responsive Padding-Klassen für verschiedene Bildschirmgrößen" name="EventInfoSection DOM-Struktur und Layout hat responsive Padding-Klassen für verschiedene Bildschirmgrößen" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout rendert die Veranstaltungsinfo-Container mit korrektem Spacing" name="EventInfoSection DOM-Struktur und Layout rendert die Veranstaltungsinfo-Container mit korrektem Spacing" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Icon-Spacing" name="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Icon-Spacing" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Padding und Focus-Ring" name="EventInfoSection DOM-Struktur und Layout alle Listenpunkte haben korrektes Padding und Focus-Ring" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Design rendert responsive Überschrift-Größen" name="EventInfoSection Responsive Design rendert responsive Überschrift-Größen" time="0.012">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Design alle Text-Inhalte haben responsive Größen auf mobilen Geräten" name="EventInfoSection Responsive Design alle Text-Inhalte haben responsive Größen auf mobilen Geräten" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Design das Grid-Layout ändert sich von 1 zu 2 Spalten" name="EventInfoSection Responsive Design das Grid-Layout ändert sich von 1 zu 2 Spalten" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details der erste Listenpunkt hat die richtige Icon-Klasse für das Standort-Icon" name="EventInfoSection Listenpunkt-Details der erste Listenpunkt hat die richtige Icon-Klasse für das Standort-Icon" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details der zweite Listenpunkt hat die richtige Icon-Klasse für das Uhr-Icon" name="EventInfoSection Listenpunkt-Details der zweite Listenpunkt hat die richtige Icon-Klasse für das Uhr-Icon" time="0.008">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details der dritte Listenpunkt hat die richtige Icon-Klasse für das Auto-Icon" name="EventInfoSection Listenpunkt-Details der dritte Listenpunkt hat die richtige Icon-Klasse für das Auto-Icon" time="0.026">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details alle Icons haben aria-hidden Attribut" name="EventInfoSection Listenpunkt-Details alle Icons haben aria-hidden Attribut" time="0.014">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details alle Listenpunkte verwenden `items-start` oder `items-center` Layout" name="EventInfoSection Listenpunkt-Details alle Listenpunkte verwenden `items-start` oder `items-center` Layout" time="0.011">
-    </testcase>
-    <testcase classname="EventInfoSection Listenpunkt-Details der Parkplatz-Listenpunkt hat Alignment für Multi-Line-Text" name="EventInfoSection Listenpunkt-Details der Parkplatz-Listenpunkt hat Alignment für Multi-Line-Text" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection Text-Styling all Text-Inhalte haben korrektes Foreground-Color" name="EventInfoSection Text-Styling all Text-Inhalte haben korrektes Foreground-Color" time="0.007">
-    </testcase>
-    <testcase classname="EventInfoSection Text-Styling alle Text-Spans haben korrekte Opazität" name="EventInfoSection Text-Styling alle Text-Spans haben korrekte Opazität" time="0.017">
-    </testcase>
-    <testcase classname="EventInfoSection Text-Styling die Parkplatz-Information hat korrektes Line-Height für Lesbarkeit" name="EventInfoSection Text-Styling die Parkplatz-Information hat korrektes Line-Height für Lesbarkeit" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection Rendering und Exports wird ohne Props korrekt gerendert" name="EventInfoSection Rendering und Exports wird ohne Props korrekt gerendert" time="0.009">
-    </testcase>
-    <testcase classname="EventInfoSection Rendering und Exports exportiert die Komponente als named Export" name="EventInfoSection Rendering und Exports exportiert die Komponente als named Export" time="0.001">
-    </testcase>
-    <testcase classname="EventInfoSection Rendering und Exports kann als default Export importiert werden" name="EventInfoSection Rendering und Exports kann als default Export importiert werden" time="0">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Breakpoints rendert correctly auf Mobile (grid-cols-1)" name="EventInfoSection Responsive Breakpoints rendert correctly auf Mobile (grid-cols-1)" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Breakpoints rendert correctly auf Desktop (md:grid-cols-2)" name="EventInfoSection Responsive Breakpoints rendert correctly auf Desktop (md:grid-cols-2)" time="0.041">
-    </testcase>
-    <testcase classname="EventInfoSection Responsive Breakpoints rendert Icon-Größen konsistent auf allen Breakpoints" name="EventInfoSection Responsive Breakpoints rendert Icon-Größen konsistent auf allen Breakpoints" time="0.016">
-    </testcase>
-    <testcase classname="EventInfoSection Aria Attribute und Semantik rendert semantic HTML mit Section und List-Elementen" name="EventInfoSection Aria Attribute und Semantik rendert semantic HTML mit Section und List-Elementen" time="0.014">
-    </testcase>
-    <testcase classname="EventInfoSection Aria Attribute und Semantik verwendet aria-labelledby für semantische Struktur" name="EventInfoSection Aria Attribute und Semantik verwendet aria-labelledby für semantische Struktur" time="0.006">
-    </testcase>
-    <testcase classname="EventInfoSection Aria Attribute und Semantik alle Icons haben aria-hidden Attribut um sie vom Screen-Reader zu verstecken" name="EventInfoSection Aria Attribute und Semantik alle Icons haben aria-hidden Attribut um sie vom Screen-Reader zu verstecken" time="0.003">
-    </testcase>
-    <testcase classname="EventInfoSection Aria Attribute und Semantik alle Icons haben mt-0.5 Margin für visuelles Alignment" name="EventInfoSection Aria Attribute und Semantik alle Icons haben mt-0.5 Margin für visuelles Alignment" time="0.004">
-    </testcase>
-    <testcase classname="EventInfoSection Interaktivität und User-Events alle fokussier-bars Elemente sind per Klick nicht aktivierbar (da keine onClick-Handler)" name="EventInfoSection Interaktivität und User-Events alle fokussier-bars Elemente sind per Klick nicht aktivierbar (da keine onClick-Handler)" time="0.007">
-    </testcase>
-    <testcase classname="EventInfoSection Interaktivität und User-Events Überschrift kann fokussiert werden aber ist nicht interaktiv" name="EventInfoSection Interaktivität und User-Events Überschrift kann fokussiert werden aber ist nicht interaktiv" time="0.018">
-    </testcase>
-    <testcase classname="EventInfoSection Interaktivität und User-Events Listenpunkte, die fokussiert sind, zeigen Visual Feedback" name="EventInfoSection Interaktivität und User-Events Listenpunkte, die fokussiert sind, zeigen Visual Feedback" time="0.005">
-    </testcase>
-    <testcase classname="EventInfoSection Content-Validierung rendert exakt den Text &quot;Direkt an dem Campus&quot; in der Überschrift" name="EventInfoSection Content-Validierung rendert exakt den Text &quot;Direkt an dem Campus&quot; in der Überschrift" time="0.004">
-    </testcase>
-    <testcase classname="EventInfoSection Content-Validierung rendert exakt den Text &quot;der Hochschule.&quot; in der Überschrift" name="EventInfoSection Content-Validierung rendert exakt den Text &quot;der Hochschule.&quot; in der Überschrift" time="0.003">
-    </testcase>
-    <testcase classname="EventInfoSection Content-Validierung enthält keine leeren Listenpunkte" name="EventInfoSection Content-Validierung enthält keine leeren Listenpunkte" time="0.004">
-    </testcase>
-    <testcase classname="EventInfoSection Content-Validierung alle Veranstaltungsinformationen sind im Dokument vorhanden" name="EventInfoSection Content-Validierung alle Veranstaltungsinformationen sind im Dokument vorhanden" time="0.003">
+    <testcase classname="cn gibt leeren String bei keinen Argumenten" name="cn gibt leeren String bei keinen Argumenten" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="HeroSection" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="11.005" tests="36">
-    <testcase classname="HeroSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" name="HeroSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" time="10.149">
+  <testsuite name="RevealOnScroll-Komponente" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:10" time="0.2" tests="7">
+    <testcase classname="RevealOnScroll-Komponente rendert die Kind-Elemente korrekt" name="RevealOnScroll-Komponente rendert die Kind-Elemente korrekt" time="0.007">
     </testcase>
-    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert den Hero-Section-Container mit korrektem ARIA-Label" name="HeroSection Barrierefreiheit und Rendering rendert den Hero-Section-Container mit korrektem ARIA-Label" time="0.005">
+    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu und führt unobserve aus, wenn der IntersectionObserver triggert" name="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu und führt unobserve aus, wenn der IntersectionObserver triggert" time="0.001">
+    </testcase>
+    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu, wenn ein Kind-Element den Fokus erhält" name="RevealOnScroll-Komponente fügt die Klasse is-visible hinzu, wenn ein Kind-Element den Fokus erhält" time="0.002">
+    </testcase>
+    <testcase classname="RevealOnScroll-Komponente nutzt den übergebenen transition delay style" name="RevealOnScroll-Komponente nutzt den übergebenen transition delay style" time="0.003">
+    </testcase>
+    <testcase classname="RevealOnScroll-Komponente überspringt den IntersectionObserver, wenn der Nutzer prefers-reduced-motion aktiviert hat" name="RevealOnScroll-Komponente überspringt den IntersectionObserver, wenn der Nutzer prefers-reduced-motion aktiviert hat" time="0.001">
+    </testcase>
+    <testcase classname="RevealOnScroll-Komponente räumt den Observer und Event Listener beim Unmounten auf" name="RevealOnScroll-Komponente räumt den Observer und Event Listener beim Unmounten auf" time="0">
+    </testcase>
+    <testcase classname="RevealOnScroll-Komponente fügt die Klasse is-visible NICHT hinzu, wenn der IntersectionObserver mit isIntersecting: false triggert" name="RevealOnScroll-Komponente fügt die Klasse is-visible NICHT hinzu, wenn der IntersectionObserver mit isIntersecting: false triggert" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="HeroSection" errors="0" failures="0" skipped="0" timestamp="2026-06-19T10:50:07" time="11.124" tests="36">
+    <testcase classname="HeroSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" name="HeroSection Barrierefreiheit und Rendering hat keine Barrierefreiheitsverletzungen im Standard-Zustand" time="10.168">
+    </testcase>
+    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert den Hero-Section-Container mit korrektem ARIA-Label" name="HeroSection Barrierefreiheit und Rendering rendert den Hero-Section-Container mit korrektem ARIA-Label" time="0.004">
     </testcase>
     <testcase classname="HeroSection Barrierefreiheit und Rendering rendert das Video-Element mit korrekten Attributen" name="HeroSection Barrierefreiheit und Rendering rendert das Video-Element mit korrekten Attributen" time="0.004">
     </testcase>
-    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert alle drei KeywordAnimation-Komponenten mit korrektem Text" name="HeroSection Barrierefreiheit und Rendering rendert alle drei KeywordAnimation-Komponenten mit korrektem Text" time="0.004">
+    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert alle drei KeywordAnimation-Komponenten mit korrektem Text" name="HeroSection Barrierefreiheit und Rendering rendert alle drei KeywordAnimation-Komponenten mit korrektem Text" time="0.003">
     </testcase>
     <testcase classname="HeroSection Barrierefreiheit und Rendering rendert den Play/Pause-Button mit korrektem ARIA-Label beim Start" name="HeroSection Barrierefreiheit und Rendering rendert den Play/Pause-Button mit korrektem ARIA-Label beim Start" time="0.006">
     </testcase>
-    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert die Hauptüberschrift &quot;Unternehmerbörse&quot; und das Jahr &quot;2027&quot;" name="HeroSection Barrierefreiheit und Rendering rendert die Hauptüberschrift &quot;Unternehmerbörse&quot; und das Jahr &quot;2027&quot;" time="0.004">
+    <testcase classname="HeroSection Barrierefreiheit und Rendering rendert die Hauptüberschrift &quot;Unternehmerbörse&quot; und das Jahr &quot;2027&quot;" name="HeroSection Barrierefreiheit und Rendering rendert die Hauptüberschrift &quot;Unternehmerbörse&quot; und das Jahr &quot;2027&quot;" time="0.003">
     </testcase>
     <testcase classname="HeroSection Barrierefreiheit und Rendering rendert die Tagline &quot;Deine&quot; vor den Keyword-Animationen" name="HeroSection Barrierefreiheit und Rendering rendert die Tagline &quot;Deine&quot; vor den Keyword-Animationen" time="0.002">
     </testcase>
-    <testcase classname="HeroSection Video-Steuerung pausiert das Video beim Klick auf den Play/Pause-Button wenn es gerade abgespielt wird" name="HeroSection Video-Steuerung pausiert das Video beim Klick auf den Play/Pause-Button wenn es gerade abgespielt wird" time="0.022">
+    <testcase classname="HeroSection Video-Steuerung pausiert das Video beim Klick auf den Play/Pause-Button wenn es gerade abgespielt wird" name="HeroSection Video-Steuerung pausiert das Video beim Klick auf den Play/Pause-Button wenn es gerade abgespielt wird" time="0.027">
     </testcase>
-    <testcase classname="HeroSection Video-Steuerung spielt das Video ab beim Klick auf den Play/Pause-Button wenn es pausiert ist" name="HeroSection Video-Steuerung spielt das Video ab beim Klick auf den Play/Pause-Button wenn es pausiert ist" time="0.012">
+    <testcase classname="HeroSection Video-Steuerung spielt das Video ab beim Klick auf den Play/Pause-Button wenn es pausiert ist" name="HeroSection Video-Steuerung spielt das Video ab beim Klick auf den Play/Pause-Button wenn es pausiert ist" time="0.011">
     </testcase>
     <testcase classname="HeroSection Video-Steuerung fängt Play-Fehler ab und setzt den State trotzdem" name="HeroSection Video-Steuerung fängt Play-Fehler ab und setzt den State trotzdem" time="0.011">
     </testcase>
@@ -585,21 +605,21 @@
     </testcase>
     <testcase classname="HeroSection Reduced Motion Unterstützung registriert einen change-Listener für prefers-reduced-motion Änderungen" name="HeroSection Reduced Motion Unterstützung registriert einen change-Listener für prefers-reduced-motion Änderungen" time="0.003">
     </testcase>
-    <testcase classname="HeroSection Reduced Motion Unterstützung pausiert Video und ändert State wenn prefers-reduced-motion-Listener aktiviert wird" name="HeroSection Reduced Motion Unterstützung pausiert Video und ändert State wenn prefers-reduced-motion-Listener aktiviert wird" time="0.003">
+    <testcase classname="HeroSection Reduced Motion Unterstützung pausiert Video und ändert State wenn prefers-reduced-motion-Listener aktiviert wird" name="HeroSection Reduced Motion Unterstützung pausiert Video und ändert State wenn prefers-reduced-motion-Listener aktiviert wird" time="0.004">
     </testcase>
-    <testcase classname="HeroSection Tastaturbedienung erlaubt die Fokussierung des Play/Pause-Buttons über die Tab-Taste" name="HeroSection Tastaturbedienung erlaubt die Fokussierung des Play/Pause-Buttons über die Tab-Taste" time="0.009">
+    <testcase classname="HeroSection Tastaturbedienung erlaubt die Fokussierung des Play/Pause-Buttons über die Tab-Taste" name="HeroSection Tastaturbedienung erlaubt die Fokussierung des Play/Pause-Buttons über die Tab-Taste" time="0.008">
     </testcase>
     <testcase classname="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Enter-Taste auf dem fokussierten Button" name="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Enter-Taste auf dem fokussierten Button" time="0.007">
     </testcase>
-    <testcase classname="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Leertaste auf dem fokussierten Button" name="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Leertaste auf dem fokussierten Button" time="0.007">
+    <testcase classname="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Leertaste auf dem fokussierten Button" name="HeroSection Tastaturbedienung aktiviert die Video-Kontrolle beim Drücken der Leertaste auf dem fokussierten Button" time="0.008">
     </testcase>
     <testcase classname="HeroSection DOM-Struktur und CSS-Klassen rendert den Video-Background mit korrekten CSS-Klassen und Z-Index" name="HeroSection DOM-Struktur und CSS-Klassen rendert den Video-Background mit korrekten CSS-Klassen und Z-Index" time="0.002">
     </testcase>
     <testcase classname="HeroSection DOM-Struktur und CSS-Klassen enthält einen narrativen Overlay mit mehrschichtigem Gradient-Design" name="HeroSection DOM-Struktur und CSS-Klassen enthält einen narrativen Overlay mit mehrschichtigem Gradient-Design" time="0.002">
     </testcase>
-    <testcase classname="HeroSection DOM-Struktur und CSS-Klassen positioniert den Play/Pause-Button korrekt unten links mit Z-Index 20" name="HeroSection DOM-Struktur und CSS-Klassen positioniert den Play/Pause-Button korrekt unten links mit Z-Index 20" time="0.003">
+    <testcase classname="HeroSection DOM-Struktur und CSS-Klassen positioniert den Play/Pause-Button korrekt unten links mit Z-Index 20" name="HeroSection DOM-Struktur und CSS-Klassen positioniert den Play/Pause-Button korrekt unten links mit Z-Index 20" time="0.002">
     </testcase>
-    <testcase classname="HeroSection DOM-Struktur und CSS-Klassen zeigt das korrekte Icon basierend auf Spielstatus an" name="HeroSection DOM-Struktur und CSS-Klassen zeigt das korrekte Icon basierend auf Spielstatus an" time="0.002">
+    <testcase classname="HeroSection DOM-Struktur und CSS-Klassen zeigt das korrekte Icon basierend auf Spielstatus an" name="HeroSection DOM-Struktur und CSS-Klassen zeigt das korrekte Icon basierend auf Spielstatus an" time="0.003">
     </testcase>
     <testcase classname="HeroSection Video-Quellen und Poster enthält WebM- und MP4-Video-Quellen" name="HeroSection Video-Quellen und Poster enthält WebM- und MP4-Video-Quellen" time="0.002">
     </testcase>
@@ -609,15 +629,15 @@
     </testcase>
     <testcase classname="HeroSection Typsicherheit und Props exportiert die Komponente als named Export" name="HeroSection Typsicherheit und Props exportiert die Komponente als named Export" time="0">
     </testcase>
-    <testcase classname="HeroSection Grafische Elemente und Overlays rendert die obere Fade-Gradient-Overlay" name="HeroSection Grafische Elemente und Overlays rendert die obere Fade-Gradient-Overlay" time="0.002">
+    <testcase classname="HeroSection Grafische Elemente und Overlays rendert die obere Fade-Gradient-Overlay" name="HeroSection Grafische Elemente und Overlays rendert die obere Fade-Gradient-Overlay" time="0.003">
     </testcase>
-    <testcase classname="HeroSection Grafische Elemente und Overlays rendert die untere Fade-Gradient-Overlay" name="HeroSection Grafische Elemente und Overlays rendert die untere Fade-Gradient-Overlay" time="0.002">
+    <testcase classname="HeroSection Grafische Elemente und Overlays rendert die untere Fade-Gradient-Overlay" name="HeroSection Grafische Elemente und Overlays rendert die untere Fade-Gradient-Overlay" time="0.001">
     </testcase>
     <testcase classname="HeroSection Grafische Elemente und Overlays enthält dekorative Linien-Elemente mit farbigen Gradienten" name="HeroSection Grafische Elemente und Overlays enthält dekorative Linien-Elemente mit farbigen Gradienten" time="0.002">
     </testcase>
-    <testcase classname="HeroSection Fokus und Interaktivität hat einen Button mit fokussierbarem State" name="HeroSection Fokus und Interaktivität hat einen Button mit fokussierbarem State" time="0.002">
+    <testcase classname="HeroSection Fokus und Interaktivität hat einen Button mit fokussierbarem State" name="HeroSection Fokus und Interaktivität hat einen Button mit fokussierbarem State" time="0.003">
     </testcase>
-    <testcase classname="HeroSection Fokus und Interaktivität hat Hover-States im Button-Design" name="HeroSection Fokus und Interaktivität hat Hover-States im Button-Design" time="0.003">
+    <testcase classname="HeroSection Fokus und Interaktivität hat Hover-States im Button-Design" name="HeroSection Fokus und Interaktivität hat Hover-States im Button-Design" time="0.002">
     </testcase>
     <testcase classname="HeroSection Fokus und Interaktivität hat Focus-Visible-Styles für Tastaturbedienung" name="HeroSection Fokus und Interaktivität hat Focus-Visible-Styles für Tastaturbedienung" time="0.002">
     </testcase>
@@ -627,9 +647,9 @@
     </testcase>
     <testcase classname="HeroSection Responsive Design rendert responsive Padding im Container" name="HeroSection Responsive Design rendert responsive Padding im Container" time="0.002">
     </testcase>
-    <testcase classname="HeroSection Integrierte Komponenten verwendet die KeywordAnimation-Komponente für alle drei Schlüsselwörter" name="HeroSection Integrierte Komponenten verwendet die KeywordAnimation-Komponente für alle drei Schlüsselwörter" time="0.003">
+    <testcase classname="HeroSection Integrierte Komponenten verwendet die KeywordAnimation-Komponente für alle drei Schlüsselwörter" name="HeroSection Integrierte Komponenten verwendet die KeywordAnimation-Komponente für alle drei Schlüsselwörter" time="0.004">
     </testcase>
-    <testcase classname="HeroSection Mehrfach-Klicks und State-Management verwaltet Video-State korrekt bei mehrfachen Klicks auf den Button" name="HeroSection Mehrfach-Klicks und State-Management verwaltet Video-State korrekt bei mehrfachen Klicks auf den Button" time="0.015">
+    <testcase classname="HeroSection Mehrfach-Klicks und State-Management verwaltet Video-State korrekt bei mehrfachen Klicks auf den Button" name="HeroSection Mehrfach-Klicks und State-Management verwaltet Video-State korrekt bei mehrfachen Klicks auf den Button" time="0.013">
     </testcase>
   </testsuite>
 </testsuites>
