@@ -102,4 +102,35 @@ describe('SearchFilter', () => {
     expect(onSearchChangeMock).toHaveBeenCalledWith('');
     jest.useRealTimers();
   });
+
+  it('zeigt den Kategorie-Löschen-Button nur an, wenn eine Kategorie ausgewählt ist, und setzt den Filter bei Klick zurück', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(
+      <SearchFilter
+        searchQuery=""
+        selectedCategory=""
+        onSearchChange={onSearchChangeMock}
+        onCategoryChange={onCategoryChangeMock}
+      />
+    );
+
+    expect(screen.queryByRole('button', { name: 'Kategorie-Filter zurücksetzen' })).not.toBeInTheDocument();
+
+    // Rerender with a category selected
+    rerender(
+      <SearchFilter
+        searchQuery=""
+        selectedCategory="IT & Software"
+        onSearchChange={onSearchChangeMock}
+        onCategoryChange={onCategoryChangeMock}
+      />
+    );
+
+    const clearButton = screen.getByRole('button', { name: 'Kategorie-Filter zurücksetzen' });
+    expect(clearButton).toBeInTheDocument();
+
+    await user.click(clearButton);
+
+    expect(onCategoryChangeMock).toHaveBeenCalledWith('');
+  });
 });

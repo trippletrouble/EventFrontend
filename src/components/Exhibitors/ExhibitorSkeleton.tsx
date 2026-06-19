@@ -12,27 +12,28 @@ export function ExhibitorSkeleton({ count = 6 }: ExhibitorSkeletonProps) {
       {skeletons.map((_, idx) => (
         <div
           key={idx}
-          className="bg-surface-raised border-2 border-surface-border rounded-xl p-8 flex flex-col justify-between shadow-md h-[250px] animate-pulse"
+          className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-l-4 border-l-transparent bg-surface-raised animate-pulse h-auto sm:h-26"
           data-testid="exhibitor-skeleton"
         >
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              {/* Logo placeholder */}
-              <div className="w-14 h-14 rounded-xl bg-surface-border shrink-0" />
-              {/* Title & Tag placeholder */}
-              <div className="space-y-2 flex-grow">
-                <div className="h-5 bg-surface-border rounded-md w-3/4" />
-                <div className="h-4 bg-surface-border rounded-md w-1/3" />
-              </div>
-            </div>
-            {/* Info list placeholder */}
-            <div className="space-y-2 pt-2">
-              <div className="h-4 bg-surface-border rounded-md w-5/6" />
-              <div className="h-4 bg-surface-border rounded-md w-2/3" />
+          {/* Logo & Name block */}
+          <div className="flex items-center gap-4 min-w-[260px] max-w-sm flex-1">
+            <div className="w-16 h-16 bg-surface-border/50 shrink-0" />
+            <div className="space-y-2 flex-grow">
+              <div className="h-4.5 bg-surface-border/50 w-2/3" />
+              <div className="sm:hidden h-3 bg-surface-border/50 w-1/2" />
             </div>
           </div>
+
+          {/* Location placeholder */}
+          <div className="hidden sm:block h-4 bg-surface-border/50 w-32" />
+
+          {/* Category placeholder */}
+          <div className="hidden sm:block h-4 bg-surface-border/50 w-40" />
+
           {/* Button placeholder */}
-          <div className="h-11 bg-surface-border rounded-lg w-full mt-4" />
+          <div className="flex items-center justify-end shrink-0">
+            <div className="w-24 h-11 bg-surface-border/50 rounded-lg" />
+          </div>
         </div>
       ))}
     </>

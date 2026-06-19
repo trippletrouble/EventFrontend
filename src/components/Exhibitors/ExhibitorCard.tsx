@@ -2,13 +2,47 @@ import React from 'react';
 import Link from 'next/link';
 import type { CompanyDto } from '@/types/api.types';
 import { getCompanyCategory } from '@/hooks/useExhibitors';
-import { Building2, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, Tag, Star } from 'lucide-react';
 
 interface ExhibitorCardProps {
   exhibitor: CompanyDto;
+  index: number;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+  onCategoryClick?: (category: string) => void;
 }
 
-// Generate a visually pleasing, deterministic gradient for initials badge
+// Map company names to their SVG file paths from landing-page-integration
+const LOGO_MAPPINGS: Record<string, string> = {
+  'netzsch': '/logos/netzsch.svg',
+  'lamilux': '/logos/lamilux.svg',
+  'sandler': '/logos/sandler.svg',
+  'dennree': '/logos/dennree.png',
+  'bundeswehr': '/logos/bundeswehr.svg',
+  'agentur für arbeit': '/logos/agentur-fuer-arbeit.svg',
+  'aok': '/logos/aok.svg',
+  'techniker krankenkasse': '/logos/techniker-krankenkasse.svg',
+  'huk-coburg': '/logos/huk-coburg.svg',
+  'viessmann': '/logos/viessmann.svg',
+  'gebrüder weiss': '/logos/gebrueder-weiss.svg',
+  'nkd': '/logos/nkd.svg',
+  'hetzner': '/logos/hetzner.svg',
+  'wilo': '/logos/wilo.svg',
+  'enterprise': '/logos/enterprise.svg',
+  'ceramtec': '/logos/ceramtec.svg',
+};
+
+export function getCompanyLogo(name: string): string | null {
+  const normalized = name.toLowerCase().trim();
+  for (const [key, val] of Object.entries(LOGO_MAPPINGS)) {
+    if (normalized.includes(key)) {
+      return val;
+    }
+  }
+  return null;
+}
+
+// Generate a deterministic gradient for initials fallback
 const getGradientByName = (name: string) => {
   const gradients = [
     'from-yellow-400 to-amber-500 text-black',
@@ -25,107 +59,138 @@ const getGradientByName = (name: string) => {
   return gradients[sum % gradients.length];
 };
 
-const getCategoryStyles = (category: string) => {
-  switch (category) {
-    case 'IT & Software':
-      return 'bg-blue-500/10 text-blue-500 border border-blue-500/20';
-    case 'Industrie & Maschinenbau':
-      return 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20';
-    case 'Gesundheitswesen & Soziales':
-      return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
-    case 'Versicherungen & Finanzen':
-      return 'bg-red-500/10 text-red-500 border border-red-500/20';
-    case 'Logistik & Transport':
-      return 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20';
-    case 'Öffentlicher Dienst':
-      return 'bg-purple-500/10 text-purple-400 border border-purple-500/20';
-    default:
-      return 'bg-foreground-muted/10 text-foreground-muted border border-foreground-muted/20';
-  }
-};
-
-export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
-  const category = getCompanyCategory(exhibitor);
+export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, onCategoryClick }: ExhibitorCardProps) {
+  const logoSrc = getCompanyLogo(exhibitor.name);
   const initial = exhibitor.name.trim().charAt(0).toUpperCase();
   const gradientClass = getGradientByName(exhibitor.name);
+  const category = getCompanyCategory(exhibitor);
 
   return (
-    <article
-      className={`bg-surface-raised border-2 rounded-xl p-8 flex flex-col justify-between shadow-md transition-all duration-200 relative group min-h-[250px] ${
-        exhibitor.isSponsor
-          ? 'border-primary shadow-xl scale-[1.01] ring-1 ring-primary/10'
-          : 'border-surface-border hover:border-primary/40 hover:scale-[1.01] hover:shadow-lg'
-      }`}
+    <div
+      className={`group/row p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-6 transition-all duration-200 ${
+        index % 2 === 0 ? 'bg-surface' : 'bg-surface-raised'
+      } hover:bg-surface-overlay`}
+      role="listitem"
       aria-labelledby={`exhibitor-title-${exhibitor.companyId}`}
     >
-      {/* Sponsor Ribbon */}
-      {exhibitor.isSponsor && (
-        <div className="absolute top-3 right-3">
-          <span 
-            className="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full border border-primary/20 shadow-sm"
-            aria-label="Sponsor Status: Freunde & Förderer"
-          >
-            Freunde & Förderer
-          </span>
-        </div>
-      )}
-
-      <div className="space-y-5">
-        {/* Logo / Initials Badge & Name */}
-        <div className="flex items-center gap-4">
-          <div
-            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${gradientClass} flex items-center justify-center font-black text-xl shadow-inner select-none shrink-0`}
-            role="img"
-            aria-label={`Logo von ${exhibitor.name}`}
-          >
-            {initial}
-          </div>
-
-          <div className="space-y-1 pr-12">
-            <h2 
-              id={`exhibitor-title-${exhibitor.companyId}`}
-              className="text-lg font-extrabold text-foreground line-clamp-1 group-hover:text-primary transition-colors"
-            >
-              {exhibitor.name}
-            </h2>
-            <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full ${getCategoryStyles(category)}`}>
-              <Building2 className="w-3.5 h-3.5" aria-hidden="true" />
-              {category}
-            </span>
-          </div>
-        </div>
-
-        {/* Info list */}
-        <div className="space-y-2.5 text-sm text-foreground-muted border-t border-surface-border/40 pt-4">
-          <div className="flex items-start gap-2.5">
-            <MapPin className="w-4 h-4 shrink-0 text-foreground-muted/65 mt-0.5" aria-hidden="true" />
-            <span>
-              {exhibitor.address}, {exhibitor.zip} {exhibitor.city}
-            </span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <Mail className="w-4 h-4 shrink-0 text-foreground-muted/65 mt-0.5" aria-hidden="true" />
-            <span className="break-all">{exhibitor.email}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Button link */}
-      <div className="pt-6">
-        <Link
-          href={`/company/${exhibitor.companyId}`}
-          className={`inline-flex items-center justify-center gap-2 w-full h-11 px-4 text-sm rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none ${
-            exhibitor.isSponsor
-              ? 'bg-primary text-black font-bold hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(234,179,8,0.45)] border-2 border-transparent'
-              : 'bg-surface-overlay border-2 border-surface-border text-foreground font-semibold hover:border-primary/50 hover:bg-surface-overlay/85 hover:scale-[1.01] hover:shadow-md'
-          }`}
+      {/* Linke Spalte: Logo & Name */}
+      <div className="flex items-center gap-4 min-w-[260px] max-w-sm flex-1">
+        <Link 
+          href={`/company/${exhibitor.companyId}`} 
+          className="shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-primary block"
           aria-label={`Profil von ${exhibitor.name} ansehen`}
         >
-          <span>Profil ansehen</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0" aria-hidden="true" />
+          <div className="relative shrink-0 select-none">
+            {/* Dynamic offset highlight box on row hover for all logos */}
+            <div 
+              className="absolute left-0 top-0 w-16 h-16 bg-primary transition-all duration-200 group-hover/row:-left-1.5 group-hover/row:top-1.5" 
+              style={{ zIndex: 0 }}
+              aria-hidden="true" 
+            />
+            <div 
+              className="relative w-16 h-16 bg-white border border-surface-border flex items-center justify-center p-2 shadow-sm overflow-hidden"
+              style={{ zIndex: 1 }}
+            >
+              {logoSrc ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={logoSrc}
+                  alt={`${exhibitor.name} Logo`}
+                  className="h-full w-full object-contain"
+                  draggable={false}
+                />
+              ) : (
+                <div
+                  className={`w-full h-full bg-gradient-to-br ${gradientClass} flex items-center justify-center font-black text-xl shadow-inner`}
+                  role="img"
+                  aria-label={`Platzhalter-Logo von ${exhibitor.name}`}
+                >
+                  {initial}
+                </div>
+              )}
+            </div>
+          </div>
         </Link>
+
+        <div className="space-y-1">
+          <h2
+            id={`exhibitor-title-${exhibitor.companyId}`}
+            className="text-base font-bold text-foreground line-clamp-1"
+          >
+            <Link 
+              href={`/company/${exhibitor.companyId}`} 
+              className="hover:text-primary hover:underline transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              {exhibitor.name}
+            </Link>
+          </h2>
+          {/* Subtle responsive info for mobile screens */}
+          <div className="sm:hidden flex flex-wrap gap-x-3 gap-y-1 text-xs text-foreground-muted">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5 text-foreground-muted/65" />
+              {exhibitor.city}
+            </span>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onCategoryClick?.(category);
+              }}
+              className="inline-flex items-center gap-1 text-xs text-foreground-muted hover:text-primary transition-colors focus-visible:ring-1 focus-visible:ring-primary outline-none cursor-pointer group/cat text-left"
+              title={`Nach ${category} filtern`}
+              type="button"
+            >
+              <Tag className="w-3.5 h-3.5 text-foreground-muted/65 group-hover/cat:text-primary transition-colors" />
+              <span className="hover:underline">{category}</span>
+            </button>
+          </div>
+        </div>
       </div>
-    </article>
+
+      {/* Spalte: Standort */}
+      <div className="hidden sm:flex items-center gap-2 text-sm text-foreground-muted w-44">
+        <MapPin className="w-4 h-4 shrink-0 text-foreground-muted/60" aria-hidden="true" />
+        <span className="truncate">{exhibitor.city}</span>
+      </div>
+
+      {/* Spalte: Branche */}
+      <div className="hidden sm:flex items-center w-52">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onCategoryClick?.(category);
+          }}
+          className="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-primary transition-colors focus-visible:ring-1 focus-visible:ring-primary outline-none cursor-pointer group/cat text-left"
+          title={`Nach ${category} filtern`}
+          type="button"
+        >
+          <Tag className="w-4 h-4 shrink-0 text-foreground-muted/60 group-hover/cat:text-primary transition-colors" aria-hidden="true" />
+          <span className="line-clamp-2 hover:underline">{category}</span>
+        </button>
+      </div>
+
+      {/* Rechte Spalte: Favoriten-Stern */}
+      <div className="flex items-center justify-end shrink-0">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleFavorite();
+          }}
+          className="inline-flex items-center justify-center h-11 w-11 text-foreground-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none cursor-pointer"
+          aria-label={isFavorite ? `${exhibitor.name} aus Favoriten entfernen` : `${exhibitor.name} als Favorit markieren`}
+          type="button"
+        >
+          <Star
+            className={`w-6 h-6 transition-all duration-150 ${
+              isFavorite ? 'text-primary fill-primary scale-110' : 'text-foreground-muted/60 hover:scale-110'
+            }`}
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
   );
 }
 

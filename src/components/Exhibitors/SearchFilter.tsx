@@ -39,7 +39,7 @@ export function SearchFilter({
   };
 
   return (
-    <div className="bg-surface-raised border border-surface-border rounded-xl p-6 shadow-sm flex flex-col md:flex-row gap-6 items-stretch md:items-end">
+    <div className="bg-surface-raised border border-surface-border p-6 shadow-sm flex flex-col md:flex-row gap-6 items-stretch md:items-end">
       {/* Search Input */}
       <div className="w-full md:flex-1 flex flex-col">
         <label htmlFor="search-input" className="text-sm font-bold text-foreground block mb-1.5">
@@ -52,7 +52,7 @@ export function SearchFilter({
           <input
             id="search-input"
             type="text"
-            className="h-11 w-full text-sm rounded-lg bg-black border border-surface-border text-foreground pl-10 pr-10 placeholder:text-foreground-muted/50 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65"
+            className="h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 pr-10 placeholder:text-foreground-muted/50 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65"
             placeholder="Firmenname eingeben..."
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
@@ -81,7 +81,9 @@ export function SearchFilter({
           </div>
           <select
             id="category-select"
-            className="h-11 w-full text-sm rounded-lg bg-black border border-surface-border text-foreground pl-10 pr-10 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65 appearance-none cursor-pointer"
+            className={`h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65 appearance-none cursor-pointer ${
+              selectedCategory ? 'pr-16' : 'pr-10'
+            }`}
             value={selectedCategory}
             onChange={(e) => onCategoryChange(e.target.value)}
           >
@@ -92,6 +94,16 @@ export function SearchFilter({
               </option>
             ))}
           </select>
+          {selectedCategory && (
+            <button
+              onClick={() => onCategoryChange('')}
+              className="absolute right-9 top-1/2 -translate-y-1/2 p-1 text-foreground-muted hover:text-foreground rounded-full hover:bg-surface-border transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary z-10 cursor-pointer"
+              aria-label="Kategorie-Filter zurücksetzen"
+              type="button"
+            >
+              <X className="w-4 h-4" aria-hidden="true" />
+            </button>
+          )}
           <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-foreground-muted pointer-events-none">
             <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />

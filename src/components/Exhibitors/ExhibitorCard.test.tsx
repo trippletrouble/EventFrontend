@@ -1,6 +1,6 @@
 import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ExhibitorCard } from './ExhibitorCard';
 import type { CompanyDto } from '@/types/api.types';
 
@@ -27,41 +27,91 @@ const mockCompany: CompanyDto = {
 
 describe('ExhibitorCard', () => {
   it('hat keine A11y-Violations', async () => {
-    const { container } = render(<ExhibitorCard exhibitor={mockCompany} />);
+    const { container } = render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it('rendert die Details des Ausstellers korrekt', () => {
-    render(<ExhibitorCard exhibitor={mockCompany} />);
+    const { container } = render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
 
     expect(screen.getByText('Test GmbH')).toBeInTheDocument();
-    expect(screen.getByText('Musterstraße 1, 12345 Musterstadt')).toBeInTheDocument();
-    expect(screen.getByText('info@test-gmbh.de')).toBeInTheDocument();
-    expect(screen.queryByText('Freunde & Förderer')).not.toBeInTheDocument();
+    expect(screen.getAllByText('Musterstadt').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('IT & Software').length).toBeGreaterThan(0);
+    const listItem = screen.getByRole('listitem');
+    expect(listItem).toHaveClass('bg-surface');
+    expect(container.querySelector('.bg-primary')).toBeInTheDocument();
   });
 
-  it('zeigt das Sponsor-Label an, wenn das Unternehmen Sponsor ist', () => {
+  it('zeigt das Sponsor-Styling an, wenn das Unternehmen Sponsor ist', () => {
     const sponsorCompany = { ...mockCompany, isSponsor: true };
-    render(<ExhibitorCard exhibitor={sponsorCompany} />);
+    const { container } = render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={sponsorCompany} 
+          index={1}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
 
-    expect(screen.getByText('Freunde & Förderer')).toBeInTheDocument();
+    const listItem = screen.getByRole('listitem');
+    expect(listItem).toHaveClass('bg-surface-raised');
+    expect(container.querySelector('.bg-primary')).toBeInTheDocument();
   });
 
-  it('wendet die richtigen CSS-Klassen für verschiedene Branchen an', () => {
-    const categories = [
-      { name: 'SAP Deutschland', expectedText: 'IT & Software' },
-      { name: 'Wilo Pumpen', expectedText: 'Industrie & Maschinenbau' },
-      { name: 'AOK Soziales', expectedText: 'Gesundheitswesen & Soziales' },
-      { name: 'HUK-COBURG', expectedText: 'Versicherungen & Finanzen' },
-      { name: 'DHL Express', expectedText: 'Logistik & Transport' },
-      { name: 'Bundeswehr', expectedText: 'Öffentlicher Dienst' },
-      { name: 'Unbekanntes Werk', expectedText: 'Sonstige' },
-    ];
+  it('ruft onToggleFavorite auf, wenn der Stern geklickt wird', () => {
+    const toggleMock = jest.fn();
+    render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={toggleMock}
+        />
+      </div>
+    );
 
-    categories.forEach(({ name, expectedText }) => {
-      const company = { ...mockCompany, name };
-      render(<ExhibitorCard exhibitor={company} />);
-      expect(screen.getByText(expectedText)).toBeInTheDocument();
-    });
+    const favButton = screen.getByRole('button', { name: /als Favorit markieren/i });
+    fireEvent.click(favButton);
+    expect(toggleMock).toHaveBeenCalled();
+  });
+
+  it('ruft onCategoryClick auf, wenn das Branchen-Tag geklickt wird', () => {
+    const categoryMock = jest.fn();
+    render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+          onCategoryClick={categoryMock}
+        />
+      </div>
+    );
+
+    const categoryButton = screen.getAllByRole('button', { name: /IT & Software/i })[0];
+    fireEvent.click(categoryButton);
+    expect(categoryMock).toHaveBeenCalledWith('IT & Software');
   });
 });

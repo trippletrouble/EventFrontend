@@ -8,8 +8,27 @@ import {
   ExhibitorCard,
   ExhibitorPagination,
   ExhibitorSkeleton,
+  AlphabetFilter,
 } from '@/components/Exhibitors';
 import { Alert } from '@/components/UI';
+
+function getGroupingLetter(name: string): string {
+  const char = name.trim().charAt(0).toUpperCase();
+  if (/^[0-9]/.test(char)) return '0-9';
+  if (/^[A-Z]/.test(char)) return char;
+  return 'Sonstige';
+}
+
+function getGroupHeaderStyle(group: string) {
+  const colors = [
+    'bg-[#FE3D4E] text-black border-[#FE3D4E]', // Red
+    'bg-[#FCCD01] text-black border-[#FCCD01]', // Yellow
+    'bg-[#2860F8] text-white border-[#2860F8]', // Blue
+    'bg-[#0AD88E] text-black border-[#0AD88E]', // Green
+  ];
+  const charCode = group.charCodeAt(0) || 0;
+  return colors[charCode % colors.length];
+}
 
 export default function ExhibitorsPage() {
   const {
@@ -21,8 +40,12 @@ export default function ExhibitorsPage() {
     totalCount,
     searchQuery,
     selectedCategory,
+    selectedLetter,
+    favorites,
     setSearchQuery,
     setSelectedCategory,
+    setSelectedLetter,
+    toggleFavorite,
     setCurrentPage,
   } = useExhibitors();
 
@@ -38,7 +61,8 @@ export default function ExhibitorsPage() {
           </p>
         </div>
 
-          {/* Suche & Filter */}
+        {/* Suche & Filter */}
+        <div className="space-y-4">
           <SearchFilter
             searchQuery={searchQuery}
             selectedCategory={selectedCategory}
@@ -46,59 +70,90 @@ export default function ExhibitorsPage() {
             onCategoryChange={setSelectedCategory}
           />
 
-          {/* Fehleranzeige */}
-          {error && (
-            <Alert variant="error" title="Fehler beim Laden">
-              {error}
-            </Alert>
-          )}
+          <AlphabetFilter
+            selectedLetter={selectedLetter}
+            onLetterChange={setSelectedLetter}
+          />
+        </div>
 
-          {/* Aussteller-Grid / Lade-Zustand */}
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-label="Aussteller werden geladen">
-              <ExhibitorSkeleton count={6} />
+        {/* Fehleranzeige */}
+        {error && (
+          <Alert variant="error" title="Fehler beim Laden">
+            {error}
+          </Alert>
+        )}
+
+        {/* Aussteller-Liste / Lade-Zustand */}
+        {isLoading ? (
+          <div className="divide-y divide-surface-border border border-surface-border overflow-hidden bg-surface-raised" aria-label="Aussteller werden geladen">
+            <ExhibitorSkeleton count={6} />
+          </div>
+        ) : paginatedExhibitors.length === 0 ? (
+          <div className="bg-surface-raised border border-surface-border p-12 text-center space-y-4 shadow-sm">
+            <p className="text-foreground font-semibold text-lg">Keine Aussteller gefunden</p>
+            <p className="text-foreground-muted text-sm max-w-md mx-auto">
+              Für deine Suche &quot;{searchQuery}&quot; in der Kategorie &quot;{selectedCategory || 'Alle Branchen'}&quot; und Buchstabe &quot;{selectedLetter}&quot; wurden keine Ergebnisse gefunden. 
+              Versuche es mit anderen Suchbegriffen oder setze die Filter zurück.
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedCategory('');
+                setSelectedLetter('Alle');
+              }}
+              className="btn btn-primary rounded-lg font-semibold px-6 py-2"
+              type="button"
+            >
+              Filter zurücksetzen
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-8">
+            <div 
+              className="flex flex-col gap-1" 
+              aria-label={`Ausstellerliste: ${totalCount} Firmen gefunden`}
+              role="list"
+            >
+              {(() => {
+                let lastGroup = '';
+                return paginatedExhibitors.map((exhibitor, index) => {
+                  const group = getGroupingLetter(exhibitor.name);
+                  const showHeader = group !== lastGroup;
+                  lastGroup = group;
+                  return (
+                    <React.Fragment key={exhibitor.companyId}>
+                      {showHeader && (
+                        <div className="flex pt-6 first:pt-0 mb-2">
+                          <div className={`h-10 px-4 min-w-10 flex items-center justify-center font-black text-base select-none uppercase border ${getGroupHeaderStyle(group)}`}>
+                            {group}
+                          </div>
+                        </div>
+                      )}
+                      <ExhibitorCard
+                        exhibitor={exhibitor}
+                        index={index}
+                        isFavorite={favorites.includes(exhibitor.companyId)}
+                        onToggleFavorite={() => toggleFavorite(exhibitor.companyId)}
+                        onCategoryClick={setSelectedCategory}
+                      />
+                    </React.Fragment>
+                  );
+                });
+              })()}
             </div>
-          ) : paginatedExhibitors.length === 0 ? (
-            <div className="bg-surface-raised border border-surface-border rounded-xl p-12 text-center space-y-4 shadow-md">
-              <p className="text-foreground font-semibold text-lg">Keine Aussteller gefunden</p>
-              <p className="text-foreground-muted text-sm max-w-md mx-auto">
-                Für deine Suche &quot;{searchQuery}&quot; in der Kategorie &quot;{selectedCategory || 'Alle Branchen'}&quot; wurden keine Ergebnisse gefunden. 
-                Versuche es mit anderen Suchbegriffen oder setze die Filter zurück.
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('');
-                }}
-                className="btn btn-primary rounded-lg font-semibold px-6 py-2"
-                type="button"
-              >
-                Filter zurücksetzen
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-8">
-              <div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
-                aria-label={`Ausstellerliste: ${totalCount} Firmen gefunden`}
-              >
-                {paginatedExhibitors.map((exhibitor) => (
-                  <ExhibitorCard key={exhibitor.companyId} exhibitor={exhibitor} />
-                ))}
+
+            {/* Seitennavigation */}
+            {totalPages > 1 && (
+              <div className="flex justify-center pt-4">
+                <ExhibitorPagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
               </div>
-
-              {/* Seitennavigation */}
-              {totalPages > 1 && (
-                <div className="flex justify-center pt-4">
-                  <ExhibitorPagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
-                </div>
-              )}
-            </div>
-          )}
+            )}
+          </div>
+        )}
       </main>
     </>
   );

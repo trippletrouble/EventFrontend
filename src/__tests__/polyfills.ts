@@ -46,6 +46,7 @@ if (typeof window !== 'undefined') {
   if (!HTMLElement.prototype.scrollIntoView) {
     HTMLElement.prototype.scrollIntoView = () => {};
   }
+  window.scrollTo = () => {};
   if (!window.ResizeObserver) {
     window.ResizeObserver = class ResizeObserver {
       observe() {}

@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:contrast": "jest tests/contrast.test.js",
-    "test:a11y": "jest tests/a11y.test.js",
+    "test:contrast": "jest src/__tests__/contrast.test.ts",
+    "test:a11y": "jest src/__tests__/a11y.test.tsx",
     "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit --passWithNoTests"
   },
   "dependencies": {

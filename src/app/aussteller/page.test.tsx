@@ -46,8 +46,12 @@ describe('ExhibitorsPage', () => {
       totalCount: 0,
       searchQuery: '',
       selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
       setSearchQuery: jest.fn(),
       setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: jest.fn(),
       setCurrentPage: jest.fn(),
     });
 
@@ -67,8 +71,12 @@ describe('ExhibitorsPage', () => {
       totalCount: 0,
       searchQuery: '',
       selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
       setSearchQuery: jest.fn(),
       setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: jest.fn(),
       setCurrentPage: jest.fn(),
     });
 
@@ -80,6 +88,7 @@ describe('ExhibitorsPage', () => {
   it('rendert leeres Suchergebnis mit Zurücksetzen-Button', () => {
     const setSearchQueryMock = jest.fn();
     const setSelectedCategoryMock = jest.fn();
+    const setSelectedLetterMock = jest.fn();
 
     mockUseExhibitors.mockReturnValue({
       paginatedExhibitors: [],
@@ -90,8 +99,12 @@ describe('ExhibitorsPage', () => {
       totalCount: 0,
       searchQuery: 'NonExistent',
       selectedCategory: 'IT & Software',
+      selectedLetter: 'Alle',
+      favorites: [],
       setSearchQuery: setSearchQueryMock,
       setSelectedCategory: setSelectedCategoryMock,
+      setSelectedLetter: setSelectedLetterMock,
+      toggleFavorite: jest.fn(),
       setCurrentPage: jest.fn(),
     });
 
@@ -100,7 +113,7 @@ describe('ExhibitorsPage', () => {
     expect(screen.getByText('Keine Aussteller gefunden')).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Für deine Suche "NonExistent" in der Kategorie "IT & Software" wurden keine Ergebnisse gefunden./
+        /Für deine Suche "NonExistent" in der Kategorie "IT & Software" und Buchstabe "Alle" wurden keine Ergebnisse gefunden./
       )
     ).toBeInTheDocument();
 
@@ -109,6 +122,7 @@ describe('ExhibitorsPage', () => {
 
     expect(setSearchQueryMock).toHaveBeenCalledWith('');
     expect(setSelectedCategoryMock).toHaveBeenCalledWith('');
+    expect(setSelectedLetterMock).toHaveBeenCalledWith('Alle');
   });
 
   it('rendert Ausstellerliste und Pagination korrekt', () => {
@@ -123,15 +137,19 @@ describe('ExhibitorsPage', () => {
       totalCount: 15,
       searchQuery: '',
       selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
       setSearchQuery: jest.fn(),
       setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: jest.fn(),
       setCurrentPage: setCurrentPageMock,
     });
 
-    render(<ExhibitorsPage />);
+    const { container } = render(<ExhibitorsPage />);
 
     expect(screen.getByText('Test AG')).toBeInTheDocument();
-    expect(screen.getByText('Freunde & Förderer')).toBeInTheDocument();
+    expect(container.querySelector('.bg-primary')).toBeInTheDocument();
 
     // Pagination elements
     expect(screen.getByRole('navigation', { name: 'Aussteller Seitennavigation' })).toBeInTheDocument();

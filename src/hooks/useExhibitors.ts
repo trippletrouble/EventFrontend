@@ -54,8 +54,23 @@ export function useExhibitors() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedLetter, setSelectedLetter] = useState('Alle');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
+
+  const [favorites, setFavorites] = useState<number[]>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('exhibitor_favorites');
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch (e) {
+          console.error('Failed to parse favorites', e);
+        }
+      }
+    }
+    return [];
+  });
 
   const fetchExhibitors = useCallback(async () => {
     setIsLoading(true);
@@ -94,9 +109,26 @@ export function useExhibitors() {
     setCurrentPage(1);
   }, []);
 
-  // Filter logic
+  const changeLetter = useCallback((letter: string) => {
+    setSelectedLetter(letter);
+    setCurrentPage(1);
+  }, []);
+
+  const toggleFavorite = useCallback((companyId: number) => {
+    setFavorites((prev) => {
+      const next = prev.includes(companyId)
+        ? prev.filter((id) => id !== companyId)
+        : [...prev, companyId];
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('exhibitor_favorites', JSON.stringify(next));
+      }
+      return next;
+    });
+  }, []);
+
+  // Filter and Sort logic
   const filteredExhibitors = useMemo(() => {
-    return exhibitors.filter((exhibitor) => {
+    const filtered = exhibitors.filter((exhibitor) => {
       const matchesSearch = exhibitor.name
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
@@ -104,9 +136,20 @@ export function useExhibitors() {
       const matchesCategory =
         !selectedCategory || getCompanyCategory(exhibitor) === selectedCategory;
 
-      return matchesSearch && matchesCategory;
+      const matchesLetter =
+        selectedLetter === 'Alle' ||
+        (selectedLetter === '0-9'
+          ? /^[0-9]/.test(exhibitor.name)
+          : selectedLetter === 'Sonstige'
+          ? /^[^a-zA-Z0-9]/.test(exhibitor.name)
+          : exhibitor.name.toUpperCase().startsWith(selectedLetter));
+
+      return matchesSearch && matchesCategory && matchesLetter;
     });
-  }, [exhibitors, searchQuery, selectedCategory]);
+
+    // Sort alphabetically by name
+    return [...filtered].sort((a, b) => a.name.localeCompare(b.name, 'de'));
+  }, [exhibitors, searchQuery, selectedCategory, selectedLetter]);
 
   // Pagination logic
   const totalCount = filteredExhibitors.length;
@@ -128,8 +171,12 @@ export function useExhibitors() {
     totalCount,
     searchQuery,
     selectedCategory,
+    selectedLetter,
+    favorites,
     setSearchQuery: changeSearchQuery,
     setSelectedCategory: changeCategory,
+    setSelectedLetter: changeLetter,
+    toggleFavorite,
     setCurrentPage,
     refetch: fetchExhibitors,
   };

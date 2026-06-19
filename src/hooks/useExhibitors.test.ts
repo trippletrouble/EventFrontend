@@ -186,6 +186,30 @@ describe('useExhibitors Hook', () => {
     expect(result.current.filteredExhibitors[0].name).toBe('Techniker Krankenkasse');
   });
 
+  it('filtert Aussteller nach Buchstabe', async () => {
+    (eventService.getExhibitors as jest.Mock).mockResolvedValue({ data: mockServiceCompanies });
+
+    const { result } = renderHook(() => useExhibitors());
+
+    await waitFor(() => {
+      expect(result.current.exhibitors.length).toBe(7);
+    });
+
+    act(() => {
+      result.current.setSelectedLetter('W');
+    });
+
+    expect(result.current.selectedLetter).toBe('W');
+    expect(result.current.filteredExhibitors.length).toBe(1);
+    expect(result.current.filteredExhibitors[0].name).toBe('Wilo Pumpen GmbH');
+
+    act(() => {
+      result.current.setSelectedLetter('0-9');
+    });
+
+    expect(result.current.filteredExhibitors.length).toBe(0);
+  });
+
   it('paginiert die Ergebnisse korrekt (6 pro Seite)', async () => {
     (eventService.getExhibitors as jest.Mock).mockResolvedValue({ data: mockServiceCompanies });
 
@@ -236,5 +260,33 @@ describe('useExhibitors Hook', () => {
       result.current.setSelectedCategory('IT & Software');
     });
     expect(result.current.currentPage).toBe(1);
+
+    act(() => {
+      result.current.setCurrentPage(2);
+    });
+    expect(result.current.currentPage).toBe(2);
+
+    act(() => {
+      result.current.setSelectedLetter('W');
+    });
+    expect(result.current.currentPage).toBe(1);
+  });
+
+  it('verwaltet die Favoritenliste korrekt', () => {
+    const { result } = renderHook(() => useExhibitors());
+
+    expect(result.current.favorites).toEqual([]);
+
+    act(() => {
+      result.current.toggleFavorite(1);
+    });
+
+    expect(result.current.favorites).toEqual([1]);
+
+    act(() => {
+      result.current.toggleFavorite(1);
+    });
+
+    expect(result.current.favorites).toEqual([]);
   });
 });

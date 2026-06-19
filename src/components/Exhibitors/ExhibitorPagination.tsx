@@ -16,13 +16,20 @@ export function ExhibitorPagination({
 }: ExhibitorPaginationProps) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const handlePageChange = (page: number) => {
+    onPageChange(page);
+    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <nav aria-label="Aussteller Seitennavigation" className="flex items-center gap-1.5">
+    <nav aria-label="Aussteller Seitennavigation" className="flex items-center gap-3">
       {/* Previous Page Button */}
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="btn btn-outline btn-sm h-9 w-9 rounded-lg flex items-center justify-center p-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none disabled:opacity-40"
+        className="h-10 w-10 rounded-lg border border-surface-border bg-surface-raised text-foreground hover:bg-surface-overlay hover:text-primary hover:border-foreground-muted flex items-center justify-center p-0 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none disabled:opacity-30 disabled:hover:bg-surface-raised disabled:hover:text-foreground disabled:hover:border-surface-border cursor-pointer disabled:cursor-not-allowed"
         aria-label="Vorherige Seite"
         type="button"
       >
@@ -30,17 +37,17 @@ export function ExhibitorPagination({
       </button>
 
       {/* Page Numbers */}
-      <div className="join gap-1">
+      <div className="flex items-center gap-2">
         {pages.map((page) => {
           const isCurrent = page === currentPage;
           return (
             <button
               key={page}
-              onClick={() => onPageChange(page)}
-              className={`join-item btn btn-sm h-9 min-w-[36px] rounded-lg font-bold focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none border transition-colors ${
+              onClick={() => handlePageChange(page)}
+              className={`h-10 min-w-[40px] rounded-lg font-bold text-sm transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none border flex items-center justify-center cursor-pointer ${
                 isCurrent
-                  ? 'bg-primary text-black hover:bg-primary-dark border-transparent'
-                  : 'btn-outline border-surface-border text-foreground hover:bg-surface-border'
+                  ? 'bg-primary text-black border-transparent scale-105 shadow-md shadow-primary/10'
+                  : 'border-surface-border bg-surface-raised text-foreground hover:bg-surface-overlay hover:text-primary hover:border-foreground-muted'
               }`}
               aria-label={`Gehe zu Seite ${page}`}
               aria-current={isCurrent ? 'page' : undefined}
@@ -54,9 +61,9 @@ export function ExhibitorPagination({
 
       {/* Next Page Button */}
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="btn btn-outline btn-sm h-9 w-9 rounded-lg flex items-center justify-center p-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none disabled:opacity-40"
+        className="h-10 w-10 rounded-lg border border-surface-border bg-surface-raised text-foreground hover:bg-surface-overlay hover:text-primary hover:border-foreground-muted flex items-center justify-center p-0 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none disabled:opacity-30 disabled:hover:bg-surface-raised disabled:hover:text-foreground disabled:hover:border-surface-border cursor-pointer disabled:cursor-not-allowed"
         aria-label="Nächste Seite"
         type="button"
       >
@@ -67,3 +74,4 @@ export function ExhibitorPagination({
 }
 
 export default ExhibitorPagination;
+
