@@ -52,7 +52,7 @@ describe('TierCard', () => {
     const user = userEvent.setup();
     render(<TierCard tier={mockTier} isSponsor={false} onSelect={onSelectMock} />);
 
-    const button = screen.getByRole('button', { name: 'Kaufen →' });
+    const button = screen.getByRole('button', { name: 'Ticket kaufen →' });
     await user.click(button);
 
     expect(onSelectMock).toHaveBeenCalledWith(1);

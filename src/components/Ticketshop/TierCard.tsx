@@ -17,7 +17,7 @@ const tierContent = {
     title: 'Basis Ticket',
     textColor: 'text-yellow-500',
     borderColor: 'border-yellow-500',
-    btnStyles: 'bg-white text-black hover:bg-white/95 border-2 border-black ring-3 ring-[#EAB308] shadow-lg font-bold',
+    btnStyles: 'bg-[#EAB308] text-black hover:bg-[#EAB308]/90 border-transparent font-bold',
     icon: Ticket,
   },
   2: {
@@ -65,8 +65,6 @@ export function TierCard({
     ? 'Ausverkauft'
     : isSelected
     ? 'Ausgewählt'
-    : isFirstTier
-    ? 'Kaufen →'
     : 'Ticket kaufen →';
 
   const standardPrice = tier.basePrice / 100;
@@ -97,8 +95,8 @@ export function TierCard({
 
   return (
     <div
-      className={`rounded-xl border-2 p-8 bg-surface-raised transition-all duration-200 flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 relative ${
-        isSelected ? 'border-primary shadow-xl scale-[1.01]' : config.borderColor
+      className={`rounded-md p-8 bg-surface-raised transition-all duration-200 flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 relative ${config.borderColor} ${
+        isSelected ? 'border-4 shadow-xl scale-[1.01]' : 'border-2'
       }`}
     >
       {/* Linke Seite: Details & Features */}
@@ -151,11 +149,7 @@ export function TierCard({
         <Button
           onClick={() => onSelect(tier.tierId)}
           disabled={isBtnDisabled}
-          className={`w-full md:w-auto px-6 py-3 rounded-lg text-sm transition-all duration-200 ${
-            isFirstTier
-              ? 'hover:scale-[1.06] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(234,179,8,0.45)]'
-              : 'hover:scale-[1.02]'
-          } ${
+          className={`w-full md:w-auto px-6 py-3 rounded-lg text-sm transition-all duration-200 hover:scale-[1.02] ${
             isSelected ? 'bg-primary text-primary-foreground' : config.btnStyles
           }`}
           aria-pressed={isSelected}
