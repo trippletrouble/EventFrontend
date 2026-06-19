@@ -12,7 +12,7 @@ export default function TicketshopPage() {
   const [isSponsor, setIsSponsor] = useState(false);
   const [isBookingLoading, setIsBookingLoading] = useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
-  
+
   const [bookingSuccess, setBookingSuccess] = useState<string | null>(null);
   const [bookingError, setBookingError] = useState<string | null>(null);
 
@@ -29,23 +29,26 @@ export default function TicketshopPage() {
     setBookingSuccess(null);
     setBookingError(null);
     try {
-      // 1. Create booking (mocking companyId: 1)
       const booking = await createBooking({
         tierId: selectedTierId,
         companyId: 1,
       });
-      
-      // 2. Start Stripe Checkout
+
       const checkout = await createCheckout({
         bookingId: booking.bookingId,
       });
 
       setBookingSuccess(`Buchung erfolgreich angelegt! Stripe-Checkout wird gestartet: ${checkout.checkoutUrl}`);
+
+      if (checkout?.checkoutUrl) {
+        window.location.href = checkout.checkoutUrl;
+      }
+
     } catch (err) {
       if (process.env.NODE_ENV === 'development') {
         console.warn('Checkout/Booking API call failed, using dev mock fallback:', err);
         setBookingSuccess(
-          `[Demo-Modus] Buchung erfolgreich angelegt! Stripe-Checkout wird gestartet: https://checkout.stripe.com/test_session_123`
+            `[Demo-Modus] Buchung erfolgreich angelegt! Stripe-Checkout wird gestartet: https://checkout.stripe.com/test_session_123`
         );
       } else {
         setBookingError(err instanceof Error ? err.message : 'Buchung oder Checkout fehlgeschlagen.');
@@ -60,19 +63,21 @@ export default function TicketshopPage() {
     setBookingSuccess(null);
     setBookingError(null);
     try {
-      // Mocking current bookingId: 1
       const result = await upgradeBooking(1, { targetTierId });
       setBookingSuccess(
-        `Upgrade erfolgreich eingeleitet! Differenzbetrag: ${
-          result.priceDifference / 100
-        } €. Stripe-Zahlung wird gestartet: ${result.paymentUrl}`
+          `Upgrade erfolgreich eingeleitet! Differenzbetrag: ${
+              result.priceDifference / 100
+          } €. Stripe-Zahlung wird gestartet: ${result.paymentUrl}`
       );
+      if (result?.paymentUrl) {
+        window.location.href = result.paymentUrl;
+      }
       setIsUpgradeModalOpen(false);
     } catch (err) {
       if (process.env.NODE_ENV === 'development') {
         console.warn('Upgrade API call failed, using dev mock fallback:', err);
         setBookingSuccess(
-          `[Demo-Modus] Upgrade erfolgreich eingeleitet! Differenzbetrag: 350 €. Stripe-Zahlung wird gestartet: https://checkout.stripe.com/upgrade_session_123`
+            `[Demo-Modus] Upgrade erfolgreich eingeleitet! Differenzbetrag: 350 €. Stripe-Zahlung wird gestartet: https://checkout.stripe.com/upgrade_session_123`
         );
         setIsUpgradeModalOpen(false);
       } else {
@@ -84,100 +89,99 @@ export default function TicketshopPage() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Tickets</h1>
-          <p className="text-foreground-muted text-sm mt-1">
-            Wählen Sie das passende Standpaket für Ihr Unternehmen aus.
-          </p>
-        </div>
-        
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Button to trigger Upgrade Modal */}
-          {tiers.length > 0 && (
-            <Button
-              onClick={() => setIsUpgradeModalOpen(true)}
-              variant="outline"
-              size="sm"
-              className="rounded-lg font-semibold"
-            >
-              Stand upgraden
-            </Button>
-          )}
+      <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Tickets</h2>
+            <p className="text-gray-400 text-sm mt-1">
+              Wählen Sie das passende Standpaket für Ihr Unternehmen aus.
+            </p>
+          </div>
 
-          {/* Toggle to test Sponsor discounts */}
-          <label className="flex items-center gap-2 text-sm text-foreground bg-surface-raised px-4 py-2 border border-surface-border rounded-lg cursor-pointer">
-            <input
-              type="checkbox"
-              checked={isSponsor}
-              onChange={(e) => setIsSponsor(e.target.checked)}
-              className="rounded border-surface-border text-primary focus:ring-primary h-4 w-4"
-            />
-            <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
-          </label>
+          <div className="flex flex-wrap items-center gap-3">
+            {tiers.length > 0 && (
+                <Button
+                    onClick={() => setIsUpgradeModalOpen(true)}
+                    variant="outline"
+                    size="sm"
+                    className="rounded-lg font-semibold text-white border-white/20"
+                >
+                  Stand upgraden
+                </Button>
+            )}
+
+            <label className="flex items-center gap-2 text-sm text-white bg-white/5 px-4 py-2 border border-white/10 rounded-lg cursor-pointer">
+              <input
+                  type="checkbox"
+                  checked={isSponsor}
+                  onChange={(e) => setIsSponsor(e.target.checked)}
+                  className="rounded border-white/20 bg-transparent text-[#0AD88E] focus:ring-[#0AD88E] h-4 w-4"
+              />
+              <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
+            </label>
+          </div>
         </div>
+
+        {(error || bookingError) && (
+            <Alert variant="error" title="Fehler">
+          <span className="text-base font-black tracking-wide text-white block">
+            {error || bookingError}
+          </span>
+            </Alert>
+        )}
+
+        {bookingSuccess && (
+            <Alert variant="success" title="Erfolg">
+              {bookingSuccess}
+            </Alert>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-2">
+            {isLoading ? (
+                <div className="flex justify-center p-8" aria-label="Pakete laden">
+                  <svg className="h-10 w-10 animate-spin text-[#0AD88E]" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                </div>
+            ) : (
+                <TierList
+                    tiers={tiers}
+                    isSponsor={isSponsor}
+                    selectedTierId={selectedTierId}
+                    onSelect={handleSelectTier}
+                    disabled={isBookingLoading}
+                />
+            )}
+          </div>
+
+          <div className="lg:col-span-1">
+            {selectedTier ? (
+                <BookingCTA
+                    tier={selectedTier}
+                    isSponsor={isSponsor}
+                    onCheckout={handleCheckout}
+                    isLoading={isBookingLoading}
+                />
+            ) : (
+                <div className="bg-white/5 p-6 border border-white/10 rounded-xl text-center text-gray-400 text-sm">
+                  Bitte wählen Sie ein Paket aus der Liste.
+                </div>
+            )}
+          </div>
+        </div>
+
+        {currentTierForUpgrade && (
+            <UpgradeModal
+                isOpen={isUpgradeModalOpen}
+                onClose={() => setIsUpgradeModalOpen(false)}
+                currentTier={currentTierForUpgrade}
+                availableTiers={tiers}
+                onUpgrade={handleUpgrade}
+                isLoading={isBookingLoading}
+            />
+        )}
       </div>
-
-      {(error || bookingError) && (
-        <Alert variant="error" title="Fehler">
-          {error || bookingError}
-        </Alert>
-      )}
-
-      {bookingSuccess && (
-        <Alert variant="success" title="Erfolg">
-          {bookingSuccess}
-        </Alert>
-      )}
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <div className="lg:col-span-2">
-          {isLoading ? (
-            <div className="flex justify-center p-8" aria-label="Pakete laden">
-              <svg className="h-10 w-10 animate-spin text-primary" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-            </div>
-          ) : (
-            <TierList
-              tiers={tiers}
-              isSponsor={isSponsor}
-              selectedTierId={selectedTierId}
-              onSelect={handleSelectTier}
-              disabled={isBookingLoading}
-            />
-          )}
-        </div>
-
-        <div className="lg:col-span-1">
-          {selectedTier ? (
-            <BookingCTA
-              tier={selectedTier}
-              isSponsor={isSponsor}
-              onCheckout={handleCheckout}
-              isLoading={isBookingLoading}
-            />
-          ) : (
-            <div className="bg-surface-raised p-6 border border-surface-border rounded-xl text-center text-foreground-muted text-sm">
-              Bitte wählen Sie ein Paket aus der Liste.
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Upgrade Modal */}
-      {currentTierForUpgrade && (
-        <UpgradeModal
-          isOpen={isUpgradeModalOpen}
-          onClose={() => setIsUpgradeModalOpen(false)}
-          currentTier={currentTierForUpgrade}
-          availableTiers={tiers}
-          onUpgrade={handleUpgrade}
-          isLoading={isBookingLoading}
-        />
-      )}
-    </main>
   );
 }
