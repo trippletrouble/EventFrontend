@@ -29,18 +29,14 @@ export default function ExhibitorsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-grow pt-20">
-        <div className="max-w-[1320px] mx-auto px-6 lg:px-12 py-12 space-y-8">
-          {/* Überschriften-Hierarchie: genau ein h1 pro Seite */}
-          <div className="space-y-2">
-            <h1 className="text-4xl font-extrabold tracking-tight text-foreground">
-              Unsere Aussteller
-            </h1>
-            <p className="text-foreground-muted text-base max-w-2xl">
-              Lernen Sie die Partner und Aussteller der Unternehmerbörse 2026 kennen. 
-              Nutzen Sie die Filter, um nach bestimmten Branchen oder Firmennamen zu suchen.
-            </p>
-          </div>
+      <main id="main-content" className="container mx-auto px-4 py-8 max-w-6xl space-y-6 pt-24">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Unsere Aussteller</h1>
+          <p className="text-foreground-muted text-sm mt-1">
+            Lernen Sie die Partner und Aussteller der Unternehmerbörse 2026 kennen. 
+            Nutzen Sie die Filter, um nach bestimmten Branchen oder Firmennamen zu suchen.
+          </p>
+        </div>
 
           {/* Suche & Filter */}
           <SearchFilter
@@ -103,7 +99,6 @@ export default function ExhibitorsPage() {
               )}
             </div>
           )}
-        </div>
       </main>
     </>
   );

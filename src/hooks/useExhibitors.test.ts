@@ -90,23 +90,23 @@ const mockServiceCompanies: CompanyDto[] = [
 
 describe('getCompanyCategory', () => {
   it('sollte industry bevorzugen, falls vorhanden', () => {
-    const comp = { companyId: 1, name: 'SAP', status: 'VERIFIED', isSponsor: false, industry: 'Custom Industry' } as any;
+    const comp = { companyId: 1, name: 'SAP', status: 'VERIFIED', isSponsor: false, industry: 'Custom Industry' } as unknown as CompanyDto;
     expect(getCompanyCategory(comp)).toBe('Custom Industry');
   });
 
   it('sollte category bevorzugen, falls industry fehlt', () => {
-    const comp = { companyId: 1, name: 'SAP', status: 'VERIFIED', isSponsor: false, category: 'Custom Cat' } as any;
+    const comp = { companyId: 1, name: 'SAP', status: 'VERIFIED', isSponsor: false, category: 'Custom Cat' } as unknown as CompanyDto;
     expect(getCompanyCategory(comp)).toBe('Custom Cat');
   });
 
   it('sollte heuristisch nach Namen filtern', () => {
-    expect(getCompanyCategory({ name: 'Wilo SE' } as any)).toBe('Industrie & Maschinenbau');
-    expect(getCompanyCategory({ name: 'AOK Bayern' } as any)).toBe('Gesundheitswesen & Soziales');
-    expect(getCompanyCategory({ name: 'SAP SE' } as any)).toBe('IT & Software');
-    expect(getCompanyCategory({ name: 'HUK-COBURG' } as any)).toBe('Versicherungen & Finanzen');
-    expect(getCompanyCategory({ name: 'DHL Express' } as any)).toBe('Logistik & Transport');
-    expect(getCompanyCategory({ name: 'Bundeswehr Karriere' } as any)).toBe('Öffentlicher Dienst');
-    expect(getCompanyCategory({ name: 'Unbekannt' } as any)).toBe('Sonstige');
+    expect(getCompanyCategory({ name: 'Wilo SE' } as unknown as CompanyDto)).toBe('Industrie & Maschinenbau');
+    expect(getCompanyCategory({ name: 'AOK Bayern' } as unknown as CompanyDto)).toBe('Gesundheitswesen & Soziales');
+    expect(getCompanyCategory({ name: 'SAP SE' } as unknown as CompanyDto)).toBe('IT & Software');
+    expect(getCompanyCategory({ name: 'HUK-COBURG' } as unknown as CompanyDto)).toBe('Versicherungen & Finanzen');
+    expect(getCompanyCategory({ name: 'DHL Express' } as unknown as CompanyDto)).toBe('Logistik & Transport');
+    expect(getCompanyCategory({ name: 'Bundeswehr Karriere' } as unknown as CompanyDto)).toBe('Öffentlicher Dienst');
+    expect(getCompanyCategory({ name: 'Unbekannt' } as unknown as CompanyDto)).toBe('Sonstige');
   });
 });
 

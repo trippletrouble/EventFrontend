@@ -12,7 +12,7 @@ export function ExhibitorSkeleton({ count = 6 }: ExhibitorSkeletonProps) {
       {skeletons.map((_, idx) => (
         <div
           key={idx}
-          className="bg-surface-raised border border-surface-border rounded-xl p-6 flex flex-col justify-between shadow-md h-[240px] animate-pulse"
+          className="bg-surface-raised border-2 border-surface-border rounded-xl p-8 flex flex-col justify-between shadow-md h-[250px] animate-pulse"
           data-testid="exhibitor-skeleton"
         >
           <div className="space-y-4">

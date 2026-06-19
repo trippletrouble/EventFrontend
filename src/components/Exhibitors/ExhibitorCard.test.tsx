@@ -46,4 +46,22 @@ describe('ExhibitorCard', () => {
 
     expect(screen.getByText('Freunde & Förderer')).toBeInTheDocument();
   });
+
+  it('wendet die richtigen CSS-Klassen für verschiedene Branchen an', () => {
+    const categories = [
+      { name: 'SAP Deutschland', expectedText: 'IT & Software' },
+      { name: 'Wilo Pumpen', expectedText: 'Industrie & Maschinenbau' },
+      { name: 'AOK Soziales', expectedText: 'Gesundheitswesen & Soziales' },
+      { name: 'HUK-COBURG', expectedText: 'Versicherungen & Finanzen' },
+      { name: 'DHL Express', expectedText: 'Logistik & Transport' },
+      { name: 'Bundeswehr', expectedText: 'Öffentlicher Dienst' },
+      { name: 'Unbekanntes Werk', expectedText: 'Sonstige' },
+    ];
+
+    categories.forEach(({ name, expectedText }) => {
+      const company = { ...mockCompany, name };
+      render(<ExhibitorCard exhibitor={company} />);
+      expect(screen.getByText(expectedText)).toBeInTheDocument();
+    });
+  });
 });

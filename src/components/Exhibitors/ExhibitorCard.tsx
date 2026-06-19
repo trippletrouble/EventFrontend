@@ -25,6 +25,25 @@ const getGradientByName = (name: string) => {
   return gradients[sum % gradients.length];
 };
 
+const getCategoryStyles = (category: string) => {
+  switch (category) {
+    case 'IT & Software':
+      return 'bg-blue-500/10 text-blue-500 border border-blue-500/20';
+    case 'Industrie & Maschinenbau':
+      return 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20';
+    case 'Gesundheitswesen & Soziales':
+      return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+    case 'Versicherungen & Finanzen':
+      return 'bg-red-500/10 text-red-500 border border-red-500/20';
+    case 'Logistik & Transport':
+      return 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20';
+    case 'Öffentlicher Dienst':
+      return 'bg-purple-500/10 text-purple-400 border border-purple-500/20';
+    default:
+      return 'bg-foreground-muted/10 text-foreground-muted border border-foreground-muted/20';
+  }
+};
+
 export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
   const category = getCompanyCategory(exhibitor);
   const initial = exhibitor.name.trim().charAt(0).toUpperCase();
@@ -32,8 +51,10 @@ export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
 
   return (
     <article
-      className={`bg-surface-raised border rounded-xl p-6 flex flex-col justify-between shadow-md transition-all duration-200 hover:shadow-lg hover:border-primary/40 relative group ${
-        exhibitor.isSponsor ? 'border-primary/30 ring-1 ring-primary/10' : 'border-surface-border'
+      className={`bg-surface-raised border-2 rounded-xl p-8 flex flex-col justify-between shadow-md transition-all duration-200 relative group min-h-[250px] ${
+        exhibitor.isSponsor
+          ? 'border-primary shadow-xl scale-[1.01] ring-1 ring-primary/10'
+          : 'border-surface-border hover:border-primary/40 hover:scale-[1.01] hover:shadow-lg'
       }`}
       aria-labelledby={`exhibitor-title-${exhibitor.companyId}`}
     >
@@ -49,7 +70,7 @@ export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         {/* Logo / Initials Badge & Name */}
         <div className="flex items-center gap-4">
           <div
@@ -63,27 +84,27 @@ export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
           <div className="space-y-1 pr-12">
             <h2 
               id={`exhibitor-title-${exhibitor.companyId}`}
-              className="text-lg font-bold text-foreground line-clamp-1 group-hover:text-primary transition-colors"
+              className="text-lg font-extrabold text-foreground line-clamp-1 group-hover:text-primary transition-colors"
             >
               {exhibitor.name}
             </h2>
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded border border-primary/15">
-              <Building2 className="w-3 h-3" aria-hidden="true" />
+            <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-0.5 rounded-full ${getCategoryStyles(category)}`}>
+              <Building2 className="w-3.5 h-3.5" aria-hidden="true" />
               {category}
             </span>
           </div>
         </div>
 
         {/* Info list */}
-        <div className="space-y-2 text-sm text-foreground-muted">
+        <div className="space-y-2.5 text-sm text-foreground-muted border-t border-surface-border/40 pt-4">
           <div className="flex items-start gap-2.5">
-            <MapPin className="w-4 h-4 shrink-0 text-foreground-muted/60 mt-0.5" aria-hidden="true" />
+            <MapPin className="w-4 h-4 shrink-0 text-foreground-muted/65 mt-0.5" aria-hidden="true" />
             <span>
               {exhibitor.address}, {exhibitor.zip} {exhibitor.city}
             </span>
           </div>
           <div className="flex items-start gap-2.5">
-            <Mail className="w-4 h-4 shrink-0 text-foreground-muted/60 mt-0.5" aria-hidden="true" />
+            <Mail className="w-4 h-4 shrink-0 text-foreground-muted/65 mt-0.5" aria-hidden="true" />
             <span className="break-all">{exhibitor.email}</span>
           </div>
         </div>
@@ -93,11 +114,15 @@ export function ExhibitorCard({ exhibitor }: ExhibitorCardProps) {
       <div className="pt-6">
         <Link
           href={`/company/${exhibitor.companyId}`}
-          className="inline-flex items-center justify-center gap-2 w-full h-11 px-4 text-sm font-semibold rounded-lg bg-surface-overlay hover:bg-primary hover:text-black border border-surface-border hover:border-transparent transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none"
+          className={`inline-flex items-center justify-center gap-2 w-full h-11 px-4 text-sm rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none ${
+            exhibitor.isSponsor
+              ? 'bg-primary text-black font-bold hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(234,179,8,0.45)] border-2 border-transparent'
+              : 'bg-surface-overlay border-2 border-surface-border text-foreground font-semibold hover:border-primary/50 hover:bg-surface-overlay/85 hover:scale-[1.01] hover:shadow-md'
+          }`}
           aria-label={`Profil von ${exhibitor.name} ansehen`}
         >
           <span>Profil ansehen</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shrink-0" aria-hidden="true" />
         </Link>
       </div>
     </article>
