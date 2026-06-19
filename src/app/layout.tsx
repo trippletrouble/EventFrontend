@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { AuthProvider } from "./providers/AuthProvider";
 import { Lexend, Lexend_Deca, Lexend_Exa, Lexend_Giga, Inter } from 'next/font/google';
 import './globals.css';
 import { SessionProvider } from '@/providers/SessionProvider';
 import { ToastProvider } from '@/providers/ToastProvider';
 import { SkipNavLink } from '@/components/Layout/SkipNavLink';
+import { A11yReporter } from '@/components/A11yReporter';
 
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 'swap' });
 const lexendDeca = Lexend_Deca({ subsets: ['latin'], variable: '--font-lexend-deca', display: 'swap' });
@@ -10,7 +14,7 @@ const lexendExa = Lexend_Exa({ subsets: ['latin'], variable: '--font-lexend-exa'
 const lexendGiga = Lexend_Giga({ subsets: ['latin'], variable: '--font-lexend-giga', display: 'swap' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Unternehmerbörse 2026 – Hochschule Hof',
   description: 'Die Karrieremesse der Hochschule Hof. Finden Sie Talente, präsentieren Sie Ihr Unternehmen.',
 };
@@ -21,14 +25,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           lang="de"
           className={`${lexend.variable} ${lexendDeca.variable} ${lexendExa.variable} ${lexendGiga.variable} ${inter.variable} h-full scroll-smooth scroll-pt-20`}
       >
-      <body className="min-h-full flex flex-col font-sans bg-surface text-foreground antialiased">
-      <SkipNavLink />
-      <SessionProvider>
-        <ToastProvider>
-          {children}
-        </ToastProvider>
-      </SessionProvider>
-      </body>
+          <body className="min-h-full flex flex-col font-sans bg-surface text-foreground antialiased">
+              <A11yReporter />
+              <AuthProvider>
+                  <SkipNavLink />
+                  <SessionProvider>
+                      <ToastProvider>
+                        {children}
+                      </ToastProvider>
+                  </SessionProvider>
+              </AuthProvider>
+          </body>
       </html>
   );
 }

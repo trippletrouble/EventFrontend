@@ -56,7 +56,7 @@ const config: Config = {
 const jestConfig = async () => {
   const resolvedConfig = await createJestConfig(config)();
   resolvedConfig.transformIgnorePatterns = [
-    'node_modules/(?!(rettime|msw|@mswjs/interceptors|until-async|@open-draft|strict-event-emitter)/)',
+    'node_modules/(?!(rettime|msw|@mswjs/interceptors|until-async|@open-draft|strict-event-emitter|node-fetch|data-uri-to-buffer|fetch-blob|formdata-polyfill|jose)/)',
     '^.+\\.module\\.(css|sass|scss)$',
   ];
   return resolvedConfig;
