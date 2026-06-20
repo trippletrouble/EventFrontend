@@ -8,7 +8,7 @@ import { navigateTo } from '@/app/lib/navigation';
 global.fetch = jest.fn();
 
 // Mock navigateTo
-jest.mock('../src/app/lib/navigation', () => ({
+jest.mock('@/app/lib/navigation', () => ({
   navigateTo: jest.fn(),
 }));
 
