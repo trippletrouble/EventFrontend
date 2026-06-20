@@ -1,7 +1,8 @@
 import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ExhibitorCard } from './ExhibitorCard';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import ExhibitorCardDefault, { ExhibitorCard } from './ExhibitorCard';
 import type { CompanyDto } from '@/types/api.types';
 
 expect.extend(toHaveNoViolations);
@@ -78,7 +79,8 @@ describe('ExhibitorCard', () => {
     expect(container.querySelector('.bg-primary')).toBeInTheDocument();
   });
 
-  it('ruft onToggleFavorite auf, wenn der Stern geklickt wird', () => {
+  it('ruft onToggleFavorite auf, wenn der Stern geklickt wird', async () => {
+    const user = userEvent.setup();
     const toggleMock = jest.fn();
     render(
       <div role="list">
@@ -92,11 +94,12 @@ describe('ExhibitorCard', () => {
     );
 
     const favButton = screen.getByRole('button', { name: /als Favorit markieren/i });
-    fireEvent.click(favButton);
+    await user.click(favButton);
     expect(toggleMock).toHaveBeenCalled();
   });
 
-  it('ruft onCategoryClick auf, wenn das Branchen-Tag geklickt wird', () => {
+  it('ruft onCategoryClick auf, wenn das Branchen-Tag geklickt wird (sowohl auf Mobil als auch auf Desktop)', async () => {
+    const user = userEvent.setup();
     const categoryMock = jest.fn();
     render(
       <div role="list">
@@ -110,8 +113,55 @@ describe('ExhibitorCard', () => {
       </div>
     );
 
-    const categoryButton = screen.getAllByRole('button', { name: /IT & Software/i })[0];
-    fireEvent.click(categoryButton);
-    expect(categoryMock).toHaveBeenCalledWith('IT & Software');
+    const categoryButtons = screen.getAllByRole('button', { name: /IT & Software/i });
+    expect(categoryButtons.length).toBe(2); // Mobile and Desktop versions
+
+    for (const btn of categoryButtons) {
+      await user.click(btn);
+    }
+    expect(categoryMock).toHaveBeenCalledTimes(2);
+    expect(categoryMock).toHaveBeenLastCalledWith('IT & Software');
+  });
+
+  it('rendert das Firmenlogo, wenn das Unternehmen eine Logo-Zuordnung besitzt', () => {
+    const wiloCompany = { ...mockCompany, name: 'Wilo Pumpen GmbH' };
+    render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={wiloCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
+
+    const logoImg = screen.getByAltText('Wilo Pumpen GmbH Logo');
+    expect(logoImg).toBeInTheDocument();
+    expect(logoImg).toHaveAttribute('src', '/logos/wilo.svg');
+  });
+
+  it('wirft keinen Fehler, wenn das Branchen-Tag geklickt wird, aber kein onCategoryClick Callback übergeben wurde', async () => {
+    const user = userEvent.setup();
+    render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={false}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
+
+    const categoryButtons = screen.getAllByRole('button', { name: /IT & Software/i });
+    for (const btn of categoryButtons) {
+      await user.click(btn);
+    }
+  });
+
+  it('exportiert die Komponente als Standard-Export', () => {
+    expect(ExhibitorCardDefault).toBe(ExhibitorCard);
   });
 });
+

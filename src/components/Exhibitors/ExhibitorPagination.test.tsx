@@ -2,7 +2,7 @@ import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ExhibitorPagination } from './ExhibitorPagination';
+import ExhibitorPaginationDefault, { ExhibitorPagination } from './ExhibitorPagination';
 
 expect.extend(toHaveNoViolations);
 
@@ -81,4 +81,23 @@ describe('ExhibitorPagination', () => {
 
     expect(onPageChangeMock).toHaveBeenCalledWith(1);
   });
+
+  it('versucht nicht zu scrollen, wenn window.scrollTo nicht definiert ist', async () => {
+    const user = userEvent.setup();
+    const originalScrollTo = window.scrollTo;
+    // @ts-expect-error - delete scrollTo for test
+    delete window.scrollTo;
+
+    render(<ExhibitorPagination currentPage={1} totalPages={3} onPageChange={onPageChangeMock} />);
+    const page3Button = screen.getByRole('button', { name: 'Gehe zu Seite 3' });
+    await user.click(page3Button);
+
+    expect(onPageChangeMock).toHaveBeenCalledWith(3);
+    window.scrollTo = originalScrollTo;
+  });
+
+  it('exportiert die Komponente als Standard-Export', () => {
+    expect(ExhibitorPaginationDefault).toBe(ExhibitorPagination);
+  });
 });
+

@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import ExhibitorsPage from './page';
 import { useExhibitors } from '@/hooks/useExhibitors';
 
@@ -85,7 +86,8 @@ describe('ExhibitorsPage', () => {
     expect(screen.getByText('Netzwerkfehler')).toBeInTheDocument();
   });
 
-  it('rendert leeres Suchergebnis mit Zurücksetzen-Button', () => {
+  it('rendert leeres Suchergebnis mit Zurücksetzen-Button', async () => {
+    const user = userEvent.setup();
     const setSearchQueryMock = jest.fn();
     const setSelectedCategoryMock = jest.fn();
     const setSelectedLetterMock = jest.fn();
@@ -118,7 +120,7 @@ describe('ExhibitorsPage', () => {
     ).toBeInTheDocument();
 
     const resetBtn = screen.getByRole('button', { name: 'Filter zurücksetzen' });
-    fireEvent.click(resetBtn);
+    await user.click(resetBtn);
 
     expect(setSearchQueryMock).toHaveBeenCalledWith('');
     expect(setSelectedCategoryMock).toHaveBeenCalledWith('');
@@ -154,4 +156,102 @@ describe('ExhibitorsPage', () => {
     // Pagination elements
     expect(screen.getByRole('navigation', { name: 'Aussteller Seitennavigation' })).toBeInTheDocument();
   });
+
+  it('ruft toggleFavorite auf, wenn auf das Stern-Icon geklickt wird', async () => {
+    const user = userEvent.setup();
+    const toggleFavoriteMock = jest.fn();
+
+    mockUseExhibitors.mockReturnValue({
+      paginatedExhibitors: [mockExhibitor],
+      isLoading: false,
+      error: null,
+      currentPage: 1,
+      totalPages: 1,
+      totalCount: 1,
+      searchQuery: '',
+      selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
+      setSearchQuery: jest.fn(),
+      setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: toggleFavoriteMock,
+      setCurrentPage: jest.fn(),
+    });
+
+    render(<ExhibitorsPage />);
+
+    const favBtn = screen.getByRole('button', { name: /als Favorit markieren/i });
+    await user.click(favBtn);
+
+    expect(toggleFavoriteMock).toHaveBeenCalledWith(1);
+  });
+
+  it('gruppiert Firmen mit Sonderzeichen unter der Kategorie Sonstige', () => {
+    const mockSpecialExhibitor = {
+      ...mockExhibitor,
+      companyId: 2,
+      name: '_Special Corp',
+    };
+
+    mockUseExhibitors.mockReturnValue({
+      paginatedExhibitors: [mockSpecialExhibitor],
+      isLoading: false,
+      error: null,
+      currentPage: 1,
+      totalPages: 1,
+      totalCount: 1,
+      searchQuery: '',
+      selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
+      setSearchQuery: jest.fn(),
+      setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: jest.fn(),
+      setCurrentPage: jest.fn(),
+    });
+
+    render(<ExhibitorsPage />);
+
+    expect(screen.getByText('Sonstige', { selector: 'div' })).toBeInTheDocument();
+    expect(screen.getByText('_Special Corp')).toBeInTheDocument();
+  });
+
+  it('gruppiert Firmen mit Ziffern unter der Kategorie 0-9', () => {
+    const mockDigitExhibitor = {
+      companyId: 3,
+      name: '99 Soft',
+      address: 'Teststraße 5',
+      zip: '12345',
+      city: 'Teststadt',
+      email: 'test@example.com',
+      status: 'VERIFIED',
+      isSponsor: true,
+    };
+
+    mockUseExhibitors.mockReturnValue({
+      paginatedExhibitors: [mockDigitExhibitor],
+      isLoading: false,
+      error: null,
+      currentPage: 1,
+      totalPages: 1,
+      totalCount: 1,
+      searchQuery: '',
+      selectedCategory: '',
+      selectedLetter: 'Alle',
+      favorites: [],
+      setSearchQuery: jest.fn(),
+      setSelectedCategory: jest.fn(),
+      setSelectedLetter: jest.fn(),
+      toggleFavorite: jest.fn(),
+      setCurrentPage: jest.fn(),
+    });
+
+    render(<ExhibitorsPage />);
+
+    expect(screen.getByText('0-9', { selector: 'div' })).toBeInTheDocument();
+    expect(screen.getByText('99 Soft')).toBeInTheDocument();
+  });
 });
+
