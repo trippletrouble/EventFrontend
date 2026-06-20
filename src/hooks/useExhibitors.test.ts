@@ -134,6 +134,7 @@ describe('useExhibitors Hook', () => {
   it('setzt den Fehlerzustand bei fehlgeschlagenem API-Call', async () => {
     const originalEnv = process.env.NODE_ENV;
     // Set to test to trigger non-development error path
+    // @ts-expect-error NODE_ENV ist schreibgeschützt in TS-Typdefinitionen
     process.env.NODE_ENV = 'test';
     (eventService.getExhibitors as jest.Mock).mockRejectedValue(new Error('API-Fehler'));
 
@@ -147,6 +148,7 @@ describe('useExhibitors Hook', () => {
     expect(result.current.isLoading).toBe(false);
     expect(result.current.exhibitors).toEqual([]);
 
+    // @ts-expect-error NODE_ENV ist schreibgeschützt in TS-Typdefinitionen
     process.env.NODE_ENV = originalEnv;
   });
 
