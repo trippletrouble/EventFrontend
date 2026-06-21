@@ -5,7 +5,7 @@ import Header from "@/components/Layout/Header";
 
 export default function TicketshopLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-[#0F172A] text-white min-h-screen font-sans flex flex-col">
+    <div className="bg-[#050505] text-white min-h-screen font-sans flex flex-col">
       <Header />
       <div className="flex-grow pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

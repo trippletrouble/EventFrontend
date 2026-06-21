@@ -36,14 +36,14 @@ export default function DownloadButton() {
     };
 
     return (
-        <div className="flex flex-col items-start gap-1">
-            <div className="flex items-center gap-8 group">
+        <div className="w-full flex flex-col items-start gap-1">
+            <div className="w-full flex items-center justify-between gap-8 group">
                 {/* Text ändert die Farbe, wenn ein Download läuft */}
                 <div className={`flex flex-col text-left leading-tight text-base font-extrabold tracking-wide transition-colors duration-200
                 ${isDownloading ? 'text-gray-500' : 'text-gray-300'}`}
                 >
-                    <span>Ausstellermappe</span>
-                    <span>herunterladen</span>
+                    <span className="text-sm font-bold text-foreground">Ausstellermappe</span>
+                    <span className="text-xs text-foreground-muted font-normal mt-0.5">herunterladen</span>
                 </div>
 
                 {/* Das Icon rechts daneben mit Loading-State Handling */}
@@ -53,9 +53,9 @@ export default function DownloadButton() {
                     type="button"
                     aria-label={isDownloading ? "Ausstellermappe wird heruntergeladen" : "Ausstellermappe PDF herunterladen"}
                     className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-[#0AD88E]
-                 hover:bg-[#0AD88E] hover:text-black hover:scale-105
-                 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0AD88E]/50
-                 disabled:opacity-40 disabled:scale-100 disabled:hover:bg-white/5 disabled:hover:text-[#0AD88E] disabled:cursor-not-allowed"
+                  hover:bg-[#0AD88E] hover:text-black hover:scale-105
+                  transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#0AD88E]/50
+                  disabled:opacity-40 disabled:scale-100 disabled:hover:bg-white/5 disabled:hover:text-[#0AD88E] disabled:cursor-not-allowed"
                 >
                     {/* WECHSELNDER STATUS: Spinner vs. Download-Icon */}
                     {isDownloading ? (

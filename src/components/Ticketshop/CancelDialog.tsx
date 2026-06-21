@@ -169,7 +169,7 @@ export default function CancelDialog({ isOpen = true, onClose, onConfirmSuccess,
                             onClick={handleCancelBooking}
                             disabled={isSubmitting}
                             type="button"
-                            className="min-h-[44px] px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-500 rounded-xl transition-all shadow-lg shadow-red-600/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-zinc-900 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="min-h-[44px] px-4 py-3 text-sm font-semibold text-black bg-red-600 hover:bg-red-500 rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-zinc-900 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isSubmitting ? (
                                 <>

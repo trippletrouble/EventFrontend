@@ -39,6 +39,7 @@ export default function Header() {
           console.error('Failed to load my company for header:', err);
         });
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCompanyId(null);
     }
   }, [isAuthenticated]);

@@ -133,10 +133,6 @@ export default function TicketshopPage() {
                 />
                 <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
               </label>
-
-              <div className="flex items-center gap-4">
-                <DownloadButton />
-              </div>
             </div>
           </div>
 
@@ -172,7 +168,7 @@ export default function TicketshopPage() {
               )}
             </div>
 
-            <div className="lg:col-span-1 space-y-4 flex flex-col">
+            <div className="lg:col-span-1 space-y-6 flex flex-col">
               {selectedTier ? (
                 <>
                   <BookingCTA
@@ -192,7 +188,7 @@ export default function TicketshopPage() {
                   </div>
                 </>
               ) : (
-                <div className="bg-surface-raised p-8 border border-surface-border rounded-xl flex flex-col items-center justify-center text-center space-y-4 shadow-xl min-h-[300px] transition-all duration-300 hover:border-primary/30">
+                <div className="bg-surface-raised p-8 border border-surface-border rounded-xl flex flex-col items-center justify-center text-center space-y-4 shadow-xl min-h-[250px] transition-all duration-300 hover:border-primary/30">
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary animate-pulse">
                     <MousePointerClick className="w-7 h-7" aria-hidden="true" />
                   </div>
@@ -209,6 +205,17 @@ export default function TicketshopPage() {
                   </div>
                 </div>
               )}
+
+              {/* Mappe download card block */}
+              <div className="bg-surface-raised p-6 border border-surface-border rounded-xl flex flex-col space-y-4 shadow-xl transition-all duration-300 hover:border-primary/20">
+                <div>
+                  <h4 className="text-sm font-bold text-foreground">Weitere Details benötigt?</h4>
+                  <p className="text-xs text-foreground-muted leading-relaxed mt-1">
+                    Laden Sie die offizielle Ausstellermappe herunter, um alle Informationen zu Ständen, Preisen & Ablauf einzusehen.
+                  </p>
+                </div>
+                <DownloadButton />
+              </div>
             </div>
           </div>
 
