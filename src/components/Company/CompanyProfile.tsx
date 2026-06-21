@@ -21,7 +21,7 @@ export function CompanyProfile({ company }: CompanyProfileProps) {
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div className="flex items-center gap-5">
-          <div className="flex h-24 w-24 md:h-28 md:w-28 shrink-0 flex-col items-center justify-center bg-surface border border-surface-border rounded-none gap-1 transition-all duration-300 hover:border-[#EAB308]/40 group shadow-inner relative overflow-hidden">
+          <div className="flex h-24 w-24 md:h-28 md:w-28 shrink-0 flex-col items-center justify-center bg-surface border border-surface-border rounded-xl gap-1 transition-all duration-300 hover:border-[#EAB308]/40 group shadow-inner relative overflow-hidden">
             <Building2 className="h-10 w-10 text-[#EAB308] group-hover:scale-105 transition-transform duration-300" aria-hidden="true" />
             <span className="text-[10px] font-medium text-zinc-400 leading-tight text-center px-1">Ihr Firmenlogo / Profilbild</span>
           </div>
@@ -30,12 +30,12 @@ export function CompanyProfile({ company }: CompanyProfileProps) {
               {company.name}
             </h2>
             <div className="flex flex-wrap items-center gap-2">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-none text-xs font-semibold tracking-wider border ${status.className}`}>
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider border ${status.className}`}>
                 <status.icon className="h-3.5 w-3.5" aria-hidden="true" />
                 {status.label}
               </span>
               {company.isSponsor && (
-                <span className="inline-flex items-center gap-1.5 bg-[#EAB308]/10 px-3 py-1 rounded-none text-xs font-semibold text-[#EAB308] border border-[#EAB308]/20">
+                <span className="inline-flex items-center gap-1.5 bg-[#EAB308]/10 px-3 py-1 rounded-full text-xs font-semibold text-[#EAB308] border border-[#EAB308]/20">
                   <Star className="h-3.5 w-3.5 fill-[#EAB308]/20" aria-hidden="true" />
                   Sponsor
                 </span>
@@ -51,7 +51,7 @@ export function CompanyProfile({ company }: CompanyProfileProps) {
         <div className="flex items-center gap-3">
           <dt className="flex items-center">
             <span className="sr-only">Adresse</span>
-            <span className="p-1.5 rounded-none bg-surface border border-surface-border text-[#EAB308] inline-flex">
+            <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
               <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
             </span>
           </dt>
@@ -61,7 +61,7 @@ export function CompanyProfile({ company }: CompanyProfileProps) {
         <div className="flex items-center gap-3">
           <dt className="flex items-center">
             <span className="sr-only">E-Mail</span>
-            <span className="p-1.5 rounded-none bg-surface border border-surface-border text-[#EAB308] inline-flex">
+            <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
               <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
             </span>
           </dt>
