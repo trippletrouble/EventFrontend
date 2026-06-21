@@ -43,15 +43,12 @@ export default function CompanyPage({ params }: Props) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <h1 className="text-sm font-semibold text-foreground-muted tracking-wide font-(family-name:--font-lexend)">Ihr Firmenprofil</h1>
 
+        <CompanyProfile company={company} />
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            <CompanyProfile company={company} />
-            <BookingStatus bookings={company.bookings} tiers={tiers} />
-          </div>
-          <div className="lg:col-span-1 lg:border-l-4 lg:border-surface-border lg:pl-8 lg:ml-4 space-y-8">
-            {company.inviteCode && <InvitationCode code={company.inviteCode} />}
-            <MemberList members={company.members ?? []} />
-          </div>
+          <BookingStatus bookings={company.bookings} tiers={tiers} />
+          {company.inviteCode && <InvitationCode code={company.inviteCode} />}
+          <MemberList members={company.members ?? []} />
         </div>
       </div>
     </main>
