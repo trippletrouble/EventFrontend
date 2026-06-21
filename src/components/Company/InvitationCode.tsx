@@ -48,7 +48,7 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
       </h2>
 
       <div className="flex items-center gap-2 bg-surface-raised border border-surface-border px-4 py-3 font-mono text-sm text-foreground tracking-wider">
-        <span className="flex-1 select-all" aria-label={`Einladungscode: ${code}`}>{code}</span>
+        <span className="flex-1 select-all">{code}</span>
         <button
           type="button"
           onClick={handleCopy}

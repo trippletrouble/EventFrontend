@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-// import { requireAuth } from '@/app/lib/protect';
+import { requireAuth } from '@/app/lib/protect';
 import { CompanyGuard } from '@/components/Auth/CompanyGuard';
+import Header from '@/components/Layout/Header';
 
 export async function generateMetadata({
   params,
@@ -21,8 +22,13 @@ export default async function CompanyLayout({
   children: React.ReactNode;
   params: Promise<{ id: string }>;
 }) {
-  // await requireAuth();
+  await requireAuth();
   const { id } = await params;
 
-  return <CompanyGuard companyId={id}>{children}</CompanyGuard>;
+  return (
+    <>
+      <Header />
+      <CompanyGuard companyId={id}>{children}</CompanyGuard>
+    </>
+  );
 }

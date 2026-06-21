@@ -56,11 +56,6 @@ describe('InvitationCode', () => {
     expect(screen.getByText('ABC12345')).toBeInTheDocument();
   });
 
-  it('hat ein aria-label mit dem Code', () => {
-    render(<InvitationCode code="ABC12345" />);
-    expect(screen.getByLabelText('Einladungscode: ABC12345')).toBeInTheDocument();
-  });
-
   it('kopiert den Code in die Zwischenablage', async () => {
     const user = userEvent.setup();
     render(<InvitationCode code="ABC12345" />);

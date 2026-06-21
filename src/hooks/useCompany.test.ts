@@ -48,25 +48,6 @@ describe('useCompany', () => {
     expect(result.current.company).toBeNull();
   });
 
-  it('fällt auf Mock-Daten zurück im Entwicklungsmodus', async () => {
-    const originalEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'development';
-
-    (api.apiFetch as jest.Mock).mockRejectedValue(new Error('API not available'));
-
-    const { result } = renderHook(() => useCompany('42'));
-
-    await waitFor(() => {
-      expect(result.current.isLoading).toBe(false);
-    });
-
-    expect(result.current.company).not.toBeNull();
-    expect(result.current.company?.companyId).toBe(42);
-    expect(result.current.error).toBeNull();
-
-    process.env.NODE_ENV = originalEnv;
-  });
-
   it('zeigt den Ladezustand initial an', () => {
     (api.apiFetch as jest.Mock).mockReturnValue(new Promise(() => {}));
 

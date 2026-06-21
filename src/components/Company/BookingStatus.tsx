@@ -1,12 +1,12 @@
 'use client';
 
-import type { BookingDto } from '@/types/api.types';
+import type { BookingDto, TierDto } from '@/types/api.types';
 import { Clock, ArrowUpCircle } from 'lucide-react';
 import Link from 'next/link';
-import { mockTiers } from '@/__tests__/mocks/data/bookings';
 
 interface BookingStatusProps {
   bookings: BookingDto[];
+  tiers: TierDto[];
 }
 
 const tierContent: Record<number, { title: string; textColor: string; borderColor: string; btnStyles: string }> = {
@@ -16,7 +16,7 @@ const tierContent: Record<number, { title: string; textColor: string; borderColo
   4: { title: 'Premium Deluxe Ticket', textColor: 'text-emerald-400', borderColor: 'border-emerald-400', btnStyles: 'bg-emerald-400 text-black hover:bg-emerald-500 border-transparent font-bold' },
 };
 
-export function BookingStatus({ bookings }: BookingStatusProps) {
+export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
   const booking = bookings[0];
 
   return (
@@ -28,15 +28,38 @@ export function BookingStatus({ bookings }: BookingStatusProps) {
       {!booking ? (
         <p className="text-sm text-foreground-muted">Noch keine Buchung vorhanden.</p>
       ) : (
-        <BookedTier booking={booking} />
+        <BookedTier booking={booking} tiers={tiers} />
       )}
     </section>
   );
 }
 
-function BookedTier({ booking }: { booking: BookingDto }) {
+function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] }) {
   const config = tierContent[booking.tierId] ?? tierContent[1];
-  const tier = mockTiers.find((t) => t.tierId === booking.tierId) ?? mockTiers[0];
+  const tier = tiers.find((t) => t.tierId === booking.tierId);
+
+  if (!tier) {
+    return (
+      <div className="space-y-1">
+        <div className="flex items-center justify-end">
+          <div className="flex items-center gap-2 text-xs text-foreground-muted">
+            <Clock className="h-3 w-3" aria-hidden="true" />
+            <time dateTime={booking.createdAt}>
+              Gebucht am {new Date(booking.createdAt).toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              })}
+            </time>
+          </div>
+        </div>
+        <div className={`rounded-xl border-2 ${config.borderColor} p-8 bg-surface-raised`}>
+          <h3 className={`text-2xl font-bold ${config.textColor}`}>{config.title}</h3>
+          <p className="text-sm text-foreground-muted mt-2">Paketdetails werden geladen…</p>
+        </div>
+      </div>
+    );
+  }
 
   const features = tier.features || [];
   const standFeature = features.find(
