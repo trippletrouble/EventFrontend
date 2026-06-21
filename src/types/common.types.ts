@@ -28,3 +28,8 @@ export type PackageType = 'BASE' | 'BASE_PLUS' | 'PREMIUM' | 'DELUXE';
 export type BookingStatus = 'PENDING' | 'CONFIRMED' | 'CANCELLED';
 export type PaymentStatus = 'PENDING' | 'SUCCEEDED' | 'FAILED' | 'REFUNDED';
 
+export interface RetryConfig {
+  maxRetries: number;
+  baseDelayMs: number;
+  retryableStatuses: number[];
+}

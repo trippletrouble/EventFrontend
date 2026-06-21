@@ -11,7 +11,9 @@
 !.yarn/versions
 
 # testing
- /coverage
+/coverage
+/playwright-report/
+/test-results/
 junit.xml
 
 # next.js
@@ -49,3 +51,4 @@ coverage/
 AGENTS.md
 CLAUDE.md
 docs/
+coverage-api/

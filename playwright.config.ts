@@ -8,8 +8,16 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3002',
     trace: 'on-first-retry',
+  },
+
+  webServer: {
+    command: 'npx next dev -p 3002',
+    url: 'http://localhost:3002',
+    reuseExistingServer: true,
+    stdout: 'ignore',
+    stderr: 'pipe',
   },
 
   globalSetup: require.resolve('./e2e/global-setup'),
