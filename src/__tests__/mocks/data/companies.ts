@@ -15,6 +15,7 @@ export const mockCompany: MockCompanyDto = {
   email: 'info@test-gmbh.de',
   status: 'VERIFIED',
   isSponsor: false,
+  inviteCode: '12345678',
   industry: 'IT & Software',
   _links: {
     self: { href: '/companies/1' },

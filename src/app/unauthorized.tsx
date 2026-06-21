@@ -7,7 +7,7 @@ export default function UnauthorizedPage() {
   const { login } = useAuth();
 
   return (
-    <main className="flex flex-col flex-1 items-center justify-center min-h-[70vh] px-4 bg-zinc-50 text-center dark:bg-black font-sans">
+    <main id="main-content" className="flex flex-col flex-1 items-center justify-center min-h-[70vh] px-4 bg-zinc-50 text-center dark:bg-black font-sans">
       <div className="max-w-md w-full p-8 rounded-2xl border border-zinc-200/50 bg-white/70 shadow-xl backdrop-blur-md dark:border-zinc-800/50 dark:bg-zinc-900/70 transition-all duration-300 hover:shadow-2xl">
         <div className="flex justify-center mb-6">
           <div className="p-3 rounded-full bg-red-50 dark:bg-red-950/30 text-red-500 dark:text-red-400">

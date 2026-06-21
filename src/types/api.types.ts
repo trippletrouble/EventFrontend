@@ -22,6 +22,7 @@ export interface CompanyDto {
   email: string;
   status: CompanyStatus;
   isSponsor: boolean;
+  inviteCode?: string;
   members?: UserDto[];
   _links?: Links;
 }
