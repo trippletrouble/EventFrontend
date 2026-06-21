@@ -94,8 +94,8 @@ export function TierCard({
 
   return (
     <div
-      className={`rounded-md p-8 bg-surface-raised transition-all duration-200 flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 relative ${config.borderColor} ${
-        isSelected ? 'border-4 shadow-xl scale-[1.01]' : 'border-2'
+      className={`p-8 bg-surface-raised transition-all duration-200 flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 relative ${config.borderColor} ${
+        isSelected ? 'border-[6px] rounded-none shadow-xl scale-[1.01]' : 'border-2 rounded-md'
       }`}
     >
       {/* Linke Seite: Details & Features */}

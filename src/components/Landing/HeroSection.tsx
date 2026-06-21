@@ -1,10 +1,33 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Pause, Play } from 'lucide-react';
+import { Pause, Play, ChevronDown } from 'lucide-react';
 import {KeywordAnimation} from "@/components/Landing/KeywordAnimation";
 
-export function HeroSection() {
+interface HeroSectionProps {
+    title?: string;
+    year?: string;
+    taglineStart?: string;
+    tagwords?: string[];
+    showScrollIndicator?: boolean;
+    scrollToId?: string;
+}
+
+export function HeroSection({
+    title = 'Unternehmerbörse',
+    year = '2027',
+    taglineStart = 'Deine',
+    tagwords = ['ZUKUNFT.', 'CHANCE.', 'KARRIERE.'],
+    showScrollIndicator = false,
+    scrollToId
+}: HeroSectionProps = {}) {
+    const handleScrollClick = () => {
+        if (!scrollToId) return;
+        const element = document.getElementById(scrollToId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
 
@@ -38,7 +61,7 @@ export function HeroSection() {
 
     return (
         <section
-            aria-label="Unternehmerbörse 2026 – Karrieremesse"
+            aria-label={`${title} ${year === '2027' ? '2026' : year} – Karrieremesse`}
             className="relative min-h-screen flex flex-col overflow-hidden"
             data-navbar="dark"
         >
@@ -101,12 +124,12 @@ export function HeroSection() {
                             className="text-[32px] md:text-[42px] tracking-wide font-extrabold leading-tight"
                             style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
                         >
-                            Unternehmerbörse
+                            {title}
                             <span
                                 className="block text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
                                 style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
                             >
-                                2027
+                                {year}
                             </span>
                         </h1>
                     </div>
@@ -138,7 +161,7 @@ export function HeroSection() {
                                     className="text-[24px] md:text-[40px] font-light text-white tracking-wide pl-1 whitespace-nowrap"
                                     style={{ fontFamily: 'var(--font-lexend-deca, inherit)' }}
                                 >
-                                    Deine
+                                    {taglineStart}
                                 </span>
                                 <div
                                     className="h-[3px] w-[50vw] mr-[-100vw]"
@@ -151,29 +174,22 @@ export function HeroSection() {
 
                         {/* Die Tagline-Wörter */}
                         <h2 className="leading-[0.95] tracking-wide uppercase">
-                            {/* ZUKUNFT. */}
-                            <span
-                                className="block text-[32px] md:text-[40px] font-black text-white"
-                                style={{ fontFamily: 'var(--font-lexend-exa, inherit)' }}
-                            >
-                                <KeywordAnimation text="ZUKUNFT." delay={200} />
-                            </span>
-
-                            {/* CHANCE. */}
-                            <span
-                                className="block text-[44px] md:text-[80px] font-medium text-[#0AD88E] my-0.5"
-                                style={{ fontFamily: 'var(--font-lexend, inherit)' }}
-                            >
-                                <KeywordAnimation text="CHANCE." delay={500} />
-                            </span>
-
-                            {/* KARRIERE. */}
-                            <span
-                                className="block text-[32px] md:text-[40px] font-black text-white"
-                                style={{ fontFamily: 'var(--font-lexend-exa, inherit)' }}
-                            >
-                                <KeywordAnimation text="KARRIERE." delay={800} />
-                            </span>
+                            {tagwords.map((word, index) => {
+                                const isSecond = index === 1;
+                                const fontClass = isSecond ? 'var(--font-lexend, inherit)' : 'var(--font-lexend-exa, inherit)';
+                                const sizeClass = isSecond
+                                    ? 'text-[44px] md:text-[80px] font-medium text-[#0AD88E] my-0.5'
+                                    : 'text-[32px] md:text-[40px] font-black text-white';
+                                return (
+                                    <span
+                                        key={`${word}-${index}`}
+                                        className={`block ${sizeClass}`}
+                                        style={{ fontFamily: fontClass }}
+                                    >
+                                        <KeywordAnimation text={word} delay={150 + index * 200} />
+                                    </span>
+                                );
+                            })}
                         </h2>
 
                     </div>
@@ -193,6 +209,18 @@ export function HeroSection() {
                     <Play className="w-5 h-5 text-white" aria-hidden="true" />
                 )}
             </button>
+
+            {/* Scroll-Indicator — unten mitte */}
+            {showScrollIndicator && scrollToId && (
+                <button
+                    onClick={handleScrollClick}
+                    aria-label="Zum Ticketshop herunterscrollen"
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 p-3 bg-[#0D1117]/50 hover:bg-[#0D1117]/80 text-white rounded-full transition-all cursor-pointer animate-bounce focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                    type="button"
+                >
+                    <ChevronDown className="w-5 h-5" aria-hidden="true" />
+                </button>
+            )}
         </section>
     );
 }

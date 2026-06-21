@@ -23,11 +23,12 @@ export default function Header() {
   const [navTheme, setNavTheme] = useState<'dark' | 'light'>('dark');
 
   const isLandingPage = pathname === '/';
+  const hasHero = pathname === '/' || pathname === '/ticketshop';
 
   useEffect(() => {
     const handler = () => {
       setScrolled(window.scrollY > 10);
-      if (!isLandingPage) return;
+      if (!hasHero) return;
       const sections = document.querySelectorAll('section[data-navbar]');
       for (const section of Array.from(sections)) {
         const rect = section.getBoundingClientRect();
@@ -40,21 +41,21 @@ export default function Header() {
     window.addEventListener('scroll', handler, { passive: true });
     handler();
     return () => window.removeEventListener('scroll', handler);
-  }, [isLandingPage]);
+  }, [hasHero]);
 
-  const isTop = isLandingPage && !scrolled;
+  const isTop = hasHero && !scrolled;
 
   // onDarkBg = true  → dark/transparent navbar → white text + white logo center
   // onDarkBg = false → white navbar            → dark text  + dark logo center
   const onDarkBg =
     isTop ||          // transparent hero
-    !isLandingPage || // all other pages always dark navbar
+    !hasHero ||       // all other pages always dark navbar
     navTheme === 'light'; // light section behind → dark navbar
 
   // FIX 1: #0C1117 statt #111827 für dunkle Navbar
   const headerBg = isTop
     ? 'bg-transparent border-b border-transparent shadow-none'
-    : isLandingPage && navTheme === 'dark'
+    : hasHero && navTheme === 'dark'
       ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
       : 'bg-[#0C1117]/95 backdrop-blur-sm border-b border-white/10 shadow-sm';
 

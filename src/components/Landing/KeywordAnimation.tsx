@@ -20,7 +20,7 @@ export const KeywordAnimation: React.FC<KeywordAnimationProps> = ({ text, delay 
 
     return (
         <span
-            className={`block transition-all duration-700 ease-out transform ${
+            className={`block transition-all duration-300 ease-out transform ${
                 isVisible
                     ? 'opacity-100 translate-x-0'
                     : 'opacity-0 translate-x-12'
