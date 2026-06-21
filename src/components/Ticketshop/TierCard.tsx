@@ -31,7 +31,7 @@ const tierContent = {
     title: 'Premium Ticket',
     textColor: 'text-red-500 border-red-500',
     borderColor: 'border-red-500',
-    btnStyles: 'bg-red-500 text-white hover:bg-red-600 border-transparent font-semibold',
+    btnStyles: 'bg-red-500 text-black hover:bg-red-600 border-transparent font-bold',
     icon: Crown,
   },
   4: {
