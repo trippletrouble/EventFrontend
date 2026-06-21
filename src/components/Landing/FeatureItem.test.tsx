@@ -70,7 +70,7 @@ describe('FeatureItem-Komponente', () => {
         it('wendet die Light-Theme-Klassen auf die Beschreibung an', () => {
             render(<FeatureItem {...defaultProps} theme="light" />);
             const description = screen.getByText(defaultProps.description);
-            expect(description).toHaveClass('text-slate-700');
+            expect(description).toHaveClass('text-black');
         });
 
         it('wendet die Dark-Theme-Klassen auf die Beschreibung an', () => {

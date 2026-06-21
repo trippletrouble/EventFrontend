@@ -62,13 +62,20 @@ export default function ExhibitorsPage() {
         </div>
 
         {/* Suche & Filter */}
-        <div className="space-y-4">
+        <div className="space-y-4 flex flex-col">
           <SearchFilter
             searchQuery={searchQuery}
             selectedCategory={selectedCategory}
             onSearchChange={setSearchQuery}
             onCategoryChange={setSelectedCategory}
           />
+
+          <a
+            href="#exhibitor-results"
+            className="sr-only focus:not-sr-only focus:block focus:p-3 focus:bg-surface-raised focus:border focus:border-primary focus:text-primary focus:rounded-lg focus:text-center focus:font-semibold text-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 self-center w-full max-w-xs"
+          >
+            Alphabetischen Filter überspringen
+          </a>
 
           <AlphabetFilter
             selectedLetter={selectedLetter}
@@ -84,76 +91,78 @@ export default function ExhibitorsPage() {
         )}
 
         {/* Aussteller-Liste / Lade-Zustand */}
-        {isLoading ? (
-          <div className="divide-y divide-surface-border border border-surface-border overflow-hidden bg-surface-raised" aria-label="Aussteller werden geladen">
-            <ExhibitorSkeleton count={6} />
-          </div>
-        ) : paginatedExhibitors.length === 0 ? (
-          <div className="bg-surface-raised border border-surface-border p-12 text-center space-y-4 shadow-sm">
-            <p className="text-foreground font-semibold text-lg">Keine Aussteller gefunden</p>
-            <p className="text-foreground-muted text-sm max-w-md mx-auto">
-              Für deine Suche &quot;{searchQuery}&quot; in der Kategorie &quot;{selectedCategory || 'Alle Branchen'}&quot; und Buchstabe &quot;{selectedLetter}&quot; wurden keine Ergebnisse gefunden. 
-              Versuche es mit anderen Suchbegriffen oder setze die Filter zurück.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setSelectedCategory('');
-                setSelectedLetter('Alle');
-              }}
-              className="btn btn-primary rounded-lg font-semibold px-6 py-2"
-              type="button"
-            >
-              Filter zurücksetzen
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-8">
-            <div 
-              className="flex flex-col gap-1" 
-              aria-label={`Ausstellerliste: ${totalCount} Firmen gefunden`}
-              role="list"
-            >
-              {(() => {
-                let lastGroup = '';
-                return paginatedExhibitors.map((exhibitor, index) => {
-                  const group = getGroupingLetter(exhibitor.name);
-                  const showHeader = group !== lastGroup;
-                  lastGroup = group;
-                  return (
-                    <React.Fragment key={exhibitor.companyId}>
-                      {showHeader && (
-                        <div className="flex pt-6 first:pt-0 mb-2">
-                          <div className={`h-10 px-4 min-w-10 flex items-center justify-center font-black text-base select-none uppercase border ${getGroupHeaderStyle(group)}`}>
-                            {group}
-                          </div>
-                        </div>
-                      )}
-                      <ExhibitorCard
-                        exhibitor={exhibitor}
-                        index={index}
-                        isFavorite={favorites.includes(exhibitor.companyId)}
-                        onToggleFavorite={() => toggleFavorite(exhibitor.companyId)}
-                        onCategoryClick={setSelectedCategory}
-                      />
-                    </React.Fragment>
-                  );
-                });
-              })()}
+        <div id="exhibitor-results" tabIndex={-1} className="focus:outline-none focus-ring rounded-lg">
+          {isLoading ? (
+            <div className="divide-y divide-surface-border border border-surface-border overflow-hidden bg-surface-raised" aria-label="Aussteller werden geladen">
+              <ExhibitorSkeleton count={6} />
             </div>
-
-            {/* Seitennavigation */}
-            {totalPages > 1 && (
-              <div className="flex justify-center pt-4">
-                <ExhibitorPagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                />
+          ) : paginatedExhibitors.length === 0 ? (
+            <div className="bg-surface-raised border border-surface-border p-12 text-center space-y-4 shadow-sm">
+              <p className="text-foreground font-semibold text-lg">Keine Aussteller gefunden</p>
+              <p className="text-foreground-muted text-sm max-w-md mx-auto">
+                Für deine Suche &quot;{searchQuery}&quot; in der Kategorie &quot;{selectedCategory || 'Alle Branchen'}&quot; und Buchstabe &quot;{selectedLetter}&quot; wurden keine Ergebnisse gefunden. 
+                Versuche es mit anderen Suchbegriffen oder setze die Filter zurück.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedCategory('');
+                  setSelectedLetter('Alle');
+                }}
+                className="btn btn-primary rounded-lg font-semibold px-6 py-2"
+                type="button"
+              >
+                Filter zurücksetzen
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-8">
+              <div 
+                className="flex flex-col gap-1" 
+                aria-label={`Ausstellerliste: ${totalCount} Firmen gefunden`}
+                role="list"
+              >
+                {(() => {
+                  let lastGroup = '';
+                  return paginatedExhibitors.map((exhibitor, index) => {
+                    const group = getGroupingLetter(exhibitor.name);
+                    const showHeader = group !== lastGroup;
+                    lastGroup = group;
+                    return (
+                      <React.Fragment key={exhibitor.companyId}>
+                        {showHeader && (
+                          <div className="flex pt-6 first:pt-0 mb-2">
+                            <div className={`h-10 px-4 min-w-10 flex items-center justify-center font-black text-base select-none uppercase border ${getGroupHeaderStyle(group)}`}>
+                              {group}
+                            </div>
+                          </div>
+                        )}
+                        <ExhibitorCard
+                          exhibitor={exhibitor}
+                          index={index}
+                          isFavorite={favorites.includes(exhibitor.companyId)}
+                          onToggleFavorite={() => toggleFavorite(exhibitor.companyId)}
+                          onCategoryClick={setSelectedCategory}
+                        />
+                      </React.Fragment>
+                    );
+                  });
+                })()}
               </div>
-            )}
-          </div>
-        )}
+
+              {/* Seitennavigation */}
+              {totalPages > 1 && (
+                <div className="flex justify-center pt-4">
+                  <ExhibitorPagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </main>
     </>
   );

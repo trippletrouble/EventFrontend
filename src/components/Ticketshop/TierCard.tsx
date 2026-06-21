@@ -148,8 +148,9 @@ export function TierCard({
         <Button
           onClick={() => onSelect(tier.tierId)}
           disabled={isBtnDisabled}
+          variant="none"
           className={`w-full md:w-auto px-6 py-3 rounded-lg text-sm transition-all duration-200 hover:scale-[1.02] ${
-            isSelected ? 'bg-primary text-primary-foreground' : config.btnStyles
+            isSelected ? 'bg-white text-black hover:bg-white/90 border-transparent font-bold' : config.btnStyles
           }`}
           aria-pressed={isSelected}
         >

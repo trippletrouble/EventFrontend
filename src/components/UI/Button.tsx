@@ -3,7 +3,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/utils/cn';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'outline' | 'ghost' | 'none';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   loadingText?: string;
@@ -17,6 +17,7 @@ const variantStyles = {
   destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
   outline: 'border border-surface-border bg-transparent hover:bg-surface-raised text-foreground',
   ghost: 'bg-transparent hover:bg-surface-raised text-foreground',
+  none: '',
 };
 
 const sizeStyles = {
