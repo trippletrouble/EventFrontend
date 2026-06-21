@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { CompanyDto, BookingDto } from '@/types/api.types';
 import { apiFetch } from '@/services/api';
+import { mockCompanies, mockCompany, mockPendingCompany, mockSponsorCompany } from '@/__tests__/mocks/data/companies';
 
 interface CompanyData extends CompanyDto {
   bookings: BookingDto[];
@@ -20,6 +21,15 @@ export function useCompany(companyId: string) {
         setError(null);
       })
       .catch((err: unknown) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('API call failed, falling back to mock company in development:', err);
+          const found = mockCompanies.find(c => String(c.companyId) === String(companyId)) || 
+                        [mockCompany, mockPendingCompany, mockSponsorCompany].find(c => String(c.companyId) === String(companyId)) || 
+                        mockCompany;
+          setCompany({ ...found, bookings: [] });
+          setError(null);
+          return;
+        }
         setError(err instanceof Error ? err.message : 'Fehler beim Laden der Firmendaten');
       })
       .finally(() => {

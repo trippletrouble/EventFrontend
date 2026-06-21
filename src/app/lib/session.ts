@@ -9,6 +9,14 @@ export interface Session {
 }
 
 export async function getSession(): Promise<Session | null> {
+  if (process.env.NODE_ENV === 'development') {
+    return {
+      sub: 'mock-sub-123',
+      email: 'mock-user@hof-university.de',
+      role: 'exhibitor',
+    };
+  }
+
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get('access_token')?.value;
