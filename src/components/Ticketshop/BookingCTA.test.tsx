@@ -61,7 +61,7 @@ describe('BookingCTA', () => {
       <BookingCTA tier={mockTier} isSponsor={false} onCheckout={onCheckoutMock} />
     );
 
-    const button = screen.getByRole('button', { name: 'Jetzt bezahlen' });
+    const button = screen.getByRole('button', { name: 'Mit Stripe bezahlen' });
     await user.click(button);
 
     expect(onCheckoutMock).toHaveBeenCalledTimes(1);

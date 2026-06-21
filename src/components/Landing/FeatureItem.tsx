@@ -51,7 +51,7 @@ export function FeatureItem({
         <p
           className={cn(
             'text-sm leading-relaxed',
-            theme === 'light' ? 'text-slate-700' : 'text-foreground-muted',
+            theme === 'light' ? 'text-black' : 'text-foreground-muted',
           )}
         >
           {description}

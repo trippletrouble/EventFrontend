@@ -12,14 +12,14 @@ describe('CarouselSection', () => {
     expect(await axe(container)).toHaveNoViolations();
   });
 
-  it('rendert den Pause-Button initial und wechselt zu Play bei Klick', async () => {
+  it('rendert den Play-Button initial und wechselt zu Pause bei Klick', async () => {
     const user = userEvent.setup();
     render(<CarouselSection />);
 
-    const button = screen.getByRole('button', { name: /logo-karussell pausieren/i });
+    const button = screen.getByRole('button', { name: /logo-karussell abspielen/i });
     expect(button).toBeInTheDocument();
 
     await user.click(button);
-    expect(screen.getByRole('button', { name: /logo-karussell abspielen/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /logo-karussell pausieren/i })).toBeInTheDocument();
   });
 });

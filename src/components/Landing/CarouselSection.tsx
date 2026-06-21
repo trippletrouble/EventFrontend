@@ -24,7 +24,7 @@ const LOGOS = [
 ];
 
 export function CarouselSection() {
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
 
   return (
     <section 

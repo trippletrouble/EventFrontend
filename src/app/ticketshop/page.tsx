@@ -116,7 +116,7 @@ export default function TicketshopPage() {
                 {tiers.length > 0 && (
                   <Button
                     onClick={() => setIsUpgradeModalOpen(true)}
-                    variant="outline"
+                    variant="primary"
                     size="sm"
                     className="rounded-lg font-semibold"
                   >
