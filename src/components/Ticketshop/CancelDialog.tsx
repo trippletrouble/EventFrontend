@@ -8,7 +8,6 @@ interface CancelDialogProps {
     onConfirmSuccess: () => void;
     bookingId: number;
 }
-
 export default function CancelDialog({ isOpen = true, onClose, onConfirmSuccess, bookingId }: CancelDialogProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
