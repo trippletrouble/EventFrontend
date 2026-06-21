@@ -12,6 +12,7 @@
 
 # testing
  /coverage
+junit.xml
 
 # next.js
 /.next/
@@ -48,3 +49,4 @@ coverage/
 AGENTS.md
 CLAUDE.md
 docs/
+coverage-api/

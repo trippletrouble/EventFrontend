@@ -1,3 +1,4 @@
+import '@/env'
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "./providers/AuthProvider";
@@ -7,6 +8,7 @@ import { SessionProvider } from '@/providers/SessionProvider';
 import { ToastProvider } from '@/providers/ToastProvider';
 import { SkipNavLink } from '@/components/Layout/SkipNavLink';
 import { A11yReporter } from '@/components/A11yReporter';
+import Footer from '@/components/Layout/Footer'
 
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 'swap' });
 const lexendDeca = Lexend_Deca({ subsets: ['latin'], variable: '--font-lexend-deca', display: 'swap' });
@@ -32,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <SessionProvider>
                       <ToastProvider>
                         {children}
+                          <Footer />
                       </ToastProvider>
                   </SessionProvider>
               </AuthProvider>
