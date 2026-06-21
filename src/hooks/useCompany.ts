@@ -16,35 +16,38 @@ export function useCompany(companyId: string) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchCompany = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const data = await apiFetch<CompanyDto>(`/companies/${companyId}`);
-      setCompany({ ...data, bookings: [] });
-      setError(null);
-    } catch (err) {
-      if (process.env.NODE_ENV === 'development') {
-        setCompany({
-          ...mockCompany,
-          companyId: Number(companyId),
-          members: [mockUser, mockAdmin],
-          bookings: [mockBooking],
-        });
+  const fetchCompany = useCallback(() => {
+    return apiFetch<CompanyDto>(`/companies/${companyId}`)
+      .then((data) => {
+        setCompany({ ...data, bookings: [] });
         setError(null);
-      } else {
-        setError(err instanceof Error ? err.message : 'Fehler beim Laden der Firmendaten');
-      }
-    } finally {
-      setIsLoading(false);
-    }
+      })
+      .catch((err: unknown) => {
+        if (process.env.NODE_ENV === 'development') {
+          setCompany({
+            ...mockCompany,
+            companyId: Number(companyId),
+            members: [mockUser, mockAdmin],
+            bookings: [mockBooking],
+          });
+          setError(null);
+        } else {
+          setError(err instanceof Error ? err.message : 'Fehler beim Laden der Firmendaten');
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [companyId]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      void fetchCompany();
-    }, 0);
-    return () => clearTimeout(timer);
+  const refetch = useCallback(() => {
+    setIsLoading(true);
+    return fetchCompany();
   }, [fetchCompany]);
 
-  return { company, isLoading, error, refetch: fetchCompany };
+  useEffect(() => {
+    fetchCompany();
+  }, [fetchCompany]);
+
+  return { company, isLoading, error, refetch };
 }

@@ -57,7 +57,7 @@ export function Modal({
         <Dialog.Content
           className={cn(
             'fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2',
-            'rounded-xl border border-surface-border bg-surface-raised shadow-2xl flex flex-col focus:outline-none max-h-[90vh]',
+            'rounded-md border border-surface-border bg-surface-raised shadow-2xl flex flex-col focus:outline-none max-h-[90vh]',
             'data-[state=open]:animate-[contentShow_200ms]',
             sizeClasses[size],
             className
@@ -92,7 +92,7 @@ export function Modal({
 
           {/* Actions (Footer) */}
           {actions && (
-            <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-surface-border bg-surface-overlay/30 rounded-b-xl">
+            <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-surface-border bg-surface-overlay/30 rounded-b-md">
               {actions}
             </div>
           )}
