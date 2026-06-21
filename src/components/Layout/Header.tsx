@@ -21,9 +21,27 @@ export default function Header() {
   const { user, isAuthenticated, isAdmin, logout } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [navTheme, setNavTheme] = useState<'dark' | 'light'>('dark');
+  const [companyId, setCompanyId] = useState<number | null>(null);
 
   const isLandingPage = pathname === '/';
   const hasHero = pathname === '/' || pathname === '/ticketshop';
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      import('@/services/company.service')
+        .then((m) => m.getMyCompany())
+        .then((company) => {
+          if (company?.companyId) {
+            setCompanyId(company.companyId);
+          }
+        })
+        .catch((err) => {
+          console.error('Failed to load my company for header:', err);
+        });
+    } else {
+      setCompanyId(null);
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     const handler = () => {
@@ -67,6 +85,7 @@ export default function Header() {
     { href: '/aussteller', label: 'Aussteller' },
     { href: '/ticketshop', label: 'Ticketshop' },
     ...(isAuthenticated ? [{ href: '/dashboard', label: 'Dashboard' }] : []),
+    ...(companyId ? [{ href: `/company/${companyId}`, label: 'Firmenprofil' }] : []),
     ...(isAdmin ? [{ href: '/admin', label: 'Admin' }] : []),
   ];
 
@@ -133,6 +152,11 @@ export default function Header() {
                   <DropdownMenu.Item asChild>
                     <Link href="/dashboard" className={dropdownItemCls}>Dashboard</Link>
                   </DropdownMenu.Item>
+                  {companyId && (
+                    <DropdownMenu.Item asChild>
+                      <Link href={`/company/${companyId}`} className={dropdownItemCls}>Firmenprofil</Link>
+                    </DropdownMenu.Item>
+                  )}
                   {isAdmin && (
                     <DropdownMenu.Item asChild>
                       <Link href="/admin" className={dropdownItemCls}>Admin-Bereich</Link>
