@@ -104,4 +104,47 @@ test.describe('Aussteller-Liste E2E', () => {
     const rowAfterReload = page.locator('[role="listitem"]').filter({ hasText: companyName! });
     await expect(rowAfterReload.locator('button[aria-label*="entfernen"]')).toBeVisible();
   });
+
+  test.describe('Mobile Ansicht', () => {
+    test.beforeEach(async ({ page }) => {
+      // Set to standard mobile viewport (e.g. iPhone SE / 12)
+      await page.setViewportSize({ width: 375, height: 667 });
+      await page.goto('/aussteller');
+    });
+
+    test('sollte die mobile Ansicht mit korrekt positioniertem Favoriten-Stern anzeigen', async ({ page }) => {
+      const firstRow = page.locator('[role="listitem"]').first();
+      
+      // Desktop elements should be hidden
+      const desktopCity = firstRow.locator('.hidden.sm\\:flex').first();
+      await expect(desktopCity).not.toBeVisible();
+
+      // Mobile elements (like the absolute star button) should be visible
+      const favButton = firstRow.locator('button[aria-label*="markieren"]');
+      await expect(favButton).toBeVisible();
+
+      // Verify the star is positioned at the top of the card
+      const rowBox = await firstRow.boundingBox();
+      const favBox = await favButton.boundingBox();
+
+      if (rowBox && favBox) {
+        const relativeY = favBox.y - rowBox.y;
+        // The button is placed absolute top-3 (12px), so it should be in the top portion of the card.
+        expect(relativeY).toBeLessThan(rowBox.height / 2);
+      }
+    });
+
+    test('sollte auf Mobilgeräten nach Kategorien filtern können über das Klick-Event', async ({ page }) => {
+      const firstRow = page.locator('[role="listitem"]').first();
+      const mobileCategoryBtn = firstRow.locator('.sm\\:hidden button').first();
+      await expect(mobileCategoryBtn).toBeVisible();
+
+      const categoryText = await mobileCategoryBtn.textContent();
+      await mobileCategoryBtn.click();
+
+      // The category filter dropdown should be updated
+      const categorySelect = page.locator('#category-select');
+      await expect(categorySelect).toHaveValue(categoryText!.trim());
+    });
+  });
 });

@@ -67,14 +67,14 @@ export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, 
 
   return (
     <div
-      className={`group/row p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-6 transition-all duration-200 ${
+      className={`group/row p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-6 transition-all duration-200 relative ${
         index % 2 === 0 ? 'bg-surface' : 'bg-surface-raised'
       } hover:bg-surface-overlay`}
       role="listitem"
       aria-labelledby={`exhibitor-title-${exhibitor.companyId}`}
     >
       {/* Linke Spalte: Logo & Name */}
-      <div className="flex items-center gap-4 min-w-[260px] max-w-sm flex-1">
+      <div className="flex items-center gap-4 min-w-[260px] max-w-sm flex-1 pr-12 sm:pr-0">
         <Link 
           href={`/company/${exhibitor.companyId}`} 
           className="shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-primary block"
@@ -171,7 +171,7 @@ export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, 
       </div>
 
       {/* Rechte Spalte: Favoriten-Stern */}
-      <div className="flex items-center justify-end shrink-0">
+      <div className="absolute right-3 top-3 sm:relative sm:right-auto sm:top-auto flex items-center justify-end shrink-0">
         <button
           onClick={(e) => {
             e.preventDefault();
