@@ -108,7 +108,7 @@ export function FAQSection() {
                             className="w-full"
                             items={category.items.map((item, i) => ({
                                 value: `faq-${category.title.toLowerCase()}-${i}`,
-                                trigger: <span>{item.question}</span>,
+                                trigger: <span key={`trigger-${category.title.toLowerCase()}-${i}`}>{item.question}</span>,
                                 content: <p>{item.answer}</p>
                             }))}
                         />

@@ -59,6 +59,7 @@ export function MobileMenu({
               <Link
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
+                aria-current={pathname === link.href ? 'page' : undefined}
                 className={cn(dropdownItemCls, 'text-white/90')}
               >
                 {link.label}
