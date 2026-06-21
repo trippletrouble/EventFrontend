@@ -180,7 +180,7 @@ export function TestimonialSection() {
                         {/* Left Chevron Button */}
                         <button
                             onClick={prevPage}
-                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-600 hover:text-black hover:bg-slate-50 focus-ring"
                             aria-label="Vorherige Testimonials anzeigen"
                             type="button"
                         >
@@ -238,7 +238,7 @@ export function TestimonialSection() {
                         {/* Right Chevron Button */}
                         <button
                             onClick={nextPage}
-                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-500 hover:text-black hover:bg-slate-50 focus-ring"
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full h-11 w-11 border border-slate-200 bg-white shadow-sm text-slate-600 hover:text-black hover:bg-slate-50 focus-ring"
                             aria-label="Nächste Testimonials anzeigen"
                             type="button"
                         >
