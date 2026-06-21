@@ -73,9 +73,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               'h-11 w-full text-sm rounded-lg bg-black border border-surface-border text-foreground transition-all duration-150 block',
               Icon ? 'pl-10 pr-3.5' : 'px-3.5',
-              'placeholder:text-foreground-muted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary',
+              'placeholder:text-foreground-muted/50 focus:outline-none focus:border-primary',
               error
-                ? 'border-destructive focus:border-destructive focus:ring-destructive'
+                ? 'border-destructive focus:border-destructive'
                 : 'hover:border-foreground-muted/65',
               className
             )}

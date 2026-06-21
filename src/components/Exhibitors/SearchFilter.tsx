@@ -52,7 +52,7 @@ export function SearchFilter({
           <input
             id="search-input"
             type="text"
-            className="h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 pr-10 placeholder:text-foreground-muted/50 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65"
+            className="h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 pr-10 placeholder:text-foreground-muted/50 transition-all duration-150 block focus:outline-none focus:border-primary hover:border-foreground-muted/65"
             placeholder="Firmenname eingeben..."
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
@@ -81,7 +81,7 @@ export function SearchFilter({
           </div>
           <select
             id="category-select"
-            className={`h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 transition-all duration-150 block focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary hover:border-foreground-muted/65 appearance-none cursor-pointer ${
+            className={`h-11 w-full text-sm rounded-none bg-black border border-surface-border text-foreground pl-10 transition-all duration-150 block focus:outline-none focus:border-primary hover:border-foreground-muted/65 appearance-none cursor-pointer ${
               selectedCategory ? 'pr-16' : 'pr-10'
             }`}
             value={selectedCategory}
