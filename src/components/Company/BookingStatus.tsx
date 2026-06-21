@@ -22,7 +22,7 @@ export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
   return (
     <section
       aria-labelledby="booking-status-heading"
-      className="bg-surface-raised border border-surface-border rounded-xl p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
+      className="bg-surface-raised border border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
     >
       <div className="flex items-center justify-between">
         <h2 id="booking-status-heading" className="text-xl font-bold text-white font-sans">
@@ -34,8 +34,8 @@ export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
       </div>
 
       {!booking ? (
-        <div className="border-2 border-dashed border-surface-border rounded-xl p-8 text-center space-y-4 hover:border-[#EAB308]/40 transition-colors">
-          <div className="w-12 h-12 rounded-full bg-zinc-900 border border-surface-border flex items-center justify-center mx-auto text-zinc-400">
+        <div className="border-2 border-dashed border-surface-border rounded-none p-8 text-center space-y-4 hover:border-[#EAB308]/40 transition-colors">
+          <div className="w-12 h-12 rounded-none bg-zinc-900 border border-surface-border flex items-center justify-center mx-auto text-zinc-400">
             <Ticket className="h-6 w-6" aria-hidden="true" />
           </div>
           <div className="space-y-1">
@@ -73,7 +73,7 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
             })}
           </span>
         </div>
-        <div className={`rounded-xl border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden`}>
+        <div className={`rounded-none border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden`}>
           <div className="space-y-2">
             <h3 className={`text-2xl font-extrabold ${config.textColor} flex items-center gap-2 font-sans`}>
               <config.icon className="h-6 w-6 shrink-0 animate-pulse" aria-hidden="true" />
@@ -120,7 +120,7 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
         </span>
       </div>
 
-      <div className={`rounded-xl border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden group`}>
+      <div className={`rounded-none border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden group`}>
         <div className="space-y-4">
           <div>
             <h3 className={`text-2xl font-extrabold ${config.textColor} flex items-center gap-2 font-sans`}>
@@ -129,7 +129,7 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
             </h3>
             <p className="text-xs text-zinc-400 mt-1.5">Dieses Ticket beinhaltet folgende Leistungen:</p>
             {standInfo && (
-              <div className="inline-flex items-center gap-2 mt-2.5 px-3 py-1 rounded-lg bg-surface border border-surface-border text-xs font-semibold text-white">
+              <div className="inline-flex items-center gap-2 mt-2.5 px-3 py-1 rounded-none bg-surface border border-surface-border text-xs font-semibold text-white">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0AD88E]" />
                 {standInfo}
               </div>

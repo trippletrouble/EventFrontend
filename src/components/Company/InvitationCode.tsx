@@ -44,7 +44,7 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
   return (
     <section
       aria-labelledby="invitation-code-heading"
-      className="bg-surface-raised border border-surface-border rounded-xl p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
+      className="bg-surface-raised border border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
     >
 
       <div className="space-y-1">
@@ -57,7 +57,7 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
       </div>
 
       <div className="space-y-3">
-        <div className="relative flex items-center justify-between gap-3 bg-surface border border-surface-border rounded-xl px-4 py-3 shadow-inner focus-within:border-[#3B82F6]/40 transition-colors">
+        <div className="relative flex items-center justify-between gap-3 bg-surface border border-surface-border rounded-none px-4 py-3 shadow-inner focus-within:border-[#3B82F6]/40 transition-colors">
           <span className="flex-1 select-all font-mono text-base font-bold tracking-[0.2em] text-white pl-1">{code}</span>
           <button
             type="button"
