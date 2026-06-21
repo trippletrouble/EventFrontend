@@ -8,14 +8,23 @@ export const envSchema = z.object({
 
 let env: z.infer<typeof envSchema>
 
+// Provide fallback values during test runs to avoid crash on import
+const envData = {
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'test' ? 'http://localhost:4010' : undefined),
+}
+
 try {
-  env = envSchema.parse(process.env)
+  env = envSchema.parse(envData)
 } catch (err) {
   console.error(
     '❌ Invalid environment variables:\n',
     (err as { flatten?: () => { fieldErrors: unknown } }).flatten?.().fieldErrors ?? err
   )
-  process.exit(1)
+  if (typeof window === 'undefined' && process.env.NODE_ENV !== 'test') {
+    process.exit(1)
+  } else {
+    throw err
+  }
 }
 
 export { env }
