@@ -25,7 +25,7 @@ describe('CTABanner', () => {
 
     const link = screen.getByRole('link', { name: /Stand buchen/i });
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', '/register');
+    expect(link).toHaveAttribute('href', '/ticketshop');
 
     const section = heading.closest('section');
     expect(section).toHaveAttribute('data-navbar', 'light');

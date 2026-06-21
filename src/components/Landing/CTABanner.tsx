@@ -15,7 +15,7 @@ export function CTABanner() {
                     <h2 tabIndex={0} className="text-[45px] font-extrabold leading-[45px] text-black focus-ring rounded inline-block px-2">
                         Werden Sie Aussteller.
                     </h2>
-                    <a href="/register"
+                    <a href="/ticketshop"
                        className="inline-block mt-8 bg-black text-white font-extrabold text-[15px] leading-[45px] px-16 rounded-[10px] hover:bg-neutral-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-black">
                         Stand buchen →
                     </a>

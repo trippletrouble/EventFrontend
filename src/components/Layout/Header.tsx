@@ -63,6 +63,8 @@ export default function Header() {
       href: isLandingPage ? `#${l.anchor}` : `/#${l.anchor}`,
       label: l.label,
     })),
+    { href: '/aussteller', label: 'Aussteller' },
+    { href: '/ticketshop', label: 'Ticketshop' },
     ...(isAuthenticated ? [{ href: '/dashboard', label: 'Dashboard' }] : []),
     ...(isAdmin ? [{ href: '/admin', label: 'Admin' }] : []),
   ];

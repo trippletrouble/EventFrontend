@@ -100,7 +100,7 @@ export default function CheckoutPage({
                     <h1 className="text-3xl font-extrabold mb-2">Zahlung fehlgeschlagen</h1>
                     <p className="mb-6 text-sm opacity-90">Der Zahlungsvorgang wurde abgebrochen oder Ihre Karte wurde abgelehnt. Es wurden keine Beträge abgebucht.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                        <Button variant="outline" className="flex-1 cursor-pointer text-white border-white hover:bg-white/15" onClick={() => window.location.href = '/checkout'}>
+                        <Button variant="outline" className="flex-1 cursor-pointer text-white border-white hover:bg-white/15" onClick={() => window.location.href = '/ticketshop'}>
                             <span>Erneut versuchen</span>
                         </Button>
                         <Button variant="ghost" className="flex-1 cursor-pointer text-white/80 hover:text-white" onClick={() => window.location.href = '/support'}>
