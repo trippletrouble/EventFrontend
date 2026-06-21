@@ -5,6 +5,8 @@ import { useTiers } from '@/hooks/useTiers';
 import { TierList, BookingCTA, UpgradeModal } from '@/components/Ticketshop';
 import { Alert, Button } from '@/components/UI';
 import { createCheckout } from '@/services/payment.service';
+import DownloadButton from "@/components/Ticketshop/DownloadButton";
+import CancelDialog from "@/components/Ticketshop/CancelDialog";
 
 export default function TicketshopPage() {
   const { tiers, isLoading, error, createBooking, upgradeBooking } = useTiers(1);
@@ -12,6 +14,9 @@ export default function TicketshopPage() {
   const [isSponsor, setIsSponsor] = useState(false);
   const [isBookingLoading, setIsBookingLoading] = useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+
+  const [isCancelOpen, setIsCancelOpen] = useState(false);
+  const testBookingId = 998877;
 
   const [bookingSuccess, setBookingSuccess] = useState<string | null>(null);
   const [bookingError, setBookingError] = useState<string | null>(null);
@@ -89,6 +94,7 @@ export default function TicketshopPage() {
   };
 
   return (
+      <>
       <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
@@ -120,6 +126,10 @@ export default function TicketshopPage() {
               <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
             </label>
           </div>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:ml-auto">
+            <DownloadButton />
+        </div>
         </div>
 
         {(error || bookingError) && (
@@ -156,14 +166,26 @@ export default function TicketshopPage() {
             )}
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 space-y-4 flex flex-col">
             {selectedTier ? (
+                <>
                 <BookingCTA
                     tier={selectedTier}
                     isSponsor={isSponsor}
                     onCheckout={handleCheckout}
                     isLoading={isBookingLoading}
                 />
+
+                <div className="w-full flex flex-col items-center justify-center pt-2">
+                  <button
+                      onClick={() => setIsCancelOpen(true)}
+                      type="button"
+                      className="px-3 py-1.5 text-xs text-white bg-transparent border border-red-600 hover:bg-red-600/10 rounded-lg transition-all"
+                  >
+                    Stornierung anfragen (ID: {testBookingId})
+                  </button>
+                </div>
+                </>
             ) : (
                 <div className="bg-white/5 p-6 border border-white/10 rounded-xl text-center text-gray-400 text-sm">
                   Bitte wählen Sie ein Paket aus der Liste.
@@ -183,5 +205,16 @@ export default function TicketshopPage() {
             />
         )}
       </div>
+
+  {/* DIALOG-KOMPONENTE: Wird außerhalb des Haupt-Flusses gerendert */}
+  <CancelDialog
+      isOpen={isCancelOpen}
+      bookingId={testBookingId}
+      onClose={() => setIsCancelOpen(false)}
+      onConfirmSuccess={() => {
+        console.log('Stornierung im Backend erfolgreich getriggert!');
+      }}
+  />
+      </>
   );
 }
