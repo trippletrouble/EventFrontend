@@ -98,6 +98,26 @@ describe('ExhibitorCard', () => {
     expect(toggleMock).toHaveBeenCalled();
   });
 
+  it('zeigt den ausgefüllten Stern und den passenden aria-label an, wenn das Unternehmen als Favorit markiert ist', () => {
+    render(
+      <div role="list">
+        <ExhibitorCard 
+          exhibitor={mockCompany} 
+          index={0}
+          isFavorite={true}
+          onToggleFavorite={jest.fn()}
+        />
+      </div>
+    );
+
+    const favButton = screen.getByRole('button', { name: /aus Favoriten entfernen/i });
+    expect(favButton).toBeInTheDocument();
+    
+    const starIcon = favButton.querySelector('svg');
+    expect(starIcon).toHaveClass('text-primary');
+    expect(starIcon).toHaveClass('fill-primary');
+  });
+
   it('ruft onCategoryClick auf, wenn das Branchen-Tag geklickt wird (sowohl auf Mobil als auch auf Desktop)', async () => {
     const user = userEvent.setup();
     const categoryMock = jest.fn();
