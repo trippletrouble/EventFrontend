@@ -27,6 +27,7 @@
     </testcase>
     <testcase classname="UpgradeTierSelect zeigt den Ladezustand des Buttons an" name="UpgradeTierSelect zeigt den Ladezustand des Buttons an" time="0.003">
     </testcase>
+    <testcase classname="envSchema accepts a valid HTTPS URL" name="envSchema accepts a valid HTTPS URL" time="0">
   </testsuite>
   <testsuite name="TierCard" errors="0" failures="0" skipped="0" timestamp="2026-06-17T19:04:56" time="0.93" tests="6">
     <testcase classname="TierCard hat keine A11y-Violations" name="TierCard hat keine A11y-Violations" time="0.108">

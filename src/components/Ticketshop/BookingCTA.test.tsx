@@ -10,7 +10,7 @@ expect.extend(toHaveNoViolations);
 const mockTier: TierDto = {
   tierId: 2,
   eventId: 1,
-  basePrice: 100000, // 1.000,00 €
+  basePrice: 100000,
   sponsorDiscountPercent: 15,
   features: ['Feature A'],
   slotsTotal: 10,
