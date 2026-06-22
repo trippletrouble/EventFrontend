@@ -26,7 +26,19 @@ export function useCompany(companyId: string) {
           const found = mockCompanies.find(c => String(c.companyId) === String(companyId)) || 
                         [mockCompany, mockPendingCompany, mockSponsorCompany].find(c => String(c.companyId) === String(companyId)) || 
                         mockCompany;
-          setCompany({ ...found, bookings: [] });
+          
+          const mockBooking: BookingDto = {
+            bookingId: found.companyId * 100,
+            companyId: found.companyId,
+            eventId: 1,
+            tierId: (found.companyId % 4) + 1, // Deterministic tierId (1 to 4)
+            bookedBy: 1,
+            status: 'CONFIRMED',
+            createdAt: '2026-03-15T10:00:00Z',
+            updatedAt: '2026-03-15T10:00:00Z',
+          };
+          
+          setCompany({ ...found, bookings: [mockBooking] });
           setError(null);
           return;
         }

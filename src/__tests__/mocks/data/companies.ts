@@ -65,6 +65,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 12,
     name: 'Hetzner Online GmbH',
+    logoUrl: '/logos/hetzner.svg',
     address: 'Industriestr. 25',
     zip: '91710',
     city: 'Gunzenhausen',
@@ -101,6 +102,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 20,
     name: 'AOK Bayern',
+    logoUrl: '/logos/aok.svg',
     address: 'Carl-Wery-Straße 28',
     zip: '81739',
     city: 'München',
@@ -112,6 +114,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 21,
     name: 'Techniker Krankenkasse',
+    logoUrl: '/logos/techniker-krankenkasse.svg',
     address: 'Bramfelder Straße 140',
     zip: '22305',
     city: 'Hamburg',
@@ -169,6 +172,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 30,
     name: 'Gebrüder Weiss GmbH',
+    logoUrl: '/logos/gebrueder-weiss.svg',
     address: 'Bundesstraße 110',
     zip: '6923',
     city: 'Lauterach',
@@ -237,6 +241,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 40,
     name: 'HUK-Coburg',
+    logoUrl: '/logos/huk-coburg.svg',
     address: 'Bahnhofsplatz',
     zip: '96450',
     city: 'Coburg',
@@ -305,6 +310,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 50,
     name: 'Wilo SE',
+    logoUrl: '/logos/wilo.svg',
     address: 'Wilopark 1',
     zip: '44263',
     city: 'Dortmund',
@@ -316,6 +322,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 51,
     name: 'NETZSCH Gruppe',
+    logoUrl: '/logos/netzsch.svg',
     address: 'Gebrüder-Netzsch-Straße 19',
     zip: '95100',
     city: 'Selb',
@@ -327,6 +334,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 52,
     name: 'Lamilux Heinrich Strunz GmbH',
+    logoUrl: '/logos/lamilux.svg',
     address: 'Zehstraße 2',
     zip: '95111',
     city: 'Rehau',
@@ -338,6 +346,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 53,
     name: 'Sandler AG',
+    logoUrl: '/logos/sandler.svg',
     address: 'Lamitzstraße 2',
     zip: '95126',
     city: 'Schwarzenbach an der Saale',
@@ -349,6 +358,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 54,
     name: 'CeramTec GmbH',
+    logoUrl: '/logos/ceramtec.svg',
     address: 'CeramTec-Weg 1',
     zip: '95615',
     city: 'Marktredwitz',
@@ -360,6 +370,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 55,
     name: 'Viessmann Werke GmbH',
+    logoUrl: '/logos/viessmann.svg',
     address: 'Viessmannstraße 1',
     zip: '35108',
     city: 'Allendorf (Eder)',
@@ -373,6 +384,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 60,
     name: 'Bundeswehr',
+    logoUrl: '/logos/bundeswehr.svg',
     address: 'Karriereberatungsbüro Hof',
     zip: '95028',
     city: 'Hof',
@@ -384,6 +396,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 61,
     name: 'Agentur für Arbeit',
+    logoUrl: '/logos/agentur-fuer-arbeit.svg',
     address: 'Neustadt 9',
     zip: '95028',
     city: 'Hof',
@@ -441,6 +454,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 70,
     name: 'Dennree GmbH',
+    logoUrl: '/logos/dennree.png',
     address: 'Hofer Straße 11',
     zip: '95183',
     city: 'Töpen',
@@ -452,6 +466,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 71,
     name: 'NKD Group GmbH',
+    logoUrl: '/logos/nkd.svg',
     address: 'Bühlstraße 5-7',
     zip: '95463',
     city: 'Bindlach',
@@ -463,6 +478,7 @@ export const mockCompanies: MockCompanyDto[] = [
   {
     companyId: 72,
     name: 'Enterprise Rent-A-Car',
+    logoUrl: '/logos/enterprise.svg',
     address: 'Hauptstraße 123',
     zip: '65760',
     city: 'Eschborn',
