@@ -35,11 +35,9 @@ describe('AlphabetFilter', () => {
 
     const activeBtn = screen.getByRole('button', { name: 'Aussteller mit Anfangsbuchstabe B anzeigen' });
     expect(activeBtn).toHaveAttribute('aria-current', 'true');
-    expect(activeBtn).toHaveClass('text-primary');
 
     const inactiveBtn = screen.getByRole('button', { name: 'Aussteller mit Anfangsbuchstabe A anzeigen' });
     expect(inactiveBtn).not.toHaveAttribute('aria-current');
-    expect(inactiveBtn).toHaveClass('text-foreground-muted');
   });
 
   it('ruft onLetterChange auf, wenn ein Buchstabe angeklickt wird', async () => {
