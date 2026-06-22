@@ -1,5 +1,6 @@
 'use client';
 
+import type { ComponentType } from 'react';
 import type { BookingDto, TierDto } from '@/types/api.types';
 import { Clock, ArrowUpCircle, Ticket, Sparkles, Crown, Gem } from 'lucide-react';
 import Link from 'next/link';
@@ -9,7 +10,7 @@ interface BookingStatusProps {
   tiers: TierDto[];
 }
 
-const tierContent: Record<number, { title: string; textColor: string; borderColor: string; bgStyles: string; icon: any }> = {
+const tierContent: Record<number, { title: string; textColor: string; borderColor: string; bgStyles: string; icon: ComponentType<{ className?: string }> }> = {
   1: { title: 'Basis Ticket', textColor: 'text-[#EAB308]', borderColor: 'border-[#EAB308]/30', bgStyles: 'bg-[#EAB308]/5', icon: Ticket },
   2: { title: 'Basis Plus Ticket', textColor: 'text-[#3B82F6]', borderColor: 'border-[#3B82F6]/30', bgStyles: 'bg-[#3B82F6]/5', icon: Sparkles },
   3: { title: 'Premium Ticket', textColor: 'text-[#EF4444]', borderColor: 'border-[#EF4444]/30', bgStyles: 'bg-[#EF4444]/5', icon: Crown },
