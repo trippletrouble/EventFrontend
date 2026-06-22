@@ -5,6 +5,7 @@ import { Building2, MapPin, Mail, Check, Clock, X, Star, Pencil } from 'lucide-r
 import type { ComponentType } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { updateCompany } from '@/services/company.service';
+import { LogoUpload } from './LogoUpload';
 
 const statusLabels: Record<string, { label: string; className: string; icon: ComponentType<{ className?: string }> }> = {
   VERIFIED: { label: 'Verifiziert', className: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20', icon: Check },
@@ -101,10 +102,15 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div className="flex items-center gap-5 w-full">
-          <div className="flex h-24 w-24 md:h-28 md:w-28 shrink-0 flex-col items-center justify-center bg-surface border border-surface-border rounded-xl gap-1 transition-all duration-300 hover:border-[#EAB308]/40 group shadow-inner relative overflow-hidden">
-            <Building2 className="h-10 w-10 text-[#EAB308] group-hover:scale-105 transition-transform duration-300" aria-hidden="true" />
-            <span className="text-[10px] font-medium text-zinc-400 leading-tight text-center px-1">Ihr Firmenlogo / Profilbild</span>
-          </div>
+          <LogoUpload
+            companyId={company.companyId}
+            companyName={company.name}
+            currentLogoUrl={company.logoUrl}
+            onUploadSuccess={() => {
+              if (onUpdate) onUpdate();
+            }}
+            isEditing={isEditing}
+          />
           <div className="space-y-2 flex-1 min-w-0">
             {isEditing ? (
               <div className="space-y-3 w-full max-w-md">

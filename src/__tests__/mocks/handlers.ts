@@ -34,6 +34,17 @@ export const handlers = [
     return HttpResponse.json({ ...mockCompany, ...(body as object) });
   }),
 
+  http.post(`${BASE_URL}/companies/:id/logo-upload-url`, async () => {
+    return HttpResponse.json({
+      uploadUrl: 'http://localhost:9000/aussteller/mock-logo-upload',
+      logoUrl: 'http://localhost:9000/aussteller/mock-logo.png',
+    });
+  }),
+
+  http.put('http://localhost:9000/aussteller/mock-logo-upload', async () => {
+    return new HttpResponse(null, { status: 200 });
+  }),
+
   // === BOOKINGS ===
   http.get(`${BASE_URL}/bookings`, () => {
     return HttpResponse.json({ data: mockTiers });

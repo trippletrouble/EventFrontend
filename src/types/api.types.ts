@@ -24,6 +24,7 @@ export interface CompanyDto {
   isSponsor: boolean;
   inviteCode?: string;
   description?: string;
+  logoUrl?: string;
   members?: UserDto[];
   _links?: Links;
 }
@@ -44,6 +45,7 @@ export interface UpdateCompanyRequestDto {
   city?: string;
   email?: string;
   description?: string;
+  logoUrl?: string;
 }
 
 export interface AdminUpdateCompanyRequestDto {

@@ -1,4 +1,4 @@
-import { registerCompany, getCompany, updateCompany, getMyCompany } from './company.service';
+import { registerCompany, getCompany, updateCompany, getMyCompany, getLogoUploadUrl } from './company.service';
 import { apiFetch } from './api';
 
 jest.mock('./api');
@@ -61,6 +61,22 @@ describe('company.service', () => {
     const result = await getMyCompany();
 
     expect(apiFetch).toHaveBeenCalledWith('/auth/me');
+    expect(result).toEqual(mockResponse);
+  });
+
+  it('getLogoUploadUrl makes a POST request and returns upload and destination URLs', async () => {
+    const mockResponse = {
+      uploadUrl: 'http://minio/upload',
+      logoUrl: 'http://minio/logo.png',
+    };
+    (apiFetch as jest.Mock).mockResolvedValue(mockResponse);
+
+    const result = await getLogoUploadUrl(42, 'logo.png', 'image/png');
+
+    expect(apiFetch).toHaveBeenCalledWith('/companies/42/logo-upload-url', {
+      method: 'POST',
+      body: { filename: 'logo.png', contentType: 'image/png' },
+    });
     expect(result).toEqual(mockResponse);
   });
 });
