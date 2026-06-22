@@ -5,8 +5,7 @@ export function CTABanner() {
         <div className="w-full">
             {/* Übergangs-Streifen oben */}
             <div
-                className="h-2 w-full stripe-reveal"
-                style={{ background: 'linear-gradient(90deg, #000 0%, #000 27.88%, #0AD88E 100%)' }}
+                className="h-2 w-full stripe-reveal bg-[linear-gradient(90deg,#000_0%,#000_27.88%,#0AD88E_100%)]"
                 aria-hidden="true"
             />
 
@@ -24,8 +23,7 @@ export function CTABanner() {
 
             {/* Übergangs-Streifen unten */}
             <div
-                className="h-2 w-full stripe-reveal"
-                style={{ background: 'linear-gradient(90deg, #0AD88E 0%, #000000 73%, #000000 100%)' }}
+                className="h-2 w-full stripe-reveal bg-[linear-gradient(90deg,#0AD88E_0%,#000000_73%,#000000_100%)]"
                 aria-hidden="true"
             />
         </div>

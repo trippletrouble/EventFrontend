@@ -24,7 +24,7 @@ export function FeatureItem({
     <div
       tabIndex={0}
       className={cn(
-        'flex gap-4 items-center rounded-lg p-3 w-full transition-all focus-ring',
+        'flex gap-6 items-start rounded-lg p-3 w-full transition-all focus-ring',
         theme === 'light' ? 'hover:bg-slate-50' : 'hover:bg-surface-raised/30',
         className,
       )}
@@ -42,7 +42,7 @@ export function FeatureItem({
       <div>
         <h4
           className={cn(
-            'font-bold text-lg mb-1',
+            'font-extrabold text-lg md:text-xl mb-1',
             theme === 'light' ? 'text-slate-900' : 'text-foreground',
           )}
         >
@@ -50,7 +50,7 @@ export function FeatureItem({
         </h4>
         <p
           className={cn(
-            'text-sm leading-relaxed',
+            'text-sm md:text-base leading-relaxed',
             theme === 'light' ? 'text-black' : 'text-foreground-muted',
           )}
         >

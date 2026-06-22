@@ -12,11 +12,7 @@ export function StudentInfoSection() {
       data-navbar="light"
     >
       <div
-        className="h-2 w-full absolute top-0 left-0 stripe-reveal"
-        style={{
-          background:
-            'linear-gradient(90deg, #0D1117 0%, #0D1117 28%, #2860F9 100%)',
-        }}
+        className="h-2 w-full absolute top-0 left-0 stripe-reveal bg-[linear-gradient(90deg,#0D1117_0%,#0D1117_28%,#2860F9_100%)]"
         aria-hidden="true"
       />
 
@@ -25,7 +21,7 @@ export function StudentInfoSection() {
           <h2
             id="student-info-heading"
             tabIndex={0}
-            className="text-4xl md:text-5xl font-extrabold text-center text-black mb-12 focus-ring rounded block mx-auto px-2"
+            className="text-3xl md:text-[40px] font-extrabold text-center text-black mb-12 focus-ring rounded block mx-auto px-2"
           >
             Infos für Studierende
           </h2>
@@ -36,28 +32,21 @@ export function StudentInfoSection() {
           <RevealOnScroll rootMargin="0px 0px -20px 0px" threshold={0.05}>
             <h3
               tabIndex={0}
-              className="text-xl font-extrabold text-black mb-6 focus-ring rounded inline-block px-1"
+              className="text-xl md:text-2xl font-bold text-left text-black mb-4 focus-ring rounded inline-block px-1"
             >
               Dein Karrierestart.
             </h3>
           </RevealOnScroll>
 
+          {/* Blaue Trennlinie */}
           <hr
-            className="mb-6"
-            style={{
-              width: '110%',
-              border: 'none',
-              borderTop: '3px solid #173892',
-              marginTop: '-25px',
-              position: 'relative',
-              left: '50%',
-              transform: 'translateX(-50%)',
-            }}
+            className="mb-8 border-t border-[#2860F9]"
+            style={{ borderWidth: '1.5px' }}
             aria-hidden="true"
           />
 
           <RevealOnScroll rootMargin="0px 0px -20px 0px" threshold={0.05}>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <FeatureItem
                 icon={<Briefcase className="w-[35px] h-[35px]" />}
                 borderColorClass="border-[transparent]"
@@ -93,16 +82,10 @@ export function StudentInfoSection() {
             </div>
           </RevealOnScroll>
 
+          {/* Blaue Trennlinie */}
           <hr
-            className="mt-6"
-            style={{
-              width: '110%',
-              border: 'none',
-              borderTop: '3px solid #173892',
-              position: 'relative',
-              left: '50%',
-              transform: 'translateX(-50%)',
-            }}
+            className="mt-8 mb-8 border-t border-[#2860F9]"
+            style={{ borderWidth: '1.5px' }}
             aria-hidden="true"
           />
         </div>
@@ -112,49 +95,44 @@ export function StudentInfoSection() {
           <RevealOnScroll rootMargin="0px 0px -20px 0px" threshold={0.05}>
             <h3
               tabIndex={0}
-              className="text-xl font-extrabold text-black mb-6 focus-ring rounded inline-block px-1"
+              className="text-xl md:text-2xl font-bold text-black mb-6 focus-ring rounded inline-block px-1"
             >
               Tipps für deinen Messebesuch
             </h3>
           </RevealOnScroll>
 
           <RevealOnScroll rootMargin="0px 0px -20px 0px" threshold={0.05}>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0.5 list-disc list-inside text-black text-sm md:text-base">
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Lebenslauf mitbringen
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Messe App zur Orientierung
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Fragen vorbereiten
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Ausstellerliste ansehen
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Gepflegte Kleidung
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Wunschfirmen vorher raussuchen
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Ordentliches Erscheinungsbild
-              </li>
-              <li tabIndex={0} className="px-2 py-1 focus-ring rounded">
-                Früh kommen
-              </li>
+            <ul
+              className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-12 pl-6 mt-4 list-none"
+              role="list"
+              aria-label="Tipps für deinen Messebesuch"
+            >
+              {[
+                'Lebenslauf mitbringen',
+                'Messe App zur Orientierung',
+                'Fragen vorbereiten',
+                'Ausstellerliste ansehen',
+                'Gepflegte Kleidung',
+                'Wunschfirmen vorher raussuchen',
+                'Ordentliches Erscheinungsbild',
+                'Früh kommen'
+              ].map((tip, idx) => (
+                <li
+                  key={idx}
+                  className="relative pl-5 text-black text-sm md:text-base focus-ring rounded p-1 before:content-['•'] before:absolute before:left-1 before:text-black"
+                  tabIndex={0}
+                  role="listitem"
+                >
+                  {tip}
+                </li>
+              ))}
             </ul>
           </RevealOnScroll>
         </div>
       </div>
 
       <div
-        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
-        style={{
-          background:
-            'linear-gradient(90deg, #2860F9 0%, #0D1117 72%, #0D1117 100%)',
-        }}
+        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal bg-[linear-gradient(90deg,#2860F9_0%,#0D1117_72%,#0D1117_100%)]"
         aria-hidden="true"
       />
     </section>

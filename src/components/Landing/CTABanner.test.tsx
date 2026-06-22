@@ -32,11 +32,11 @@ describe('CTABanner', () => {
 
     const strips = screen.queryAllByRole('presentation');
     if (strips.length > 0) {
-      expect(strips[0]).toHaveStyle('background: linear-gradient(90deg, #000 0%, #000 27.88%, #0AD88E 100%)');
+      expect(strips[0]).toHaveClass('bg-[linear-gradient(90deg,#000_0%,#000_27.88%,#0AD88E_100%)]');
     } else {
       const topStripe = document.querySelector('.stripe-reveal') as HTMLElement | null;
       expect(topStripe).not.toBeNull();
-      expect(topStripe).toHaveStyle('background: linear-gradient(90deg, #000 0%, #000 27.88%, #0AD88E 100%)');
+      expect(topStripe).toHaveClass('bg-[linear-gradient(90deg,#000_0%,#000_27.88%,#0AD88E_100%)]');
     }
   });
 

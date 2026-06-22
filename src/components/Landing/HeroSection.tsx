@@ -95,58 +95,33 @@ export function HeroSection({
 
                 <div className="relative w-full max-w-xl md:max-w-2xl py-8 pr-8 my-4 select-none -ml-6 lg:-ml-12 pl-6 lg:pl-12">
                     <div
-                        className="absolute inset-y-0 backdrop-blur-sm z-0"
-                        style={{
-                            left: '-100vw',
-                            right: '0px',
-                            background: 'linear-gradient(90deg, #0D1117 0%, #07090C 70%, transparent 100%)'
-                        }}
+                        className="absolute inset-y-0 left-[-100vw] right-0 backdrop-blur-sm z-0 bg-[linear-gradient(90deg,#0D1117_0%,#07090C_70%,transparent_100%)]"
                         aria-hidden="true"
                     />
 
                     <div
-                        className="absolute top-0 right-0 flex flex-col z-20"
-                        style={{ left: '-100vw' }}
+                        className="absolute top-0 right-0 left-[-100vw] flex flex-col z-20"
                         aria-hidden="true"
                     >
-                        <div
-                            className="h-[6px]"
-                            style={{ background: 'linear-gradient(90deg, #F5B800 0%, #F5B800 20%, rgba(245, 184, 0, 0) 100%)' }}
-                        />
-                        <div
-                            className="h-[6px]"
-                            style={{ background: 'linear-gradient(90deg, #2860F9 0%, #2860F9 35%, rgba(40, 96, 249, 0) 100%)' }}
-                        />
+                        <div className="h-[6px] bg-[linear-gradient(90deg,#F5B800_0%,#F5B800_20%,transparent_100%)]" />
+                        <div className="h-[6px] bg-[linear-gradient(90deg,#2860F9_0%,#2860F9_35%,transparent_100%)]" />
                     </div>
 
                     <div className="relative z-10 flex flex-col items-start font-extrabold text-white text-left mt-2 pl-0">
-                        <h1
-                            className="text-[32px] md:text-[42px] tracking-wide font-extrabold leading-tight"
-                            style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
-                        >
+                        <h1 className="text-[32px] md:text-[42px] tracking-wide font-extrabold leading-tight font-lexend-giga">
                             {title}
-                            <span
-                                className="block text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter"
-                                style={{ fontFamily: 'var(--font-lexend-giga, inherit)' }}
-                            >
+                            <span className="block text-[100px] md:text-[110px] font-black leading-[0.85] tracking-tighter font-lexend-giga">
                                 {year}
                             </span>
                         </h1>
                     </div>
 
                     <div
-                        className="absolute bottom-0 right-0 flex flex-col z-20"
-                        style={{ left: '-100vw' }}
+                        className="absolute bottom-0 right-0 left-[-100vw] flex flex-col z-20"
                         aria-hidden="true"
                     >
-                        <div
-                            className="h-[6px]"
-                            style={{ background: 'linear-gradient(90deg, #FE3C4E 0%, #FE3C4E 6%, transparent 100%)' }}
-                        />
-                        <div
-                            className="h-[6px]"
-                            style={{ background: 'linear-gradient(90deg, #0AD88E 0%, #0AD88E 6%, transparent 100%)' }}
-                        />
+                        <div className="h-[6px] bg-[linear-gradient(90deg,#FE3C4E_0%,#FE3C4E_6%,transparent_100%)]" />
+                        <div className="h-[6px] bg-[linear-gradient(90deg,#0AD88E_0%,#0AD88E_6%,transparent_100%)]" />
                     </div>
                 </div>
 
@@ -157,15 +132,11 @@ export function HeroSection({
                         {/* "Deine" Bereich */}
                         <div className="w-full mb-2 relative">
                             <div className="flex items-baseline gap-15 w-full">
-                                <span
-                                    className="text-[24px] md:text-[40px] font-light text-white tracking-wide pl-1 whitespace-nowrap"
-                                    style={{ fontFamily: 'var(--font-lexend-deca, inherit)' }}
-                                >
+                                <span className="text-[24px] md:text-[40px] font-light text-white tracking-wide pl-1 whitespace-nowrap font-lexend-deca">
                                     {taglineStart}
                                 </span>
                                 <div
-                                    className="h-[3px] w-[50vw] mr-[-100vw]"
-                                    style={{ background: 'linear-gradient(90deg, transparent 0%, #FFFFFF 45%, #FFFFFF 100%)', }}
+                                    className="h-[3px] w-[50vw] mr-[-100vw] bg-[linear-gradient(90deg,transparent_0%,#FFFFFF_45%,#FFFFFF_100%)]"
                                     aria-hidden="true"
                                 />
                             </div>
@@ -176,15 +147,14 @@ export function HeroSection({
                         <h2 className="leading-[0.95] tracking-wide uppercase">
                             {tagwords.map((word, index) => {
                                 const isSecond = index === 1;
-                                const fontClass = isSecond ? 'var(--font-lexend, inherit)' : 'var(--font-lexend-exa, inherit)';
+                                const fontClass = isSecond ? 'font-sans' : 'font-lexend-exa';
                                 const sizeClass = isSecond
                                     ? 'text-[44px] md:text-[80px] font-medium text-[#0AD88E] my-0.5'
                                     : 'text-[32px] md:text-[40px] font-black text-white';
                                 return (
                                     <span
                                         key={`${word}-${index}`}
-                                        className={`block ${sizeClass}`}
-                                        style={{ fontFamily: fontClass }}
+                                        className={`block ${sizeClass} ${fontClass}`}
                                     >
                                         <KeywordAnimation text={word} delay={150 + index * 200} />
                                     </span>

@@ -12,7 +12,7 @@ import MobileMenu from './MobileMenu';
 
 const LANDING_NAV = [
   { anchor: 'event-info', label: 'Das Event' },
-  { anchor: 'exhibitor-info', label: 'Für Aussteller' },
+  { anchor: 'exhibitor-benefits', label: 'Für Aussteller' },
   { anchor: 'student-info', label: 'Für Studierende' },
 ];
 
