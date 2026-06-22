@@ -84,7 +84,7 @@ export default function Header() {
       label: l.label,
     })),
     { href: '/aussteller', label: 'Aussteller' },
-    { href: '/ticketshop', label: 'Ticketshop' },
+    { href: '/ticketshop', label: 'Stand buchen' },
     ...(isAuthenticated ? [{ href: '/dashboard', label: 'Dashboard' }] : []),
     ...(companyId ? [{ href: `/company/${companyId}`, label: 'Firmenprofil' }] : []),
     ...(isAdmin ? [{ href: '/admin', label: 'Admin' }] : []),
