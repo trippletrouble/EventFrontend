@@ -23,6 +23,7 @@ export interface CompanyDto {
   status: CompanyStatus;
   isSponsor: boolean;
   inviteCode?: string;
+  description?: string;
   members?: UserDto[];
   _links?: Links;
 }
@@ -42,6 +43,7 @@ export interface UpdateCompanyRequestDto {
   zip?: string;
   city?: string;
   email?: string;
+  description?: string;
 }
 
 export interface AdminUpdateCompanyRequestDto {

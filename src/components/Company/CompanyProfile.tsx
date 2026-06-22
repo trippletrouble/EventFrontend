@@ -35,6 +35,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
     zip: company.zip || '',
     city: company.city || '',
     email: company.email || '',
+    description: company.description || '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -72,6 +73,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
         zip: formData.zip.trim(),
         city: formData.city.trim(),
         email: formData.email.trim(),
+        description: formData.description.trim(),
       });
       setIsEditing(false);
       if (onUpdate) {
@@ -105,21 +107,41 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
           </div>
           <div className="space-y-2 flex-1 min-w-0">
             {isEditing ? (
-              <div className="form-control w-full max-w-md">
-                <label htmlFor="edit-name" className="sr-only">Firmenname</label>
-                <input
-                  id="edit-name"
-                  ref={nameInputRef}
-                  type="text"
-                  className={`input input-bordered w-full text-white bg-surface border-surface-border text-lg font-bold font-sans rounded-lg focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none ${errors.name ? 'border-red-500' : ''}`}
-                  value={formData.name}
-                  onChange={(e) => {
-                    setFormData({ ...formData, name: e.target.value });
-                    if (errors.name) setErrors({ ...errors, name: '' });
-                  }}
-                  disabled={isSaving}
-                />
-                {errors.name && <p className="text-xs text-red-400 mt-1" role="alert">{errors.name}</p>}
+              <div className="space-y-3 w-full max-w-md">
+                <div className="form-control w-full">
+                  <label htmlFor="edit-name" className="sr-only">Firmenname</label>
+                  <input
+                    id="edit-name"
+                    ref={nameInputRef}
+                    type="text"
+                    className={`h-11 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none text-lg font-bold font-sans rounded-lg transition-all duration-150 ${errors.name ? 'border-red-500 focus:border-red-500' : ''}`}
+                    value={formData.name}
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (errors.name) setErrors({ ...errors, name: '' });
+                    }}
+                    disabled={isSaving}
+                  />
+                  {errors.name && <p className="text-xs text-red-400 mt-1" role="alert">{errors.name}</p>}
+                </div>
+                <div className="form-control w-full">
+                  <label htmlFor="edit-description" className="sr-only">Unternehmensbeschreibung</label>
+                  <textarea
+                    id="edit-description"
+                    rows={2}
+                    maxLength={300}
+                    placeholder="Unternehmensbeschreibung (max. 300 Zeichen)..."
+                    className="w-full text-xs text-zinc-300 bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg p-3 transition-all duration-150 resize-none font-normal"
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    disabled={isSaving}
+                  />
+                  <div className="flex justify-end mt-0.5">
+                    <span className="text-[10px] text-zinc-400">
+                      {formData.description.length} / 300 Zeichen
+                    </span>
+                  </div>
+                </div>
               </div>
             ) : (
               <h2 id="company-profile-heading" className="text-2xl md:text-3xl font-extrabold text-white tracking-tight font-sans truncate">
@@ -138,6 +160,17 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
                 </span>
               )}
             </div>
+            {!isEditing && (
+              company.description ? (
+                <p className="text-xs text-zinc-300 mt-3 leading-relaxed max-w-2xl font-normal">
+                  {company.description}
+                </p>
+              ) : (
+                <p className="text-xs text-zinc-500 mt-3 italic font-normal">
+                  Keine Unternehmensbeschreibung hinterlegt. Klicken Sie auf das Stift-Symbol, um eine hinzuzufügen.
+                </p>
+              )
+            )}
           </div>
         </div>
 
@@ -179,6 +212,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
                 zip: company.zip || '',
                 city: company.city || '',
                 email: company.email || '',
+                description: company.description || '',
               });
               setErrors({});
               setSaveError(null);
@@ -203,55 +237,55 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
 
       {isEditing ? (
         <div className="space-y-4">
-          <div className="flex flex-col gap-1.5 w-full">
-            <label htmlFor="edit-address" className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Adresse</label>
-            <div className="flex flex-col md:flex-row gap-3 w-full max-w-2xl">
-              <div className="flex-[2]">
-                <input
-                  id="edit-address"
-                  type="text"
-                  placeholder="Straße und Hausnummer"
-                  className={`input input-bordered input-sm w-full text-white bg-surface border-surface-border rounded-lg focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none ${errors.address ? 'border-red-500' : ''}`}
-                  value={formData.address}
-                  onChange={(e) => {
-                    setFormData({ ...formData, address: e.target.value });
-                    if (errors.address) setErrors({ ...errors, address: '' });
-                  }}
-                  disabled={isSaving}
-                />
-                {errors.address && <p className="text-xs text-red-400 mt-1" role="alert">{errors.address}</p>}
-              </div>
-              <div className="w-full md:w-32">
-                <input
-                  id="edit-zip"
-                  type="text"
-                  placeholder="PLZ"
-                  maxLength={5}
-                  className={`input input-bordered input-sm w-full text-white bg-surface border-surface-border rounded-lg focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none ${errors.zip ? 'border-red-500' : ''}`}
-                  value={formData.zip}
-                  onChange={(e) => {
-                    setFormData({ ...formData, zip: e.target.value });
-                    if (errors.zip) setErrors({ ...errors, zip: '' });
-                  }}
-                  disabled={isSaving}
-                />
-                {errors.zip && <p className="text-xs text-red-400 mt-1" role="alert">{errors.zip}</p>}
-              </div>
-              <div className="flex-1">
-                <input
-                  id="edit-city"
-                  type="text"
-                  placeholder="Ort"
-                  className={`input input-bordered input-sm w-full text-white bg-surface border-surface-border rounded-lg focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none ${errors.city ? 'border-red-500' : ''}`}
-                  value={formData.city}
-                  onChange={(e) => {
-                    setFormData({ ...formData, city: e.target.value });
-                    if (errors.city) setErrors({ ...errors, city: '' });
-                  }}
-                  disabled={isSaving}
-                />
-                {errors.city && <p className="text-xs text-red-400 mt-1" role="alert">{errors.city}</p>}
-              </div>
+          <div className="flex flex-col md:flex-row gap-3 w-full max-w-2xl">
+            <div className="flex-[2] flex flex-col gap-1.5">
+              <label htmlFor="edit-address" className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Straße & Hausnummer</label>
+              <input
+                id="edit-address"
+                type="text"
+                placeholder="Straße und Hausnummer"
+                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.address ? 'border-red-500 focus:border-red-500' : ''}`}
+                value={formData.address}
+                onChange={(e) => {
+                  setFormData({ ...formData, address: e.target.value });
+                  if (errors.address) setErrors({ ...errors, address: '' });
+                }}
+                disabled={isSaving}
+              />
+              {errors.address && <p className="text-xs text-red-400 mt-1" role="alert">{errors.address}</p>}
+            </div>
+            <div className="w-full md:w-32 flex flex-col gap-1.5">
+              <label htmlFor="edit-zip" className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">PLZ</label>
+              <input
+                id="edit-zip"
+                type="text"
+                placeholder="PLZ"
+                maxLength={5}
+                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.zip ? 'border-red-500 focus:border-red-500' : ''}`}
+                value={formData.zip}
+                onChange={(e) => {
+                  setFormData({ ...formData, zip: e.target.value });
+                  if (errors.zip) setErrors({ ...errors, zip: '' });
+                }}
+                disabled={isSaving}
+              />
+              {errors.zip && <p className="text-xs text-red-400 mt-1" role="alert">{errors.zip}</p>}
+            </div>
+            <div className="flex-1 flex flex-col gap-1.5">
+              <label htmlFor="edit-city" className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Ort</label>
+              <input
+                id="edit-city"
+                type="text"
+                placeholder="Ort"
+                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.city ? 'border-red-500 focus:border-red-500' : ''}`}
+                value={formData.city}
+                onChange={(e) => {
+                  setFormData({ ...formData, city: e.target.value });
+                  if (errors.city) setErrors({ ...errors, city: '' });
+                }}
+                disabled={isSaving}
+              />
+              {errors.city && <p className="text-xs text-red-400 mt-1" role="alert">{errors.city}</p>}
             </div>
           </div>
 
@@ -261,7 +295,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
               id="edit-email"
               type="email"
               placeholder="E-Mail-Adresse"
-              className={`input input-bordered input-sm w-full text-white bg-surface border-surface-border rounded-lg focus:border-[#3B82F6] focus:ring-1 focus:ring-[#3B82F6] outline-none ${errors.email ? 'border-red-500' : ''}`}
+              className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium ${errors.email ? 'border-red-500' : ''}`}
               value={formData.email}
               onChange={(e) => {
                 setFormData({ ...formData, email: e.target.value });
