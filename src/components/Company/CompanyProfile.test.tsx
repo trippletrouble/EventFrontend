@@ -120,4 +120,20 @@ describe('CompanyProfile', () => {
     const nameInput = screen.getByLabelText(/firmenname/i);
     expect(nameInput).toHaveFocus();
   });
+
+  it('hides edit button when isWritable is false', () => {
+    render(<CompanyProfile company={mockCompany} isWritable={false} />);
+    const editBtn = screen.queryByRole('button', { name: /profil bearbeiten/i });
+    expect(editBtn).not.toBeInTheDocument();
+  });
+
+  it('renders website link when present', () => {
+    const companyWithWebsite: CompanyDto = {
+      ...mockCompany,
+      website: 'https://test-website.de',
+    };
+    render(<CompanyProfile company={companyWithWebsite} />);
+    const link = screen.getByRole('link', { name: 'https://test-website.de' });
+    expect(link).toHaveAttribute('href', 'https://test-website.de');
+  });
 });

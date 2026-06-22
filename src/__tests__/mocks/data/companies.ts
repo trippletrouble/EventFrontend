@@ -16,6 +16,7 @@ export const mockCompany: MockCompanyDto = {
   status: 'VERIFIED',
   isSponsor: false,
   inviteCode: '12345678',
+  website: 'https://test-gmbh.de',
   industry: 'IT & Software',
   _links: {
     self: { href: '/companies/1' },
@@ -109,6 +110,7 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@by.aok.de',
     status: 'VERIFIED',
     isSponsor: true,
+    website: 'https://by.aok.de',
     industry: 'Gesundheitswesen & Soziales',
   },
   {

@@ -25,6 +25,7 @@ export interface CompanyDto {
   inviteCode?: string;
   description?: string;
   logoUrl?: string;
+  website?: string;
   members?: UserDto[];
   _links?: Links;
 }
@@ -46,6 +47,7 @@ export interface UpdateCompanyRequestDto {
   email?: string;
   description?: string;
   logoUrl?: string;
+  website?: string;
 }
 
 export interface AdminUpdateCompanyRequestDto {

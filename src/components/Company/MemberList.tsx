@@ -5,9 +5,10 @@ import { Users, ShieldCheck } from 'lucide-react';
 
 interface MemberListProps {
   members: UserDto[];
+  isWritable?: boolean;
 }
 
-export function MemberList({ members }: MemberListProps) {
+export function MemberList({ members, isWritable = true }: MemberListProps) {
   return (
     <section
       aria-labelledby="member-list-heading"
@@ -20,7 +21,7 @@ export function MemberList({ members }: MemberListProps) {
             <Users className="h-5 w-5 shrink-0" aria-hidden="true" />
           </div>
           <h2 id="member-list-heading" className="text-xl font-bold text-white tracking-tight font-sans">
-            Ihre Mitglieder
+            {isWritable ? 'Ihre Mitglieder' : 'Unsere Ansprechpartner'}
           </h2>
         </div>
         <span className="bg-surface border border-surface-border text-zinc-400 px-3 py-1 rounded-full text-xs font-semibold select-none flex items-center gap-1.5 shadow-inner">

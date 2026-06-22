@@ -193,7 +193,7 @@ export function LogoUpload({
     <div className="space-y-4">
       {/* View Mode */}
       {mode === 'view' && (
-        <div className="relative group h-24 w-24 md:h-28 md:w-28 shrink-0 bg-surface border border-surface-border rounded-xl overflow-hidden shadow-inner flex items-center justify-center">
+        <div className={`relative group h-24 w-24 md:h-28 md:w-28 shrink-0 ${currentLogoUrl ? 'bg-white' : 'bg-surface'} border border-surface-border rounded-xl overflow-hidden shadow-inner flex items-center justify-center`}>
           {currentLogoUrl ? (
             <img
               src={currentLogoUrl}
@@ -241,7 +241,7 @@ export function LogoUpload({
       {mode === 'preview' && previewUrl && (
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-3">
-            <div className="h-20 w-20 bg-surface border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0">
+            <div className="h-20 w-20 bg-white border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0">
               <img
                 src={previewUrl}
                 alt="Vorschau des ausgewählten Logos"
@@ -283,7 +283,7 @@ export function LogoUpload({
       {mode === 'uploading' && previewUrl && (
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-3">
-            <div className="h-20 w-20 bg-surface border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0 relative">
+            <div className="h-20 w-20 bg-white border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0 relative">
               <img
                 src={previewUrl}
                 alt="Vorschau des ausgewählten Logos"

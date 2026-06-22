@@ -1,7 +1,7 @@
 'use client';
 
 import type { CompanyDto } from '@/types/api.types';
-import { MapPin, Mail, Check, Clock, X, Star, Pencil } from 'lucide-react';
+import { MapPin, Mail, Check, Clock, X, Star, Pencil, Globe } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { updateCompany } from '@/services/company.service';
@@ -16,9 +16,10 @@ const statusLabels: Record<string, { label: string; className: string; icon: Com
 interface CompanyProfileProps {
   company: CompanyDto;
   onUpdate?: () => void;
+  isWritable?: boolean;
 }
 
-export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
+export function CompanyProfile({ company, onUpdate, isWritable = true }: CompanyProfileProps) {
   const status = statusLabels[company.status] ?? statusLabels.PENDING;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -37,6 +38,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
     city: company.city || '',
     email: company.email || '',
     description: company.description || '',
+    website: company.website || '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -75,6 +77,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
         city: formData.city.trim(),
         email: formData.email.trim(),
         description: formData.description.trim(),
+        website: formData.website.trim(),
       });
       setIsEditing(false);
       if (onUpdate) {
@@ -208,7 +211,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
               <span>{isSaving ? 'Speichert…' : 'Speichern'}</span>
             </button>
           </div>
-        ) : (
+        ) : isWritable ? (
           <button
             type="button"
             onClick={() => {
@@ -219,6 +222,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
                 city: company.city || '',
                 email: company.email || '',
                 description: company.description || '',
+                website: company.website || '',
               });
               setErrors({});
               setSaveError(null);
@@ -229,7 +233,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
           >
             <Pencil className="h-4.5 w-4.5" aria-hidden="true" />
           </button>
-        )}
+        ) : null}
       </div>
 
       {saveError && (
@@ -311,6 +315,19 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
             />
             {errors.email && <p className="text-xs text-red-400 mt-1" role="alert">{errors.email}</p>}
           </div>
+
+          <div className="flex flex-col gap-1.5 w-full max-w-md">
+            <label htmlFor="edit-website" className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Website</label>
+            <input
+              id="edit-website"
+              type="url"
+              placeholder="z.B. https://www.firma.de"
+              className="h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium"
+              value={formData.website}
+              onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+              disabled={isSaving}
+            />
+          </div>
         </div>
       ) : (
         <dl className="flex flex-col md:flex-row md:items-center gap-y-3 gap-x-8 text-sm">
@@ -340,6 +357,27 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
               </a>
             </dd>
           </div>
+
+          {company.website && (
+            <div className="flex items-center gap-3">
+              <dt className="flex items-center">
+                <span className="sr-only">Website</span>
+                <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
+                  <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
+                </span>
+              </dt>
+              <dd>
+                <a
+                  href={company.website.startsWith('http') ? company.website : `https://${company.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative text-[#3B82F6] hover:text-[#3B82F6]/80 font-medium hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11 break-all"
+                >
+                  {company.website}
+                </a>
+              </dd>
+            </div>
+          )}
         </dl>
       )}
     </section>
