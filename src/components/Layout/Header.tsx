@@ -67,16 +67,15 @@ export default function Header() {
   // onDarkBg = true  → dark/transparent navbar → white text + white logo center
   // onDarkBg = false → white navbar            → dark text  + dark logo center
   const onDarkBg =
-    isTop ||          // transparent hero
-    !hasHero ||       // all other pages always dark navbar
-    navTheme === 'light'; // light section behind → dark navbar
+    isTop ||
+    (hasHero ? navTheme === 'light' : !scrolled);
 
-  // FIX 1: #0C1117 statt #111827 für dunkle Navbar
+  // headerBg turns white on scroll when page background is dark (non-hero pages like /aussteller)
   const headerBg = isTop
     ? 'bg-transparent border-b border-transparent shadow-none'
-    : hasHero && navTheme === 'dark'
+    : (hasHero ? navTheme === 'dark' : scrolled)
       ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
-      : 'bg-[#0C1117]/95 backdrop-blur-sm border-b border-white/10 shadow-sm';
+      : 'bg-surface/95 backdrop-blur-sm border-b border-white/10 shadow-sm';
 
   const navLinks = [
     ...LANDING_NAV.map((l) => ({
@@ -92,10 +91,10 @@ export default function Header() {
 
   const linkCls = onDarkBg
     ? 'text-white/80 hover:text-white hover:bg-white/10'
-    : 'text-[#0D1117]/70 hover:text-[#0D1117] hover:bg-black/5';
+    : 'text-[#050505]/70 hover:text-[#050505] hover:bg-black/5';
 
   const dropdownCls =
-    'z-50 rounded-xl border p-2 shadow-2xl bg-[#0C1117] border-white/10 text-white';
+    'z-50 rounded-xl border p-2 shadow-2xl bg-surface border-white/10 text-white';
 
   const dropdownItemCls =
     'flex w-full px-3 py-2.5 text-sm rounded-lg outline-none hover:bg-white/10 transition-colors cursor-pointer';
@@ -107,7 +106,7 @@ export default function Header() {
       className={cn(
         'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-in-out',
         headerBg,
-        onDarkBg ? 'text-white' : 'text-[#0D1117]', // ← currentColor für HofLogo
+        onDarkBg ? 'text-white' : 'text-[#050505]', // ← currentColor für HofLogo
       )}
     >
       <nav

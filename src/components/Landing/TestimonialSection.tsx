@@ -148,12 +148,12 @@ export function TestimonialSection() {
 
         <div className="w-full">
             {/* Über Testimonials — Clean dark bridge */}
-            <div className="relative h-2 w-full bg-[#0D1117]" aria-hidden="true">
+            <div className="relative h-2 w-full bg-surface" aria-hidden="true">
                 <div
                     className="h-2 w-full absolute top-0 left-0 stripe-reveal"
                     style={{
                         background:
-                            'linear-gradient(90deg, #0D1117 0%, #0D1117 28%, #FCCD01 100%)',
+                            'linear-gradient(90deg, var(--color-surface) 0%, var(--color-surface) 28%, #FCCD01 100%)',
                     }}
                 />
             </div>
@@ -271,18 +271,18 @@ export function TestimonialSection() {
                     </div>
                 </div>
             </section>
-            <div className="relative h-2 w-full bg-[#0D1117]" aria-hidden="true">
+            <div className="relative h-2 w-full bg-surface" aria-hidden="true">
                 <div
                     className="h-2 w-full absolute bottom-0 left-0 stripe-reveal"
                     style={{
                         background:
-                            'linear-gradient(90deg, #FCCD01 0%, #0D1117 72%, #0D1117 100%)',
+                            'linear-gradient(90deg, #FCCD01 0%, var(--color-surface) 72%, var(--color-surface) 100%)',
                     }}
                 />
             </div>
 
             {/* Unter Testimonials — Clean dark bridge */}
-            <div className="h-2 w-full bg-[#0D1117]" aria-hidden="true" />
+            <div className="h-2 w-full bg-surface" aria-hidden="true" />
         </div>
     );
 }

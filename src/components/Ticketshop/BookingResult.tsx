@@ -50,10 +50,10 @@ export default function CheckoutPage({
     const features = tier.features || [];
 
     const blueBoxStyle = {
-        borderColor: '#2563eb',
+        borderColor: 'var(--color-surface-border)',
         borderWidth: '2px',
         borderStyle: 'solid' as const,
-        backgroundColor: '#0b111e',
+        backgroundColor: 'var(--color-surface-raised)',
         color: '#ffffff'
     };
 
@@ -61,8 +61,8 @@ export default function CheckoutPage({
 
     if (status === 'success') {
         return (
-            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-[#0b111e] font-sans flex items-center justify-center" style={pureWhiteText}>
-                <div className="max-w-xl w-full text-center p-8 border-2 border-brand-green rounded-none" style={{ backgroundColor: '#0d1117' }}>
+            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-surface font-sans flex items-center justify-center" style={pureWhiteText}>
+                <div className="max-w-xl w-full text-center p-8 border-2 border-brand-green rounded-none bg-surface-raised">
                     <CheckCircle2 className="w-16 h-16 text-brand-green mx-auto mb-6" />
                     <h1 className="text-3xl font-extrabold mb-2">Vielen Dank für Ihre Buchung!</h1>
                     <p className="mb-8 text-sm opacity-90">Ihre Zahlung war erfolgreich. Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.</p>
@@ -94,8 +94,8 @@ export default function CheckoutPage({
 
     if (status === 'failure' || status === 'cancel') {
         return (
-            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-[#0b111e] font-sans flex items-center justify-center" style={pureWhiteText}>
-                <div className="max-w-xl w-full text-center p-8 border-2 border-brand-red rounded-none" style={{ backgroundColor: '#0d1117' }}>
+            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-surface font-sans flex items-center justify-center" style={pureWhiteText}>
+                <div className="max-w-xl w-full text-center p-8 border-2 border-brand-red rounded-none bg-surface-raised">
                     <XCircle className="w-16 h-16 text-brand-red mx-auto mb-6" />
                     <h1 className="text-3xl font-extrabold mb-2">Zahlung fehlgeschlagen</h1>
                     <p className="mb-6 text-sm opacity-90">Der Zahlungsvorgang wurde abgebrochen oder Ihre Karte wurde abgelehnt. Es wurden keine Beträge abgebucht.</p>
@@ -114,8 +114,8 @@ export default function CheckoutPage({
 
     if (status === 'pending') {
         return (
-            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-[#0b111e] font-sans flex items-center justify-center" style={pureWhiteText}>
-                <div className="max-w-xl w-full text-center p-8 border-2 border-warning rounded-none" style={{ backgroundColor: '#0d1117' }}>
+            <div className="w-full min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-surface font-sans flex items-center justify-center" style={pureWhiteText}>
+                <div className="max-w-xl w-full text-center p-8 border-2 border-warning rounded-none bg-surface-raised">
                     <AlertCircle className="w-16 h-16 text-warning mx-auto mb-6 animate-pulse" />
                     <h1 className="text-3xl font-extrabold mb-2">Zahlung wird verarbeitet</h1>
                     <p className="mb-4 text-sm opacity-90">Ihre Zahlung wird aktuell noch von Stripe geprüft (z. B. bei Sofortüberweisung oder SEPA).</p>
@@ -128,7 +128,7 @@ export default function CheckoutPage({
     }
 
     return (
-        <div className="w-full min-h-screen py-12 px-6 md:px-12 text-white bg-[#0b111e]">
+        <div className="w-full min-h-screen py-12 px-6 md:px-12 text-white bg-surface">
             <div className="max-w-6xl mx-auto">
                 <h1
                     style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: '1.2' }}

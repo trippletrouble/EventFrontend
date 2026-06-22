@@ -505,7 +505,7 @@ describe('HeroSection', () => {
     it('hat Hover-States im Button-Design', () => {
       render(<HeroSection />);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('hover:bg-[#0D1117]/80');
+      expect(button).toHaveClass('hover:bg-surface/80');
     });
 
     it('hat Focus-Visible-Styles für Tastaturbedienung', () => {

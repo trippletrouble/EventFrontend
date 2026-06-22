@@ -83,11 +83,11 @@ export function HeroSection({
             {/* Overlay — drei Schichten für natürlichen Fade */}
             <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
                 {/* Basis-Abdunklung */}
-                <div className="absolute inset-0 bg-[#0D1117]/50" />
+                <div className="absolute inset-0 bg-surface/50" />
                 {/* Fade von oben (Navbar-Bereich) */}
-                <div className="absolute inset-x-0 top-0 h-[300px] bg-gradient-to-b from-[#0D1117] from-[30px] via-[#0D1117]/60 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-[300px] bg-gradient-to-b from-surface from-[30px] via-surface/60 to-transparent" />
                 {/* Fade von unten (Übergang zur nächsten Sektion) */}
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0D1117] via-[#0D1117]/75 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface via-surface/75 to-transparent" />
             </div>
 
             {/* Logo */}
@@ -95,7 +95,7 @@ export function HeroSection({
 
                 <div className="relative w-full max-w-xl md:max-w-2xl py-8 pr-8 my-4 select-none -ml-6 lg:-ml-12 pl-6 lg:pl-12">
                     <div
-                        className="absolute inset-y-0 left-[-100vw] right-0 backdrop-blur-sm z-0 bg-[linear-gradient(90deg,#0D1117_0%,#07090C_70%,transparent_100%)]"
+                        className="absolute inset-y-0 left-[-100vw] right-0 backdrop-blur-sm z-0 bg-[linear-gradient(90deg,var(--color-surface)_0%,#07090C_70%,transparent_100%)]"
                         aria-hidden="true"
                     />
 
@@ -170,7 +170,7 @@ export function HeroSection({
             <button
                 onClick={toggleVideo}
                 aria-label={isPlaying ? 'Hintergrund-Video pausieren' : 'Hintergrund-Video abspielen'}
-                className="absolute bottom-8 left-8 z-20 p-3 bg-[#0D1117]/50 hover:bg-[#0D1117]/80 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                className="absolute bottom-8 left-8 z-20 p-3 bg-surface/50 hover:bg-surface/80 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
                 type="button"
             >
                 {isPlaying ? (
@@ -185,7 +185,7 @@ export function HeroSection({
                 <button
                     onClick={handleScrollClick}
                     aria-label="Zum Ticketshop herunterscrollen"
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 p-3 bg-[#0D1117]/50 hover:bg-[#0D1117]/80 text-white rounded-full transition-all cursor-pointer animate-bounce focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 p-3 bg-surface/50 hover:bg-surface/80 text-white rounded-full transition-all cursor-pointer animate-bounce focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
                     type="button"
                 >
                     <ChevronDown className="w-5 h-5" aria-hidden="true" />

@@ -37,7 +37,7 @@ export function CarouselSection() {
         {/* Play/Pause Button — Positioned at the bottom-left below the marquee, closer to horizontal divider */}
         <button
           onClick={() => setIsPaused(!isPaused)}
-          className="absolute -bottom-10 left-6 md:left-12 z-20 p-3 bg-[#0D1117]/50 hover:bg-[#0D1117]/80 border border-white/10 rounded-full transition-colors focus-ring"
+          className="absolute -bottom-10 left-6 md:left-12 z-20 p-3 bg-surface/50 hover:bg-surface/80 border border-white/10 rounded-full transition-colors focus-ring"
           aria-label={isPaused ? "Logo-Karussell abspielen" : "Logo-Karussell pausieren"}
           type="button"
         >

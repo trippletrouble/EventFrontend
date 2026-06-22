@@ -12,7 +12,7 @@ export function StudentInfoSection() {
       data-navbar="light"
     >
       <div
-        className="h-2 w-full absolute top-0 left-0 stripe-reveal bg-[linear-gradient(90deg,#0D1117_0%,#0D1117_28%,#2860F9_100%)]"
+        className="h-2 w-full absolute top-0 left-0 stripe-reveal bg-[linear-gradient(90deg,var(--color-surface)_0%,var(--color-surface)_28%,#2860F9_100%)]"
         aria-hidden="true"
       />
 
@@ -132,7 +132,7 @@ export function StudentInfoSection() {
       </div>
 
       <div
-        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal bg-[linear-gradient(90deg,#2860F9_0%,#0D1117_72%,#0D1117_100%)]"
+        className="h-2 w-full absolute bottom-0 left-0 stripe-reveal bg-[linear-gradient(90deg,#2860F9_0%,var(--color-surface)_72%,var(--color-surface)_100%)]"
         aria-hidden="true"
       />
     </section>
