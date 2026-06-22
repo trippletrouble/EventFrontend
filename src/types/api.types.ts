@@ -10,6 +10,7 @@ export interface UserDto {
   lastName?: string | null;
   email: string;
   role: UserRole;
+  linkedin?: string | null;
 }
 
 // Company
@@ -22,6 +23,7 @@ export interface CompanyDto {
   email: string;
   status: CompanyStatus;
   isSponsor: boolean;
+  isFreundFoerderer?: boolean;
   inviteCode?: string;
   description?: string;
   logoUrl?: string;

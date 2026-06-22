@@ -181,7 +181,7 @@ export default function CheckoutPage({
 
                                     {isSponsor && tier.sponsorDiscountPercent > 0 && (
                                         <div className="mt-4 p-2 border border-green-500/30 rounded text-xs text-green-400 flex justify-between">
-                                            <span>Sponsor-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
+                                            <span>Partner-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
                                             <span>-{(discountAmount / 100).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</span>
                                         </div>
                                     )}

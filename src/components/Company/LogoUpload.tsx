@@ -12,6 +12,7 @@ interface LogoUploadProps {
   currentLogoUrl?: string;
   onUploadSuccess: (newLogoUrl: string) => void;
   isEditing: boolean;
+  isSponsor?: boolean;
 }
 
 type UploadMode = 'view' | 'select' | 'preview' | 'uploading';
@@ -22,6 +23,7 @@ export function LogoUpload({
   currentLogoUrl,
   onUploadSuccess,
   isEditing,
+  isSponsor = false,
 }: LogoUploadProps) {
   const [mode, setMode] = useState<UploadMode>('view');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -193,7 +195,13 @@ export function LogoUpload({
     <div className="space-y-4">
       {/* View Mode */}
       {mode === 'view' && (
-        <div className={`relative group h-24 w-24 md:h-28 md:w-28 shrink-0 ${currentLogoUrl ? 'bg-white' : 'bg-surface'} border border-surface-border rounded-xl overflow-hidden shadow-inner flex items-center justify-center`}>
+        <div className={`relative group h-24 w-24 md:h-28 md:w-28 shrink-0 ${
+          currentLogoUrl ? 'bg-white' : 'bg-surface'
+        } rounded-xl overflow-hidden shadow-inner flex items-center justify-center transition-all duration-300 ${
+          isSponsor
+            ? 'border-2 border-amber-400 shadow-[0_0_15px_rgba(234,179,8,0.45)] ring-1 ring-amber-400'
+            : 'border-2 border-surface-border'
+        }`}>
           {currentLogoUrl ? (
             <img
               src={currentLogoUrl}
@@ -230,7 +238,7 @@ export function LogoUpload({
           <button
             type="button"
             onClick={handleCancelSelect}
-            className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white bg-zinc-850 hover:bg-zinc-800 border border-zinc-700/50 transition-colors"
+            className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-400 hover:text-white bg-transparent border-2 border-zinc-700 hover:border-zinc-500 transition-colors"
           >
             Abbrechen
           </button>
@@ -241,7 +249,7 @@ export function LogoUpload({
       {mode === 'preview' && previewUrl && (
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-3">
-            <div className="h-20 w-20 bg-white border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0">
+            <div className="h-20 w-20 bg-white border-2 border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0">
               <img
                 src={previewUrl}
                 alt="Vorschau des ausgewählten Logos"
@@ -262,7 +270,7 @@ export function LogoUpload({
             <button
               type="button"
               onClick={handleUpload}
-              className="px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-[#EAB308] hover:bg-[#EAB308]/90 transition-all duration-150 flex items-center gap-1"
+              className="px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-[#EAB308] hover:bg-yellow-500 border-2 border-[#EAB308] hover:border-yellow-500 transition-all duration-150 flex items-center gap-1"
             >
               <Upload className="h-3.5 w-3.5" aria-hidden="true" />
               Logo hochladen
@@ -270,7 +278,7 @@ export function LogoUpload({
             <button
               type="button"
               onClick={handleCancelSelect}
-              className="px-3.5 py-2 rounded-lg text-xs font-bold text-zinc-300 hover:text-white bg-zinc-800 hover:bg-zinc-750 border border-zinc-700 transition-all duration-150 flex items-center gap-1"
+              className="px-3.5 py-2 rounded-lg text-xs font-bold text-zinc-300 hover:text-white bg-transparent border-2 border-zinc-700 hover:border-zinc-500 transition-all duration-150 flex items-center gap-1"
             >
               <X className="h-3.5 w-3.5" aria-hidden="true" />
               Verwerfen
@@ -283,7 +291,7 @@ export function LogoUpload({
       {mode === 'uploading' && previewUrl && (
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-3">
-            <div className="h-20 w-20 bg-white border border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0 relative">
+            <div className="h-20 w-20 bg-white border-2 border-surface-border rounded-xl overflow-hidden flex items-center justify-center shrink-0 relative">
               <img
                 src={previewUrl}
                 alt="Vorschau des ausgewählten Logos"
@@ -315,7 +323,7 @@ export function LogoUpload({
       {/* Error state */}
       {error && (
         <div
-          className="p-3 bg-red-500/10 border border-red-500/20 text-xs text-red-400 rounded-lg flex items-center gap-2 max-w-sm"
+          className="p-3 bg-transparent border-2 border-red-500 text-xs text-red-400 rounded-lg flex items-center gap-2 max-w-sm"
           role="alert"
         >
           <X className="h-4 w-4 shrink-0" aria-hidden="true" />

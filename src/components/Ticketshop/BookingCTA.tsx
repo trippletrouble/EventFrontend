@@ -43,7 +43,7 @@ export function BookingCTA({
         </div>
         {isSponsor && tier.sponsorDiscountPercent > 0 && (
           <div className="flex justify-between text-sm text-success">
-            <span>Sponsor-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
+            <span>Partner-Rabatt (-{tier.sponsorDiscountPercent}%):</span>
             <span>-{(discountAmount / 100).toLocaleString('de-DE')} €</span>
           </div>
         )}

@@ -143,7 +143,7 @@ export default function Header() {
                   )}
                   aria-label="Benutzermenü öffnen"
                 >
-                  <User className="h-5 w-5 text-[#EAB308]" aria-hidden="true" />
+                  <User className={cn("h-5 w-5", onDarkBg ? "text-[#EAB308]" : "text-[#2860F8]")} aria-hidden="true" />
                   <span>{user?.firstName ?? 'Konto'}</span>
                 </button>
               </DropdownMenu.Trigger>
@@ -182,7 +182,7 @@ export default function Header() {
             >
               <span className="hidden md:inline">Anmelden</span>
               <span className="text-xs opacity-30" aria-hidden="true">|</span>
-              <User className="w-5 h-5 text-[#EAB308]" aria-hidden="true" />
+              <User className={cn("w-5 h-5", onDarkBg ? "text-[#EAB308]" : "text-[#2860F8]")} aria-hidden="true" />
             </Link>
           )}
 

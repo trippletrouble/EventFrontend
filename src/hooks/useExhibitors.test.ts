@@ -231,7 +231,7 @@ describe('useExhibitors Hook', () => {
     });
 
     expect(result.current.currentPage).toBe(2);
-    expect(result.current.paginatedExhibitors.length).toBe(1);
+    expect(result.current.paginatedExhibitors.length).toBe(7);
   });
 
   it('setzt die Seite zurück auf 1, wenn Filter oder Suche sich ändern', async () => {

@@ -63,7 +63,7 @@ export function UpgradeTierSelect({
           <config.icon className="w-4.5 h-4.5 shrink-0" aria-hidden="true" />
         </div>
         <div>
-          <p className={`font-bold text-sm ${config.textColor}`}>
+          <p className="font-extrabold text-sm text-white">
             {tierName}
           </p>
           <p className="text-xs text-foreground-muted mt-0.5">

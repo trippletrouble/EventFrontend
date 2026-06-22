@@ -44,7 +44,7 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
   return (
     <section
       aria-labelledby="invitation-code-heading"
-      className="bg-surface-raised border border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
+      className="bg-surface-raised border-2 border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
     >
 
       <div className="space-y-1">
@@ -57,7 +57,7 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
       </div>
 
       <div className="space-y-3">
-        <div className="relative flex items-center justify-between gap-3 bg-surface border border-surface-border rounded-xl px-4 py-3 shadow-inner focus-within:border-[#3B82F6]/40 transition-colors">
+        <div className="relative flex items-center justify-between gap-3 bg-surface border-2 border-surface-border rounded-xl px-4 py-3 shadow-inner focus-within:border-[#3B82F6] transition-colors">
           <span className="flex-1 select-all font-mono text-base font-bold tracking-[0.2em] text-white pl-1">{code}</span>
           <button
             type="button"
@@ -88,10 +88,10 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
           type="button"
           onClick={() => setConfirmOpen(true)}
           disabled={renewing}
-          className="relative inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold text-zinc-300 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/80 hover:border-[#3B82F6]/40 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#3B82F6] after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-11 after:h-11"
+          className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-[#EAB308] hover:text-black hover:bg-[#EAB308] border-2 border-[#EAB308] transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-11 after:h-11 cursor-pointer w-full bg-transparent"
         >
-          <RefreshCw className={`h-3.5 w-3.5 ${renewing ? 'animate-spin' : ''}`} aria-hidden="true" />
-          {renewing ? 'Wird erneuert…' : 'Neuen Code generieren'}
+          <RefreshCw className={`h-4 w-4 shrink-0 ${renewing ? 'animate-spin' : ''}`} aria-hidden="true" />
+          <span>{renewing ? 'Wird erneuert…' : 'Neuen Code generieren'}</span>
         </button>
       </div>
 
@@ -105,14 +105,14 @@ export function InvitationCode({ code: initialCode }: InvitationCodeProps) {
             <button
               type="button"
               onClick={() => setConfirmOpen(false)}
-              className="relative px-4 py-2 text-sm font-bold text-zinc-300 hover:text-white bg-zinc-800 hover:bg-zinc-700/80 rounded-lg transition-all focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-zinc-500 after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11"
+              className="relative px-4 py-2 text-sm font-bold text-zinc-300 hover:text-white bg-transparent border-2 border-zinc-700 hover:border-zinc-500 rounded-lg transition-all focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-zinc-500 after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11"
             >
               Abbrechen
             </button>
             <button
               type="button"
               onClick={handleRenew}
-              className="relative px-4 py-2 text-sm font-bold text-black bg-red-600 hover:bg-red-500 rounded-lg transition-all focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-red-600 after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11"
+              className="relative px-4 py-2 text-sm font-bold text-black bg-red-600 hover:bg-red-500 border-2 border-red-600 rounded-lg transition-all focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-red-600 after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11"
             >
               Ja, Code erneuern
             </button>

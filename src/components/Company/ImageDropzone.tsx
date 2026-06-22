@@ -68,8 +68,8 @@ export function ImageDropzone({ onFileSelect, isUploading = false }: ImageDropzo
       aria-disabled={isUploading}
       className={`relative flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg cursor-pointer transition-all duration-200 select-none min-h-[140px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EAB308] ${
         isDragActive
-          ? 'border-[#EAB308] bg-[#EAB308]/5'
-          : 'border-surface-border bg-black hover:border-zinc-500/50 hover:bg-zinc-900/30'
+          ? 'border-[#EAB308] bg-transparent'
+          : 'border-surface-border bg-black hover:border-zinc-500 hover:bg-zinc-900'
       } ${isUploading ? 'opacity-50 cursor-not-allowed' : ''}`}
     >
       <input
@@ -91,7 +91,7 @@ export function ImageDropzone({ onFileSelect, isUploading = false }: ImageDropzo
           </>
         ) : (
           <>
-            <div className="p-2 rounded-lg bg-zinc-800/80 border border-zinc-700 text-[#EAB308]">
+            <div className="p-2 rounded-lg bg-transparent border-2 border-zinc-700 text-[#EAB308]">
               <ImageIcon className="h-6 w-6" aria-hidden="true" />
             </div>
             <div className="space-y-1">

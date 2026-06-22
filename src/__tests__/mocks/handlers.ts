@@ -17,8 +17,10 @@ export const handlers = [
   }),
 
   // === COMPANIES ===
-  http.get(`${BASE_URL}/companies/:id`, () => {
-    return HttpResponse.json(mockCompany);
+  http.get(`${BASE_URL}/companies/:id`, ({ params }) => {
+    const { id } = params;
+    const found = mockCompanies.find((c) => String(c.companyId) === String(id)) || mockCompany;
+    return HttpResponse.json(found);
   }),
 
   http.post(`${BASE_URL}/companies`, async ({ request }) => {

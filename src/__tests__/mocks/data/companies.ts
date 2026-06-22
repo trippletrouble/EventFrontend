@@ -17,7 +17,12 @@ export const mockCompany: MockCompanyDto = {
   isSponsor: false,
   inviteCode: '12345678',
   website: 'https://test-gmbh.de',
+  description: 'Test GmbH ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
   industry: 'IT & Software',
+  members: [
+    { userId: 101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@test.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-1' },
+    { userId: 102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@test.de', role: 'COMPANY_USER' }
+  ],
   _links: {
     self: { href: '/companies/1' },
   },
@@ -40,7 +45,6 @@ export const mockSponsorCompany: MockCompanyDto = {
 };
 
 export const mockCompanies: MockCompanyDto[] = [
-  // IT & Software (6 companies)
   {
     companyId: 10,
     name: 'SAP Deutschland SE',
@@ -50,7 +54,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@sap.com',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'IT & Software',
+    isFreundFoerderer: false,
+    inviteCode: 'SAP-10-2026',
+    description: 'SAP Deutschland SE ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
+    website: 'https://www.sap-deutschland.de',
+    members: [
+      { userId: 1001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@sap-deutschland.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-10' },
+      { userId: 1002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@sap-deutschland.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 11,
@@ -61,7 +72,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@datev.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'IT & Software',
+    isFreundFoerderer: false,
+    inviteCode: 'DATEV-11-2026',
+    description: 'DATEV eG ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
+    website: 'https://www.datev.de',
+    members: [
+      { userId: 1101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@datev.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-11' },
+      { userId: 1102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@datev.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 12,
@@ -73,7 +91,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@hetzner.com',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'IT & Software',
+    isFreundFoerderer: false,
+    inviteCode: 'HETZNER-12-2026',
+    description: 'Hetzner Online GmbH ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
+    website: 'https://www.hetzner-online.de',
+    members: [
+      { userId: 1201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@hetzner-online.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-12' },
+      { userId: 1202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@hetzner-online.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 13,
@@ -84,7 +109,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@adesso.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'IT & Software',
+    isFreundFoerderer: false,
+    inviteCode: 'ADESSO-13-2026',
+    description: 'adesso SE ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
+    website: 'https://www.adesso.de',
+    members: [
+      { userId: 1301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@adesso.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-13' },
+      { userId: 1302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@adesso.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 14,
@@ -95,11 +127,16 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'career@neoit.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'IT & Software',
+    isFreundFoerderer: false,
+    inviteCode: 'NEOIT-14-2026',
+    description: 'NeoIT Solutions GmbH ist ein führender Innovator im Bereich Softwareentwicklung und IT-Dienstleistungen. Wir begleiten Kunden bei der digitalen Transformation mit modernen Cloud- und Enterprise-Lösungen.',
+    website: 'https://www.neoit-solutions.de',
+    members: [
+      { userId: 1401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@neoit-solutions.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-14' },
+      { userId: 1402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@neoit-solutions.de', role: 'COMPANY_USER' }
+    ],
   },
-  mockCompany, // Test GmbH (IT & Software)
-
-  // Gesundheitswesen & Soziales (6 companies)
+  mockCompany,
   {
     companyId: 20,
     name: 'AOK Bayern',
@@ -110,8 +147,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@by.aok.de',
     status: 'VERIFIED',
     isSponsor: true,
+    isFreundFoerderer: false,
+    inviteCode: 'AOK-20-2026',
+    description: 'AOK Bayern engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
     website: 'https://by.aok.de',
-    industry: 'Gesundheitswesen & Soziales',
+    members: [
+      { userId: 2001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@aok-bayern.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-20' },
+      { userId: 2002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@aok-bayern.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 21,
@@ -123,7 +166,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'service@tk.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Gesundheitswesen & Soziales',
+    isFreundFoerderer: false,
+    inviteCode: 'TECHNIKER-21-2026',
+    description: 'Techniker Krankenkasse engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
+    website: 'https://www.techniker-krankenkasse.de',
+    members: [
+      { userId: 2101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@techniker-krankenkasse.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-21' },
+      { userId: 2102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@techniker-krankenkasse.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 22,
@@ -134,7 +184,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'personal@klinikumhof.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Gesundheitswesen & Soziales',
+    isFreundFoerderer: false,
+    inviteCode: 'KLINIKUM-22-2026',
+    description: 'Klinikum Hof GmbH engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
+    website: 'https://www.klinikum-hof.de',
+    members: [
+      { userId: 2201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@klinikum-hof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-22' },
+      { userId: 2202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@klinikum-hof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 23,
@@ -145,7 +202,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@diakonie-hochfranken.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Gesundheitswesen & Soziales',
+    isFreundFoerderer: false,
+    inviteCode: 'DIAKONIE-23-2026',
+    description: 'Diakonie Hochfranken engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
+    website: 'https://www.diakonie-hochfranken.de',
+    members: [
+      { userId: 2301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@diakonie-hochfranken.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-23' },
+      { userId: 2302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@diakonie-hochfranken.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 24,
@@ -156,7 +220,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@kvhof.brk.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Gesundheitswesen & Soziales',
+    isFreundFoerderer: false,
+    inviteCode: 'BRK-24-2026',
+    description: 'BRK Kreisverband Hof engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
+    website: 'https://www.brk-kreisverband-hof.de',
+    members: [
+      { userId: 2401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@brk-kreisverband-hof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-24' },
+      { userId: 2402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@brk-kreisverband-hof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 25,
@@ -167,10 +238,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'service@barmer.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Gesundheitswesen & Soziales',
+    isFreundFoerderer: false,
+    inviteCode: 'BARMER-25-2026',
+    description: 'Barmer Ersatzkasse engagiert sich für erstklassige medizinische und soziale Betreuung. Unser Ziel ist es, Menschen in jeder Lebensphase mit Herz und hoher fachlicher Kompetenz zu unterstützen.',
+    website: 'https://www.barmer-ersatzkasse.de',
+    members: [
+      { userId: 2501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@barmer-ersatzkasse.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-25' },
+      { userId: 2502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@barmer-ersatzkasse.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Logistik & Transport (6 companies)
   {
     companyId: 30,
     name: 'Gebrüder Weiss GmbH',
@@ -181,7 +257,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@gw-world.com',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'GEBRÜDER-30-2026',
+    description: 'Gebrüder Weiss GmbH bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.gebrder-weiss.de',
+    members: [
+      { userId: 3001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@gebrder-weiss.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-30' },
+      { userId: 3002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@gebrder-weiss.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 31,
@@ -192,7 +275,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'career@dhl.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'DHL-31-2026',
+    description: 'DHL Group bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.dhl-group.de',
+    members: [
+      { userId: 3101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@dhl-group.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-31' },
+      { userId: 3102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@dhl-group.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 32,
@@ -203,7 +293,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@dbschenker.com',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'SCHENKER-32-2026',
+    description: 'Schenker Deutschland AG bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.schenker-deutschland.de',
+    members: [
+      { userId: 3201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@schenker-deutschland.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-32' },
+      { userId: 3202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@schenker-deutschland.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 33,
@@ -214,7 +311,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@dachser.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'DACHSER-33-2026',
+    description: 'Dachser SE bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.dachser.de',
+    members: [
+      { userId: 3301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@dachser.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-33' },
+      { userId: 3302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@dachser.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 34,
@@ -225,7 +329,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@kuehne-nagel.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'KÜHNE-34-2026',
+    description: 'Kühne + Nagel KG bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.khne-nagel-kg.de',
+    members: [
+      { userId: 3401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@khne-nagel-kg.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-34' },
+      { userId: 3402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@khne-nagel-kg.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 35,
@@ -236,10 +347,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'office@lkw-walter.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Logistik & Transport',
+    isFreundFoerderer: false,
+    inviteCode: 'LKW-35-2026',
+    description: 'LKW Walter AG bietet zukunftsfähige Lösungen für Transport- und Supply-Chain-Management. Mit unserem globalen Netzwerk sorgen wir für sichere, schnelle und effiziente Warenströme.',
+    website: 'https://www.lkw-walter.de',
+    members: [
+      { userId: 3501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@lkw-walter.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-35' },
+      { userId: 3502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@lkw-walter.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Versicherungen & Finanzen (6 companies)
   {
     companyId: 40,
     name: 'HUK-Coburg',
@@ -250,7 +366,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@huk-coburg.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'HUK-COBURG-40-2026',
+    description: 'HUK-Coburg ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.hukcoburg.de',
+    members: [
+      { userId: 4001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@hukcoburg.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-40' },
+      { userId: 4002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@hukcoburg.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 41,
@@ -261,7 +384,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'service@spk-hochfranken.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'SPARKASSE-41-2026',
+    description: 'Sparkasse Hochfranken ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.sparkasse-hochfranken.de',
+    members: [
+      { userId: 4101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@sparkasse-hochfranken.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-41' },
+      { userId: 4102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@sparkasse-hochfranken.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 42,
@@ -272,7 +402,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@vrbank-bayreuth-hof.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'VR-42-2026',
+    description: 'VR Bank Bayreuth-Hof eG ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.vr-bank-bayreuthhof.de',
+    members: [
+      { userId: 4201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@vr-bank-bayreuthhof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-42' },
+      { userId: 4202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@vr-bank-bayreuthhof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 43,
@@ -283,7 +420,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@allianz.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'ALLIANZ-43-2026',
+    description: 'Allianz Vertriebs-AG ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.allianz-vertriebs.de',
+    members: [
+      { userId: 4301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@allianz-vertriebs.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-43' },
+      { userId: 4302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@allianz-vertriebs.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 44,
@@ -294,7 +438,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'service@muenchener-verein.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'MÜNCHENER-44-2026',
+    description: 'Münchener Verein ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.mnchener-verein.de',
+    members: [
+      { userId: 4401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@mnchener-verein.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-44' },
+      { userId: 4402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@mnchener-verein.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 45,
@@ -305,10 +456,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@ergo.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Versicherungen & Finanzen',
+    isFreundFoerderer: false,
+    inviteCode: 'ERGO-45-2026',
+    description: 'Ergo Group AG ist Ihr verlässlicher Partner für finanzielle Absicherung und Vermögensaufbau. Wir bieten maßgeschneiderte Vorsorge- und Anlagelösungen für Privat- und Geschäftskunden.',
+    website: 'https://www.ergo-group.de',
+    members: [
+      { userId: 4501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@ergo-group.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-45' },
+      { userId: 4502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@ergo-group.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Industrie & Maschinenbau (6 companies)
   {
     companyId: 50,
     name: 'Wilo SE',
@@ -319,7 +475,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@wilo.com',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'WILO-50-2026',
+    description: 'Wilo SE steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.wilo.de',
+    members: [
+      { userId: 5001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@wilo.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-50' },
+      { userId: 5002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@wilo.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 51,
@@ -331,7 +494,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@netzsch.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'NETZSCH-51-2026',
+    description: 'NETZSCH Gruppe steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.netzsch.de',
+    members: [
+      { userId: 5101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@netzsch.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-51' },
+      { userId: 5102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@netzsch.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 52,
@@ -343,7 +513,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@lamilux.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'LAMILUX-52-2026',
+    description: 'Lamilux Heinrich Strunz GmbH steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.lamilux-heinrich-strunz.de',
+    members: [
+      { userId: 5201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@lamilux-heinrich-strunz.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-52' },
+      { userId: 5202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@lamilux-heinrich-strunz.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 53,
@@ -355,7 +532,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@sandler.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'SANDLER-53-2026',
+    description: 'Sandler AG steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.sandler.de',
+    members: [
+      { userId: 5301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@sandler.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-53' },
+      { userId: 5302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@sandler.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 54,
@@ -367,7 +551,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@ceramtec.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'CERAMTEC-54-2026',
+    description: 'CeramTec GmbH steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.ceramtec.de',
+    members: [
+      { userId: 5401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@ceramtec.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-54' },
+      { userId: 5402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@ceramtec.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 55,
@@ -379,10 +570,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@viessmann.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Industrie & Maschinenbau',
+    isFreundFoerderer: false,
+    inviteCode: 'VIESSMANN-55-2026',
+    description: 'Viessmann Werke GmbH steht für schwäbischen Innovationsgeist und höchste Präzision im Maschinen- und Anlagenbau. Wir entwickeln effiziente technologische Lösungen für weltweite Industriestandards.',
+    website: 'https://www.viessmann-werke.de',
+    members: [
+      { userId: 5501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@viessmann-werke.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-55' },
+      { userId: 5502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@viessmann-werke.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Öffentlicher Dienst (6 companies)
   {
     companyId: 60,
     name: 'Bundeswehr',
@@ -393,7 +589,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'karrbbhof@bundeswehr.org',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'BUNDESWEHR-60-2026',
+    description: 'Bundeswehr übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.bundeswehr.de',
+    members: [
+      { userId: 6001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@bundeswehr.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-60' },
+      { userId: 6002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@bundeswehr.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 61,
@@ -405,7 +608,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'hof@arbeitsagentur.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'AGENTUR-61-2026',
+    description: 'Agentur für Arbeit übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.agentur-fr-arbeit.de',
+    members: [
+      { userId: 6101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@agentur-fr-arbeit.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-61' },
+      { userId: 6102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@agentur-fr-arbeit.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 62,
@@ -416,7 +626,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'rathaus@stadt-hof.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'STADT-62-2026',
+    description: 'Stadt Hof übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.stadt-hof.de',
+    members: [
+      { userId: 6201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@stadt-hof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-62' },
+      { userId: 6202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@stadt-hof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 63,
@@ -427,7 +644,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'poststelle@landkreis-hof.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'LANDRATSAMT-63-2026',
+    description: 'Landratsamt Hof übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.landratsamt-hof.de',
+    members: [
+      { userId: 6301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@landratsamt-hof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-63' },
+      { userId: 6302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@landratsamt-hof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 64,
@@ -438,7 +662,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@hof-university.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'HOCHSCHULE-64-2026',
+    description: 'Hochschule Hof übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.hochschule-hof.de',
+    members: [
+      { userId: 6401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@hochschule-hof.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-64' },
+      { userId: 6402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@hochschule-hof.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 65,
@@ -449,10 +680,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'pp-ofr.hof.pi@polizei.bayern.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Öffentlicher Dienst',
+    isFreundFoerderer: false,
+    inviteCode: 'POLIZEI-65-2026',
+    description: 'Polizei Bayern übernimmt Verantwortung für das Gemeinwohl und bietet vielfältige Karriereperspektiven im Dienst der Gesellschaft. Bürgerfreundlich, modern und sicher.',
+    website: 'https://www.polizei-bayern.de',
+    members: [
+      { userId: 6501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@polizei-bayern.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-65' },
+      { userId: 6502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@polizei-bayern.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Sonstige (6 companies)
   {
     companyId: 70,
     name: 'Dennree GmbH',
@@ -463,7 +699,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@dennree.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'DENNREE-70-2026',
+    description: 'Dennree GmbH ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.dennree.de',
+    members: [
+      { userId: 7001, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@dennree.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-70' },
+      { userId: 7002, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@dennree.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 71,
@@ -475,7 +718,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@nkd.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'NKD-71-2026',
+    description: 'NKD Group GmbH ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.nkd-group.de',
+    members: [
+      { userId: 7101, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@nkd-group.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-71' },
+      { userId: 7102, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@nkd-group.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 72,
@@ -487,7 +737,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@enterprise.de',
     status: 'VERIFIED',
     isSponsor: true,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'ENTERPRISE-72-2026',
+    description: 'Enterprise Rent-A-Car ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.enterprise-rentacar.de',
+    members: [
+      { userId: 7201, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@enterprise-rentacar.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-72' },
+      { userId: 7202, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@enterprise-rentacar.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 73,
@@ -498,7 +755,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@rehau.com',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'REHAU-73-2026',
+    description: 'REHAU AG + Co ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.rehau-co.de',
+    members: [
+      { userId: 7301, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@rehau-co.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-73' },
+      { userId: 7302, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@rehau-co.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 74,
@@ -509,7 +773,14 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'info@mueller.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'MÜLLER-74-2026',
+    description: 'Müller Ltd. & Co. KG ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.mller.de',
+    members: [
+      { userId: 7401, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@mller.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-74' },
+      { userId: 7402, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@mller.de', role: 'COMPANY_USER' }
+    ],
   },
   {
     companyId: 75,
@@ -520,10 +791,15 @@ export const mockCompanies: MockCompanyDto[] = [
     email: 'feinkost@schmidt.de',
     status: 'VERIFIED',
     isSponsor: false,
-    industry: 'Sonstige',
+    isFreundFoerderer: false,
+    inviteCode: 'SCHMIDT-75-2026',
+    description: 'Schmidt Feinkost GmbH ist ein dynamisches Unternehmen, das sich durch kundenorientierten Service und innovative Ansätze auszeichnet. Entdecken Sie unsere Einstiegsmöglichkeiten für Studierende.',
+    website: 'https://www.schmidt-feinkost.de',
+    members: [
+      { userId: 7501, firstName: 'Alexander', lastName: 'Weber', email: 'a.weber@schmidt-feinkost.de', role: 'ADMIN', linkedin: 'https://www.linkedin.com/in/alexander-weber-75' },
+      { userId: 7502, firstName: 'Maria', lastName: 'Schuster', email: 'm.schuster@schmidt-feinkost.de', role: 'COMPANY_USER' }
+    ],
   },
-
-  // Other utility items
   mockPendingCompany,
-  mockSponsorCompany,
+  mockSponsorCompany
 ];

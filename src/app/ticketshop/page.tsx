@@ -131,7 +131,7 @@ export default function TicketshopPage() {
                   onChange={(e) => setIsSponsor(e.target.checked)}
                   className="rounded border-surface-border text-primary focus:ring-primary h-4 w-4"
                 />
-                <span>Sponsor-Status simulieren (Freunde & Förderer)</span>
+                <span>Platin / Freunde & Förderer Status simulieren</span>
               </label>
             </div>
           </div>

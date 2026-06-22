@@ -11,10 +11,10 @@ interface BookingStatusProps {
 }
 
 const tierContent: Record<number, { title: string; textColor: string; borderColor: string; bgStyles: string; icon: ComponentType<{ className?: string }> }> = {
-  1: { title: 'Basis Ticket', textColor: 'text-[#EAB308]', borderColor: 'border-[#EAB308]/30', bgStyles: 'bg-[#EAB308]/5', icon: Ticket },
-  2: { title: 'Basis Plus Ticket', textColor: 'text-[#3B82F6]', borderColor: 'border-[#3B82F6]/30', bgStyles: 'bg-[#3B82F6]/5', icon: Sparkles },
-  3: { title: 'Premium Ticket', textColor: 'text-[#EF4444]', borderColor: 'border-[#EF4444]/30', bgStyles: 'bg-[#EF4444]/5', icon: Crown },
-  4: { title: 'Premium Deluxe Ticket', textColor: 'text-[#10B981]', borderColor: 'border-[#10B981]/30', bgStyles: 'bg-[#10B981]/5', icon: Gem },
+  1: { title: 'Basis Ticket', textColor: 'text-[#EAB308]', borderColor: 'border-2 border-[#EAB308]', bgStyles: 'bg-black', icon: Ticket },
+  2: { title: 'Basis Plus Ticket', textColor: 'text-[#60A5FA]', borderColor: 'border-2 border-[#3B82F6]', bgStyles: 'bg-black', icon: Sparkles },
+  3: { title: 'Premium Ticket', textColor: 'text-[#F87171]', borderColor: 'border-2 border-[#EF4444]', bgStyles: 'bg-black', icon: Crown },
+  4: { title: 'Premium Deluxe Ticket', textColor: 'text-[#10B981]', borderColor: 'border-2 border-[#10B981]', bgStyles: 'bg-black', icon: Gem },
 };
 
 export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
@@ -23,7 +23,7 @@ export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
   return (
     <section
       aria-labelledby="booking-status-heading"
-      className="bg-surface-raised border border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
+      className="bg-surface-raised border-2 border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
     >
       <div className="flex items-center justify-between">
         <h2 id="booking-status-heading" className="text-xl font-bold text-white font-sans">
@@ -35,8 +35,8 @@ export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
       </div>
 
       {!booking ? (
-        <div className="border-2 border-dashed border-surface-border rounded-xl p-8 text-center space-y-4 hover:border-[#EAB308]/40 transition-colors">
-          <div className="w-12 h-12 rounded-full bg-zinc-900 border border-surface-border flex items-center justify-center mx-auto text-zinc-400">
+        <div className="border-2 border-dashed border-surface-border rounded-xl p-8 text-center space-y-4 hover:border-[#EAB308] transition-colors">
+          <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-surface-border flex items-center justify-center mx-auto text-zinc-400">
             <Ticket className="h-6 w-6" aria-hidden="true" />
           </div>
           <div className="space-y-1">
@@ -45,7 +45,7 @@ export function BookingStatus({ bookings, tiers }: BookingStatusProps) {
           </div>
           <Link
             href="/ticketshop"
-            className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black bg-[#EAB308] hover:bg-[#EAB308]/90 rounded-lg transition-colors focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black bg-[#EAB308] hover:bg-yellow-500 border-2 border-[#EAB308] hover:border-yellow-500 rounded-lg transition-colors focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             Paket buchen
           </Link>
@@ -64,7 +64,7 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
   if (!tier) {
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 text-xs text-zinc-400">
+        <div className="flex items-center gap-2 text-xs text-zinc-200 font-semibold">
           <Clock className="h-4 w-4 text-[#EAB308]" aria-hidden="true" />
           <span>
             Gebucht am {new Date(booking.createdAt).toLocaleDateString('de-DE', {
@@ -74,9 +74,9 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
             })}
           </span>
         </div>
-        <div className={`rounded-xl border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden`}>
+        <div className={`rounded-xl ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden`}>
           <div className="space-y-2">
-            <h3 className={`text-2xl font-extrabold ${config.textColor} flex items-center gap-2 font-sans`}>
+            <h3 className={`text-2xl font-black ${config.textColor} flex items-center gap-2 font-sans`}>
               <config.icon className="h-6 w-6 shrink-0 animate-pulse" aria-hidden="true" />
               <span>{config.title}</span>
             </h3>
@@ -110,7 +110,7 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 text-xs text-zinc-400">
+      <div className="flex items-center gap-2 text-xs text-zinc-200 font-semibold">
         <Clock className="h-4 w-4 text-[#EAB308]" aria-hidden="true" />
         <span>
           Gebucht am {new Date(booking.createdAt).toLocaleDateString('de-DE', {
@@ -121,25 +121,25 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
         </span>
       </div>
 
-      <div className={`rounded-xl border ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden group`}>
+      <div className={`rounded-xl ${config.borderColor} ${config.bgStyles} p-6 flex flex-col gap-6 relative overflow-hidden group`}>
         <div className="space-y-4">
           <div>
-            <h3 className={`text-2xl font-extrabold ${config.textColor} flex items-center gap-2 font-sans`}>
+            <h3 className={`text-2xl font-black ${config.textColor} flex items-center gap-2 font-sans`}>
               <config.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
               <span>{config.title}</span>
             </h3>
-            <p className="text-xs text-zinc-400 mt-1.5">Dieses Ticket beinhaltet folgende Leistungen:</p>
+            <p className="text-xs text-zinc-300 mt-1.5 font-medium">Dieses Ticket beinhaltet folgende Leistungen:</p>
             {standInfo && (
-              <div className="inline-flex items-center gap-2 mt-2.5 px-3 py-1 rounded-lg bg-surface border border-surface-border text-xs font-semibold text-white">
+              <div className="inline-flex items-center gap-2 mt-2.5 px-3 py-1 rounded-lg bg-transparent border-2 border-surface-border text-xs font-semibold text-white">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0AD88E]" />
                 {standInfo}
               </div>
             )}
           </div>
-          <ul className="space-y-2 text-xs text-zinc-400" aria-label="Enthaltene Leistungen">
+          <ul className="space-y-2 text-xs text-white font-semibold" aria-label="Enthaltene Leistungen">
             {bullets.map((feature, idx) => (
               <li key={idx} className="flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-zinc-500 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -148,12 +148,12 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
 
         {/* Separator row with left/right circular ticket cutouts */}
         <div className="relative my-2">
-          <div className="absolute -left-[36px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#050505] border-r border-surface-border" />
-          <div className="absolute -right-[36px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#050505] border-l border-surface-border" />
-          <div className="w-full border-t border-dashed border-surface-border" />
+          <div className="absolute -left-[36px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#050505] border-r-2 border-surface-border" />
+          <div className="absolute -right-[36px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#050505] border-l-2 border-surface-border" />
+          <div className="w-full border-t-2 border-dashed border-surface-border" />
         </div>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-3.5 pt-2">
           <div className="space-y-0.5">
             <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Preis</p>
             <p className="text-3xl font-black text-white font-sans">
@@ -163,10 +163,10 @@ function BookedTier({ booking, tiers }: { booking: BookingDto; tiers: TierDto[] 
           {booking.tierId < 4 && (
             <Link
               href="/ticketshop"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-black bg-[#EAB308] hover:bg-[#EAB308]/90 transition-all duration-200 active:scale-[0.98] shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308]"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-black bg-[#EAB308] hover:bg-yellow-500 border-2 border-[#EAB308] hover:border-yellow-500 transition-all duration-200 active:scale-[0.98] shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] w-full"
             >
               <span>Aufwerten</span>
-              <ArrowUpCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <ArrowUpCircle className="h-4.5 w-4.5 shrink-0" aria-hidden="true" />
             </Link>
           )}
         </div>

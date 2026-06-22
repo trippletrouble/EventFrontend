@@ -154,8 +154,13 @@ export function CompanyForm({ company, onSubmit, isLoading = false }: CompanyFor
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl font-bold text-foreground">Unternehmensprofil bearbeiten</h2>
               {company.isSponsor && (
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-accent/15 text-accent border border-accent/25 shadow-sm">
-                  Sponsor
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-400/10 text-slate-300 border border-slate-400/25 shadow-sm">
+                  Platin Aussteller
+                </span>
+              )}
+              {company.isFreundFoerderer && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/25 shadow-sm">
+                  Freunde & Förderer
                 </span>
               )}
             </div>

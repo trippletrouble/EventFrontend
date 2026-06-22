@@ -30,7 +30,22 @@ describe('useCompany', () => {
       expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current.company).toEqual({ ...mockCompanyResponse, bookings: [] });
+    expect(result.current.company).toEqual({
+      ...mockCompanyResponse,
+      logoUrl: undefined,
+      bookings: [
+        {
+          bookingId: 100,
+          companyId: 1,
+          eventId: 1,
+          tierId: 1,
+          bookedBy: 1,
+          status: 'CONFIRMED',
+          createdAt: '2026-03-15T10:00:00Z',
+          updatedAt: '2026-03-15T10:00:00Z',
+        }
+      ]
+    });
     expect(result.current.error).toBeNull();
     expect(api.apiFetch).toHaveBeenCalledWith('/companies/1');
   });

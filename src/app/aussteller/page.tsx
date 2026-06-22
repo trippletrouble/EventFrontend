@@ -6,7 +6,6 @@ import { useExhibitors } from '@/hooks/useExhibitors';
 import {
   SearchFilter,
   ExhibitorCard,
-  ExhibitorPagination,
   ExhibitorSkeleton,
   AlphabetFilter,
 } from '@/components/Exhibitors';
@@ -48,6 +47,32 @@ export default function ExhibitorsPage() {
     toggleFavorite,
     setCurrentPage,
   } = useExhibitors();
+
+  const observerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (currentPage >= totalPages) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setCurrentPage((prev) => prev + 1);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentTarget = observerRef.current;
+    if (currentTarget) {
+      observer.observe(currentTarget);
+    }
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, [currentPage, totalPages, setCurrentPage]);
 
   return (
     <>
@@ -150,14 +175,30 @@ export default function ExhibitorsPage() {
                 })()}
               </div>
 
-              {/* Seitennavigation */}
-              {totalPages > 1 && (
-                <div className="flex justify-center pt-4">
-                  <ExhibitorPagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
+              {/* Barrierefreies Infinite Scroll & Screen-Reader Live-Region */}
+              <div className="sr-only" role="status" aria-live="polite">
+                {`${paginatedExhibitors.length} von ${totalCount} Ausstellern geladen.`}
+              </div>
+
+              {currentPage < totalPages && (
+                <div ref={observerRef} className="flex flex-col items-center gap-4 pt-8 pb-4">
+                  {/* Visueller Ladebalken/Puls */}
+                  <div 
+                    className="h-1.5 w-24 bg-surface-border overflow-hidden rounded-full relative"
+                    aria-hidden="true"
+                  >
+                    <div className="absolute inset-0 bg-[#EAB308] rounded-full motion-safe:animate-[pulse_1.5s_infinite]" />
+                  </div>
+                  
+                  {/* Tastatur-fokussierbarer Button für Barrierefreiheit */}
+                  <Button
+                    onClick={() => setCurrentPage((prev) => prev + 1)}
+                    variant="outline"
+                    className="border-2 border-surface-border hover:border-[#EAB308] text-foreground hover:text-white px-8 py-2.5 rounded-lg text-sm font-bold transition-all duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 outline-none cursor-pointer"
+                    type="button"
+                  >
+                    Mehr laden
+                  </Button>
                 </div>
               )}
             </div>

@@ -127,7 +127,7 @@ describe('ExhibitorsPage', () => {
     expect(setSelectedLetterMock).toHaveBeenCalledWith('Alle');
   });
 
-  it('rendert Ausstellerliste und Pagination korrekt', () => {
+  it('rendert Ausstellerliste und Infinite Scroll korrekt', () => {
     const setCurrentPageMock = jest.fn();
 
     mockUseExhibitors.mockReturnValue({
@@ -148,13 +148,13 @@ describe('ExhibitorsPage', () => {
       setCurrentPage: setCurrentPageMock,
     });
 
-    const { container } = render(<ExhibitorsPage />);
+    render(<ExhibitorsPage />);
 
     expect(screen.getByText('Test AG')).toBeInTheDocument();
-    expect(container.querySelector('.bg-primary')).toBeInTheDocument();
 
-    // Pagination elements
-    expect(screen.getByRole('navigation', { name: 'Aussteller Seitennavigation' })).toBeInTheDocument();
+    // Infinite scroll elements
+    expect(screen.getByRole('button', { name: 'Mehr laden' })).toBeInTheDocument();
+    expect(screen.getByText('1 von 15 Ausstellern geladen.', { exact: false })).toBeInTheDocument();
   });
 
   it('ruft toggleFavorite auf, wenn auf das Stern-Icon geklickt wird', async () => {

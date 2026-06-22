@@ -57,14 +57,14 @@ export function Modal({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <Dialog.Content
             className={cn(
-              'w-full rounded-xl border border-surface-border bg-surface-raised shadow-2xl flex flex-col focus:outline-none max-h-[90vh]',
+              'w-full rounded-xl border-2 border-surface-border bg-surface-raised shadow-2xl flex flex-col focus:outline-none max-h-[90vh]',
               'data-[state=open]:animate-[contentShow_200ms]',
               sizeClasses[size],
               className
             )}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-surface-border">
+            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-surface-border">
               <div>
                 <Dialog.Title className="text-xl font-bold text-foreground">
                   {title}
@@ -77,7 +77,7 @@ export function Modal({
               </div>
               <Dialog.Close asChild>
                 <button
-                  className="h-8 w-8 flex items-center justify-center rounded-full text-foreground-muted hover:text-foreground hover:bg-surface-overlay/20 focus-ring transition-colors"
+                  className="h-8 w-8 flex items-center justify-center rounded-full text-foreground-muted hover:text-foreground hover:bg-surface-overlay focus-ring transition-colors"
                   aria-label="Modal schließen"
                 >
                   <X className="h-5 w-5" aria-hidden="true" />
@@ -92,7 +92,7 @@ export function Modal({
 
             {/* Actions (Footer) */}
             {actions && (
-              <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-surface-border bg-surface-overlay/30 rounded-b-xl">
+              <div className="flex items-center justify-end gap-3 px-6 py-4 border-t-2 border-surface-border bg-surface-overlay rounded-b-xl">
                 {actions}
               </div>
             )}

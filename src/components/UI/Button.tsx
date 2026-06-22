@@ -11,11 +11,11 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const variantStyles = {
-  primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-  secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90',
-  accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
-  destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-  outline: 'border border-surface-border bg-transparent hover:bg-surface-raised text-foreground',
+  primary: 'bg-primary text-primary-foreground hover:bg-[#CA8A04] border-2 border-primary hover:border-yellow-500',
+  secondary: 'bg-secondary text-secondary-foreground hover:bg-[#2563EB] border-2 border-secondary hover:border-blue-600',
+  accent: 'bg-accent text-accent-foreground hover:bg-[#09C37F] border-2 border-accent hover:border-emerald-500',
+  destructive: 'bg-destructive text-destructive-foreground hover:bg-[#DC2626] border-2 border-destructive hover:border-red-600',
+  outline: 'border-2 border-surface-border bg-transparent hover:bg-surface-raised text-foreground',
   ghost: 'bg-transparent hover:bg-surface-raised text-foreground',
   none: '',
 };

@@ -90,7 +90,7 @@ test.describe('Company Profile E2E', () => {
     // Assert heading and basic details
     await expect(page.locator('h1')).toHaveText('Ihr Firmenprofil');
     await expect(page.locator('h2#company-profile-heading')).toHaveText('Test GmbH');
-    await expect(page.locator('text=Verifiziert')).toBeVisible();
+    await expect(page.getByLabel('Verifiziertes Profil')).toBeVisible();
     await expect(page.locator('text=Beste Testfirma der Welt')).toBeVisible();
 
     // Assert address & contact details

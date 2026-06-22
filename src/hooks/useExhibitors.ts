@@ -156,8 +156,7 @@ export function useExhibitors() {
   const totalPages = Math.max(1, Math.ceil(totalCount / itemsPerPage));
 
   const paginatedExhibitors = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return filteredExhibitors.slice(startIndex, startIndex + itemsPerPage);
+    return filteredExhibitors.slice(0, currentPage * itemsPerPage);
   }, [filteredExhibitors, currentPage, itemsPerPage]);
 
   return {

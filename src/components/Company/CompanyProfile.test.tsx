@@ -47,7 +47,13 @@ describe('CompanyProfile', () => {
 
   it('zeigt den Status Verifiziert für VERIFIED', () => {
     render(<CompanyProfile company={mockCompany} />);
-    expect(screen.getByText('Verifiziert')).toBeInTheDocument();
+    expect(screen.getByLabelText('Verifiziertes Profil')).toBeInTheDocument();
+  });
+
+  it('zeigt keine Verifizierungs-Info für VERIFIED wenn isWritable false ist', () => {
+    render(<CompanyProfile company={mockCompany} isWritable={false} />);
+    expect(screen.queryByText('Verifiziert')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Verifiziertes Profil')).not.toBeInTheDocument();
   });
 
   it('zeigt den Status Ausstehend für PENDING', () => {
@@ -61,14 +67,20 @@ describe('CompanyProfile', () => {
     expect(screen.getByText('Abgelehnt')).toBeInTheDocument();
   });
 
-  it('zeigt das Sponsor-Badge wenn isSponsor', () => {
+  it('zeigt das Platin Aussteller-Badge wenn isSponsor', () => {
     render(<CompanyProfile company={mockSponsorCompany} />);
-    expect(screen.getByText('Sponsor')).toBeInTheDocument();
+    expect(screen.getByText('Platin Aussteller')).toBeInTheDocument();
   });
 
-  it('zeigt kein Sponsor-Badge wenn kein Sponsor', () => {
+  it('zeigt kein Platin Aussteller-Badge wenn kein Sponsor', () => {
     render(<CompanyProfile company={mockCompany} />);
-    expect(screen.queryByText('Sponsor')).not.toBeInTheDocument();
+    expect(screen.queryByText('Platin Aussteller')).not.toBeInTheDocument();
+  });
+
+  it('zeigt das Freunde & Förderer-Badge wenn isFreundFoerderer', () => {
+    const friendCompany = { ...mockCompany, isFreundFoerderer: true };
+    render(<CompanyProfile company={friendCompany} />);
+    expect(screen.getByText('Freunde & Förderer')).toBeInTheDocument();
   });
 
   it('verwendet section mit aria-labelledby', () => {

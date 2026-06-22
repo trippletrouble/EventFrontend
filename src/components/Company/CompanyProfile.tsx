@@ -1,16 +1,16 @@
 'use client';
 
 import type { CompanyDto } from '@/types/api.types';
-import { MapPin, Mail, Check, Clock, X, Star, Pencil, Globe } from 'lucide-react';
+import { MapPin, Mail, Check, Clock, X, Star, Pencil, Globe, Heart } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { updateCompany } from '@/services/company.service';
 import { LogoUpload } from './LogoUpload';
 
 const statusLabels: Record<string, { label: string; className: string; icon: ComponentType<{ className?: string }> }> = {
-  VERIFIED: { label: 'Verifiziert', className: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20', icon: Check },
-  PENDING: { label: 'Ausstehend', className: 'bg-amber-500/10 text-amber-400 border border-amber-500/20', icon: Clock },
-  REJECTED: { label: 'Abgelehnt', className: 'bg-red-500/10 text-red-400 border border-red-500/20', icon: X },
+  VERIFIED: { label: 'Verifiziert', className: 'bg-transparent text-emerald-400 border-emerald-500', icon: Check },
+  PENDING: { label: 'Ausstehend', className: 'bg-transparent text-amber-400 border-amber-500', icon: Clock },
+  REJECTED: { label: 'Abgelehnt', className: 'bg-transparent text-red-400 border-red-500', icon: X },
 };
 
 interface CompanyProfileProps {
@@ -101,7 +101,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
   return (
     <section
       aria-labelledby="company-profile-heading"
-      className="bg-surface-raised border border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
+      className="bg-surface-raised border-2 border-surface-border rounded-none p-6 md:p-8 shadow-xl relative overflow-hidden space-y-6"
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div className="flex items-center gap-5 w-full">
@@ -113,6 +113,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               if (onUpdate) onUpdate();
             }}
             isEditing={isEditing}
+            isSponsor={company.isSponsor}
           />
           <div className="space-y-2 flex-1 min-w-0">
             {isEditing ? (
@@ -123,7 +124,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                     id="edit-name"
                     ref={nameInputRef}
                     type="text"
-                    className={`h-11 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none text-lg font-bold font-sans rounded-lg transition-all duration-150 ${errors.name ? 'border-red-500 focus:border-red-500' : ''}`}
+                    className={`h-11 w-full px-3.5 text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none text-lg font-bold font-sans rounded-lg transition-all duration-150 ${errors.name ? 'border-red-500 focus:border-red-500' : ''}`}
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({ ...formData, name: e.target.value });
@@ -137,12 +138,21 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                   <label htmlFor="edit-description" className="sr-only">Unternehmensbeschreibung</label>
                   <textarea
                     id="edit-description"
-                    rows={2}
+                    ref={(el) => {
+                      if (el) {
+                        el.style.height = 'auto';
+                        el.style.height = `${el.scrollHeight}px`;
+                      }
+                    }}
                     maxLength={300}
                     placeholder="Unternehmensbeschreibung (max. 300 Zeichen)..."
-                    className="w-full text-xs text-zinc-300 bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg p-3 transition-all duration-150 resize-none font-normal"
+                    className="w-full text-xs text-zinc-300 bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg p-3 transition-all duration-150 overflow-hidden resize-none font-normal"
                     value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, description: e.target.value });
+                      e.target.style.height = 'auto';
+                      e.target.style.height = `${e.target.scrollHeight}px`;
+                    }}
                     disabled={isSaving}
                   />
                   <div className="flex justify-end mt-0.5">
@@ -153,19 +163,37 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                 </div>
               </div>
             ) : (
-              <h2 id="company-profile-heading" className="text-2xl md:text-3xl font-extrabold text-white tracking-tight font-sans truncate">
-                {company.name}
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight font-sans flex items-start gap-1 w-full">
+                <span id="company-profile-heading" className="truncate min-w-0">{company.name}</span>
+                {isWritable && company.status === 'VERIFIED' && (
+                  <span
+                    className="inline-flex items-center justify-center bg-emerald-500 text-black rounded-full h-3.5 w-3.5 shrink-0 relative -top-1"
+                    role="img"
+                    title="Verifiziertes Profil"
+                    aria-label="Verifiziertes Profil"
+                  >
+                    <Check className="h-2.5 w-2.5 stroke-[4px]" />
+                  </span>
+                )}
               </h2>
             )}
             <div className="flex flex-wrap items-center gap-2">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider border ${status.className}`}>
-                <status.icon className="h-3.5 w-3.5" aria-hidden="true" />
-                {status.label}
-              </span>
+              {isWritable && company.status !== 'VERIFIED' && (
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider border-2 ${status.className}`}>
+                  <status.icon className="h-3.5 w-3.5" aria-hidden="true" />
+                  {status.label}
+                </span>
+              )}
               {company.isSponsor && (
-                <span className="inline-flex items-center gap-1.5 bg-[#EAB308]/10 px-3 py-1 rounded-full text-xs font-semibold text-[#EAB308] border border-[#EAB308]/20">
-                  <Star className="h-3.5 w-3.5 fill-[#EAB308]/20" aria-hidden="true" />
-                  Sponsor
+                <span className="inline-flex items-center gap-1.5 bg-transparent px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border-2 border-slate-400">
+                  <Star className="h-3.5 w-3.5" aria-hidden="true" />
+                  Platin Aussteller
+                </span>
+              )}
+              {company.isFreundFoerderer && (
+                <span className="inline-flex items-center gap-1.5 bg-transparent px-3 py-1 rounded-full text-xs font-semibold text-rose-400 border-2 border-rose-500">
+                  <Heart className="h-3.5 w-3.5" aria-hidden="true" />
+                  Freunde & Förderer
                 </span>
               )}
             </div>
@@ -189,7 +217,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               type="button"
               onClick={() => setIsEditing(false)}
               disabled={isSaving}
-              className="relative px-3.5 py-2 rounded-lg text-xs font-bold text-zinc-300 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/80 hover:border-zinc-500/40 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-zinc-500 flex items-center gap-1.5"
+              className="relative px-3.5 py-2 rounded-lg text-xs font-bold text-zinc-300 hover:text-white bg-transparent border-2 border-zinc-700 hover:border-zinc-500 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-zinc-500 flex items-center gap-1.5 cursor-pointer"
             >
               <X className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Abbrechen</span>
@@ -198,7 +226,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               type="button"
               onClick={handleSave}
               disabled={isSaving}
-              className="relative px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-[#EAB308] hover:bg-[#EAB308]/90 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] flex items-center gap-1.5 shadow-md"
+              className="relative px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-[#EAB308] hover:bg-yellow-500 border-2 border-[#EAB308] hover:border-yellow-500 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] flex items-center gap-1.5 shadow-md cursor-pointer"
             >
               {isSaving ? (
                 <svg className="animate-spin h-3.5 w-3.5 text-black" viewBox="0 0 24 24" fill="none">
@@ -228,7 +256,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               setSaveError(null);
               setIsEditing(true);
             }}
-            className="relative p-2 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/80 hover:border-[#EAB308]/40 text-zinc-300 hover:text-white transition-all duration-200 active:scale-[0.98] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] flex items-center justify-center shrink-0 self-start sm:self-center"
+            className="relative p-2 rounded-lg bg-transparent border-2 border-zinc-700 hover:border-[#EAB308] text-zinc-300 hover:text-white transition-all duration-200 active:scale-[0.98] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#EAB308] flex items-center justify-center shrink-0 self-start sm:self-center cursor-pointer"
             aria-label="Profil bearbeiten"
           >
             <Pencil className="h-4.5 w-4.5" aria-hidden="true" />
@@ -237,7 +265,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
       </div>
 
       {saveError && (
-        <div className="p-3 bg-red-500/10 border border-red-500/20 text-xs text-red-400 rounded-lg flex items-center gap-2" role="alert">
+        <div className="p-3 bg-transparent border-2 border-red-500 text-xs text-red-400 rounded-lg flex items-center gap-2" role="alert">
           <X className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>{saveError}</span>
         </div>
@@ -254,7 +282,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                 id="edit-address"
                 type="text"
                 placeholder="Straße und Hausnummer"
-                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.address ? 'border-red-500 focus:border-red-500' : ''}`}
+                className={`h-10 w-full text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.address ? 'border-red-500 focus:border-red-500' : ''}`}
                 value={formData.address}
                 onChange={(e) => {
                   setFormData({ ...formData, address: e.target.value });
@@ -271,7 +299,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                 type="text"
                 placeholder="PLZ"
                 maxLength={5}
-                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.zip ? 'border-red-500 focus:border-red-500' : ''}`}
+                className={`h-10 w-full text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.zip ? 'border-red-500 focus:border-red-500' : ''}`}
                 value={formData.zip}
                 onChange={(e) => {
                   setFormData({ ...formData, zip: e.target.value });
@@ -287,7 +315,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                 id="edit-city"
                 type="text"
                 placeholder="Ort"
-                className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.city ? 'border-red-500 focus:border-red-500' : ''}`}
+                className={`h-10 w-full text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm ${errors.city ? 'border-red-500 focus:border-red-500' : ''}`}
                 value={formData.city}
                 onChange={(e) => {
                   setFormData({ ...formData, city: e.target.value });
@@ -305,7 +333,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               id="edit-email"
               type="email"
               placeholder="E-Mail-Adresse"
-              className={`h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium ${errors.email ? 'border-red-500' : ''}`}
+              className={`h-10 w-full text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium ${errors.email ? 'border-red-500' : ''}`}
               value={formData.email}
               onChange={(e) => {
                 setFormData({ ...formData, email: e.target.value });
@@ -322,7 +350,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
               id="edit-website"
               type="url"
               placeholder="z.B. https://www.firma.de"
-              className="h-10 w-full text-white bg-black border border-surface-border hover:border-foreground-muted/65 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium"
+              className="h-10 w-full text-white bg-black border-2 border-surface-border hover:border-zinc-500 focus:border-primary focus:outline-none rounded-lg px-3 transition-all duration-150 text-sm font-medium"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
               disabled={isSaving}
@@ -330,11 +358,11 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
           </div>
         </div>
       ) : (
-        <dl className="flex flex-col md:flex-row md:items-center gap-y-3 gap-x-8 text-sm">
+        <dl className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 text-sm">
           <div className="flex items-center gap-3">
             <dt className="flex items-center">
               <span className="sr-only">Adresse</span>
-              <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
+              <span className="p-1.5 rounded-lg bg-transparent border-2 border-surface-border text-[#EAB308] inline-flex">
                 <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
               </span>
             </dt>
@@ -344,14 +372,14 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
           <div className="flex items-center gap-3">
             <dt className="flex items-center">
               <span className="sr-only">E-Mail</span>
-              <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
+              <span className="p-1.5 rounded-lg bg-transparent border-2 border-surface-border text-[#EAB308] inline-flex">
                 <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
               </span>
             </dt>
             <dd>
               <a
                 href={`mailto:${company.email}`}
-                className="relative text-[#3B82F6] hover:text-[#3B82F6]/80 font-medium hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11 break-all"
+                className="relative text-zinc-300 hover:text-[#EAB308] font-medium transition-colors duration-150 hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11 break-words"
               >
                 {company.email}
               </a>
@@ -362,7 +390,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
             <div className="flex items-center gap-3">
               <dt className="flex items-center">
                 <span className="sr-only">Website</span>
-                <span className="p-1.5 rounded-lg bg-surface border border-surface-border text-[#EAB308] inline-flex">
+                <span className="p-1.5 rounded-lg bg-transparent border-2 border-surface-border text-[#EAB308] inline-flex">
                   <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
                 </span>
               </dt>
@@ -371,7 +399,7 @@ export function CompanyProfile({ company, onUpdate, isWritable = true }: Company
                   href={company.website.startsWith('http') ? company.website : `https://${company.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative text-[#3B82F6] hover:text-[#3B82F6]/80 font-medium hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11 break-all"
+                  className="relative text-zinc-300 hover:text-[#EAB308] font-medium transition-colors duration-150 hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary after:content-[''] after:absolute after:inset-0 after:min-h-11 after:min-w-11 break-words"
                 >
                   {company.website}
                 </a>

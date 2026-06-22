@@ -38,7 +38,7 @@ describe('BookingCTA', () => {
 
     expect(screen.getByText('Buchungszusammenfassung')).toBeInTheDocument();
     expect(screen.getByText('Basis Plus Ticket')).toBeInTheDocument();
-    expect(screen.queryByText(/Sponsor-Rabatt/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Partner-Rabatt/)).not.toBeInTheDocument();
     
     // Check total price (appears twice: basis and total)
     const prices = screen.getAllByText((content) => content.includes('1.000') && content.includes('€'));
@@ -50,7 +50,7 @@ describe('BookingCTA', () => {
       <BookingCTA tier={mockTier} isSponsor={true} onCheckout={onCheckoutMock} />
     );
 
-    expect(screen.getByText('Sponsor-Rabatt (-15%):')).toBeInTheDocument();
+    expect(screen.getByText('Partner-Rabatt (-15%):')).toBeInTheDocument();
     expect(screen.getByText('-150 €')).toBeInTheDocument();
     expect(screen.getByText('850 €')).toBeInTheDocument();
   });

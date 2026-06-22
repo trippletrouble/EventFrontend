@@ -113,17 +113,17 @@ describe('BookingResult-Komponente', () => {
 
         it('berechnet den Sponsor-Rabattbetrag korrekt und rendert ihn', () => {
             render(<BookingResult tier={mockTier} isSponsor={true} />);
-            expect(screen.getByText(/Sponsor-Rabatt \(-20%\)/i)).toBeInTheDocument();
+            expect(screen.getByText(/Partner-Rabatt \(-20%\)/i)).toBeInTheDocument();
             expect(screen.getByText('-300,00 €')).toBeInTheDocument();
         });
 
         it('zeigt den Rabatt nur an, wenn isSponsor=true UND sponsorDiscountPercent > 0', () => {
             const tierWithoutDiscount: TierDto = { ...mockTier, sponsorDiscountPercent: 0 };
             const { rerender } = render(<BookingResult tier={tierWithoutDiscount} isSponsor={true} />);
-            expect(screen.queryByText(/Sponsor-Rabatt/i)).not.toBeInTheDocument();
+            expect(screen.queryByText(/Partner-Rabatt/i)).not.toBeInTheDocument();
 
             rerender(<BookingResult tier={mockTier} isSponsor={false} />);
-            expect(screen.queryByText(/Sponsor-Rabatt/i)).not.toBeInTheDocument();
+            expect(screen.queryByText(/Partner-Rabatt/i)).not.toBeInTheDocument();
         });
     });
 
@@ -392,7 +392,7 @@ describe('BookingResult-Komponente', () => {
             expect(screen.getByText('Premium Ticket')).toBeInTheDocument();
             expect(screen.getByText('1.200,00 €')).toBeInTheDocument();
 
-            expect(screen.getByText(/Sponsor-Rabatt \(-20%\)/i)).toBeInTheDocument();
+            expect(screen.getByText(/Partner-Rabatt \(-20%\)/i)).toBeInTheDocument();
 
             mockTier.features.forEach(feature => {
                 expect(screen.getByText(feature)).toBeInTheDocument();

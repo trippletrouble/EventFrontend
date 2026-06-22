@@ -101,8 +101,8 @@ export function TierCard({
       {/* Linke Seite: Details & Features */}
       <div className="flex-1 space-y-4">
         <div>
-          <h3 className={`text-2xl font-bold ${config.textColor} flex items-center gap-2`}>
-            <config.icon className="h-6 w-6 shrink-0" aria-hidden="true" />
+          <h3 className="text-2xl font-black text-white flex items-center gap-2">
+            <config.icon className={`h-6 w-6 shrink-0 ${config.textColor.split(' ')[0]}`} aria-hidden="true" />
             <span>{config.title}</span>
           </h3>
           <p className="text-xs text-foreground-muted mt-1">

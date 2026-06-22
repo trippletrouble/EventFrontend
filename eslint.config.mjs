@@ -13,6 +13,8 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "coverage/**",
+    "cocoindex-demo/**",
+    "node_modules/**",
   ]),
 ]);
 

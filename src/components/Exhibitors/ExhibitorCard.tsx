@@ -32,14 +32,14 @@ const LOGO_MAPPINGS: Record<string, string> = {
   'ceramtec': '/logos/ceramtec.svg',
 };
 
-export function getCompanyLogo(name: string): string | null {
+export function getCompanyLogo(name: string): string | undefined {
   const normalized = name.toLowerCase().trim();
   for (const [key, val] of Object.entries(LOGO_MAPPINGS)) {
     if (normalized.includes(key)) {
       return val;
     }
   }
-  return null;
+  return undefined;
 }
 
 // Generate a deterministic gradient for initials fallback
@@ -69,7 +69,9 @@ export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, 
     <div
       className={`group/row p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-6 transition-all duration-200 relative ${
         index % 2 === 0 ? 'bg-surface' : 'bg-surface-raised'
-      } hover:bg-surface-overlay`}
+      } hover:bg-surface-overlay ${
+        exhibitor.isSponsor ? 'border-l-4 border-[#EAB308]' : ''
+      }`}
       role="listitem"
       aria-labelledby={`exhibitor-title-${exhibitor.companyId}`}
     >
@@ -88,7 +90,11 @@ export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, 
               aria-hidden="true" 
             />
             <div 
-              className="relative w-16 h-16 bg-white border border-surface-border flex items-center justify-center p-2 shadow-sm overflow-hidden"
+              className={`relative w-16 h-16 bg-white flex items-center justify-center p-2 shadow-sm overflow-hidden transition-all duration-300 ${
+                exhibitor.isSponsor
+                  ? 'border-2 border-amber-400 shadow-[0_0_12px_rgba(234,179,8,0.45)] ring-1 ring-amber-400'
+                  : 'border-2 border-surface-border'
+              }`}
               style={{ zIndex: 1 }}
             >
               {logoSrc ? (
@@ -115,11 +121,11 @@ export function ExhibitorCard({ exhibitor, index, isFavorite, onToggleFavorite, 
         <div className="space-y-1">
           <h2
             id={`exhibitor-title-${exhibitor.companyId}`}
-            className="text-base font-bold text-foreground line-clamp-1"
+            className="text-base font-bold text-foreground flex items-center gap-1.5 flex-wrap"
           >
             <Link 
               href={`/company/${exhibitor.companyId}`} 
-              className="hover:text-primary hover:underline transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="hover:text-primary hover:underline transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary truncate"
             >
               {exhibitor.name}
             </Link>
