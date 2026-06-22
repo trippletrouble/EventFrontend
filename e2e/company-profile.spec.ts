@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Company Profile E2E', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let testCompany: any;
 
   test.beforeEach(async ({ page }) => {
