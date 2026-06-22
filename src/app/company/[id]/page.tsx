@@ -14,7 +14,7 @@ type Props = {
 
 export default function CompanyPage({ params }: Props) {
   const { id } = use(params);
-  const { company, isLoading, error } = useCompany(id);
+  const { company, isLoading, error, refetch } = useCompany(id);
   const { tiers } = useTiers(company?.bookings[0]?.eventId);
 
   if (isLoading) {
@@ -43,7 +43,7 @@ export default function CompanyPage({ params }: Props) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <h1 className="text-sm font-semibold text-foreground-muted tracking-wide font-(family-name:--font-lexend)">Ihr Firmenprofil</h1>
 
-        <CompanyProfile company={company} />
+        <CompanyProfile company={company} onUpdate={refetch} />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <BookingStatus bookings={company.bookings} tiers={tiers} />

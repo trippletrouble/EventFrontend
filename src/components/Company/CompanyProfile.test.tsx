@@ -1,9 +1,14 @@
 import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { CompanyProfile } from './CompanyProfile';
 import { mockCompany, mockPendingCompany, mockSponsorCompany } from '@/__tests__/mocks/data/companies';
 import type { CompanyDto } from '@/types/api.types';
+
+jest.mock('@/services/company.service', () => ({
+  updateCompany: jest.fn().mockResolvedValue({}),
+}));
 
 expect.extend(toHaveNoViolations);
 
@@ -76,5 +81,43 @@ describe('CompanyProfile', () => {
     const unknown: CompanyDto = { ...mockCompany, status: 'UNKNOWN' as CompanyDto['status'] };
     render(<CompanyProfile company={unknown} />);
     expect(screen.getByText('Ausstehend')).toBeInTheDocument();
+  });
+
+  it('toggles edit mode when pencil is clicked and allows saving', async () => {
+    const user = userEvent.setup();
+    const handleUpdate = jest.fn();
+    render(<CompanyProfile company={mockCompany} onUpdate={handleUpdate} />);
+    
+    const editBtn = screen.getByRole('button', { name: /profil bearbeiten/i });
+    expect(editBtn).toBeInTheDocument();
+    
+    await user.click(editBtn);
+    
+    const nameInput = screen.getByLabelText(/firmenname/i);
+    expect(nameInput).toHaveValue(mockCompany.name);
+    
+    await user.clear(nameInput);
+    await user.type(nameInput, 'New Company GmbH');
+    
+    const saveBtn = screen.getByRole('button', { name: /speichern/i });
+    expect(saveBtn).toBeInTheDocument();
+    
+    await user.click(saveBtn);
+    
+    expect(handleUpdate).toHaveBeenCalled();
+  });
+
+  it('is accessible via keyboard in edit mode', async () => {
+    const user = userEvent.setup();
+    render(<CompanyProfile company={mockCompany} />);
+    
+    const editBtn = screen.getByRole('button', { name: /profil bearbeiten/i });
+    await user.tab();
+    expect(editBtn).toHaveFocus();
+    
+    await user.keyboard('{Enter}');
+    
+    const nameInput = screen.getByLabelText(/firmenname/i);
+    expect(nameInput).toHaveFocus();
   });
 });
