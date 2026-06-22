@@ -1,7 +1,7 @@
 'use client';
 
 import type { CompanyDto } from '@/types/api.types';
-import { Building2, MapPin, Mail, Check, Clock, X, Star, Pencil } from 'lucide-react';
+import { MapPin, Mail, Check, Clock, X, Star, Pencil } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { updateCompany } from '@/services/company.service';

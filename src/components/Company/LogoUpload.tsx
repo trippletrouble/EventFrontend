@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element, react-hooks/set-state-in-effect */
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Building2, Upload, X, Check, Camera } from 'lucide-react';
+import { Building2, Upload, X, Camera } from 'lucide-react';
 import { ImageDropzone } from './ImageDropzone';
 import { getLogoUploadUrl, updateCompany } from '@/services/company.service';
 

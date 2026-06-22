@@ -96,10 +96,10 @@ describe('LogoUpload & ImageDropzone', () => {
       upload: {
         addEventListener: jest.fn(),
       },
-      onload: null as any,
+      onload: null as unknown as (() => void),
     };
     const originalXMLHttpRequest = window.XMLHttpRequest;
-    window.XMLHttpRequest = jest.fn().mockImplementation(() => mockXhr) as any;
+    window.XMLHttpRequest = jest.fn().mockImplementation(() => mockXhr) as unknown as typeof XMLHttpRequest;
 
     render(<LogoUpload {...defaultProps} isEditing={true} />);
     

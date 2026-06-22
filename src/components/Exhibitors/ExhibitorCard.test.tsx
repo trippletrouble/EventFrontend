@@ -42,7 +42,7 @@ describe('ExhibitorCard', () => {
   });
 
   it('rendert die Details des Ausstellers korrekt', () => {
-    const { container } = render(
+    render(
       <div role="list">
         <ExhibitorCard 
           exhibitor={mockCompany} 
