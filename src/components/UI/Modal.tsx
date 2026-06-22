@@ -77,7 +77,7 @@ export function Modal({
               </div>
               <Dialog.Close asChild>
                 <button
-                  className="btn btn-ghost btn-sm btn-circle text-foreground-muted hover:text-foreground focus-ring transition-colors"
+                  className="h-8 w-8 flex items-center justify-center rounded-full text-foreground-muted hover:text-foreground hover:bg-surface-overlay/20 focus-ring transition-colors"
                   aria-label="Modal schließen"
                 >
                   <X className="h-5 w-5" aria-hidden="true" />

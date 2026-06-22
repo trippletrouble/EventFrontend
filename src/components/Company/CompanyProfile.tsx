@@ -114,7 +114,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
           <div className="space-y-2 flex-1 min-w-0">
             {isEditing ? (
               <div className="space-y-3 w-full max-w-md">
-                <div className="form-control w-full">
+                <div className="w-full flex flex-col gap-1.5">
                   <label htmlFor="edit-name" className="sr-only">Firmenname</label>
                   <input
                     id="edit-name"
@@ -130,7 +130,7 @@ export function CompanyProfile({ company, onUpdate }: CompanyProfileProps) {
                   />
                   {errors.name && <p className="text-xs text-red-400 mt-1" role="alert">{errors.name}</p>}
                 </div>
-                <div className="form-control w-full">
+                <div className="w-full flex flex-col gap-1.5">
                   <label htmlFor="edit-description" className="sr-only">Unternehmensbeschreibung</label>
                   <textarea
                     id="edit-description"

@@ -10,7 +10,7 @@ import {
   ExhibitorSkeleton,
   AlphabetFilter,
 } from '@/components/Exhibitors';
-import { Alert } from '@/components/UI';
+import { Alert, Button } from '@/components/UI';
 
 function getGroupingLetter(name: string): string {
   const char = name.trim().charAt(0).toUpperCase();
@@ -103,17 +103,17 @@ export default function ExhibitorsPage() {
                 Für deine Suche &quot;{searchQuery}&quot; in der Kategorie &quot;{selectedCategory || 'Alle Branchen'}&quot; und Buchstabe &quot;{selectedLetter}&quot; wurden keine Ergebnisse gefunden. 
                 Versuche es mit anderen Suchbegriffen oder setze die Filter zurück.
               </p>
-              <button
+              <Button
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCategory('');
                   setSelectedLetter('Alle');
                 }}
-                className="btn btn-primary rounded-lg font-semibold px-6 py-2"
-                type="button"
+                variant="primary"
+                className="px-6 py-2"
               >
                 Filter zurücksetzen
-              </button>
+              </Button>
             </div>
           ) : (
             <div className="space-y-8">

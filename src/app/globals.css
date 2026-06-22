@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Basis-Farben (ersetzt DaisyUI base-100, base-200, etc.) */
+  /* Basis-Farben */
   --color-surface: #050505;
   --color-surface-raised: #0F0F11;
   --color-surface-overlay: #1A1A1E;

@@ -55,7 +55,7 @@ export function Alert({
       {dismissible && (
         <button
           onClick={onDismiss}
-          className="btn btn-ghost btn-xs btn-circle text-current hover:bg-surface-overlay focus-ring"
+          className="h-5 w-5 flex items-center justify-center p-0.5 rounded-full text-current hover:bg-surface-overlay/20 focus-ring transition-colors"
           aria-label="Meldung schließen"
         >
           ✕
