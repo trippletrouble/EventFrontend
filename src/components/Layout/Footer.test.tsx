@@ -62,7 +62,7 @@ describe("Footer", () => {
   describe("Adresse und Hochschule-Informationen", () => {
     it("rendert die Überschrift für den Kontaktbereich", () => {
       render(<Footer />);
-      expect(screen.getByRole("heading", { level: 3, name: "Kontakt" })).toBeInTheDocument();
+      expect(screen.getByRole("heading", { level: 2, name: "Kontakt" })).toBeInTheDocument();
     });
 
     it("zeigt die vollständigen Adressdaten der Hochschule Hof korrekt an", () => {

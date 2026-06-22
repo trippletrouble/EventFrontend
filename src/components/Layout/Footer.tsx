@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Kontakt (Address) */}
           <div className="flex flex-col text-sm text-foreground-muted">
-            <h3 className="font-semibold text-white mb-4">Kontakt</h3>
+            <h2 className="text-sm font-semibold text-white mb-4">Kontakt</h2>
             <address className="not-italic flex flex-col gap-1">
               <span>Hochschule für angewandte Wissenschaften Hof</span>
               <span>Veranstaltungsmanagement</span>

@@ -93,7 +93,7 @@ export default function ExhibitorsPage() {
         {/* Aussteller-Liste / Lade-Zustand */}
         <div id="exhibitor-results" tabIndex={-1} className="focus:outline-none focus-ring rounded-lg">
           {isLoading ? (
-            <div className="divide-y divide-surface-border border border-surface-border overflow-hidden bg-surface-raised" aria-label="Aussteller werden geladen">
+            <div role="status" aria-live="polite" aria-label="Aussteller werden geladen" className="divide-y divide-surface-border border border-surface-border overflow-hidden bg-surface-raised">
               <ExhibitorSkeleton count={6} />
             </div>
           ) : paginatedExhibitors.length === 0 ? (
