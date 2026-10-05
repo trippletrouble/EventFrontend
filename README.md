@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Unternehmerbörse Hof: Frontend
 
-## Getting Started
+Webplattform für die Unternehmerbörse, die Firmenmesse der Hochschule Hof. Unternehmen melden sich an, pflegen ihr Profil und buchen Tickets. Besucher finden alle Aussteller an einem Ort.
 
-First, run the development server:
+## Funktionen
+
+- Ausstellerverzeichnis mit Suche, Filtern und Paginierung
+- Firmenprofile, die Unternehmen selbst bearbeiten
+- Ticketshop mit mehreren Ticketstufen
+- Adminbereich zur Freigabe der Unternehmen
+
+## Technik
+
+Next.js, React, TypeScript, Tailwind CSS, Radix UI, Zod. Tests mit Jest und Playwright, Barrierefreiheit geprüft mit axe-core. Build und Tests laufen in einer GitLab-CI-Pipeline.
+
+## Mein Beitrag
+
+Ich habe das Frontend-Team geleitet: Anforderungen mit dem Auftraggeber geklärt, Aufgaben über GitLab-Boards verteilt und die Abschlusspräsentation gehalten. Selbst gebaut habe ich unter anderem das Ausstellerverzeichnis, das Bearbeiten der Firmenprofile, die Barrierefreiheit nach WCAG 2.1 mit automatisierten Kontrasttests und die CI-Pipeline.
+
+## Lokal starten
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Teamprojekt im Studiengang Informatik, Hochschule Hof, 2026.
